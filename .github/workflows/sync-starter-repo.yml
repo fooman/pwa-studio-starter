@@ -20,7 +20,7 @@ jobs:
     - name: Retrieve PWA-Studio
       run: git clone https://github.com/magento/pwa-studio.git $GITHUB_WORKSPACE/../pwa-studio
     - name: Adjust Package Versions
-      run: cd $GITHUB_WORKSPACE/../pwa-studio && .github/bump-version.sh ${{ steps.year-number.outputs.year }}-${{ steps.week-number.outputs.week }}
+      run: cd $GITHUB_WORKSPACE/../pwa-studio && $GITHUB_WORKSPACE/.github/bump-version.sh ${{ steps.year-number.outputs.year }}-${{ steps.week-number.outputs.week }}
     - name: Debug output
       run: $GITHUB_WORKSPACE/../pwa-studio && git --no-pager diff
     - name: Yarn Install
