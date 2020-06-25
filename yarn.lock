@@ -1503,14 +1503,9 @@
     request-promise "^4.1.1"
     yargs "^8.0.2"
 
-"@magento/babel-preset-peregrine@file:../pwa-studio/packages/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1-fooman-canary-2020-25.tgz":
-  version "1.0.1-fooman-canary-2020-25"
-  uid d2aa6440ba44f3f00543fdc5f9116efbac0c90be
-  resolved "file:../pwa-studio/packages/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1-fooman-canary-2020-25.tgz#d2aa6440ba44f3f00543fdc5f9116efbac0c90be"
-
-"@magento/babel-preset-peregrine@file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1-fooman-canary-2020-25.tgz":
-  version "1.0.1-fooman-canary-2020-25"
-  resolved "file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1-fooman-canary-2020-25.tgz#d2aa6440ba44f3f00543fdc5f9116efbac0c90be"
+"@magento/babel-preset-peregrine@https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1-fooman-canary-manual-7.tgz":
+  version "1.0.1-fooman-canary-manual-7"
+  resolved "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1-fooman-canary-manual-7.tgz#5eabd6ea84eb483da604f507b44e85b001aa274d"
 
 "@magento/directive-parser@~0.1.7":
   version "0.1.8"
@@ -1524,28 +1519,17 @@
   resolved "https://registry.yarnpkg.com/@magento/eslint-config/-/eslint-config-1.5.2.tgz#24083d869afd124a414ae8a15401e0a6e44a99a6"
   integrity sha512-iN5Ic0JQe549ycijZNyNRu3JHajGVrBPX3a5yy4zAjdF9gE8z6jCVQOUP3WGuff4bEJfJgs/VODSIPuEU4NjBg==
 
-"@magento/pagebuilder@file:../pwa-studio/packages/pagebuilder/magento-pagebuilder-1.0.1-fooman-canary-2020-25.tgz":
-  version "1.0.1-fooman-canary-2020-25"
-  uid ada1f96d5aa61e77589c039ac8467f731fc9abef
-  resolved "file:../pwa-studio/packages/pagebuilder/magento-pagebuilder-1.0.1-fooman-canary-2020-25.tgz#ada1f96d5aa61e77589c039ac8467f731fc9abef"
+"@magento/pagebuilder@https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-1.0.1-fooman-canary-manual-7.tgz":
+  version "1.0.1-fooman-canary-manual-7"
+  resolved "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-1.0.1-fooman-canary-manual-7.tgz#90cc3fe00307a382c12f1639bf9df7a454dbb4d1"
 
-"@magento/pagebuilder@file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/pagebuilder/magento-pagebuilder-1.0.1-fooman-canary-2020-25.tgz":
-  version "1.0.1-fooman-canary-2020-25"
-  resolved "file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/pagebuilder/magento-pagebuilder-1.0.1-fooman-canary-2020-25.tgz#ada1f96d5aa61e77589c039ac8467f731fc9abef"
+"@magento/peregrine@https://canary-packages.fooman.com/peregrine/magento-peregrine-6.0.0-fooman-canary-manual-7.tgz":
+  version "6.0.0-fooman-canary-manual-7"
+  resolved "https://canary-packages.fooman.com/peregrine/magento-peregrine-6.0.0-fooman-canary-manual-7.tgz#c5d7514f717c78089a1d95139a949a64b0f9d43c"
 
-"@magento/peregrine@file:../pwa-studio/packages/peregrine/magento-peregrine-6.0.0-fooman-canary-2020-25.tgz":
-  version "6.0.0-fooman-canary-2020-25"
-  uid "483a24be2f077035d05a0676c5ccd46cacc5bc1b"
-  resolved "file:../pwa-studio/packages/peregrine/magento-peregrine-6.0.0-fooman-canary-2020-25.tgz#483a24be2f077035d05a0676c5ccd46cacc5bc1b"
-
-"@magento/peregrine@file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/peregrine/magento-peregrine-6.0.0-fooman-canary-2020-25.tgz":
-  version "6.0.0-fooman-canary-2020-25"
-  resolved "file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/peregrine/magento-peregrine-6.0.0-fooman-canary-2020-25.tgz#483a24be2f077035d05a0676c5ccd46cacc5bc1b"
-
-"@magento/pwa-buildpack@file:../pwa-studio/packages/pwa-buildpack/magento-pwa-buildpack-5.1.1-fooman-canary-2020-25.tgz":
-  version "5.1.1-fooman-canary-2020-25"
-  uid e1e5350fc17ce04827ffaf293e4355f4dce9849d
-  resolved "file:../pwa-studio/packages/pwa-buildpack/magento-pwa-buildpack-5.1.1-fooman-canary-2020-25.tgz#e1e5350fc17ce04827ffaf293e4355f4dce9849d"
+"@magento/pwa-buildpack@https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-5.1.1-fooman-canary-manual-7.tgz":
+  version "5.1.1-fooman-canary-manual-7"
+  resolved "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-5.1.1-fooman-canary-manual-7.tgz#0febb9eeae0e68dc90643fb3da72e81b7c696b96"
   dependencies:
     "@babel/core" "~7.8.7"
     "@magento/directive-parser" "~0.1.7"
@@ -1588,55 +1572,9 @@
     write-file-webpack-plugin "~4.5.0"
     yargs "~13.2.2"
 
-"@magento/pwa-buildpack@file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/pwa-buildpack/magento-pwa-buildpack-5.1.1-fooman-canary-2020-25.tgz":
-  version "5.1.1-fooman-canary-2020-25"
-  resolved "file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/pwa-buildpack/magento-pwa-buildpack-5.1.1-fooman-canary-2020-25.tgz#e1e5350fc17ce04827ffaf293e4355f4dce9849d"
-  dependencies:
-    "@babel/core" "~7.8.7"
-    "@magento/directive-parser" "~0.1.7"
-    "@magento/upward-js" "~4.0.1"
-    apicache "~1.4.0"
-    boxen "~3.0.0"
-    camelspace "~1.0.0"
-    chalk "~2.4.2"
-    copy-webpack-plugin "~5.0.3"
-    debug "~4.1.1"
-    devcert "~1.1.0"
-    dotenv "~6.2.0"
-    enhanced-resolve "~4.1.1"
-    envalid "~4.2.2"
-    errorhandler "~1.5.1"
-    execa "~1.0.0"
-    figures "~2.0.0"
-    fs-extra "~7.0.1"
-    gitignore-to-glob "~0.3.0"
-    graphql-playground-middleware-express "~1.7.18"
-    hastily "~0.4.2"
-    js-yaml "~3.13.1"
-    jsdom "~16.2.2"
-    klaw "~3.0.0"
-    lodash "~4.17.11"
-    memfs "~3.1.2"
-    micromatch "~4.0.2"
-    node-fetch "~2.3.0"
-    pertain "~0.2.0"
-    pkg-dir "~4.1.0"
-    portscanner "~2.2.0"
-    tapable "~1.1.3"
-    tar "~4.4.8"
-    unionfs "~4.4.0"
-    walk-object "~4.0.0"
-    webpack-assets-manifest "~3.1.1"
-    webpack-inject-plugin "~1.5.3"
-    webpack-node-externals "~1.7.2"
-    word-wrap "~1.2.3"
-    write-file-webpack-plugin "~4.5.0"
-    yargs "~13.2.2"
-
-"@magento/upward-js@file:../pwa-studio/packages/upward-js/magento-upward-js-4.0.1-fooman-canary-2020-25.tgz":
-  version "4.0.1-fooman-canary-2020-25"
-  uid a24f0d67400b3e7618130644c4c55e600a4301ab
-  resolved "file:../pwa-studio/packages/upward-js/magento-upward-js-4.0.1-fooman-canary-2020-25.tgz#a24f0d67400b3e7618130644c4c55e600a4301ab"
+"@magento/upward-js@https://canary-packages.fooman.com/upward-js/magento-upward-js-4.0.1-fooman-canary-manual-7.tgz", "@magento/upward-js@~4.0.1":
+  version "4.0.1-fooman-canary-manual-7"
+  resolved "https://canary-packages.fooman.com/upward-js/magento-upward-js-4.0.1-fooman-canary-manual-7.tgz#dbb0df5e818464d7b43a6daa9097e57d684abdfe"
   dependencies:
     apollo-link "~1.2.8"
     apollo-link-http "~1.5.11"
@@ -1659,56 +1597,9 @@
     iltorb "^2.4.5"
     node-zopfli-es "^1.0.3"
 
-"@magento/upward-js@file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/upward-js/magento-upward-js-4.0.1-fooman-canary-2020-25.tgz", "@magento/upward-js@~4.0.1":
-  version "4.0.1-fooman-canary-2020-25"
-  resolved "file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/upward-js/magento-upward-js-4.0.1-fooman-canary-2020-25.tgz#a24f0d67400b3e7618130644c4c55e600a4301ab"
-  dependencies:
-    apollo-link "~1.2.8"
-    apollo-link-http "~1.5.11"
-    camelspace "~1.0.0"
-    connect "~3.6.6"
-    contains-path "~1.0.0"
-    debug "~4.1.1"
-    dotenv "~6.2.0"
-    errorhandler "~1.5.1"
-    graphql "~14.3.1"
-    graphql-tag "~2.10.1"
-    hogan.js "~3.0.2"
-    http-proxy-middleware "~0.19.1"
-    js-yaml "~3.13.1"
-    lodash "~4.17.11"
-    morgan "~1.9.1"
-    node-fetch "~2.3.0"
-    shrink-ray-current "~4.0.0"
-  optionalDependencies:
-    iltorb "^2.4.5"
-    node-zopfli-es "^1.0.3"
-
-"@magento/venia-ui@file:../pwa-studio/packages/venia-ui/magento-venia-ui-3.0.0-fooman-canary-2020-25.tgz":
-  version "3.0.0-fooman-canary-2020-25"
-  uid "3d69392092fe9440cb44bc1e613984b494b121a1"
-  resolved "file:../pwa-studio/packages/venia-ui/magento-venia-ui-3.0.0-fooman-canary-2020-25.tgz#3d69392092fe9440cb44bc1e613984b494b121a1"
-  dependencies:
-    "@apollo/react-hooks" "~3.1.2"
-    "@babel/template" "~7.8.6"
-    informed "~2.11.17"
-    jarallax "~1.11.1"
-    load-google-maps-api "~2.0.1"
-    lodash.escape "~4.0.1"
-    lodash.over "~4.7.0"
-    lodash.throttle "~4.1.1"
-    memoize-one "~5.0.0"
-    prop-types "~15.7.2"
-    react-feather "~2.0.3"
-    react-helmet-async "^1.0.2"
-    react-slick "~0.25.2"
-    redux-actions "~2.6.4"
-    redux-thunk "~2.3.0"
-    uuid "~3.3.2"
-
-"@magento/venia-ui@file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/venia-ui/magento-venia-ui-3.0.0-fooman-canary-2020-25.tgz":
-  version "3.0.0-fooman-canary-2020-25"
-  resolved "file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/venia-ui/magento-venia-ui-3.0.0-fooman-canary-2020-25.tgz#3d69392092fe9440cb44bc1e613984b494b121a1"
+"@magento/venia-ui@https://canary-packages.fooman.com/venia-ui/magento-venia-ui-3.0.0-fooman-canary-manual-7.tgz":
+  version "3.0.0-fooman-canary-manual-7"
+  resolved "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-3.0.0-fooman-canary-manual-7.tgz#7836fb80c8123656ea93807e2e8f5f5c46b3306d"
   dependencies:
     "@apollo/react-hooks" "~3.1.2"
     "@babel/template" "~7.8.6"
@@ -7505,20 +7396,9 @@ graphql-cli-prepare@1.4.19:
     graphql-static-binding "0.9.3"
     lodash "4.17.5"
 
-"graphql-cli-validate-magento-pwa-queries@file:../pwa-studio/packages/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.0-fooman-canary-2020-25.tgz":
-  version "1.3.0-fooman-canary-2020-25"
-  uid "5b72b6391eaa5d8c83e40125889dc0abbc1f7bb0"
-  resolved "file:../pwa-studio/packages/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.0-fooman-canary-2020-25.tgz#5b72b6391eaa5d8c83e40125889dc0abbc1f7bb0"
-  dependencies:
-    babel-eslint "~10.0.1"
-    chalk "~2.4.2"
-    eslint "~5.15.1"
-    eslint-plugin-graphql "~3.0.3"
-    semver "~5.6.0"
-
-"graphql-cli-validate-magento-pwa-queries@file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.0-fooman-canary-2020-25.tgz":
-  version "1.3.0-fooman-canary-2020-25"
-  resolved "file:///home/runner/work/pwa-studio-starter/pwa-studio/packages/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.0-fooman-canary-2020-25.tgz#5b72b6391eaa5d8c83e40125889dc0abbc1f7bb0"
+"graphql-cli-validate-magento-pwa-queries@https://canary-packages.fooman.com/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.0-fooman-canary-manual-7.tgz":
+  version "1.3.0-fooman-canary-manual-7"
+  resolved "https://canary-packages.fooman.com/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.0-fooman-canary-manual-7.tgz#a68d0b51889fe347d4850d55b3e77be01548b25b"
   dependencies:
     babel-eslint "~10.0.1"
     chalk "~2.4.2"
