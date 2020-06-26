@@ -136,6 +136,11 @@
     "node": ">=10.x",
     "yarn": ">=1.12.0"
   },
+  "pwa-studio": {
+    "targets": {
+      "intercept": "./local-intercept.js"
+    }
+  },
   "resolutions": {
     "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1-fooman-canary-manual-7.tgz",
     "graphql-cli-validate-magento-pwa-queries": "https://canary-packages.fooman.com/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.0-fooman-canary-manual-7.tgz",
