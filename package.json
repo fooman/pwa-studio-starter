@@ -28,6 +28,14 @@
   "browser": {
     "@magento/venia-drivers": "src/drivers"
   },
+  "dependencies": {
+    "@fortawesome/fontawesome-pro": "^5.12.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-brands-svg-icons": "^5.12.1",
+    "@fortawesome/pro-light-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "react-with-breakpoints": "^4.0.4"
+  },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.0",
     "@babel/core": "~7.3.4",
@@ -39,6 +47,7 @@
     "@babel/plugin-transform-runtime": "~7.4.4",
     "@babel/preset-env": "~7.3.4",
     "@babel/runtime": "~7.4.2",
+    "@fooman/venia-ui-override-resolver": "^1.0.0-beta.1",
     "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1-fooman-canary-manual-7.tgz",
     "@magento/eslint-config": "~1.5.0",
     "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-1.0.1-fooman-canary-manual-7.tgz",
@@ -87,6 +96,8 @@
     "lodash.over": "~4.7.0",
     "memoize-one": "~5.0.0",
     "memory-fs": "~0.4.1",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "~1.16.4",
     "prop-types": "~15.7.2",
     "react": "~16.9.0",
