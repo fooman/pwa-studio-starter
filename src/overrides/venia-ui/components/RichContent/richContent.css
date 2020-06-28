@@ -1,0 +1,640 @@
+.root h1,
+.root h2,
+.root h3,
+.root h4,
+.root h5,
+.root h6 {
+    word-break: break-word;
+    line-height: 1.25em;
+    margin-bottom: 0.5em;
+    margin-top: 1rem;
+}
+
+.root h1 {
+    font-size: 2rem;
+    margin-top: 0.9em;
+    font-weight: 300;
+}
+.root h2 {
+    font-size: 1.625rem;
+    font-weight: 400;
+}
+.root h3 {
+    font-size: 1.375rem;
+    font-weight: 400;
+}
+.root h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+.root h5 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+.root h6 {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+.root p {
+    margin-bottom: 1rem;
+    line-height: 1.65em;
+}
+.root img {
+    max-width: 100%;
+    margin: 1rem 0;
+}
+.root ol,
+.root ul {
+    margin-block-start: 1.2em;
+    margin-block-end: 1.2em;
+    padding-left: 2em;
+}
+.root p + ol,
+.root p + ul {
+    margin-block-start: 0.2em;
+}
+.root ol {
+    list-style-type: decimal;
+}
+.root ul {
+    list-style-type: disc;
+}
+.root ol li,
+.root ul li {
+    line-height: 1.65em;
+    padding: 1px 0.5rem;
+}
+.root a {
+    text-decoration: underline;
+}
+.root blockquote {
+    font-size: 1.375rem;
+    line-height: 1.875rem;
+    margin: 1rem 0;
+    font-weight: 300;
+    font-style: italic;
+}
+.root table {
+    width: 100%;
+    margin: 1rem 0;
+    border-spacing: 0;
+    border-left: 1px solid rgb(var(--venia-border));
+    border-top: 1px solid rgb(var(--venia-border));
+}
+.root table td,
+.root table th {
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.125em;
+    border-right: 1px solid rgb(var(--venia-border));
+    border-bottom: 1px solid rgb(var(--venia-border));
+}
+.root table th {
+    background-color: rgb(var(--venia-grey));
+}
+.root :global .cms-content-important {
+    background: rgb(var(--venia-grey));
+    padding: 1.2rem 1rem;
+    font-size: 1.125rem;
+    border: 1px solid rgb(var(--venia-border));
+}
+.root pre {
+    background: rgb(var(--venia-grey));
+    padding: 1rem;
+    border: 1px solid rgb(var(--venia-border));
+}
+
+@media only screen and (min-width: 769px) {
+    .root h1 {
+        font-size: 3rem;
+        margin-top: 0.75em;
+        line-height: 1.05em;
+    }
+    .root h2 {
+        font-size: 2.25rem;
+        line-height: 1.25em;
+    }
+    .root h3 {
+        font-size: 1.75rem;
+        line-height: 1.25em;
+    }
+    .root h4 {
+        font-size: 1.375rem;
+        line-height: 1.25em;
+        font-weight: 400;
+    }
+    .root h5 {
+        font-size: 1.125rem;
+        line-height: 1.22em;
+        margin-bottom: 0.75em;
+    }
+    .root h6 {
+        font-size: 1rem;
+        line-height: 1.22em;
+        margin-bottom: 0.75em;
+    }
+    .root p {
+        margin-bottom: 1rem;
+        line-height: 1.5em;
+    }
+}
+
+
+.root :global .gs1200 {
+    width: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.root :global .line .unit.lastUnit {
+    display: table-cell;
+    vertical-align: top;
+    width: 10000px;
+}
+
+.root :global .line {
+    zoom: 1;
+}
+.root :global .line:before, .root :global .line:after {
+    content: " ";
+    display: table;
+}
+.root :global .line:after {
+    clear: both;
+}
+
+
+/* ie 7 and earlier need percentage based gutters because they don't do border-box */
+.root :global .size1of12 {
+    width: 8.33333%;
+    *width: 6.77083%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size2of12 {
+    width: 16.66667%;
+    *width: 15.10417%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size3of12 {
+    width: 25%;
+    *width: 23.4375%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size4of12 {
+    width: 33.33333%;
+    *width: 31.77083%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size5of12 {
+    width: 41.66667%;
+    *width: 40.10417%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size6of12 {
+    width: 50%;
+    *width: 48.4375%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size7of12 {
+    width: 58.33333%;
+    *width: 56.77083%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size8of12 {
+    width: 66.66667%;
+    *width: 65.10417%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size9of12 {
+    width: 75%;
+    *width: 73.4375%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size10of12 {
+    width: 83.33333%;
+    *width: 81.77083%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size11of12 {
+    width: 91.66667%;
+    *width: 90.10417%;
+    /* IE7- width = normal width - gutter width */
+}
+
+.root :global .size12of12 {
+    width: 100%;
+    *width: 98.4375%;
+    /* IE7- width = normal width - gutter width */
+}
+.root :global .line .unit {
+    float: left;
+    zoom: 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*IE8+*/
+    padding-left: 10px;
+}
+.root :global .line .unit.lastUnit {
+    float: none;
+    _position: relative;
+    _left: -3px;
+    _margin-right: -3px;
+    /* IE 7 */
+    *display: block;
+    *width: auto;
+    *zoom: 1;
+}
+
+.root :global .line .unitExt {
+    float: right;
+    zoom: 1;
+    padding: 0 0 0 10px;
+}
+
+.root :global .line .nogutter {
+    padding:0px;
+}
+
+
+
+.root :global .trusted-content {
+    background-color: #474747;
+    padding: 100px 0;
+    font-size: 16px;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+    line-height: 1.5em;
+    color: white;
+    text-align: center;
+}
+
+.root :global .trusted-content img  {display: inline-block;}
+
+.root :global .trusted-content h2,.root :global .team-content h2, .root :global .about-four h2 {
+    font-size: 56px;
+    margin-bottom: 15px;
+    color: white;
+    line-height: 1.1em;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+}
+.root :global .trusted-content h3 {
+    font-size: 30px;
+    color: white;
+    text-transform: uppercase;
+    line-height: 1.2em;
+    margin: 30px 0;
+}
+.root :global .trusted-content .hicon {height: 75px;}
+.root :global .trusted-content .rtext {
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+}
+
+.root :global .trusted-content .unit {
+    padding: 30px 70px;
+    margin-top:40px;
+}
+
+.root :global .rated-content ,.root :global .backed-content{
+    border-bottom:  1px solid #e2e1e1;
+    padding: 100px 0 120px;
+    font-size: 16px;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+    line-height: 1.5em;
+    text-align: center;
+    background-color: white;
+}
+
+.root :global .rated-content .rtext, .root :global .rated-content .portrait {
+    display: table-cell;
+
+}
+.root :global .rated-content h2{
+    font-size: 56px;
+    margin-bottom: 80px;
+    line-height: 1.1em;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+}
+
+
+
+.root :global .rated-content .rtext {
+    background: url(https://store.fooman.co.nz/skin/frontend/fooman/default/images/quote-bg.png) top left no-repeat;
+    vertical-align: top;
+    max-width: 310px;
+    text-align: left;
+    padding-left: 35px;
+}
+.root :global .rated-content .unit{
+    margin-top: 20px;
+}
+.root :global .rated-content .rtext p{
+    margin: 0;
+}
+.root :global .rated-content .rtext .client-name{
+    font-family: var(--venia-font);
+    font-size: 24px;
+
+}
+.root :global .rated-content .rtext .client-quote{
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-style: normal;
+
+}
+.root :global .rated-content .rtext .client-org{
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+    font-size: 14px;
+    line-height: 2.5em;
+
+}
+
+.root :global .rated-content .rtext img{
+    max-height: 45px;
+}
+
+
+.root :global .brand-content {
+    text-align: center;
+    margin: 50px 0 120px;
+
+}
+
+
+.root :global .team-content {
+    background: #0b3c5d;
+    padding: 100px 0;
+    font-size: 16px;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+    line-height: 1.5em;
+    color: white;
+    text-align: center;
+}
+
+.root :global .team-content .col {
+    width: 20%;
+    text-align: center;
+    float: left;
+    margin: 50px 0px 0px;
+}
+
+.root :global .roundframe {
+    width: 150px;
+    display: inline-block;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.root :global .member {
+    display: inline;
+    float: left;
+    width: 196px;
+    height: 300px;
+    overflow: visible;
+
+}
+
+.root :global .memberimg {
+    display: inline;
+}
+
+.root :global .membername {
+    line-height: 1.3em;
+    font-family: var(--venia-font);
+    font-size: 30px;
+    margin: 0 auto;
+}
+.root :global .framewrapper {position: relative;}
+.root :global .framewrapper .hidden {display:none !important;}
+.root :global .framewrapper .floatright {right: -560px;}
+.root :global .framewrapper .floatleft{left: -560px;}
+.root :global .floatright .popup-arrow {
+    position: absolute;
+    top:30%;
+    width: 25px;
+    height: 21px;
+    left:-19px;
+    background: url('https://store.fooman.co.nz/skin/frontend/fooman/default/images/popuparrowbg.png') 0 0 no-repeat;
+}
+.root :global .floatleft .popup-arrow {
+    position: absolute;
+    top:30%;
+    width: 25px;
+    height: 21px;
+    right:-19px;
+    background: url('https://store.fooman.co.nz/skin/frontend/fooman/default/images/popuparrowbg-r.png') 0 0 no-repeat;
+}
+
+.root :global .imgExtCustom {
+    width: 40px;
+    height: 72px;
+    position: absolute;
+    bottom: 20px;
+    right: 23px;
+    float: right;
+}
+.root :global .memberrole {
+    text-transform: uppercase; letter-spacing: 3px; font-size: 12px; line-height: 1.3em;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+}
+
+.root :global .member-intro {
+    position: absolute;
+    padding: 30px;
+    font-size: 15px;
+    font-family: var(--venia-font);
+    background: white;
+    box-shadow: 1px 1px 10px #000000;
+    top: -20px;
+    color: #585858;
+    width: 500px;
+    text-align: left;
+    z-index: 200;
+}
+.root :global .member-intro li {
+    list-style: disc inside none;
+}
+.root :global .member-intro p {margin-bottom: 0;}
+.root :global .memquote {
+    color: #989898;
+    text-transform: uppercase;
+    padding: 0px 20px;
+    background: url(https://store.fooman.co.nz/skin/frontend/fooman/default/images/quote_icon.png) 0 0 no-repeat transparent;
+}
+
+.root :global .backed-content h2, .root :global .about-eight h2{
+    font-size: 56px;
+    margin-bottom: 40px;
+    line-height: 1.1em;
+    display: inline-block;
+    max-width: 700px;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+}
+
+
+.root :global .backed-content .col {
+    float: left;
+    width: 20%;
+    margin: 20px 0;
+    max-width: 300px;
+
+}
+
+.root :global .backed-content .col .text{
+    font-family: var(--venia-font);
+    font-size: 20px;
+    line-height: 1.3em;
+    text-align: center;
+    max-width: 202px;
+    margin: 10px auto;
+}
+
+.root :global .ready-content {
+    background: url('https://store.fooman.co.nz/skin/frontend/fooman/default/images/readybg.png') #c2cbd0 bottom center no-repeat;
+    padding: 120px 0;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+    text-align: center;
+}
+
+.root :global .ready-content h2 {
+    font-size: 56px;
+    margin-bottom: 40px;
+    line-height: 1.1em;
+    display: inline-block;
+    max-width: 770px;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+}
+
+
+.root :global .about-two {background-color: #f3f3f3 !important;}
+.root :global .about-two h2 {color: #616161;}
+
+
+/*about fooman page*/
+.root :global .about-one {
+    background: url('https://store.fooman.co.nz/skin/frontend/fooman/default/images/about1bg.png') #0b3c5d 70% bottom no-repeat;
+    color: white;
+    width: 100%;
+    margin: 0 auto;
+    padding: 70px 0;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+}
+.root :global .about-one .text-content {max-width: 935px;}
+.root :global .about-one .text-content p {font-size: 20px; line-height: 1.2em;}
+.root :global .about-one h1 {
+    color: white;
+    font-size: 56px;
+    font-weight: var(--fooman-font-thin);
+    font-family: var(--venia-font);
+}
+
+.root :global .about-two .rtext {color: #616161; font-family: var(--venia-font); font-size: 20px;}
+.root :global .rtext a {text-decoration: none;}
+.root :global .about-two .unit {    padding: 30px 50px; }
+.root :global .about-two .hicon {height: 95px;}
+
+.root :global .about-three{
+    padding: 70px 0;
+    font-size: 20px;
+    font-family: var(--venia-font);
+    line-height: 1.3em;
+    text-align: center;
+    background-color: white;
+}
+
+.root :global .about-three .col {
+    float: left;
+    width: 25%;
+    margin: 20px 0;
+    max-width: 300px;
+
+}
+
+.root :global .about-three .col .text{
+    font-family: var(--venia-font);
+    font-size: 20px;
+    max-width: 202px;
+    margin: 10px auto;
+}
+
+.root :global .about-four {
+    background-color: #474747;
+    padding: 70px 0;
+    color: white;
+    font-size: 20px;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+    text-align: left;
+}
+.root :global .about-four .text-content, .root :global .about-five .text-content{
+    padding: 40px 30px;
+    line-height: 1.2em;
+}
+
+.root :global .about-five{
+    padding: 70px 0;
+    font-size: 20px;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+    text-align: left;
+}
+.root :global .about-five h2, .root :global .about-seven h2 {
+    font-size: 56px;
+    margin-bottom: 15px;
+    line-height: 1.1em;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+}
+.root :global .about-seven {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 100px 0;
+    margin: 0 auto;
+    font-size: 30px;
+    line-height: 1.2em;
+    font-family: var(--venia-font);
+    font-weight: var(--fooman-font-thin);
+}
+.root :global .about-seven img {
+    display: block;
+    width: 100%;
+    max-width: 1155px;
+}
+.root :global .narrow-text {display: inline-block; max-width: 620px;}
+
+.root :global .about-eight {
+    text-align: center;
+    padding: 100px 0 100px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.root :global .featured-panel {
+    display: table;
+    border-collapse: collapse;
+
+}
+.root :global .featured-panel .tline {display: table-row;}
+.root :global .featured-panel .tunit {display: table-cell; border: 1px solid #d8d8d8;}
