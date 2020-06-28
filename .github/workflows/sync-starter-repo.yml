@@ -38,6 +38,7 @@ jobs:
         cd $GITHUB_WORKSPACE
         find . | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf
         cp -r $GITHUB_WORKSPACE/../tmp-to-delete/. .
+        rm $GITHUB_WORKSPACE/yarn.lock
     - name: Push Changes
       run: |
               git config --global user.name ${{ github.repository_owner }}
