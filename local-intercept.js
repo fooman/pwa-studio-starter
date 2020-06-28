@@ -17,6 +17,17 @@
  * or modify functionality from its dependencies.
  */
 
-function localIntercept(targets) {}
+function localIntercept(targets) {
+    targets.of('@magento/venia-ui').routes.tap(routes => [
+        ...routes,
+        {
+            name: 'Blog New',
+            pattern: '/blog/:urlKey?',
+            exact: false,
+            path: '../../../../../../src/RootComponents/Blog'
+        }
+    ]);
+
+}
 
 module.exports = localIntercept;
