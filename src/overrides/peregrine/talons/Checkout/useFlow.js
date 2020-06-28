@@ -1,0 +1,82 @@
+import { useCallback } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+
+import { useCartContext } from '@magento/peregrine/lib/context/cart';
+import { useCheckoutContext } from '@magento/peregrine/lib/context/checkout';
+import isObjectEmpty from '@magento/peregrine/lib/util/isObjectEmpty';
+
+const isCheckoutReady = (checkout, isVirtual) => {
+    const {
+        billingAddress,
+        paymentData,
+        shippingAddress,
+        shippingMethod
+    } = checkout;
+
+    const objectsHaveData = [
+        billingAddress,
+        paymentData
+    ].every(data => {
+        return !!data && !isObjectEmpty(data);
+    });
+
+    const shippingAddressHasData = !!shippingAddress && !isObjectEmpty(shippingAddress);
+
+    const stringsHaveData = isVirtual || (!!shippingMethod && shippingMethod.length > 0 && shippingAddressHasData);
+
+    return objectsHaveData && stringsHaveData;
+};
+
+export const useFlow = props => {
+    const { createCartMutation, onSubmitError, setStep } = props;
+    const [fetchCartId] = useMutation(createCartMutation);
+    const [cartState] = useCartContext();
+    const [
+        checkoutState,
+        {
+            beginCheckout,
+            cancelCheckout,
+            submitOrder,
+            submitPaymentMethodAndBillingAddress,
+            submitShippingMethod
+        }
+    ] = useCheckoutContext();
+
+    const handleBeginCheckout = useCallback(async () => {
+        await beginCheckout();
+        setStep('form');
+    }, [beginCheckout, setStep]);
+
+    const handleCancelCheckout = useCallback(async () => {
+        await cancelCheckout();
+        setStep('cart');
+    }, [cancelCheckout, setStep]);
+
+    const handleSubmitOrder = useCallback(async () => {
+        try {
+            await submitOrder({
+                fetchCartId
+            });
+            setStep('receipt');
+        } catch (e) {
+            onSubmitError(e);
+        }
+    }, [fetchCartId, onSubmitError, setStep, submitOrder]);
+
+    const handleCloseReceipt = useCallback(() => {
+        setStep('cart');
+    }, [setStep]);
+    console.log(cartState);
+    return {
+        cartState,
+        checkoutDisabled: checkoutState.isSubmitting || cartState.isEmpty,
+        checkoutState,
+        isReady: isCheckoutReady(checkoutState, cartState.isVirtual),
+        submitPaymentMethodAndBillingAddress,
+        submitShippingMethod,
+        handleBeginCheckout,
+        handleCancelCheckout,
+        handleCloseReceipt,
+        handleSubmitOrder
+    };
+};
