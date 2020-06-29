@@ -7,6 +7,9 @@
     --venia-global-anim-standard: cubic-bezier(0.4, 0, 0.2, 1);
 
     /* color */
+    --fooman-global-color-dark-gray: 112, 112, 112;
+    --fooman-global-color-darked-gray: 28, 28, 28;
+    --fooman-text-on-dark: 207 207 207;
     --venia-global-color-blue-400: 61 132 255;
     --venia-global-color-blue-500: 51 109 255;
     --venia-global-color-blue-600: 41 84 255;
@@ -24,8 +27,8 @@
     --venia-global-color-gray-800: 51 63 71;
     --venia-global-color-gray-900: 23 32 38;
     --venia-global-color-gray: var(--venia-global-color-gray-100);
-    --venia-global-color-gray-dark: var(--venia-global-color-gray-300);
-    --venia-global-color-gray-darker: var(--venia-global-color-gray-600);
+    --venia-global-color-gray-dark: var(--fooman-global-color-dark-gray);
+    --venia-global-color-gray-darker: var(--fooman-global-color-darked-gray);
     --venia-global-color-green-400: 51 171 132;
     --venia-global-color-green-500: 45 157 120;
     --venia-global-color-green-600: 38 142 108;
@@ -45,7 +48,7 @@
     --venia-global-color-border: var(--venia-global-color-gray-300);
     --venia-global-color-error: var(--venia-global-color-red-700);
     --venia-global-color-text: var(--venia-global-color-gray-900);
-    --venia-global-color-text-alt: var(--venia-global-color-gray-darker);
+    --venia-global-color-text-alt: var(--fooman-text-on-dark);
     --venia-global-color-text-hint: var(--venia-global-color-gray-500);
     --venia-global-color-warning-dark: var(--venia-global-color-red-700);
     --venia-global-color-warning-light: var(--venia-global-color-gray-100);

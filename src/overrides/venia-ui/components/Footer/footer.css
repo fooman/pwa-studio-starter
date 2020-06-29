@@ -1,6 +1,6 @@
 .root {
-    background-color: rgb(var(--venia-grey-darker));
-    border-top: 1px solid rgb(var(--venia-border));
+    background-color: rgb(var(--venia-global-color-gray-darker));
+    border-top: 1px solid rgb(var(--venia-global-color-border));
     color: black;
     margin-top: 1rem;
     padding-top: 3rem;
@@ -33,14 +33,14 @@
     content:"";
     display: block;
     width: 50px;
-    border-bottom: 1px solid rgb(var(--venia-orange));
+    border-bottom: 1px solid rgb(var( --venia-global-color-orange));
     margin: 1em 0 1em;
 }
 
 .tileTitle {
     margin: 1rem 0;
     text-transform: uppercase;
-    font-family: var(--fooman-font-medium);
+    font-family: var(--venia-global-fontFamily-sansSerif);
 }
 
 .tileBody {
@@ -53,7 +53,7 @@
 
 .copyright {
     display: block;
-    color: rgb(var(--venia-text-alt));
+    color: rgb(var(--venia-global-color-text-alt));
     font-size: 0.75rem;
     padding: 1.5rem 2rem;
     text-align: center;
