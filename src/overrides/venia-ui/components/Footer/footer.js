@@ -9,6 +9,9 @@ import { Link, resourceUrl } from '@magento/venia-drivers';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
+import Image from "@magento/venia-ui/lib/components/Image";
+import logo from "../Logo/FoomonLogo_Landscape_White.svg";
+import extdn from "../../../../../static/ExtDN_Logo.svg";
 
 const Footer = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
@@ -26,6 +29,11 @@ const Footer = props => {
     return (
         <footer className={classes.root}>
             <section className={classes.tile}>
+                <Image
+                    alt="Fooman"
+                    src={logo}
+                    title="Fooman"
+                />
                 <p className={classes.tileBody}>
                     Copyright Fooman
                 </p>
@@ -39,6 +47,11 @@ const Footer = props => {
                 <p>
                     Proud member of
                 </p>
+                <Image
+                    alt="ExtDN"
+                    src={extdn}
+                    title="ExtDN"
+                />
             </section>
             <section className={classes.tile}>
                 <h3 className={classes.tileTitle}>Extensions</h3>
