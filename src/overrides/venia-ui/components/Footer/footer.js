@@ -5,9 +5,6 @@ import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './footer.css';
 import GET_STORE_CONFIG_DATA from '@magento/venia-ui/lib/queries/getStoreConfigData.graphql';
-import Icon from '@magento/venia-ui/lib/components/Icon';
-import {Linkedin as LinkedinIcon, Twitter as TwitterIcon} from "react-feather";
-import { ShowAt, HideAt } from 'react-with-breakpoints';
 import { Link, resourceUrl } from '@magento/venia-drivers';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
