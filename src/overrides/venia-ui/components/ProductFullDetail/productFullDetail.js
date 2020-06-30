@@ -1,6 +1,7 @@
 import React, { Fragment, Suspense } from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
+import { Helmet } from 'react-helmet-async';
 
 import { Price } from '@magento/peregrine';
 import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail';
@@ -67,8 +68,36 @@ const ProductFullDetail = props => {
         />
     ) : null;
 
+    //TODO move to separate component and then add wrapper for useProductFullDetail
+    //TODO add query for ratings
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type":"Product",
+        "name":productDetails.name,
+        "description":productDetails.description,
+        "offers":{
+            "@type":"https://schema.org/Offer",
+            "availability": "https://schema.org/InStock",
+            "price":productDetails.price.value,
+            "priceCurrency":productDetails.price.currency,
+            "seller":{
+                "@type":"Organization",
+                "name":"Fooman"
+            }
+        },
+        "aggregateRating": {
+            "@type":"AggregateRating",
+            "ratingValue":4.9,
+            "bestRating":"5",
+            "reviewCount":"49"
+        }
+    }
+
     return (
         <Fragment>
+            <Helmet>
+                <script key="structured-data" type="application/ld+json">{JSON.stringify(structuredData)}</script>
+            </Helmet>
             {breadcrumbs}
             <Form className={classes.root}>
                 <section className={classes.title}>
@@ -107,10 +136,6 @@ const ProductFullDetail = props => {
                         Product Description
                     </h2>
                     <RichText content={productDetails.description} />
-                </section>
-                <section className={classes.details}>
-                    <h2 className={classes.detailsTitle}>SKU</h2>
-                    <strong>{productDetails.sku}</strong>
                 </section>
             </Form>
         </Fragment>
