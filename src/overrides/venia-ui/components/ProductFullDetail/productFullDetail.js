@@ -71,7 +71,7 @@ const ProductFullDetail = props => {
     //TODO move to separate component and then add wrapper for useProductFullDetail
     //TODO add query for ratings
     //TODO review
-    //TODO image
+    //TODO image from media gallery or small thumbnail
     const structuredData = {
         "@context": "https://schema.org",
         "@type":"Product",
