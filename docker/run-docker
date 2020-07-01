@@ -30,18 +30,14 @@ main () {
     start_docker
   else
     message "An error occurred during setup."
-    clean_up_env &     # clean up the environment in the background
     exit 1
   fi
 }
 
 env_setup () {
-  ENVFILE=./.env
-  message "Adding env vars from $CONFIG_ENV_FILE to $ENVFILE for docker setup."
-  cp "$CONFIG_ENV_FILE" $ENVFILE
-  echo "ENVFILEPATH=$CONFIG_ENV_FILE" >> $ENVFILE
-  cat $ENVFILE
-  . $ENVFILE
+  message "Adding env vars from $CONFIG_ENV_FILE for docker setup."
+  cat $CONFIG_ENV_FILE
+  . $CONFIG_ENV_FILE
 }
 
 create_certificate () {
@@ -56,27 +52,16 @@ create_certificate () {
 start_docker () {
   message "Building PWA image"
   BUILD_STATUS=0
-  docker-compose build || BUILD_STATUS=$?
-
-  clean_up_env &    # clean up the environment in the background
+  docker-compose --env-file $CONFIG_ENV_FILE build || BUILD_STATUS=$?
 
   if [ "$BUILD_STATUS" = "0" ]; then
     message "Starting Docker network and containers"
-    docker-compose up
+    docker-compose --env-file $CONFIG_ENV_FILE up
   else
     message "Build failed. See output for details."
   fi
 }
 
-clean_up_env () {
-  # the docker-compose command needs the .env file to be present in order to run
-  # but we want to remove it after execution so it doesn't pollute the dev environment
-  # when switching git branches or running the application outside of docker
-  if [ -f .env ]; then
-    sleep 20
-    rm .env
-  fi
-}
 
 message () {
   echo ""
