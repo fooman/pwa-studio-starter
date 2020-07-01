@@ -70,21 +70,27 @@ const ProductFullDetail = props => {
 
     //TODO move to separate component and then add wrapper for useProductFullDetail
     //TODO add query for ratings
+    //TODO review
+    //TODO image
     const structuredData = {
         "@context": "https://schema.org",
         "@type":"Product",
         "name":productDetails.name,
         "description":productDetails.description,
         "offers":{
-            "@type":"https://schema.org/Offer",
+            "@type":"Offer",
             "availability": "https://schema.org/InStock",
-            "price":productDetails.price.value,
-            "priceCurrency":productDetails.price.currency,
+            "price": productDetails.price.value,
+            "priceCurrency": productDetails.price.currency,
             "seller":{
                 "@type":"Organization",
                 "name":"Fooman"
             }
         },
+        "brand": {
+            "name": "Fooman"
+        },
+        "sku": productDetails.sku,
         "aggregateRating": {
             "@type":"AggregateRating",
             "ratingValue":4.9,
