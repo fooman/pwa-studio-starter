@@ -103,12 +103,12 @@ const ProductFullDetail = props => {
             "reviewCount": product.review_summary.review_count
         }
     });
-
+    //TODO figure out canonical url domain
     return (
         <Fragment>
             <Helmet>
                 <script key="structured-data" type="application/ld+json">{structuredData}</script>
-                <link rel="canonical" href={productUrl} />
+                <link rel="canonical" href={"https://store.fooman.co.nz" + productUrl}/>
             </Helmet>
             {breadcrumbs}
             <StarRatingComponent
