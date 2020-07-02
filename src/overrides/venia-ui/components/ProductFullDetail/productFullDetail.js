@@ -75,6 +75,7 @@ const ProductFullDetail = props => {
 
     //TODO add reviews
     //TODO image from media gallery or small thumbnail
+    const productUrl = resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
@@ -93,7 +94,7 @@ const ProductFullDetail = props => {
         "brand": {
             "name": "Fooman"
         },
-        "url": resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`),
+        "url": productUrl,
         "sku": productDetails.sku,
         "aggregateRating": {
             "@type":"AggregateRating",
@@ -107,6 +108,7 @@ const ProductFullDetail = props => {
         <Fragment>
             <Helmet>
                 <script key="structured-data" type="application/ld+json">{structuredData}</script>
+                <link rel="canonical" href={productUrl} />
             </Helmet>
             {breadcrumbs}
             <StarRatingComponent
