@@ -34,7 +34,7 @@
     display: block;
     width: 50px;
     border-bottom: 1px solid rgb(var( --venia-global-color-orange));
-    margin: 1em 0 1em;
+    margin: 1.5em 0 1.5em;
 }
 
 .tileTitle {
@@ -57,4 +57,8 @@
     font-size: 0.75rem;
     padding: 1.5rem 2rem;
     text-align: center;
+}
+
+.mlTen {
+    margin-left: 15px;
 }
