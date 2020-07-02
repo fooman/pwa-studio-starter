@@ -74,11 +74,12 @@ const ProductFullDetail = props => {
     //TODO review
     //TODO image from media gallery or small thumbnail
     //TODO add url
+    //TODO strip html from description?
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
         "name":productDetails.name,
-        "description":product.short_description,
+        "description":product.short_description.html,
         "offers":{
             "@type":"Offer",
             "availability": "https://schema.org/InStock",
