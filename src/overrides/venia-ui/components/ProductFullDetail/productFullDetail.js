@@ -2,6 +2,9 @@ import React, { Fragment, Suspense } from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
+import StarRatingComponent from 'react-star-rating-component';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 import { Price } from '@magento/peregrine';
 import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail';
@@ -68,15 +71,14 @@ const ProductFullDetail = props => {
         />
     ) : null;
 
-    //TODO move to separate component and then add wrapper for useProductFullDetail
-    //TODO add query for ratings
     //TODO review
     //TODO image from media gallery or small thumbnail
-    const structuredData = {
+    //TODO add url
+    const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
         "name":productDetails.name,
-        "description":productDetails.description,
+        "description":product.short_description,
         "offers":{
             "@type":"Offer",
             "availability": "https://schema.org/InStock",
@@ -93,18 +95,25 @@ const ProductFullDetail = props => {
         "sku": productDetails.sku,
         "aggregateRating": {
             "@type":"AggregateRating",
-            "ratingValue":4.9,
-            "bestRating":"5",
-            "reviewCount":"49"
+            "ratingValue": product.review_summary.rating_summary,
+            "bestRating":"100",
+            "reviewCount": product.review_summary.review_count
         }
-    }
+    });
 
     return (
         <Fragment>
             <Helmet>
-                <script key="structured-data" type="application/ld+json">{JSON.stringify(structuredData)}</script>
+                <script key="structured-data" type="application/ld+json">{structuredData}</script>
             </Helmet>
             {breadcrumbs}
+            <StarRatingComponent
+                name="rating_summary"
+                editing={false}
+                renderStarIcon={() => <FontAwesomeIcon icon={faStar} size={'2x'}/>}
+                starCount={5}
+                value={Math.round(product.review_summary.rating_summary/20)}
+            />
             <Form className={classes.root}>
                 <section className={classes.title}>
                     <h1 className={classes.productName}>
