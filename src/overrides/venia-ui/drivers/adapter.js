@@ -119,7 +119,6 @@ VeniaAdapter.apolloLink = apiBase => {
     return createHttpLink({
         uri: apiBase,
         useGETForQueries: true
-        
     });
 };
 
