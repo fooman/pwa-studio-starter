@@ -37,10 +37,10 @@ const Footer = props => {
                 <p className={classes.tileBody}>
                     Copyright Fooman
                 </p>
-                <a style={classes.link} href={'https://www.linkedin.com/in/kristofringleff'}>
+                <a style={classes.link} aria-label="Kristof Ringleff on LinkedIn" href={'https://www.linkedin.com/in/kristofringleff'}>
                     <FontAwesomeIcon icon={faLinkedin} color={'white'} size={'2x'}/>
                 </a>
-                <a style={classes.link} href={'https://twitter.com/foomanNZ'}>
+                <a style={classes.link} aria-label="foomanNZ on Twitter" href={'https://twitter.com/foomanNZ'}>
                 <FontAwesomeIcon icon={faTwitterSquare} color={'white'} size={'2x'}/>
                 </a>
 
