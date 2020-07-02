@@ -14,5 +14,8 @@ yarn watch
 This project uses https://www.npmjs.com/package/@fooman/venia-ui-override-resolver to customise files originating from node_modules/@magento/venia-ui and node_modules/@magento/peregrine and the override files can be found under src/overrides. A restart of the watch process is required if a new file is added.
 
 Current master branch is automatically deployed to https://main-6254d28284e7.beta.pwa-serverless.com/.
+Http access via
+fooman
+AUTHED_USER
 
 
