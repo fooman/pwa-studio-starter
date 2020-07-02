@@ -11,8 +11,8 @@ import {
 import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import resolvers from '../resolvers';
-import { cacheKeyFromType } from '../util/apolloCache';
+import resolvers from '@magento/venia-ui/lib/resolvers';
+import { cacheKeyFromType } from '@magento/venia-ui/lib/util/apolloCache';
 
 /**
  * To improve initial load time, create an apollo cache object as soon as
