@@ -71,15 +71,14 @@ const ProductFullDetail = props => {
         />
     ) : null;
 
-    //TODO review
+    //TODO add reviews
     //TODO image from media gallery or small thumbnail
     //TODO add url
-    //TODO strip html from description?
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
         "name":productDetails.name,
-        "description":product.short_description.html,
+        "description":product.short_description.html.replace(/<\s*\/?br\s*[\/]?>/gi, ''),
         "offers":{
             "@type":"Offer",
             "availability": "https://schema.org/InStock",
