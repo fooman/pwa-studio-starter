@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import StarRatingComponent from 'react-star-rating-component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { resourceUrl } from '@magento/venia-drivers';
 
 import { Price } from '@magento/peregrine';
 import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail';
@@ -29,6 +30,7 @@ import {
 } from './downloadableProduct.gql';
 
 const Options = React.lazy(() => import('@magento/venia-ui/lib/components/ProductOptions'));
+const PRODUCT_URL_SUFFIX = '.html';
 
 const ProductFullDetail = props => {
     const { product } = props;
@@ -73,7 +75,6 @@ const ProductFullDetail = props => {
 
     //TODO add reviews
     //TODO image from media gallery or small thumbnail
-    //TODO add url
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
@@ -92,6 +93,7 @@ const ProductFullDetail = props => {
         "brand": {
             "name": "Fooman"
         },
+        "url": resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`),
         "sku": productDetails.sku,
         "aggregateRating": {
             "@type":"AggregateRating",
