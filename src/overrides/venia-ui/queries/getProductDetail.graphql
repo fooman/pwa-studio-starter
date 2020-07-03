@@ -46,6 +46,33 @@ query productDetail($urlKey: String, $onServer: Boolean!) {
                 url
             }
             url_key
+            ...on CustomizableProductInterface {
+                options {
+                    __typename
+                    option_id
+                    title
+                    sort_order
+                    required
+                    ...on CustomizableFieldOption {
+                        product_sku
+                        option_id
+                        title
+                        fieldValue: value {
+                            max_characters
+                            price
+                            price_type
+                            sku
+                        }
+                    }
+                    ...on CustomizableRadioOption {
+                        radioValue: value {
+                            option_type_id
+                            price
+                            title
+                        }
+                    }
+                }
+            }
             ... on ConfigurableProduct {
                 configurable_options {
                     attribute_code
