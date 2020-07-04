@@ -1,14 +1,15 @@
 import React from 'react';
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
-import defaultClasses from './productDetailStaticArea.css';
+import {shape, string} from "prop-types";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { faPlug, faKey} from "@fortawesome/free-solid-svg-icons";
-import {shape, string} from "prop-types";
 import {faUsdCircle,faCopy,faBookOpen,faDownload} from "@fortawesome/pro-regular-svg-icons";
 import '@fortawesome/fontawesome-svg-core/styles.css'
+
+import defaultClasses from './productDetailStaticArea.css';
+
 
 
 
@@ -23,11 +24,11 @@ const ProductStaticArea = props => {
                     <div className={classes.leftInner}>
                         <div className={classes.leftImage}>
                             <div className={classes.iconDiv}>
-                                <FontAwesomeIcon size={'4x'} className={classes.iconStyle}  icon={faUsdCircle} />
+                                <FontAwesomeIcon className={classes.iconStyle}  icon={faUsdCircle} />
                             </div>
                         </div>
                         <div  className={classes.leftText}>
-                            <h3 className={classes.leftHeaderText}>{"MONEY BACK GUARANTEE"}</h3>
+                            <h3 className={classes.leftHeaderText}>{"Money back guarantee"}</h3>
                         <div>
                             <p className={classes.leftHeaderText2}>{"We stand behind the quality of our extensions with a 30 day money back guarantee"}</p>
                         </div>
@@ -38,11 +39,11 @@ const ProductStaticArea = props => {
                     <div className={classes.leftInner}>
                         <div className={classes.leftImage}>
                             <div className={classes.iconDiv}>
-                                <FontAwesomeIcon  className={classes.iconStyle} icon={faDownload} size={'4x'}/>
+                                <FontAwesomeIcon  className={classes.iconStyle} icon={faDownload} />
                             </div>
                         </div>
                         <div className={classes.leftText}>
-                            <h3 className={classes.leftHeaderText}>{"FREE UPDATES"}</h3>
+                            <h3 className={classes.leftHeaderText}>{"Free updates"}</h3>
                             <div>
                                 <p className={classes.leftHeaderText2}>{"All extensions include free updates for 12 months"}</p>
                             </div>
@@ -59,11 +60,11 @@ const ProductStaticArea = props => {
                     <div className={classes.leftInner}>
                         <div className={classes.leftImage}>
                             <div className={classes.iconDiv}>
-                                <FontAwesomeIcon size={'4x'} className={classes.iconStyle} icon={faCopy}/>
+                                <FontAwesomeIcon  className={classes.iconStyle} icon={faCopy}/>
                             </div>
                         </div>
                         <div className={classes.leftText}>
-                            <h3 className={classes.leftHeaderText}>{"SIMPLE USER MANUALS"}</h3>
+                            <h3 className={classes.leftHeaderText}>{"Simple user manuals"}</h3>
                             <div>
                                 <p className={classes.leftHeaderText2}>{"Easy to understand user manuals show you how to get the most out of your extension"}</p>
                             </div>
@@ -74,11 +75,11 @@ const ProductStaticArea = props => {
                     <div className={classes.leftInner}>
                         <div className={classes.leftImage}>
                             <div className={classes.iconDiv}>
-                                <FontAwesomeIcon className={classes.iconStyle} icon={faBookOpen} size={'4x'}/>
+                                <FontAwesomeIcon className={classes.iconStyle} icon={faBookOpen} />
                             </div>
                         </div>
                         <div className={classes.leftText}>
-                            <h3 className={classes.leftHeaderText}>{"OPEN SOURCE CODE"}</h3>
+                            <h3 className={classes.leftHeaderText}>{"Open source code"}</h3>
                             <div>
                                 <p className={classes.leftHeaderText2}>{"Our code is 100% open source and unencrypted. Easily add your own customisations"}</p>
                             </div>
@@ -91,11 +92,11 @@ const ProductStaticArea = props => {
                     <div className={classes.leftInner}>
                         <div className={classes.leftImage}>
                             <div className={classes.iconDiv}>
-                                <FontAwesomeIcon className={classes.iconStyle} transform="rotate-45" icon={faPlug} size={'4x'}/>
+                                <FontAwesomeIcon className={classes.iconStyle} transform="rotate-45" icon={faPlug} />
                             </div>
                         </div>
                         <div className={classes.leftText}>
-                            <h3 className={classes.leftHeaderText}>{"QUALITY SUPPORT"}</h3>
+                            <h3 className={classes.leftHeaderText}>{"Quality support"}</h3>
                             <div>
                                 <p className={classes.leftHeaderText2}>{"Our friendly team provides expert product support and troubleshooting"}</p>
                             </div>
@@ -106,11 +107,11 @@ const ProductStaticArea = props => {
                     <div className={classes.leftInner}>
                         <div className={classes.leftImage}>
                             <div className={classes.iconDiv}>
-                                <FontAwesomeIcon className={classes.iconStyle} icon={faKey} size={'4x'}/>
+                                <FontAwesomeIcon className={classes.iconStyle} icon={faKey} />
                             </div>
                         </div>
                         <div className={classes.leftText}>
-                            <h3 className={classes.leftHeaderText}>{"EASY LICENSING"}</h3>
+                            <h3 className={classes.leftHeaderText}>{"Easy licensing"}</h3>
                             <div>
                                 <p className={classes.leftHeaderText2}>{"One license per Magento installation, including multi store setups and test sites. Easy!"}</p>
                             </div>

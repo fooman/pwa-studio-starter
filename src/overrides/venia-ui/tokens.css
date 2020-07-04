@@ -9,6 +9,9 @@
     /* color */
     --fooman-global-color-dark-gray: 112, 112, 112;
     --fooman-global-color-darked-gray: 28, 28, 28;
+    --fooman-global-color-light-gray: 206, 206, 206;
+    --fooman-global-color-teal: 55, 100, 111;
+    --fooman-global-color-darked-orange: 255, 104, 41;
     --fooman-text-on-dark: 207 207 207;
     --venia-global-color-blue-400: 61 132 255;
     --venia-global-color-blue-500: 51 109 255;

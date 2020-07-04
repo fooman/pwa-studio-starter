@@ -28,7 +28,7 @@
     align-content: flex-start;
 }
 .leftHeaderText {
-    font-family: "myriad-pro-condensed",sans-serif;
+    font-family: var(--venia-global-fontFamily-sansSerif);
     line-height: 100%;
     margin: 0;
     padding: 10px;
@@ -36,19 +36,19 @@
     padding: 10px 10px 0px 0px;
     font-size: 24px;
     font-weight: 600;
-    color: #585858;
+    color: rgb(var(--venia-global-color-gray-dark));
 }
 .leftHeaderText2 {
     margin: 10px 10px 10px 0;
     font-size: 16px;
-    color: #585858;
+    color: rgb(var(--venia-global-color-gray-dark));
 }
 
 .iconStyle {
     line-height: normal;
-    color: #37646F;
+    color: rgb(var(--fooman-global-color-teal));
     margin: 10px 10px 10px 0;
-    font-size: 60px !important;
+    font-size: 60px;
 }
 
 .iconDiv {
