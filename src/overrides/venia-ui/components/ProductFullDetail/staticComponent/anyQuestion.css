@@ -1,0 +1,79 @@
+.backgroundImage {
+    background-image: url("../../../../../../assets/footer_question_bg_v2.jpg");
+    background-size: cover;
+    background-position: center center;
+    text-align: left;
+    padding: 80px 0 100px;
+    margin-bottom: -1rem;
+}
+.backgroundImageInner {
+    width: auto;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+p {
+    margin: 10px 10px 30px 10px;
+}
+
+.developerName {
+    font-size: 16px;
+    line-height: 130%;
+    color: rgb(var(--venia-global-color-gray-dark));
+}
+
+.questionSection {
+    font-size: 48px;
+    letter-spacing: 2px;
+    line-height: 1.3em;
+    color: rgb(var(--venia-global-color-gray-dark));
+}
+
+.description {
+    font-size: 28px;
+    line-height: 1.1em;
+    color: rgb(var(--venia-global-color-gray-dark));
+    max-width: 570px;
+    width: 100%;
+}
+.talkButton {
+    margin-top: 10px;
+    background-color: rgb(var(--fooman-global-color-darked-orange));
+    color: white;
+    padding: 15px 30px;
+    line-height: 1.1em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.demoButton {
+    margin-top: 10px;
+    background-color: rgb(var(--venia-global-color-gray-dark));
+    color: white;
+    padding: 15px 30px;
+    line-height: 1.1em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+.allButton {
+    flex-direction: row;
+    display: flex;
+}
+@media screen and (max-width: 767px) {
+    .backgroundImage {
+        background-image: unset;
+        background-color: rgb(var(--fooman-global-color-light-gray));
+    }
+}
+@media screen and (max-width: 400px) {
+    .allButton {
+        flex-direction: column;
+    }
+    .demoButton {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+}
