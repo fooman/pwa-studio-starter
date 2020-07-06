@@ -75,7 +75,7 @@ const ProductFullDetail = props => {
 
     //TODO add reviews
     //TODO image from media gallery or small thumbnail
-    const productUrl = "https://store.fooman.co.nz" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
+    const productUrl = "https://fooman.com" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
@@ -92,6 +92,7 @@ const ProductFullDetail = props => {
             }
         },
         "brand": {
+            "@type": "Brand",
             "name": "Fooman"
         },
         "url": productUrl,
@@ -103,7 +104,6 @@ const ProductFullDetail = props => {
             "reviewCount": product.review_summary.review_count
         }
     });
-    //TODO figure out canonical url domain
     return (
         <Fragment>
             <Helmet>
