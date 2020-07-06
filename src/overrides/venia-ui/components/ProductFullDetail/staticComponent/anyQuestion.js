@@ -24,12 +24,17 @@ const AnyQuestion = props => {
                 <p className={classes.description}>{"Get in touch and I'll give you my honest opinion about whether I think this extension is right for you"}</p>
                 <div className={classes.allButton}>
                     <Button className={classes.talkButton}>
-                        {"Let's talk!"}
+                        {"I have a question"}
                     </Button>
-                    <Button className={classes.demoButton}
-                            onClick = {clickOnTryDemoHandler}>
-                        {"Try the demo"}
-                    </Button>
+                    {props.demoUrl?
+                        (
+                            <Button className={classes.demoButton}
+                                    onClick = {clickOnTryDemoHandler}>
+                                {"Try the demo"}
+                            </Button>
+                        ) :
+                        null
+                    }
                 </div>
 
             </div>
