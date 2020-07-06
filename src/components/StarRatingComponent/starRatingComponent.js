@@ -3,7 +3,7 @@ import StarRating from 'react-star-rating-component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
-const StartRatingComponent = (props) => {
+const StarRatingComponent = (props) => {
     const {isEditable = false, size = '2x', count = 5, ratingValue } = props
     return <StarRating
         name="rating_summary"
@@ -13,4 +13,4 @@ const StartRatingComponent = (props) => {
         value={ratingValue}/>
 }
 
-export default StartRatingComponent
+export default StarRatingComponent
