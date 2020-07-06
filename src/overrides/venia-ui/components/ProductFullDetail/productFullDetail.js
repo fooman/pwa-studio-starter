@@ -17,11 +17,11 @@ import Button from '@magento/venia-ui/lib/components/Button';
 import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
-import ProductStaticArea from './staticComponent/productDetailStaicArea';
 import RichText from '@magento/venia-ui/lib/components/RichText';
 import CREATE_CART_MUTATION from '@magento/venia-ui/lib/queries/createCart.graphql';
 import GET_CART_DETAILS_QUERY from '@magento/venia-ui/lib/queries/getCartDetails.graphql';
 import defaultClasses from '@magento/venia-ui/lib/components/ProductFullDetail/productFullDetail.css';
+import customClasses from '../ProductFullDetail/productOptionsComponent/RadioTextArea.css'
 import {
     ADD_CONFIGURABLE_MUTATION,
     ADD_SIMPLE_MUTATION
@@ -29,6 +29,7 @@ import {
 import {
     ADD_DOWNLOADABLE_MUTATION
 } from './downloadableProduct.gql';
+import RadioTextArea from "./productOptionsComponent/RadioTextArea";
 
 const Options = React.lazy(() => import('@magento/venia-ui/lib/components/ProductOptions'));
 const PRODUCT_URL_SUFFIX = '.html';
@@ -142,6 +143,7 @@ const ProductFullDetail = props => {
                         onValueChange={handleSetQuantity}
                     />
                 </section>
+
                 <section className={classes.cartActions}>
                     <Button
                         priority="high"
@@ -151,14 +153,19 @@ const ProductFullDetail = props => {
                         Add to Cart
                     </Button>
                 </section>
+                <div className={customClasses.mainWrapper}>
+                    <RadioTextArea productDeatil={product}/>
+
+                </div>
                 <section className={classes.description}>
                     <h2 className={classes.descriptionTitle}>
                         Product Description
                     </h2>
                     <RichText content={productDetails.description} />
                 </section>
+
             </Form>
-            <ProductStaticArea/>
+
         </Fragment>
     );
 };
@@ -176,8 +183,9 @@ ProductFullDetail.propTypes = {
         productPrice: string,
         quantity: string,
         quantityTitle: string,
+        mainWrapper: string,
         root: string,
-        title: string
+        title: string,
     }),
     product: shape({
         __typename: string,

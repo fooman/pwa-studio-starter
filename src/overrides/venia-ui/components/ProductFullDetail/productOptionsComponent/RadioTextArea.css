@@ -1,0 +1,35 @@
+.mainWrapper {
+    background: rgb(var(--venia-global-color-gray-50));
+    border: 1px solid rgb(var(--fooman-text-on-light));
+    padding: 15px;
+    position: sticky;
+    top: 90px;
+    border-radius: 5px;
+    margin-left: 20px;
+    width: 300px;
+}
+
+.urlText{
+    font-size: 100%;
+    line-height: 130%;
+    color: rgb(var(--fooman-global-color-font-gray));
+    margin-left: 4px;
+}
+
+.userText{
+    width: 86%;
+    margin: 15px 0 15px 4px;
+    height: 32px;
+    padding: 3px;
+}
+
+.urlExclamation{
+    color: rgb(var(--fooman-global-color-exclamation-red));
+}
+
+.radio_label{
+    font-size: 14px;
+    line-height: 130%;
+    color: rgb(var(--fooman-global-color-font-gray));
+}
+
