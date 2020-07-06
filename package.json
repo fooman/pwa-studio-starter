@@ -22,7 +22,8 @@
     "validate-queries": "yarn run download-schema && graphql validate-magento-pwa-queries --project @fooman/pwa-frontend",
     "watch": "webpack-dev-server --progress --color --env.mode development",
     "storybook": "start-storybook -p 9001 -c src/.storybook",
-    "storybook:build": "build-storybook -c src/.storybook -o storybook-dist"
+    "storybook:build": "build-storybook -c src/.storybook -o storybook-dist",
+    "postinstall": "patch-package"
   },
   "main": "src/index.js",
   "browser": {
