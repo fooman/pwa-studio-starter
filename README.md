@@ -19,3 +19,20 @@ fooman
 AUTHED_USER
 
 
+#### CSS Break-points
+list of the breakpoints to be used
+
+```
+@media screen and (min-width: 769px) and (max-width: 1024px)
+
+@media screen and (max-width: 768px)
+
+@media only screen and (max-width: 767px)
+
+@media only screen and (max-width: 599px)
+
+@media screen and (max-width: 400px)
+
+@media screen and (max-width: 767px)
+```
+
