@@ -2,9 +2,7 @@ import React, { Fragment, Suspense } from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
-import StarRatingComponent from 'react-star-rating-component';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import StarRatingComponent from '../../../../components/StarRatingComponent/starRatingComponent';
 import { resourceUrl } from '@magento/venia-drivers';
 
 import { Price } from '@magento/peregrine';
@@ -79,7 +77,7 @@ const ProductFullDetail = props => {
 
     //TODO add reviews
     //TODO image from media gallery or small thumbnail
-    const productUrl = "https://store.fooman.co.nz" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
+    const productUrl = "https://fooman.com" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
@@ -96,6 +94,7 @@ const ProductFullDetail = props => {
             }
         },
         "brand": {
+            "@type": "Brand",
             "name": "Fooman"
         },
         "url": productUrl,
@@ -107,7 +106,6 @@ const ProductFullDetail = props => {
             "reviewCount": product.review_summary.review_count
         }
     });
-    //TODO figure out canonical url domain
     return (
         <Fragment>
             <Helmet>
@@ -116,11 +114,7 @@ const ProductFullDetail = props => {
             </Helmet>
             {breadcrumbs}
             <StarRatingComponent
-                name="rating_summary"
-                editing={false}
-                renderStarIcon={() => <FontAwesomeIcon icon={faStar} size={'2x'}/>}
-                starCount={5}
-                value={Math.round(product.review_summary.rating_summary/20)}
+                ratingValue={Math.round(product.review_summary.rating_summary/20)}
             />
             <Form className={classes.root}>
                 <section className={classes.title}>
