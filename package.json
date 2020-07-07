@@ -22,7 +22,8 @@
     "validate-queries": "yarn run download-schema && graphql validate-magento-pwa-queries --project @fooman/pwa-frontend",
     "watch": "webpack-dev-server --progress --color --env.mode development",
     "storybook": "start-storybook -p 9001 -c src/.storybook",
-    "storybook:build": "build-storybook -c src/.storybook -o storybook-dist"
+    "storybook:build": "build-storybook -c src/.storybook -o storybook-dist",
+    "postinstall": "patch-package"
   },
   "main": "src/index.js",
   "browser": {
@@ -30,12 +31,14 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",
-    "@fortawesome/fontawesome-pro": "^5.12.1",
+    "@fortawesome/fontawesome-pro": "^5.13.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/pro-light-svg-icons": "^5.12.1",
+    "@fortawesome/pro-regular-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "react-ga": "^3.1.2",
     "react-star-rating-component": "^1.4.1",
     "react-with-breakpoints": "^4.0.4"
   },
