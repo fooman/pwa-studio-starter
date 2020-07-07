@@ -54,7 +54,7 @@
 .copyright {
     display: block;
     color: rgb(var(--venia-global-color-text-alt));
-    font-size: 0.75rem;
+    font-size: var(--venia-global-fontSize-75);
     padding: 1.5rem 2rem;
     text-align: center;
 }

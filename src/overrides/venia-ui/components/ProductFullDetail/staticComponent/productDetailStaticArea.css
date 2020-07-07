@@ -31,16 +31,15 @@
     font-family: var(--venia-global-fontFamily-sansSerif);
     line-height: 100%;
     margin: 0;
-    padding: 10px;
     text-transform: uppercase;
-    padding: 10px 10px 0px 0px;
-    font-size: 24px;
-    font-weight: 600;
+    padding: 10px 10px 0 0;
+    font-size: var(--venia-global-fontSize-600);
+    font-weight: var(--venia-global-fontWeight-semibold);
     color: rgb(var(--venia-global-color-gray-dark));
 }
 .leftHeaderText2 {
     margin: 10px 10px 10px 0;
-    font-size: 16px;
+    font-size: var(--venia-global-fontSize-200);
     color: rgb(var(--venia-global-color-gray-dark));
 }
 
@@ -48,7 +47,7 @@
     line-height: normal;
     color: rgb(var(--fooman-global-color-teal));
     margin: 10px 10px 10px 0;
-    font-size: 60px;
+    font-size: var(--venia-global-fontSize-1600);
 }
 
 .iconDiv {

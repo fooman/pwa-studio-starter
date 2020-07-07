@@ -75,8 +75,13 @@
     --venia-global-fontSize-1000: 2.5rem; /* 40px */
     --venia-global-fontSize-1100: 3rem; /* 48px */
     --venia-global-fontSize-1200: 3.5rem; /* 56px */
+    --venia-global-fontSize-1300: 1.625rem; /* 26px */
+    --venia-global-fontSize-1400: 1.875rem; /* 30px */
+    --venia-global-fontSize-1500: 0.938rem; /* 15px */
+    --venia-global-fontSize-1600: 3.75rem; /* 60px */
 
     /* font weight */
+    --venia-global-fontWeight-thin: 300;
     --venia-global-fontWeight-normal: 400;
     --venia-global-fontWeight-semibold: 600;
     --venia-global-fontWeight-bold: 700;

@@ -18,20 +18,20 @@ p {
 }
 
 .developerName {
-    font-size: 16px;
+    font-size: var(--venia-global-fontSize-200);
     line-height: 130%;
     color: rgb(var(--venia-global-color-gray-dark));
 }
 
 .questionSection {
-    font-size: 48px;
+    font-size: var(--venia-global-fontSize-1100);
     letter-spacing: 2px;
     line-height: 1.3em;
     color: rgb(var(--venia-global-color-gray-dark));
 }
 
 .description {
-    font-size: 28px;
+    font-size: var(--venia-global-fontSize-700);
     line-height: 1.1em;
     color: rgb(var(--venia-global-color-gray-dark));
     max-width: 570px;
