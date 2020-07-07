@@ -1,0 +1,19 @@
+mutation submitContactUsMutation(
+    $email: String!
+    $firstname: String!
+    $lastname: String!
+    $password: String!
+    $is_subscribed: Boolean!
+) {
+    createCustomer(
+        input: {
+            email: $email
+            firstname: $firstname
+            lastname: $lastname
+            password: $password
+            is_subscribed: $is_subscribed
+        }
+    ) {
+        result
+    }
+}

@@ -15,6 +15,8 @@ import Button from '@magento/venia-ui/lib/components/Button';
 import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
+import ProductStaticArea from './staticComponent/productDetailStaticArea';
+import AnyQuestion from './staticComponent/anyQuestion';
 import RichText from '@magento/venia-ui/lib/components/RichText';
 import CREATE_CART_MUTATION from '@magento/venia-ui/lib/queries/createCart.graphql';
 import GET_CART_DETAILS_QUERY from '@magento/venia-ui/lib/queries/getCartDetails.graphql';
@@ -32,6 +34,8 @@ const PRODUCT_URL_SUFFIX = '.html';
 
 const ProductFullDetail = props => {
     const { product } = props;
+
+    const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
 
     const talonProps = useProductFullDetail({
         addDownloadableProductToCartMutation: ADD_DOWNLOADABLE_MUTATION,
@@ -73,7 +77,7 @@ const ProductFullDetail = props => {
 
     //TODO add reviews
     //TODO image from media gallery or small thumbnail
-    const productUrl = "https://store.fooman.co.nz" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
+    const productUrl = "https://fooman.com" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
@@ -90,6 +94,7 @@ const ProductFullDetail = props => {
             }
         },
         "brand": {
+            "@type": "Brand",
             "name": "Fooman"
         },
         "url": productUrl,
@@ -101,7 +106,6 @@ const ProductFullDetail = props => {
             "reviewCount": product.review_summary.review_count
         }
     });
-    //TODO figure out canonical url domain
     return (
         <Fragment>
             <Helmet>
@@ -151,6 +155,10 @@ const ProductFullDetail = props => {
                     <RichText content={productDetails.description} />
                 </section>
             </Form>
+            <ProductStaticArea/>
+            <AnyQuestion
+                demoUrl = {demoUrl}
+            />
         </Fragment>
     );
 };
