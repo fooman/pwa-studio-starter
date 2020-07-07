@@ -9,29 +9,49 @@ import defaultClasses from '../productOptionsComponent/RadioTextArea.css';
 
 const RadioTextArea = props => {
 
-    const productDetailRadioOptions=props.productDeatil.options[1].radioValue;
+    let TextOption;
+    let RadioOption;
+
+    props.productOptions.map((options)=>{
+        if(options.__typename==="CustomizableFieldOption") {
+            TextOption=options;
+        }
+        else if(options.__typename==="CustomizableRadioOption"){
+            RadioOption=options
+        }
+    })
+
     const classes = mergeClasses(defaultClasses, props.classes);
+
 
     return (
             <section>
-                <label className={classes.urlText}>URL of main store:</label> <span className={classes.urlExclamation}>*</span>
-                <input type="text" className={classes.userText}/>
-                <div className={classes.radio_label}>
-                    <input id="radio-1" name="radio" type="radio" checked/>
-                        <label htmlFor="radio-1" >None</label>
-                </div>
+                {
+                    TextOption!==undefined &&
+                    <React.Fragment>
+                        <label className={classes.urlText}>{TextOption.title}</label>
+                        <span className={classes.urlExclamation}>&nbsp;*</span>
 
-                <div className={classes.radio_label}>
-                    <input id="radio-2" name="radio" type="radio" />
-                        <label htmlFor="radio-2">{productDetailRadioOptions[0].title} <span
-                            className="price-notice">&nbsp;+&nbsp;<span className="price">US$31.98</span></span></label>
-                </div>
+                        <input type="text" className={classes.userText}/>
+                    </React.Fragment>
+                }
+                {RadioOption!==undefined &&
+                    <React.Fragment>
+                        <div className={classes.radio_label}>
+                            <input id="radio-1" name="radio" type="radio" checked/>
+                            <label htmlFor="radio-1" >None</label>
+                        </div>
 
-                <div className={classes.radio_label}>
-                    <input id="radio-3" name="radio" type="radio" />
-                    <label htmlFor="radio-3">{productDetailRadioOptions[1].title}<span
-                        className="price-notice">&nbsp;+&nbsp;<span >US$42.42</span></span></label>
-                </div>
+                        {RadioOption.radioValue.map((radiovalue)=>(
+                            <div className={classes.radio_label}>
+                                <input id={`radio-${radiovalue.option_type_id}`} name="radio" type="radio"/>
+                                <label htmlFor={`radio-${radiovalue.option_type_id}`}>{radiovalue.title} <span
+                                    className="price-notice">&nbsp;+<span className="price">US${radiovalue.price}</span></span></label>
+                            </div>
+                        ))}
+
+                    </React.Fragment>
+                }
             </section>
     );
 }

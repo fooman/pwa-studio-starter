@@ -37,6 +37,7 @@ const PRODUCT_URL_SUFFIX = '.html';
 const ProductFullDetail = props => {
     const { product } = props;
 
+
     const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
 
     const talonProps = useProductFullDetail({
@@ -151,10 +152,11 @@ const ProductFullDetail = props => {
                         Add to Cart
                     </Button>
                 </section>
-                <div className={customClasses.mainWrapper}>
-                    <RadioTextArea productDeatil={product}/>
-
-                </div>
+                { product.options.length>0 &&
+                    <div className={customClasses.mainWrapper}>
+                        <RadioTextArea productOptions={product.options}/>
+                    </div>
+                }
                 <section className={classes.description}>
                     <h2 className={classes.descriptionTitle}>
                         Product Description
