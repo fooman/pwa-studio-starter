@@ -1,5 +1,9 @@
 import React, {Fragment} from 'react';
 import {HelmetProvider as HeadProvider, Helmet} from 'react-helmet-async';
+import ReactGA from 'react-ga';
+import {useLocation} from "react-router-dom";
+import {useGoogleAnalytics} from "../../../../hooks/useGoogleAnalytics";
+ReactGA.initialize(process.env.GA_ACCT_ID);
 
 const structuredData = JSON.stringify({
     "@context": "https://schema.org",
@@ -21,6 +25,8 @@ const structuredWebsiteData = JSON.stringify({
 });
 
 const VeniaHeadProvider = props => {
+    const { pathname } = useLocation();
+    useGoogleAnalytics(pathname);
     return (
         <HeadProvider>
             {props.children}
