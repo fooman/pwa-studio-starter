@@ -16,6 +16,7 @@ import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
 import ProductStaticArea from './staticComponent/productDetailStaticArea';
+import AnyQuestion from './staticComponent/anyQuestion';
 import RichText from '@magento/venia-ui/lib/components/RichText';
 import CREATE_CART_MUTATION from '@magento/venia-ui/lib/queries/createCart.graphql';
 import GET_CART_DETAILS_QUERY from '@magento/venia-ui/lib/queries/getCartDetails.graphql';
@@ -33,6 +34,8 @@ const PRODUCT_URL_SUFFIX = '.html';
 
 const ProductFullDetail = props => {
     const { product } = props;
+
+    const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
 
     const talonProps = useProductFullDetail({
         addDownloadableProductToCartMutation: ADD_DOWNLOADABLE_MUTATION,
@@ -153,6 +156,9 @@ const ProductFullDetail = props => {
                 </section>
             </Form>
             <ProductStaticArea/>
+            <AnyQuestion
+                demoUrl = {demoUrl}
+            />
         </Fragment>
     );
 };
