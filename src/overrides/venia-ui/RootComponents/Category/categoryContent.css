@@ -1,0 +1,20 @@
+.currencyName {
+    text-transform: uppercase;
+}
+
+.linkTitle {
+    text-align: end;
+    color: rgb(var( --fooman-global-color-font-gray));
+}
+
+.selectCurrency {
+    padding: 3px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-size: var(--venia-global-fontSize-300);/* 18px */
+}
+
+.magentoLinks {
+    margin-left: 10px;
+    font-size: var(--venia-global-fontSize-300);/* 18px */
+}

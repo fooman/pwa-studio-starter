@@ -1,0 +1,20 @@
+.root {
+    display: grid;
+    grid-template-areas:
+        'actions'
+        'items';
+    grid-template-columns: 1fr;
+    line-height: 1;
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    .items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

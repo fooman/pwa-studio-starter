@@ -1,0 +1,102 @@
+.root {
+    max-width: 390px;
+    width: 100%;
+    padding: 20px 50px;
+    border: 1px solid rgb(var(--venia-global-color-border));
+    margin: 10px;
+}
+
+.images {
+    width: 300px;
+    display: grid;
+    grid-template-areas: 'main';
+    margin-bottom: 0.65rem;
+}
+
+.imageContainer {
+    grid-area: main;
+}
+
+.image {
+    display: block;
+    height: auto;
+    opacity: 1;
+    transition-duration: 512ms;
+    transition-property: opacity, visibility;
+    transition-timing-function: ease-out;
+    visibility: visible;
+    width: 100%;
+}
+
+.imagePlaceholder {
+    composes: image;
+    background-color: rgb(var(--venia-global-color-gray));
+}
+
+.name,
+.price {
+    font-size: var(--venia-global-fontSize-400);/* 20px */
+    line-height: 1rem;
+    margin: 0.5rem 0;
+    min-height: 1rem;
+    color: rgb(var( --fooman-global-color-font-gray));
+}
+
+/* state: pending */
+
+.root_pending {
+    composes: root;
+}
+
+.image_pending {
+    composes: image;
+    background-color: rgb(var(--venia-global-color-gray));
+}
+
+.images_pending {
+    composes: images;
+}
+
+.name_pending {
+    composes: name;
+    background-color: rgb(var(--venia-global-color-gray));
+}
+
+.price_pending {
+    composes: price;
+    background-color: rgb(var(--venia-global-color-gray));
+    width: 3rem;
+}
+
+.nameDiv {
+    min-height: 60px;
+}
+
+.pName {
+    min-height: 50px;
+    font-size: var(--venia-global-fontSize-200);/* 16px */
+    line-height: 20px;
+    word-break: break-all;
+    color: rgb(var( --fooman-global-color-font-gray));
+}
+
+.starRating {
+    margin: 15px 0px;
+}
+
+.image {
+    height: 100%;
+}
+
+.productDetail {
+    margin: 20px -20px;
+}
+
+.ratReview {
+    display: inline-block;
+}
+
+.reviews {
+    color: rgb(var( --fooman-global-color-font-gray));
+    margin-left: 10px;
+}
