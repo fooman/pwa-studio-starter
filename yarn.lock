@@ -4598,7 +4598,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.0, classnames@^2.2.5:
+classnames@^2.2.0, classnames@^2.2.1, classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -11872,7 +11872,7 @@ react-with-breakpoints@^4.0.4:
   resolved "https://registry.yarnpkg.com/react-with-breakpoints/-/react-with-breakpoints-4.0.4.tgz#3326a0b6982bd23b53d0005641fb9aef7dea83d7"
   integrity sha512-u9t3d6W6feFoLaHWqYnw/I7GAyYqi38V/f7UFWCbKcKJ+CIERqIEUawVuhiYGLDD6ZE7kS1am0FFW0BJuNl9QQ==
 
-react@^16.8.3:
+react@^16.1.0, react@^16.8.3:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==

@@ -2,7 +2,7 @@ import React, { Fragment, Suspense } from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
-import StarRatingComponent from '../../../../components/StarRatingComponent/starRatingComponent';
+import  { StarRatingComponent } from '../../../../components/StarRatingComponent/starRatingComponent';
 import { resourceUrl } from '@magento/venia-drivers';
 
 import { Price } from '@magento/peregrine';
@@ -110,7 +110,7 @@ const ProductFullDetail = props => {
             </Helmet>
             {breadcrumbs}
             <StarRatingComponent
-                ratingValue={Math.round(product.review_summary.rating_summary/20)}
+                value={Math.round(product.review_summary.rating_summary/20)}
             />
             <Form className={classes.root}>
                 <section className={classes.title}>
