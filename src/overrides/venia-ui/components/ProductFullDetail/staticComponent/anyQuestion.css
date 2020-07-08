@@ -3,59 +3,59 @@
     background-size: cover;
     background-position: center center;
     text-align: left;
-    padding: 80px 0 100px;
+    padding: 5rem 0 6.25rem;
     margin-bottom: -1rem;
 }
 .backgroundImageInner {
     width: auto;
-    max-width: 1200px;
+    max-width: 75rem;
     width: 100%;
     margin: 0 auto;
-    padding: 0px 20px;
+    padding: 0 1.2rem;
 }
 p {
-    margin: 10px 10px 30px 10px;
+    margin: 0.6rem 0.6rem 1.9rem 0.6rem;
 }
 
 .developerName {
-    font-size: 16px;
+    font-size: var(--venia-global-fontSize-300);
     line-height: 130%;
     color: rgb(var(--venia-global-color-gray-dark));
 }
 
 .questionSection {
-    font-size: 48px;
-    letter-spacing: 2px;
+    font-size: var(--venia-global-fontSize-1800);
+    letter-spacing: 0.1rem;
     line-height: 1.3em;
     color: rgb(var(--venia-global-color-gray-dark));
 }
 
 .description {
-    font-size: 28px;
+    font-size: var(--venia-global-fontSize-900);
     line-height: 1.1em;
     color: rgb(var(--venia-global-color-gray-dark));
-    max-width: 570px;
+    max-width: 35.6rem;
     width: 100%;
 }
 .talkButton {
-    margin-top: 10px;
+    margin-top: 0.6rem;
     background-color: rgb(var(--fooman-global-color-darked-orange));
     color: white;
-    padding: 15px 30px;
+    padding: 0.9rem 1.9rem;
     line-height: 1.1em;
-    letter-spacing: 3px;
+    letter-spacing: 0.2rem;
     text-transform: uppercase;
 }
 
 .demoButton {
-    margin-top: 10px;
+    margin-top: 0.6rem;
     background-color: rgb(var(--venia-global-color-gray-dark));
     color: white;
-    padding: 15px 30px;
+    padding: 0.9rem 1.9rem;
     line-height: 1.1em;
-    letter-spacing: 3px;
+    letter-spacing: 0.2rem;
     text-transform: uppercase;
-    margin-left: 10px;
+    margin-left: 0.6rem;
 }
 
 .allButton {
@@ -73,7 +73,7 @@ p {
         flex-direction: column;
     }
     .demoButton {
-        margin-top: 10px;
-        margin-left: 0px;
+        margin-top: 0.6rem;
+        margin-left: 0;
     }
 }
