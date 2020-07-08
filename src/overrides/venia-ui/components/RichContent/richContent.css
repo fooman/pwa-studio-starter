@@ -11,24 +11,24 @@
 }
 
 .root h1 {
-    font-size: var(--venia-global-fontSize-800);
+    font-size: var(--venia-global-fontSize-1100);
     margin-top: 0.9em;
     font-weight: var(--venia-global-fontWeight-thin);
 }
 .root h2 {
-    font-size: var(--venia-global-fontSize-1300);
+    font-size: var(--venia-global-fontSize-800);
     font-weight: var(--venia-global-fontWeight-normal);
 }
 .root h3 {
-    font-size: var(--venia-global-fontSize-500);
+    font-size: var(--venia-global-fontSize-600);
     font-weight: var(--venia-global-fontWeight-normal);
 }
 .root h4 {
-    font-size: var(--venia-global-fontSize-300);
+    font-size: var(--venia-global-fontSize-400);
     font-weight: var(--venia-global-fontWeight-semibold);
 }
 .root h5 {
-    font-size: var(--venia-global-fontSize-200);
+    font-size: var(--venia-global-fontSize-300);
     font-weight: var(--venia-global-fontWeight-semibold);
 }
 .root h6 {
@@ -62,13 +62,13 @@
 .root ol li,
 .root ul li {
     line-height: 1.65em;
-    padding: 1px 0.5rem;
+    padding: 0.1rem 0.5rem;
 }
 .root a {
     text-decoration: underline;
 }
 .root blockquote {
-    font-size: var(--venia-global-fontSize-500);
+    font-size: var(--venia-global-fontSize-600);
     line-height: 1.875rem;
     margin: 1rem 0;
     font-weight: var(--venia-global-fontWeight-thin);
@@ -78,8 +78,8 @@
     width: 100%;
     margin: 1rem 0;
     border-spacing: 0;
-    border-left: 1px solid rgb(var(--venia-border));
-    border-top: 1px solid rgb(var(--venia-border));
+    border-left: 1px solid;
+    border-top: 1px solid;
 }
 .root table td,
 .root table th {
@@ -87,50 +87,46 @@
     padding: 1rem;
     font-size: var(--venia-global-fontSize-100);
     line-height: 1.125em;
-    border-right: 1px solid rgb(var(--venia-border));
-    border-bottom: 1px solid rgb(var(--venia-border));
+    border-right: 1px solid;
+    border-bottom: 1px solid;
 }
-.root table th {
-    background-color: rgb(var(--venia-grey));
-}
+
 .root :global .cms-content-important {
-    background: rgb(var(--venia-grey));
     padding: 1.2rem 1rem;
-    font-size: var(--venia-global-fontSize-300);
-    border: 1px solid rgb(var(--venia-border));
+    font-size: var(--venia-global-fontSize-400);
+    border: 1px solid;
 }
 .root pre {
-    background: rgb(var(--venia-grey));
     padding: 1rem;
-    border: 1px solid rgb(var(--venia-border));
+    border: 1px solid;
 }
 
 @media only screen and (min-width: 769px) {
     .root h1 {
-        font-size: var(--venia-global-fontSize-1100);
+        font-size: var(--venia-global-fontSize-1800);
         margin-top: 0.75em;
         line-height: 1.05em;
     }
     .root h2 {
-        font-size: var(--venia-global-fontSize-900);
+        font-size: var(--venia-global-fontSize-1300);
         line-height: 1.25em;
     }
     .root h3 {
-        font-size: var(--venia-global-fontSize-700);
+        font-size: var(--venia-global-fontSize-900);
         line-height: 1.25em;
     }
     .root h4 {
-        font-size: var(--venia-global-fontSize-500);
+        font-size: var(--venia-global-fontSize-600);
         line-height: 1.25em;
         font-weight: var(--venia-global-fontWeight-normal);
     }
     .root h5 {
-        font-size: var(--venia-global-fontSize-300);
+        font-size: var(--venia-global-fontSize-400);
         line-height: 1.22em;
         margin-bottom: 0.75em;
     }
     .root h6 {
-        font-size: var(--venia-global-fontSize-200);
+        font-size: var(--venia-global-fontSize-300);
         line-height: 1.22em;
         margin-bottom: 0.75em;
     }
@@ -143,14 +139,14 @@
 
 .root :global .gs1200 {
     width: auto;
-    max-width: 1200px;
+    max-width: 75rem;
     margin: 0 auto;
 }
 
 .root :global .line .unit.lastUnit {
     display: table-cell;
     vertical-align: top;
-    width: 10000px;
+    width: 625rem;
 }
 
 .root :global .line {
@@ -244,13 +240,13 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     /*IE8+*/
-    padding-left: 10px;
+    padding-left: 0.6rem;
 }
 .root :global .line .unit.lastUnit {
     float: none;
     _position: relative;
-    _left: -3px;
-    _margin-right: -3px;
+    _left: -0.2rem;
+    _margin-right: -0.2rem;
     /* IE 7 */
     *display: block;
     *width: auto;
@@ -260,21 +256,19 @@
 .root :global .line .unitExt {
     float: right;
     zoom: 1;
-    padding: 0 0 0 10px;
+    padding: 0 0 0 0.6rem;
 }
 
 .root :global .line .nogutter {
-    padding:0px;
+    padding: 0;
 }
 
 
 
 .root :global .trusted-content {
     background-color: #474747;
-    padding: 100px 0;
-    font-size: var(--venia-global-fontSize-200);
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
+    padding: 6.2rem 0;
+    font-size: var(--venia-global-fontSize-300);
     line-height: 1.5em;
     color: white;
     text-align: center;
@@ -283,37 +277,29 @@
 .root :global .trusted-content img  {display: inline-block;}
 
 .root :global .trusted-content h2,.root :global .team-content h2, .root :global .about-four h2 {
-    font-size: var(--venia-global-fontSize-1200);
-    margin-bottom: 15px;
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 0.9rem;
     color: white;
     line-height: 1.1em;
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
 }
 .root :global .trusted-content h3 {
-    font-size: var(--venia-global-fontSize-1400);
+    font-size: var(--venia-global-fontSize-1000);
     color: white;
     text-transform: uppercase;
     line-height: 1.2em;
-    margin: 30px 0;
+    margin: 1.9rem 0;
 }
-.root :global .trusted-content .hicon {height: 75px;}
-.root :global .trusted-content .rtext {
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
-}
+.root :global .trusted-content .hicon {height: 4.7rem;}
 
 .root :global .trusted-content .unit {
-    padding: 30px 70px;
-    margin-top:40px;
+    padding: 1.9rem 4.4rem;
+    margin-top: 2.5rem;
 }
 
 .root :global .rated-content ,.root :global .backed-content{
     border-bottom:  1px solid #e2e1e1;
-    padding: 100px 0 120px;
-    font-size: var(--venia-global-fontSize-200);
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
+    padding: 6.2rem 0 7.5rem;
+    font-size: var(--venia-global-fontSize-300);
     line-height: 1.5em;
     text-align: center;
     background-color: white;
@@ -324,11 +310,9 @@
 
 }
 .root :global .rated-content h2{
-    font-size: var(--venia-global-fontSize-1200);
-    margin-bottom: 80px;
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 5rem;
     line-height: 1.1em;
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
 }
 
 
@@ -336,53 +320,48 @@
 .root :global .rated-content .rtext {
     background: url(https://store.fooman.co.nz/skin/frontend/fooman/default/images/quote-bg.png) top left no-repeat;
     vertical-align: top;
-    max-width: 310px;
+    max-width: 19.4rem;
     text-align: left;
-    padding-left: 35px;
+    padding-left: 2.2rem;
 }
 .root :global .rated-content .unit{
-    margin-top: 20px;
+    margin-top: 1.3rem;
 }
 .root :global .rated-content .rtext p{
     margin: 0;
 }
 .root :global .rated-content .rtext .client-name{
-    font-family: var(--venia-font);
-    font-size: var(--venia-global-fontSize-600);
+    font-size: var(--venia-global-fontSize-700);
 
 }
 .root :global .rated-content .rtext .client-quote{
-    font-size: var(--venia-global-fontSize-300);
-    margin-bottom: 10px;
+    font-size: var(--venia-global-fontSize-400);
+    margin-bottom: 0.6rem;
     font-style: normal;
 
 }
 .root :global .rated-content .rtext .client-org{
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
     font-size: var(--venia-global-fontSize-100);
     line-height: 2.5em;
 
 }
 
 .root :global .rated-content .rtext img{
-    max-height: 45px;
+    max-height: 2.8rem;
 }
 
 
 .root :global .brand-content {
     text-align: center;
-    margin: 50px 0 120px;
+    margin: 3.1rem 0 7.5rem;
 
 }
 
 
 .root :global .team-content {
     background: #0b3c5d;
-    padding: 100px 0;
-    font-size: var(--venia-global-fontSize-200);
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
+    padding: 6.2rem 0;
+    font-size: var(--venia-global-fontSize-300);
     line-height: 1.5em;
     color: white;
     text-align: center;
@@ -392,22 +371,22 @@
     width: 20%;
     text-align: center;
     float: left;
-    margin: 50px 0px 0px;
+    margin: 3.1rem 0 0;
 }
 
 .root :global .roundframe {
-    width: 150px;
+    width: 9.4rem;
     display: inline-block;
-    height: 150px;
+    height: 9.4rem;
     border-radius: 50%;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-bottom: 0.9rem;
 }
 .root :global .member {
     display: inline;
     float: left;
-    width: 196px;
-    height: 300px;
+    width: 12.3rem;
+    height: 18.8rem;
     overflow: visible;
 
 }
@@ -418,58 +397,54 @@
 
 .root :global .membername {
     line-height: 1.3em;
-    font-family: var(--venia-font);
-    font-size: var(--venia-global-fontSize-1400);
+    font-size: var(--venia-global-fontSize-1000);
     margin: 0 auto;
 }
 .root :global .framewrapper {position: relative;}
 .root :global .framewrapper .hidden {display:none !important;}
-.root :global .framewrapper .floatright {right: -560px;}
-.root :global .framewrapper .floatleft{left: -560px;}
+.root :global .framewrapper .floatright {right: -35rem;}
+.root :global .framewrapper .floatleft{left: -35rem;}
 .root :global .floatright .popup-arrow {
     position: absolute;
     top:30%;
-    width: 25px;
-    height: 21px;
-    left:-19px;
+    width: 1.5rem;
+    height: 1.3rem;
+    left: -1.2rem;
     background: url('https://store.fooman.co.nz/skin/frontend/fooman/default/images/popuparrowbg.png') 0 0 no-repeat;
 }
 .root :global .floatleft .popup-arrow {
     position: absolute;
     top:30%;
-    width: 25px;
-    height: 21px;
-    right:-19px;
+    width: 1.5rem;
+    height: 1.3rem;
+    right: -1.2rem;
     background: url('https://store.fooman.co.nz/skin/frontend/fooman/default/images/popuparrowbg-r.png') 0 0 no-repeat;
 }
 
 .root :global .imgExtCustom {
-    width: 40px;
-    height: 72px;
+    width: 2.5rem;
+    height: 4.5rem;
     position: absolute;
-    bottom: 20px;
-    right: 23px;
+    bottom: 1.2rem;
+    right: 1.4rem;
     float: right;
 }
 .root :global .memberrole {
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 0.2rem;
     font-size: var(--venia-global-fontSize-75);
     line-height: 1.3em;
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
 }
 
 .root :global .member-intro {
     position: absolute;
-    padding: 30px;
-    font-size: var(--venia-global-fontSize-1500);
-    font-family: var(--venia-font);
+    padding: 1.9rem;
+    font-size: var(--venia-global-fontSize-200);
     background: white;
-    box-shadow: 1px 1px 10px #000000;
-    top: -20px;
+    box-shadow: 0.06rem 0.06rem 0.06rem #000000;
+    top: -1.2rem;
     color: #585858;
-    width: 500px;
+    width: 31.3rem;
     text-align: left;
     z-index: 200;
 }
@@ -480,54 +455,47 @@
 .root :global .memquote {
     color: #989898;
     text-transform: uppercase;
-    padding: 0px 20px;
+    padding: 0 1.2rem;
     background: url(https://store.fooman.co.nz/skin/frontend/fooman/default/images/quote_icon.png) 0 0 no-repeat transparent;
 }
 
 .root :global .backed-content h2, .root :global .about-eight h2{
-    font-size: var(--venia-global-fontSize-1200);
-    margin-bottom: 40px;
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 2.5rem;
     line-height: 1.1em;
     display: inline-block;
-    max-width: 700px;
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
+    max-width: 43.7rem;
 }
 
 
 .root :global .backed-content .col {
     float: left;
     width: 20%;
-    margin: 20px 0;
-    max-width: 300px;
+    margin: 1.2rem 0;
+    max-width: 18.8rem;
 
 }
 
 .root :global .backed-content .col .text{
-    font-family: var(--venia-font);
-    font-size: var(--venia-global-fontSize-400);
+    font-size: var(--venia-global-fontSize-500);
     line-height: 1.3em;
     text-align: center;
-    max-width: 202px;
-    margin: 10px auto;
+    max-width: 12.6rem;
+    margin: 0.6rem auto;
 }
 
 .root :global .ready-content {
     background: url('https://store.fooman.co.nz/skin/frontend/fooman/default/images/readybg.png') #c2cbd0 bottom center no-repeat;
-    padding: 120px 0;
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
+    padding: 7.5rem 0;
     text-align: center;
 }
 
 .root :global .ready-content h2 {
-    font-size: var(--venia-global-fontSize-1200);
-    margin-bottom: 40px;
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 2.5rem;
     line-height: 1.1em;
     display: inline-block;
-    max-width: 770px;
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
+    max-width: 48.1rem;
 }
 
 
@@ -541,28 +509,23 @@
     color: white;
     width: 100%;
     margin: 0 auto;
-    padding: 70px 0;
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
+    padding: 4.4rem 0;
 }
-.root :global .about-one .text-content {max-width: 935px;}
-.root :global .about-one .text-content p {font-size: var(--venia-global-fontSize-400); line-height: 1.2em;}
+.root :global .about-one .text-content {max-width: 58.4rem;}
+.root :global .about-one .text-content p {font-size: var(--venia-global-fontSize-500); line-height: 1.2em;}
 .root :global .about-one h1 {
     color: white;
-    font-size: var(--venia-global-fontSize-1200);
-    font-weight: var(--fooman-font-thin);
-    font-family: var(--venia-font);
+    font-size: var(--venia-global-fontSize-1900);
 }
 
-.root :global .about-two .rtext {color: #616161; font-family: var(--venia-font); font-size: var(--venia-global-fontSize-400);}
+.root :global .about-two .rtext {color: #616161; font-size: var(--venia-global-fontSize-500);}
 .root :global .rtext a {text-decoration: none;}
-.root :global .about-two .unit {    padding: 30px 50px; }
-.root :global .about-two .hicon {height: 95px;}
+.root :global .about-two .unit {    padding: 1.9rem 3.1rem; }
+.root :global .about-two .hicon {height: 5.9rem;}
 
 .root :global .about-three{
-    padding: 70px 0;
-    font-size: var(--venia-global-fontSize-400);
-    font-family: var(--venia-font);
+    padding: 4.4rem 0;
+    font-size: var(--venia-global-fontSize-500);
     line-height: 1.3em;
     text-align: center;
     background-color: white;
@@ -571,66 +534,57 @@
 .root :global .about-three .col {
     float: left;
     width: 25%;
-    margin: 20px 0;
-    max-width: 300px;
+    margin: 1.2rem 0;
+    max-width: 18.8rem;
 
 }
 
 .root :global .about-three .col .text{
-    font-family: var(--venia-font);
-    font-size: var(--venia-global-fontSize-400);
-    max-width: 202px;
-    margin: 10px auto;
+    font-size: var(--venia-global-fontSize-500);
+    max-width: 12.6rem;
+    margin: 0.6rem auto;
 }
 
 .root :global .about-four {
     background-color: #474747;
-    padding: 70px 0;
+    padding: 4.4rem 0;
     color: white;
-    font-size: var(--venia-global-fontSize-400);
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
+    font-size: var(--venia-global-fontSize-500);
     text-align: left;
 }
 .root :global .about-four .text-content, .root :global .about-five .text-content{
-    padding: 40px 30px;
+    padding: 2.5rem 0.9rem;
     line-height: 1.2em;
 }
 
 .root :global .about-five{
-    padding: 70px 0;
-    font-size: var(--venia-global-fontSize-400);
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
+    padding: 4.4rem 0;
+    font-size: var(--venia-global-fontSize-500);
     text-align: left;
 }
 .root :global .about-five h2, .root :global .about-seven h2 {
-    font-size: var(--venia-global-fontSize-1200);
-    margin-bottom: 15px;
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 0.9rem;
     line-height: 1.1em;
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
 }
 .root :global .about-seven {
     background-color: #f2f2f2;
     text-align: center;
-    padding: 100px 0;
+    padding: 6.2rem 0;
     margin: 0 auto;
-    font-size: var(--venia-global-fontSize-1400);
+    font-size: var(--venia-global-fontSize-1000);
     line-height: 1.2em;
-    font-family: var(--venia-font);
-    font-weight: var(--fooman-font-thin);
 }
 .root :global .about-seven img {
     display: block;
     width: 100%;
-    max-width: 1155px;
+    max-width: 72.2rem;
 }
-.root :global .narrow-text {display: inline-block; max-width: 620px;}
+.root :global .narrow-text {display: inline-block; max-width: 38.8rem;}
 
 .root :global .about-eight {
     text-align: center;
-    padding: 100px 0 100px;
+    padding: 6.2rem 0 6.2rem;
     border-bottom: 1px solid #d8d8d8;
 }
 

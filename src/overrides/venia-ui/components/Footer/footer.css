@@ -32,7 +32,7 @@
 .tileTitle:after {
     content:"";
     display: block;
-    width: 50px;
+    width: 3.1rem;
     border-bottom: 1px solid rgb(var( --venia-global-color-orange));
     margin: 1.5em 0 1.5em;
 }
@@ -48,7 +48,7 @@
 }
 
 .tile li {
-    margin-bottom: 15px;
+    margin-bottom: 0.9rem;
 }
 
 .copyright {
@@ -60,5 +60,5 @@
 }
 
 .mlTen {
-    margin-left: 15px;
+    margin-left: 0.9rem;
 }

@@ -64,21 +64,25 @@
     --venia-global-fontSize-50: 0.6875rem; /* 11px */
     --venia-global-fontSize-75: 0.75rem; /* 12px */
     --venia-global-fontSize-100: 0.875rem; /* 14px */
-    --venia-global-fontSize-200: 1rem; /* 16px */
-    --venia-global-fontSize-300: 1.125rem; /* 18px */
-    --venia-global-fontSize-400: 1.25rem; /* 20px */
-    --venia-global-fontSize-500: 1.375rem; /* 22px */
-    --venia-global-fontSize-600: 1.5rem; /* 24px */
-    --venia-global-fontSize-700: 1.75rem; /* 28px */
-    --venia-global-fontSize-800: 2rem; /* 32px */
-    --venia-global-fontSize-900: 2.25rem; /* 36px */
-    --venia-global-fontSize-1000: 2.5rem; /* 40px */
-    --venia-global-fontSize-1100: 3rem; /* 48px */
-    --venia-global-fontSize-1200: 3.5rem; /* 56px */
-    --venia-global-fontSize-1300: 1.625rem; /* 26px */
-    --venia-global-fontSize-1400: 1.875rem; /* 30px */
-    --venia-global-fontSize-1500: 0.938rem; /* 15px */
-    --venia-global-fontSize-1600: 3.75rem; /* 60px */
+    --venia-global-fontSize-200: 0.938rem; /* 15px */
+    --venia-global-fontSize-300: 1rem; /* 16px 200*/
+    --venia-global-fontSize-400: 1.125rem; /* 18px */
+    --venia-global-fontSize-500: 1.25rem; /* 20px */
+    --venia-global-fontSize-600: 1.375rem; /* 22px */
+    --venia-global-fontSize-700: 1.5rem; /* 24px */
+    --venia-global-fontSize-800: 1.625rem; /* 26px */
+    --venia-global-fontSize-900: 1.75rem; /* 28px */
+    --venia-global-fontSize-1000: 1.875rem; /* 30px */
+    --venia-global-fontSize-1100: 2rem; /* 32px */
+    --venia-global-fontSize-1200: 2.125rem; /* 34px */
+    --venia-global-fontSize-1300: 2.25rem; /* 36px */
+    --venia-global-fontSize-1400: 2.375rem; /* 38px */
+    --venia-global-fontSize-1500: 2.5rem; /* 40px */
+    --venia-global-fontSize-1600: 2.625rem; /* 42px */
+    --venia-global-fontSize-1700: 2.75rem; /* 44px */
+    --venia-global-fontSize-1800: 3rem; /* 48px */
+    --venia-global-fontSize-1900: 3.5rem; /* 56px */
+    --venia-global-fontSize-2000: 3.75rem; /* 60px */
 
     /* font weight */
     --venia-global-fontWeight-thin: 300;
@@ -106,16 +110,16 @@
     /* typography */
     /* heading */
     --venia-global-typography-heading-XL-fontSize: var(
-        --venia-global-fontSize-600
+        --venia-global-fontSize-700
     );
     --venia-global-typography-heading-L-fontSize: var(
-        --venia-global-fontSize-400
+        --venia-global-fontSize-500
     );
     --venia-global-typography-heading-M-fontSize: var(
-        --venia-global-fontSize-300
+        --venia-global-fontSize-400
     );
     --venia-global-typography-heading-S-fontSize: var(
-        --venia-global-fontSize-200
+        --venia-global-fontSize-300
     );
     --venia-global-typography-heading-XS-fontSize: var(
         --venia-global-fontSize-100
@@ -125,11 +129,11 @@
     );
 
     /* body */
-    --venia-typography-body-XXXL-fontSize: var(--venia-global-fontSize-600);
-    --venia-typography-body-XXL-fontSize: var(--venia-global-fontSize-500);
-    --venia-typography-body-XL-fontSize: var(--venia-global-fontSize-400);
-    --venia-typography-body-L-fontSize: var(--venia-global-fontSize-300);
-    --venia-typography-body-M-fontSize: var(--venia-global-fontSize-200);
+    --venia-typography-body-XXXL-fontSize: var(--venia-global-fontSize-700);
+    --venia-typography-body-XXL-fontSize: var(--venia-global-fontSize-600);
+    --venia-typography-body-XL-fontSize: var(--venia-global-fontSize-500);
+    --venia-typography-body-L-fontSize: var(--venia-global-fontSize-400);
+    --venia-typography-body-M-fontSize: var(--venia-global-fontSize-300);
     --venia-typography-body-S-fontSize: var(--venia-global-fontSize-100);
     --venia-typography-body-XS-fontSize: var(--venia-global-fontSize-50);
     --venia-typography-body-lineHeight: calc(
@@ -137,7 +141,7 @@
     );
 
     /* detail */
-    --venia-typography-detail-XL-fontSize: var(--venia-global-fontSize-200);
+    --venia-typography-detail-XL-fontSize: var(--venia-global-fontSize-300);
     --venia-typography-detail-L-fontSize: var(--venia-global-fontSize-100);
     --venia-typography-detail-M-fontSize: var(--venia-global-fontSize-75);
     --venia-typography-detail-S-fontSize: var(--venia-global-fontSize-50);
