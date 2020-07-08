@@ -40,7 +40,6 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "classnames": "^2.2.6",
     "react-ga": "^3.1.2",
-    "react-star-rating-component": "^1.4.1",
     "react-with-breakpoints": "^4.0.4"
   },
   "devDependencies": {
