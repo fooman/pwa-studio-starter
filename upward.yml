@@ -22,9 +22,29 @@ SubfolderResponse:
   resolver: conditional
   when:
     - matches: request.url.pathname
+      pattern: '^/404.html$'
+      use: notFoundResponse
+    - matches: request.url.pathname
       pattern: '^/(releases|manuals)(/|$)'
       use: subfolderProxyResponse
   default: veniaResponse #veniaResponse
+
+notFoundResponse:
+  resolver: inline
+  inline:
+    status:
+      resolver: inline
+      inline: 404
+    headers:
+      resolver: inline
+      inline:
+        content-type:
+          inline: text/html
+    body:
+      resolver: file
+      file:
+        resolver: inline
+        inline: './assets/404.html'
 
 comingSoonResponse:
   resolver: inline
@@ -41,7 +61,7 @@ comingSoonResponse:
       resolver: file
       file:
         resolver: inline
-        inline: './static/coming-soon.html'
+        inline: './assets/coming-soon.html'
 #redirectResponse:
 #  inline:
 #    status: 301
@@ -84,3 +104,9 @@ constructSubfolderTarget:
     url: requestedResource
   template:
     inline: "https://{{ host }}.fooman.com/"
+
+foomanStaticIncludes:
+  resolver: directory
+  directory:
+    resolver: inline
+    inline: './assets'
