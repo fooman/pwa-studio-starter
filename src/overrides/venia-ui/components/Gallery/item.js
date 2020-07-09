@@ -7,7 +7,7 @@ import { UNCONSTRAINED_SIZE_KEY } from '@magento/peregrine/lib/talons/Image/useI
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Image from '@magento/venia-ui/lib/components/Image';
-import StarRatingComponent from "react-star-rating-component";
+import { StarRatingComponent } from "../../../../components/StarRatingComponent/starRatingComponent";
 import defaultClasses from './item.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
@@ -44,15 +44,13 @@ const ItemPlaceholder = ({ classes }) => (
 
 const GalleryItem = props => {
     const { item } = props;
-
     const classes = mergeClasses(defaultClasses, props.classes);
 
     if (!item) {
         return <ItemPlaceholder classes={classes} />;
     }
+    const { name, price, small_image, url_key, review_summary, short_description } = item;
 
-    const { name, price, small_image, url_key } = item;
-    debugger
     const productLink = resourceUrl(`/${url_key}${productUrlSuffix}`);
     return (
         <div className={classes.root}>
@@ -71,21 +69,17 @@ const GalleryItem = props => {
             <div className={classes.productDetail}>
                 <div className={classes.nameDiv}>
                     <Link to={productLink} className={classes.name}>
-                        <span>{name}</span>
+                        <span>{short_description.html.replace(/<\s*\/?br\s*[\/]?>/gi, '')}</span>
                     </Link>
                 </div>
                 <div className={classes.starRating}>
                     <div className={classes.ratReview}>
                         <StarRatingComponent
-                            name="rating_summary"
-                            editing={false}
-                            renderStarIcon={() => <FontAwesomeIcon icon={faStar} size={'1x'}/>}
-                            starCount={5}
-                            value={5}
+                            value={review_summary.rating_summary/20}
                         />
                     </div>
                     <div className={classes.ratReview}>
-                        <text className={classes.reviews}>5 Reviews</text>
+                        <text className={classes.reviews}>{`${review_summary.review_count} Reviews` }</text>
                     </div>
                 </div>
                 <div className={classes.price}>
