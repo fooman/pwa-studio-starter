@@ -7,7 +7,6 @@
     margin-bottom: -1rem;
 }
 .backgroundImageInner {
-    width: auto;
     max-width: 75rem;
     width: 100%;
     margin: 0 auto;
@@ -37,43 +36,21 @@ p {
     max-width: 35.6rem;
     width: 100%;
 }
-.talkButton {
-    margin-top: 0.6rem;
-    background-color: rgb(var(--fooman-global-color-darked-orange));
-    color: white;
-    padding: 0.9rem 1.9rem;
-    line-height: 1.1em;
-    letter-spacing: 0.2rem;
-    text-transform: uppercase;
-}
-
-.demoButton {
-    margin-top: 0.6rem;
-    background-color: rgb(var(--venia-global-color-gray-dark));
-    color: white;
-    padding: 0.9rem 1.9rem;
-    line-height: 1.1em;
-    letter-spacing: 0.2rem;
-    text-transform: uppercase;
-    margin-left: 0.6rem;
-}
 
 .allButton {
     flex-direction: row;
     display: flex;
 }
+
 @media screen and (max-width: 767px) {
     .backgroundImage {
         background-image: unset;
         background-color: rgb(var(--fooman-global-color-light-gray));
     }
 }
+
 @media screen and (max-width: 400px) {
     .allButton {
         flex-direction: column;
-    }
-    .demoButton {
-        margin-top: 0.6rem;
-        margin-left: 0;
     }
 }
