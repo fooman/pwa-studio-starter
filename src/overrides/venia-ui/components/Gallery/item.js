@@ -9,8 +9,6 @@ import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Image from '@magento/venia-ui/lib/components/Image';
 import { StarRatingComponent } from "../../../../components/StarRatingComponent/starRatingComponent";
 import defaultClasses from './item.css';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faStar} from "@fortawesome/free-solid-svg-icons";
 
 // The placeholder image is 4:5, so we should make sure to size our product
 // images appropriately.
@@ -75,11 +73,11 @@ const GalleryItem = props => {
                 <div className={classes.starRating}>
                     <div className={classes.ratReview}>
                         <StarRatingComponent
-                            value={review_summary.rating_summary/20}
+                            value={review_summary.rating_summary/20 || 0}
                         />
                     </div>
                     <div className={classes.ratReview}>
-                        <text className={classes.reviews}>{`${review_summary.review_count} Reviews` }</text>
+                        <text className={classes.reviews}>{`${review_summary.review_count || 0} Reviews` }</text>
                     </div>
                 </div>
                 <div className={classes.price}>
