@@ -32,9 +32,9 @@
 .tileTitle:after {
     content:"";
     display: block;
-    width: 50px;
+    width: 3.1rem;
     border-bottom: 1px solid rgb(var( --venia-global-color-orange));
-    margin: 1em 0 1em;
+    margin: 1.5em 0 1.5em;
 }
 
 .tileTitle {
@@ -48,13 +48,17 @@
 }
 
 .tile li {
-    margin-bottom: 15px;
+    margin-bottom: 0.9rem;
 }
 
 .copyright {
     display: block;
     color: rgb(var(--venia-global-color-text-alt));
-    font-size: 0.75rem;
+    font-size: var(--venia-global-fontSize-75);
     padding: 1.5rem 2rem;
     text-align: center;
+}
+
+.mlTen {
+    margin-left: 0.9rem;
 }

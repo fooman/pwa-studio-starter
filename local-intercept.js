@@ -25,6 +25,12 @@ function localIntercept(targets) {
             pattern: '/blog/:urlKey?',
             exact: false,
             path: '../../../../../../src/RootComponents/Blog'
+        },
+        {
+            name: 'Contact Us',
+            pattern: '/contacts',
+            exact: true,
+            path: '../../../../../../src/RootComponents/ContactUs'
         }
     ]);
 

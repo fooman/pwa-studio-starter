@@ -14,6 +14,99 @@
 # HTTP response to the client.
 # In this file, these properties get their values from a top-level
 # 'response' object, which is a recommended and best practice approach.
-status: veniaResponse.status
-headers: veniaResponse.headers
-body: veniaResponse.body
+status: SubfolderResponse.status
+headers: SubfolderResponse.headers
+body: SubfolderResponse.body
+
+SubfolderResponse:
+  resolver: conditional
+  when:
+    - matches: request.url.pathname
+      pattern: '^/404.html$'
+      use: notFoundResponse
+    - matches: request.url.pathname
+      pattern: '^/(releases|manuals)(/|$)'
+      use: subfolderProxyResponse
+  default: veniaResponse #veniaResponse
+
+notFoundResponse:
+  resolver: inline
+  inline:
+    status:
+      resolver: inline
+      inline: 404
+    headers:
+      resolver: inline
+      inline:
+        content-type:
+          inline: text/html
+    body:
+      resolver: file
+      file:
+        resolver: inline
+        inline: './assets/404.html'
+
+comingSoonResponse:
+  resolver: inline
+  inline:
+    status:
+      resolver: inline
+      inline: 200
+    headers:
+      resolver: inline
+      inline:
+        content-type:
+          inline: text/html
+    body:
+      resolver: file
+      file:
+        resolver: inline
+        inline: './assets/coming-soon.html'
+#redirectResponse:
+#  inline:
+#    status: 301
+#    headers:
+#      resolver: inline
+#      inline:
+#        location: constructReleasesTarget
+#    body:
+#      inline: ''
+
+subfolderProxyResponse:
+  resolver: proxy
+  target: constructSubfolderTarget
+  pathRewrite:
+    inline: '{"^/(releases|manuals)":""}'
+
+requestedResource:
+  resolver: conditional
+  when:
+    - matches: request.url.pathname
+      pattern: '^/(releases|manuals)(/|$)'
+      use: $match.$2
+  default:
+    inline: ''
+
+requestedHost:
+  resolver: conditional
+  when:
+    - matches: request.url.pathname
+      pattern: '^/(releases|manuals)/(.*)$'
+      use: $match.$1
+  default:
+    inline: ''
+
+constructSubfolderTarget:
+  resolver: template
+  engine: mustache
+  provide:
+    host: requestedHost
+    url: requestedResource
+  template:
+    inline: "https://{{ host }}.fooman.com/"
+
+foomanStaticIncludes:
+  resolver: directory
+  directory:
+    resolver: inline
+    inline: './assets'

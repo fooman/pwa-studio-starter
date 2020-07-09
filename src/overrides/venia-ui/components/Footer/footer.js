@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import Image from "@magento/venia-ui/lib/components/Image";
 import logo from "../Logo/FoomonLogo_Landscape_White.svg";
-import extdn from "../../../../../static/ExtDN_Logo.svg";
+import extdn from "../../../../../assets/ExtDN_Logo.svg";
 
 const Footer = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
@@ -30,6 +30,7 @@ const Footer = props => {
         <footer className={classes.root}>
             <section className={classes.tile}>
                 <Image
+                    style={{height: "40px"}}
                     alt="Fooman"
                     src={logo}
                     title="Fooman"
@@ -40,14 +41,15 @@ const Footer = props => {
                 <a style={classes.link} aria-label="Kristof Ringleff on LinkedIn" href={'https://www.linkedin.com/in/kristofringleff'}>
                     <FontAwesomeIcon icon={faLinkedin} color={'white'} size={'2x'}/>
                 </a>
-                <a style={classes.link} aria-label="foomanNZ on Twitter" href={'https://twitter.com/foomanNZ'}>
-                <FontAwesomeIcon icon={faTwitterSquare} color={'white'} size={'2x'}/>
+                <a className= {classes.mlTen} style={classes.link} aria-label="foomanNZ on Twitter" href={'https://twitter.com/foomanNZ'}>
+                    <FontAwesomeIcon icon={faTwitterSquare} color={'white'} size={'2x'}/>
                 </a>
 
-                <p>
+                <p className={classes.tileBody}>
                     Proud member of
                 </p>
                 <Image
+                    style={{height: "40px"}}
                     alt="ExtDN"
                     src={extdn}
                     title="ExtDN"
@@ -55,68 +57,68 @@ const Footer = props => {
             </section>
             <section className={classes.tile}>
                 <h3 className={classes.tileTitle}>Extensions</h3>
-                    <ul className={classes.tileBody}>
-                        <li>
-                            <Link className={classes.link} to={resourceUrl('/extensions.html')}>
-                                Magento 1
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className={classes.link} to={resourceUrl('/extensions/magento2.html')}>
-                                Magento 2
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className={classes.link} to={resourceUrl('/extensions/magento2/free-m2.html')}>
-                                Free Stuff
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className={classes.link} to={resourceUrl('/terms')}>
-                                License Agreement
-                            </Link>
-                        </li>
-                    </ul>
+                <ul className={classes.tileBody}>
+                    <li>
+                        <Link className={classes.link} to={resourceUrl('/extensions.html')}>
+                            Magento 1
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className={classes.link} to={resourceUrl('/extensions/magento2.html')}>
+                            Magento 2
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className={classes.link} to={resourceUrl('/extensions/magento2/free-m2.html')}>
+                            Free Stuff
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className={classes.link} to={resourceUrl('/terms')}>
+                            License Agreement
+                        </Link>
+                    </li>
+                </ul>
             </section>
             <section className={classes.tile}>
                 <h3 className={classes.tileTitle}>Fooman</h3>
-                    <ul className={classes.tileBody}>
-                        <li>
-                            <Link className={classes.link} to={resourceUrl('/about-fooman')}>
-                                About Fooman
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className={classes.link} to={resourceUrl('/customer-profiles')}>
-                                Customer Case Studies
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className={classes.link} to={resourceUrl('/privacy')}>
-                                Privacy
-                            </Link>
-                        </li>
-                    </ul>
+                <ul className={classes.tileBody}>
+                    <li>
+                        <Link className={classes.link} to={resourceUrl('/about-fooman')}>
+                            About Fooman
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className={classes.link} to={resourceUrl('/customer-profiles')}>
+                            Customer Case Studies
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className={classes.link} to={resourceUrl('/privacy')}>
+                            Privacy
+                        </Link>
+                    </li>
+                </ul>
             </section>
             <section className={classes.tile}>
                 <h3 className={classes.tileTitle}>Support</h3>
-                    <ul className={classes.tileBody}>
-                        <li>
-                            <a style={classes.link} href='https://magento1-support.fooman.co.nz/'>
-                                Magento 1 Help Centre
-                            </a>
-                        </li>
-                        <li>
-                            <a style={classes.link} href='https://magento2-support.fooman.co.nz/'>
-                                Magento 2 Help Centre
-                            </a>
-                        </li>
-                        <li>
-                            <Link className={classes.link} to={resourceUrl('/contacts')}>
-                                Contact Support
-                            </Link>
-                        </li>
-                    </ul>
+                <ul className={classes.tileBody}>
+                    <li>
+                        <a style={classes.link} href='https://magento1-support.fooman.co.nz/'>
+                            Magento 1 Help Centre
+                        </a>
+                    </li>
+                    <li>
+                        <a style={classes.link} href='https://magento2-support.fooman.co.nz/'>
+                            Magento 2 Help Centre
+                        </a>
+                    </li>
+                    <li>
+                        <Link className={classes.link} to={resourceUrl('/contacts')}>
+                            Contact Support
+                        </Link>
+                    </li>
+                </ul>
             </section>
         </footer>
     );
@@ -128,7 +130,8 @@ Footer.propTypes = {
         root: string,
         tile: string,
         tileBody: string,
-        tileTitle: string
+        tileTitle: string,
+        mlTen: string
     })
 };
 

@@ -1471,7 +1471,7 @@
   resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-free/-/5.13.1/fontawesome-free-5.13.1.tgz#c53b4066edae16cd1fd669f687baf031b45fb9d6"
   integrity sha512-D819f34FLHeBN/4xvw0HR0u7U2G7RqjPSggXqf7LktsxWQ48VAfGwvMrhcVuaZV2fF069c/619RdgCCms0DHhw==
 
-"@fortawesome/fontawesome-pro@^5.12.1":
+"@fortawesome/fontawesome-pro@^5.13.1":
   version "5.13.1"
   resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/5.13.1/fontawesome-pro-5.13.1.tgz#75f3be0937656e89ebffa5f68d16fe4647d2f1ad"
   integrity sha512-8ENkNq6N4FAaCL8zyi2tt2DuWn/TEFJb9mMU0k1IMRsrIh3eYhe8sQ2F1IDSVSUh9xej36MPzTwEQuBNPkQHdQ==
@@ -1501,6 +1501,13 @@
   version "5.13.1"
   resolved "https://npm.fontawesome.com/@fortawesome/pro-light-svg-icons/-/5.13.1/pro-light-svg-icons-5.13.1.tgz#271cf9d5c7252b4058eabebe41fa9e623cce628b"
   integrity sha512-OV5Cxan/vIZFyPofJ3RQBfSQXf7hnbE97HXAqLWhkmwm990GJBfEjsan4XwS/206T+ZKlY/MiXPiHtBPoQL87g==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.29"
+
+"@fortawesome/pro-regular-svg-icons@^5.13.1":
+  version "5.13.1"
+  resolved "https://npm.fontawesome.com/@fortawesome/pro-regular-svg-icons/-/5.13.1/pro-regular-svg-icons-5.13.1.tgz#b14530330db86edf2fb7f2888c50188d07fac1de"
+  integrity sha512-qQszWqNQCaQC1j787Q/Wz1xpm6ENz9N3G7dSKdIy2rFx14iYt+sQ8F+6zXslShtS2N5JpKpHIMCjWn2sGtE/Ow==
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.29"
 
@@ -4598,7 +4605,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.0, classnames@^2.2.5:
+classnames@^2.2.0, classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -11687,6 +11694,11 @@ react-focus-lock@^1.18.3:
     prop-types "^15.6.2"
     react-clientside-effect "^1.2.0"
 
+react-ga@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-3.1.2.tgz#e13f211c51a2e5c401ea69cf094b9501fe3c51ce"
+  integrity sha512-OJrMqaHEHbodm+XsnjA6ISBEHTwvpFrxco65mctzl/v3CASMSLSyUkFqz9yYrPDKGBUfNQzKCjuMJwctjlWBbw==
+
 react-helmet-async@^1.0.2:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/react-helmet-async/-/react-helmet-async-1.0.6.tgz#11c15c74e79b3f66670c73779bef3e0e352b1d4e"
@@ -11811,14 +11823,6 @@ react-slick@~0.25.2:
     json2mq "^0.2.0"
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
-
-react-star-rating-component@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/react-star-rating-component/-/react-star-rating-component-1.4.1.tgz#74dc1c73493f088013331c234190b8cccad31f6b"
-  integrity sha512-i0YEvQzToS0s0GDkxn01Jy4EeLpVEyh023NXJTJ+/1+xkvhpACyD4d1YeBhYWZab53ppUnUxs5gmp75gJr3khA==
-  dependencies:
-    classnames "^2.2.5"
-    prop-types "^15.6.1"
 
 react-syntax-highlighter@^8.0.1:
   version "8.1.0"
