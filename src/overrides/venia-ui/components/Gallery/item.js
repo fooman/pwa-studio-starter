@@ -70,16 +70,19 @@ const GalleryItem = props => {
                         <span>{short_description.html.replace(/<\s*\/?br\s*[\/]?>/gi, '')}</span>
                     </Link>
                 </div>
-                <div className={classes.starRating}>
-                    <div className={classes.ratReview}>
-                        <StarRatingComponent
-                            value={review_summary.rating_summary/20 || 0}
-                        />
-                    </div>
-                    <div className={classes.ratReview}>
-                        <text className={classes.reviews}>{`${review_summary.review_count || 0} Reviews` }</text>
-                    </div>
-                </div>
+                {review_summary.review_count ? (
+                        <div className={classes.starRating}>
+                            <div className={classes.ratReview}>
+                                <StarRatingComponent
+                                    value={review_summary.rating_summary/20 || 0}
+                                />
+                            </div>
+                            <div className={classes.ratReview}>
+                                <text className={classes.reviews}>{`${review_summary.review_count || 0} Reviews` }</text>
+                            </div>
+                        </div>
+                    ) :
+                    null}
                 <div className={classes.price}>
                     <Price
                         value={price.regularPrice.amount.value}
