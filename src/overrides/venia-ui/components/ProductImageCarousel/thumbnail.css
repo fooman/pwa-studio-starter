@@ -1,0 +1,45 @@
+
+.root {
+    border: 0;
+    border-radius: 0;
+    height: auto;
+    margin: 5px;
+    width: 120px;
+    box-shadow: 0 0 0 1px #ffffff;
+    outline: none;
+}
+
+.rootSelected {
+    composes: root;
+    background-color: rgb(var(--venia-global-color-text));
+}
+
+.image {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .root {
+        border: 0;
+        border-radius: 0;
+        height: auto;
+        margin: 5px;
+        width: 120px;
+    }
+    .rootSelected {
+        composes: root;
+        box-shadow: 0 0 10px 0 rgb(var(--venia-global-color-teal));
+        background-color: rgb(var(--venia-global-color-text));
+    }
+
+    .image {
+        background-color: rgb(var(--venia-global-color-gray));
+        border-radius: 2px;
+        box-shadow: 0 0 0 1px white;
+        display: block;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        width: 100%;
+    }
+}
