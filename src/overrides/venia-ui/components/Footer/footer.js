@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import Image from "@magento/venia-ui/lib/components/Image";
 import logo from "../Logo/FoomonLogo_Landscape_White.svg";
-import extdn from "ExtDN_Logo.svg";
+import extdn from "./ExtDN_Logo.svg";
 
 const Footer = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
