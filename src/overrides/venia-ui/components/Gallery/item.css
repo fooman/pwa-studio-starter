@@ -1,0 +1,101 @@
+.root {
+    max-width: 19rem;
+    width: 100%;
+    padding: 1.2rem 3.1rem;
+    border: 1px solid rgb(var(--venia-global-color-border));
+    margin: 0.6rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.images {
+    width: 12.5rem;
+    display: grid;
+    grid-template-areas: 'main';
+    margin-bottom: 0.65rem;
+}
+
+.imageContainer {
+    grid-area: main;
+}
+
+.image {
+    display: block;
+    height: auto;
+    opacity: 1;
+    transition-duration: 512ms;
+    transition-property: opacity, visibility;
+    transition-timing-function: ease-out;
+    visibility: visible;
+    width: 100%;
+}
+
+.imagePlaceholder {
+    composes: image;
+    background-color: rgb(var(--venia-global-color-gray));
+}
+
+.name {
+    font-family: var(--venia-global-fontFamily-roboto-light);
+    font-size: var(--venia-global-fontSize-300);
+    line-height: 1.3em;
+    margin-bottom: 0.6rem;
+    color: rgb(var(--venia-global-color-gray-600));
+}
+.price {
+    font-size: var(--venia-global-fontSize-700);
+    color: rgb(var(--venia-global-color-gray-600));
+    font-weight: var(--venia-global-fontWeight-normal);
+    line-height: 1rem;
+    margin: 0.5rem 0;
+    min-height: 1rem;
+}
+
+.root_pending {
+    composes: root;
+}
+
+.image_pending {
+    composes: image;
+    background-color: rgb(var(--venia-global-color-gray));
+}
+
+.images_pending {
+    composes: images;
+}
+
+.name_pending {
+    composes: name;
+    background-color: rgb(var(--venia-global-color-gray));
+}
+
+.price_pending {
+    composes: price;
+    background-color: rgb(var(--venia-global-color-gray));
+    width: 3rem;
+}
+
+.nameDiv {
+    min-height: 3.7rem;
+}
+
+.starRating {
+    margin: 0.9rem 0 1.9rem;
+    display: flex;
+}
+
+.productDetail {
+    margin: -1.8rem -1.2rem 0;
+}
+
+.ratReview {
+    display: inline-block;
+}
+
+.reviews {
+    color: rgb(var(--venia-global-color-gray-500));
+    font-size: 0.8rem;
+    margin-left: 0.6rem;
+}
