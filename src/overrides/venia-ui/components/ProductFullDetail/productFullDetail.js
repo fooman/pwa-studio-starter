@@ -2,12 +2,11 @@ import React, { Fragment, Suspense } from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
-import StarRatingComponent from '../../../../components/StarRatingComponent/starRatingComponent';
+import  { StarRatingComponent } from '../../../../components/StarRatingComponent/starRatingComponent';
 import { resourceUrl } from '@magento/venia-drivers';
 
 import { Price } from '@magento/peregrine';
-import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail';
-import { isProductConfigurable } from '@magento/peregrine/lib/util/isProductConfigurable';
+import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail'
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
@@ -30,8 +29,8 @@ import {
     ADD_DOWNLOADABLE_MUTATION
 } from './downloadableProduct.gql';
 import RadioTextArea from "./productOptionsComponent/RadioTextArea";
-
-const Options = React.lazy(() => import('@magento/venia-ui/lib/components/ProductOptions'));
+import { isProductConfigurable, productOptionsType } from '../../../peregrine/util/isProductConfigurable';
+import Options  from '../../components/ProductOptions';
 const PRODUCT_URL_SUFFIX = '.html';
 
 const ProductFullDetail = props => {
@@ -61,12 +60,12 @@ const ProductFullDetail = props => {
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses, props.classes);
-
+    const productOptions = productOptionsType(product);
     const options = isProductConfigurable(product) ? (
         <Suspense fallback={fullPageLoadingIndicator}>
             <Options
                 onSelectionChange={handleSelectionChange}
-                options={product.configurable_options}
+                options={productOptions}
             />
         </Suspense>
     ) : null;
@@ -117,7 +116,7 @@ const ProductFullDetail = props => {
             </Helmet>
             {breadcrumbs}
             <StarRatingComponent
-                ratingValue={Math.round(product.review_summary.rating_summary/20)}
+                value={Math.round(product.review_summary.rating_summary/20)}
             />
             <Form className={classes.root}>
                 <section className={classes.title}>
@@ -152,11 +151,11 @@ const ProductFullDetail = props => {
                         Add to Cart
                     </Button>
                 </section>
-                { product.options.length>0 &&
-                    <div className={customClasses.mainWrapper}>
-                        <RadioTextArea productOptions={product.options}/>
-                    </div>
-                }
+                {/*{ product.options.length>0 &&*/}
+                {/*    <div className={customClasses.mainWrapper}>*/}
+                {/*        <RadioTextArea productOptions={product.options}/>*/}
+                {/*    </div>*/}
+                {/*}*/}
                 <section className={classes.description}>
                     <h2 className={classes.descriptionTitle}>
                         Product Description

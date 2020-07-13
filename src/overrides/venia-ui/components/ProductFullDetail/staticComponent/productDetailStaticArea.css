@@ -1,0 +1,72 @@
+.setSectionMain {
+    padding: 2.5rem 4rem;
+}
+.setSection{
+    display: flex;
+    flex-direction: row;
+
+}
+.left, .right {
+    padding: 0.9rem;
+    max-width: 32.8rem;
+    width: 100%;
+}
+
+.leftInner {
+    display: flex;
+    flex-direction: row;
+}
+.leftImage {
+    max-width: 9rem;
+    width: 100%;
+    justify-content: flex-start;
+    display: flex;
+}
+.leftText {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.leftHeaderText {
+    font-family: var(--venia-global-fontFamily-sansSerif);
+    line-height: 100%;
+    margin: 0;
+    text-transform: uppercase;
+    padding: 0.6rem 0.6rem 0 0;
+    font-size: var(--venia-global-fontSize-700);
+    font-weight: var(--venia-global-fontWeight-semibold);
+    color: rgb(var(--venia-global-color-gray-dark));
+}
+.leftHeaderText2 {
+    margin: 0.6rem 0.6rem 0.6rem 0;
+    font-size: var(--venia-global-fontSize-300);
+    color: rgb(var(--venia-global-color-gray-dark));
+}
+
+.iconStyle {
+    line-height: normal;
+    color: rgb(var(--fooman-global-color-teal));
+    margin: 0.6rem 0.6rem 0.6rem 0;
+    font-size: var(--venia-global-fontSize-2000);
+}
+
+.iconDiv {
+    width: 4.7rem;
+    height: 4.7rem;
+    display: block;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .setSection{
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width: 599px) {
+    .setSectionMain {
+        padding: 2.5rem 0.6rem;
+    }
+    .left, .right {
+        padding: 0.9rem 0;
+    }
+}

@@ -1,0 +1,92 @@
+.root {
+    margin: 0.6rem 0.6rem 0rem;
+    padding: 0.9rem 1.9rem;
+    line-height: 1.1em;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+}
+
+.root:hover {
+    --stroke: var(--venia-brand-color-1-800);
+}
+
+.root:focus {
+    box-shadow: -6px 6px rgb(var(--venia-global-color-blue-700) / 0.3);
+}
+
+.root:active {
+    transition-duration: 128ms;
+    --stroke: var(--venia-brand-color-1-800);
+}
+
+.root:disabled {
+    pointer-events: none;
+    --stroke: var(--venia-global-color-gray-400);
+}
+
+.content {
+    align-items: center;
+    display: inline-grid;
+    gap: 0.35rem;
+    grid-auto-flow: column;
+    justify-content: center;
+    justify-items: center;
+}
+
+.root_lowPriority {
+    composes: root;
+    background-color: rgb(var(--venia-global-color-gray-dark));
+    color: white;
+}
+
+.root_lowPriority:focus {
+    box-shadow: -0.375rem 0.375rem rgb(var(--fooman-global-color-shado-gray)); /*#0000007a*/
+    outline: unset;
+}
+
+.root_lowPriority:hover {
+    --stroke: var(--venia-global-color-gray-900);
+}
+.root_lowPriorityNegative {
+    composes: root_lowPriority;
+    --stroke: var(--venia-global-color-red-700);
+}
+.root_lowPriorityNegative:hover {
+    --stroke: var(--venia-global-color-red-800);
+}
+
+.root_normalPriority {
+    composes: root;
+    border: 2px solid rgb(var(--fooman-global-color-darked-orange));
+    background-color: rgb(var(--venia-global-color-gray-50));
+    color: rgb(var(--fooman-global-color-darked-orange));
+}
+.root_normalPriority:focus {
+    box-shadow: -6px 6px rgb(var(--fooman-global-color-shado-light-orange)); /*#d69a81*/
+}
+
+.root_normalPriorityNegative {
+    composes: root_normalPriority;
+    --stroke: var(--venia-global-color-red-700);
+}
+.root_normalPriorityNegative:hover {
+    --stroke: var(--venia-global-color-red-800);
+}
+
+.root_highPriority {
+    composes: root;
+    background-color: rgb(var(--fooman-global-color-darked-orange));
+    color: white;
+}
+
+.root_highPriority:focus {
+    box-shadow: -6px 6px rgb(var(--fooman-global-color-shado-light-orange)); /*#d69a81*/
+}
+
+.root_highPriorityNegative {
+    composes: root_highPriority;
+    --stroke: var(--venia-global-color-red-700);
+}
+.root_highPriorityNegative:hover {
+    --stroke: var(--venia-global-color-red-800);
+}
