@@ -34,7 +34,7 @@ function localIntercept(targets) {
         },
         {
             name: 'Home Page',
-            pattern: '/homepage',
+            pattern: '/',
             exact: true,
             path: '../../../../../../src/RootComponents/HomePage'
         }

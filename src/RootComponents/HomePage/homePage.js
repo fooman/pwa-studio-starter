@@ -1,21 +1,19 @@
 import React from "react";
-import defaultClasses from './homePage.css'
-import { shape, string} from "prop-types";
-import {mergeClasses} from "@magento/venia-ui/lib/classify";
+
+import HeroComponent from '../../overrides/venia-ui/components/HeroComponent/heroComponent'
+import Button from "@magento/venia-ui/lib/components/Button";
 
 const HomePage = () => {
-    const classes = mergeClasses(defaultClasses);
     return (
         <div>
-            <div className={classes.HeroImg}></div>
+            <HeroComponent/>
+            <Button
+                priority='high'
+            >
+                {'View Magento extensions'}
+            </Button>
         </div>
     );
 }
-
-HomePage.propTypes = {
-    classes: shape({
-        HeroImg: string
-    })
-};
 
 export default HomePage;

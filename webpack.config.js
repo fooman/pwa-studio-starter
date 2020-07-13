@@ -55,7 +55,7 @@ module.exports = async env => {
              * the globals object in jest.config.js.
              */
             UNION_AND_INTERFACE_TYPES: JSON.stringify(unionAndInterfaceTypes),
-            STORE_NAME: JSON.stringify('Venia')
+            STORE_NAME: JSON.stringify('Fooman')
         }),
         new HTMLWebpackPlugin({
             filename: 'index.html',
