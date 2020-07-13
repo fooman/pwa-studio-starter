@@ -3,10 +3,11 @@
     border: 0;
     border-radius: 0;
     height: auto;
-    margin: 5px;
-    width: 120px;
+    margin: 10px;
+    width: 100px;
     box-shadow: 0 0 0 1px #ffffff;
     outline: none;
+
 }
 
 .rootSelected {
@@ -23,8 +24,8 @@
         border: 0;
         border-radius: 0;
         height: auto;
-        margin: 5px;
-        width: 120px;
+        margin: 10px;
+        width: 100px;
     }
     .rootSelected {
         composes: root;

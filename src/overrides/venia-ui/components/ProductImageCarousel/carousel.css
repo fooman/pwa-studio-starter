@@ -6,6 +6,7 @@
     grid-template-rows: auto;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .carouselContainer {
@@ -13,6 +14,7 @@
     height: 500px;
     width: 100%;
     background-color: aliceblue;
+    margin-bottom: 30px;
 }
 
 .imageContainer {
@@ -30,7 +32,7 @@
 
 .previousButton,
 .nextButton {
-    display: flex;
+    display: none;
     outline: none;
     z-index: 1;
 }
@@ -57,6 +59,7 @@
     z-index: 1;
     display: flex;
     flex-direction: row;
+    padding: 0 45px;
 }
 
 @media (min-width: 1024px) {
@@ -78,4 +81,25 @@
         grid-template-columns: 1fr;
         margin-top: 0;
     }
+}
+
+.btnPrev {
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    z-index: 9;
+    border: none;
+    outline: none;
+}
+
+.btnNext {
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    z-index: 9;
+    border: none;
+    outline: none;
+}
+.mainCarousel {
+    position: relative;
 }

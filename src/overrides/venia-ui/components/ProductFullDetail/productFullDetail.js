@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet-async';
 import  { StarRatingComponent } from '../../../../components/StarRatingComponent/starRatingComponent';
 import { resourceUrl } from '@magento/venia-drivers';
 
-import { Price } from '@magento/peregrine';
 import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail';
 import { isProductConfigurable } from '@magento/peregrine/lib/util/isProductConfigurable';
 
@@ -14,7 +13,6 @@ import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
 import Button from '@magento/venia-ui/lib/components/Button';
 import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel/carousel';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
-import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
 import ProductStaticArea from './staticComponent/productDetailStaticArea';
 import AnyQuestion from './staticComponent/anyQuestion';
 import RichText from '@magento/venia-ui/lib/components/RichText';
@@ -28,7 +26,6 @@ import {
 import {
     ADD_DOWNLOADABLE_MUTATION
 } from './downloadableProduct.gql';
-import ButtonGroup from "@magento/venia-ui/lib/components/ButtonGroup";
 
 const Options = React.lazy(() => import('@magento/venia-ui/lib/components/ProductOptions'));
 const PRODUCT_URL_SUFFIX = '.html';
@@ -154,7 +151,8 @@ const ProductFullDetail = props => {
                 {/*        Add to Cart*/}
                 {/*    </Button>*/}
                 {/*</section>*/}
-                <section className={classes.description}>
+                <div>
+                    <div className={classes.reviewDesc}>
                     <div className={classes.reviewDiv}>
                         <StarRatingComponent
                             value={Math.round(product.review_summary.rating_summary/20)}
@@ -163,7 +161,7 @@ const ProductFullDetail = props => {
                             {`${product.review_summary.review_count} Reviews`}
                         </span>
                     </div>
-                    <div>
+                    <div className={classes.contentDes}>
                         <h2 className={classes.descriptionTitle}>
                             Product Description
                         </h2>
@@ -187,9 +185,16 @@ const ProductFullDetail = props => {
                             </Button>
                         </div>
                     </div>
-                </section>
+                    </div>
+                </div>
 
             </Form>
+            <section className={classes.description}>
+                <h2 className={classes.descriptionTitle}>
+                    Product Description
+                </h2>
+                <RichText content={productDetails.description} />
+            </section>
             <ProductStaticArea/>
             <AnyQuestion
                 demoUrl = {demoUrl}
@@ -217,7 +222,9 @@ ProductFullDetail.propTypes = {
         reviewCounts: string,
         buttonDiv: string,
         childButton: string,
-        productTitle: string
+        productTitle: string,
+        reviewDesc: string,
+        contentDes: string
 
     }),
     product: shape({

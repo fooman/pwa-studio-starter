@@ -21,13 +21,26 @@
         padding: 2.5rem 4rem;
     }
 }
+@media screen and (max-width: 767px) {
+    .root {
+        flex-direction: column;
+    }
 
+}
 .section {
-    border-color: rgb(var(--venia-global-color-border));
-    border-style: solid;
-    border-width: 0 0 1px;
     margin: 0 1.5rem;
-    padding: 1.5rem 0;
+    padding: 2.5rem 4rem !important;
+    position: relative;
+}
+
+.section:after {
+    background: rgb(var(--venia-global-color-border));
+    position: absolute;
+    content: '';
+    width: 50%;
+    height: 2px;
+    top: 0;
+    z-index: 9;
 }
 
 .sectionTitle {
@@ -125,7 +138,6 @@
 @media (min-width: 1024px) {
     .description {
         align-self: stretch;
-        /*border-top-width: 1px;*/
         margin: 0;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
@@ -171,7 +183,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 20px 0px;
+    margin: 50px 0 20px;
 }
 
 .reviewCounts {
@@ -186,8 +198,42 @@
     margin-top: 20px;
     margin-left: 10px;
 }
-
+.contentDes {
+    width: 90%;
+}
 .productTitle {
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+.reviewDesc {
+    composes: section;
+    grid-column: 1 / span 1;
+    grid-row: fold / span 1;
+    padding: 24px;
+}
+
+@media (min-width: 1024px) {
+    .reviewDesc {
+        align-self: stretch;
+        margin: 0;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}@media (max-width: 1024px) {
+    .reviewDesc {
+        align-self: stretch;
+        margin: 0;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .section {
+        margin: 1rem     0;
+        padding: 20px !important;
+        position: relative;
+    }
+    .root {
+        margin: 30px 0;
+        padding: 0 16px;
+    }
 }
