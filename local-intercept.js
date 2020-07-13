@@ -31,6 +31,12 @@ function localIntercept(targets) {
             pattern: '/contacts',
             exact: true,
             path: '../../../../../../src/RootComponents/ContactUs'
+        },
+        {
+            name: 'Home Page',
+            pattern: '/homepage',
+            exact: true,
+            path: '../../../../../../src/RootComponents/HomePage'
         }
     ]);
 
