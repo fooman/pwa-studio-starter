@@ -27,6 +27,14 @@ fragment ProductDetails on ProductInterface {
         review_count
         rating_summary
     }
+    reviews {
+        nickname
+        detail
+        title
+        rating_votes {
+            percent
+        }
+    }
     meta_title @include(if: $onServer)
     meta_keyword @include(if: $onServer)
     meta_description
