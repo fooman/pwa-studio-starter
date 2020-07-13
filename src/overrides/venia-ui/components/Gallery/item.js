@@ -50,6 +50,22 @@ const GalleryItem = props => {
     const { name, price, small_image, url_key, review_summary, short_description } = item;
 
     const productLink = resourceUrl(`/${url_key}${productUrlSuffix}`);
+    const reviewSummary = review_summary.review_count > 0 ? (
+                <div className={classes.starRating}>
+                    <div className={classes.ratReview}>
+                        <StarRatingComponent
+                            value={review_summary.rating_summary/20}
+                            size={'1x'}
+                        />
+                    </div>
+                    <div className={classes.ratReview}>
+                        <text className={classes.reviews}>{`${review_summary.review_count} Reviews` }</text>
+                    </div>
+                </div>
+            ) :
+            null
+    const productDescription = short_description.html.replace(/<\s*\/?br\s*[\/]?>/gi, '');
+
     return (
         <div className={classes.root}>
             <Link to={productLink} className={classes.images}>
@@ -67,23 +83,10 @@ const GalleryItem = props => {
             <div className={classes.productDetail}>
                 <div className={classes.nameDiv}>
                     <Link to={productLink} className={classes.name}>
-                        <span>{short_description.html.replace(/<\s*\/?br\s*[\/]?>/gi, '')}</span>
+                        <span>{productDescription}</span>
                     </Link>
                 </div>
-                {review_summary.review_count > 0 ? (
-                        <div className={classes.starRating}>
-                            <div className={classes.ratReview}>
-                                <StarRatingComponent
-                                    value={review_summary.rating_summary/20}
-                                    size={'1x'}
-                                />
-                            </div>
-                            <div className={classes.ratReview}>
-                                <text className={classes.reviews}>{`${review_summary.review_count || 0} Reviews` }</text>
-                            </div>
-                        </div>
-                    ) :
-                    null}
+                {reviewSummary}
                 <div className={classes.price}>
                     <Price
                         value={price.regularPrice.amount.value}
