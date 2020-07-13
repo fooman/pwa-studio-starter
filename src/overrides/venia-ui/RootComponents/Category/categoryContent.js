@@ -6,13 +6,13 @@ import NoProductsFound from '@magento/venia-ui/lib/RootComponents/Category/NoPro
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import { Title } from '@magento/venia-ui/lib/components/Head';
 import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
-import Gallery from '../../components/Gallery/gallery';
 import ProductSort from '@magento/venia-ui/lib/components/ProductSort';
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
-import defaultClasses from './categoryContent.css';
+import { resourceUrl } from '@magento/venia-drivers';
 import GET_PRODUCT_FILTERS_BY_CATEGORY from '@magento/venia-ui/lib/queries/getProductFiltersByCategory.graphql';
 import Button from '@magento/venia-ui/lib/components/Button';
-
+import defaultClasses from './categoryContent.css';
+import Gallery from '../../components/Gallery/gallery';
 
 const FilterModal = React.lazy(() => import('@magento/venia-ui/lib/components/FilterModal'));
 
@@ -77,7 +77,7 @@ const CategoryContent = props => {
         ) : (
             <Fragment>
                 <section className={classes.gallery}>
-                    <Gallery items={items}/>
+                        <Gallery items={items}/>
                 </section>
                 <div className={classes.pagination}>
                     <Pagination pageControl={pageControl}/>
@@ -87,11 +87,11 @@ const CategoryContent = props => {
 
     let currencyCode = ['aud', 'gbp', 'eur', 'nzd', 'usd'];
 
-    const currencyOptions = () => {
-        return currencyCode = currencyCode.map((currency, index) => {
-            return (<option key={index} className={classes.currencyName}>{currency}</option>);
-        });
-    };
+    // const currencyOptions = () => {
+    //     return currencyCode = currencyCode.map((currency, index) => {
+    //         return (<option key={index} className={classes.currencyName}>{currency}</option>);
+    //     });
+    // };
 
     return (
         <Fragment>
@@ -102,11 +102,11 @@ const CategoryContent = props => {
                     <div className={classes.categoryTitle}>{categoryName}</div>
                 </h1>
                 <div className={classes.linkTitle}>
-                    <a className={classes.magentoLinks} active="true" href="#">{'Magento 1'}</a>
-                    <a className={classes.magentoLinks} href="#">{'Magento 2'}</a>
-                    <select title="Select Your Currency" className={classes.selectCurrency}>
-                        {currencyOptions()}
-                    </select>
+                    <a className={classes.magentoLinks} active={true} href={resourceUrl('/extensions.html')}>{'Magento 1'}</a>
+                    <a className={classes.magentoLinks} href={resourceUrl('/extensions/magento2.html')}>{'Magento 2'}</a>
+                    {/*<select title="Select Your Currency" className={classes.selectCurrency}>*/}
+                    {/*    {currencyOptions()}*/}
+                    {/*</select>*/}
                 </div>
                 {categoryDescriptionElement}
                 {header}

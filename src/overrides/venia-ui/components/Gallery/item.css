@@ -1,13 +1,17 @@
 .root {
-    max-width: 390px;
+    max-width: 19rem;
     width: 100%;
-    padding: 20px 50px;
+    padding: 1.2rem 3.1rem;
     border: 1px solid rgb(var(--venia-global-color-border));
-    margin: 10px;
+    margin: 0.6rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .images {
-    width: 300px;
+    width: 12.5rem;
     display: grid;
     grid-template-areas: 'main';
     margin-bottom: 0.65rem;
@@ -33,16 +37,21 @@
     background-color: rgb(var(--venia-global-color-gray));
 }
 
-.name,
+.name {
+    font-family: var(--venia-global-fontFamily-roboto-light);
+    font-size: var(--venia-global-fontSize-300);
+    line-height: 1.3em;
+    margin-bottom: 0.6rem;
+    color: rgb(var(--venia-global-color-gray-600));
+}
 .price {
-    font-size: var(--venia-global-fontSize-400);/* 20px */
+    font-size: var(--venia-global-fontSize-700);
+    color: rgb(var(--venia-global-color-gray-600));
+    font-weight: var(--venia-global-fontWeight-normal);
     line-height: 1rem;
     margin: 0.5rem 0;
     min-height: 1rem;
-    color: rgb(var( --fooman-global-color-font-gray));
 }
-
-/* state: pending */
 
 .root_pending {
     composes: root;
@@ -69,27 +78,16 @@
 }
 
 .nameDiv {
-    min-height: 60px;
-}
-
-.pName {
-    min-height: 50px;
-    font-size: var(--venia-global-fontSize-200);/* 16px */
-    line-height: 20px;
-    word-break: break-all;
-    color: rgb(var( --fooman-global-color-font-gray));
+    min-height: 3.7rem;
 }
 
 .starRating {
-    margin: 15px 0px;
-}
-
-.image {
-    height: 100%;
+    margin: 0.9rem 0 1.9rem;
+    display: flex;
 }
 
 .productDetail {
-    margin: 20px -20px;
+    margin: -1.8rem -1.2rem 0;
 }
 
 .ratReview {
@@ -97,6 +95,7 @@
 }
 
 .reviews {
-    color: rgb(var( --fooman-global-color-font-gray));
-    margin-left: 10px;
+    color: rgb(var(--venia-global-color-gray-500));
+    font-size: 0.8rem;
+    margin-left: 0.6rem;
 }

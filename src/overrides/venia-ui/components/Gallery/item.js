@@ -70,11 +70,12 @@ const GalleryItem = props => {
                         <span>{short_description.html.replace(/<\s*\/?br\s*[\/]?>/gi, '')}</span>
                     </Link>
                 </div>
-                {review_summary.review_count ? (
+                {review_summary.review_count > 0 ? (
                         <div className={classes.starRating}>
                             <div className={classes.ratReview}>
                                 <StarRatingComponent
-                                    value={review_summary.rating_summary/20 || 0}
+                                    value={review_summary.rating_summary/20}
+                                    size={'1x'}
                                 />
                             </div>
                             <div className={classes.ratReview}>

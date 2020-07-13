@@ -31,7 +31,9 @@ const Gallery = props => {
     );
     return (
         <div className={classes.root}>
-            <div className={classes.items}>{galleryItems}</div>
+            <div className={classes.items}>
+                <div className={classes.galleryItemsWrap}> {galleryItems}</div>
+            </div>
         </div>
     );
 };
@@ -41,7 +43,8 @@ Gallery.propTypes = {
         filters: string,
         items: string,
         pagination: string,
-        root: string
+        root: string,
+        galleryItemsWrap: string
     }),
     items: array.isRequired
 };
