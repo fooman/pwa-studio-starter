@@ -54,7 +54,7 @@ const GalleryItem = props => {
                 <div className={classes.starRating}>
                     <div className={classes.ratReview}>
                         <StarRatingComponent
-                            value={review_summary.rating_summary/20}
+                            value={Math.round(review_summary.rating_summary/20)}
                             size={'1x'}
                         />
                     </div>
