@@ -1,9 +1,9 @@
 import React from "react";
 import {shape, string} from "prop-types";
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
-import img18 from './heroImages/master2018.png';
-import img17 from './heroImages/master2017.png';
-import img16 from './heroImages/master2016.png';
+import img18 from './Images/master2018.png';
+import img17 from './Images/master2017.png';
+import img16 from './Images/master2016.png';
 
 import defaultClasses from './heroComponent.css';
 import Button from "@magento/venia-ui/lib/components/Button";
