@@ -17,6 +17,7 @@ export const useOption = props => {
         selectedValue,
         values
     } = props;
+    let valuesMap = ''
     const [selection, setSelection] = useState(null);
     const initialSelection = useMemo(() => {
         let initialSelection = {};
@@ -28,11 +29,18 @@ export const useOption = props => {
         return initialSelection;
     }, [selectedValue, selection, values]);
 
-    const valuesMap = useMemo(() => {
-        return new Map(
-            values.map(value => [value.option_type_id, value.title])
-        );
-    }, [values]);
+    if(values.length) {
+        valuesMap = useMemo(() => {
+            return new Map(
+                values.map(value => [value.option_type_id, value.title])
+            );
+        }, [values]);
+    }
+    else {
+        valuesMap = useMemo( () => {
+         return { value: values.title}
+        })
+    }
 
     const selectedValueLabel = `Selected ${title}:`;
     const selectedValueDescription =

@@ -5,5 +5,5 @@ export const isProductConfigurable = product =>
 
 export const productOptionsType = product => {
     if(product.__typename === 'ConfigurableProduct') return product.configurable_options
-    else if(product.__typename === 'DownloadableProduct') return product.options
+    else return product.options
 }

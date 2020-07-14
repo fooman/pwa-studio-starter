@@ -21,3 +21,8 @@
 .selectionLabel {
     margin-right: 1rem;
 }
+
+.radioRoot{
+    display: grid;
+    gap: 0.5rem;
+}

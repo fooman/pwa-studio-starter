@@ -6,7 +6,7 @@ import  { StarRatingComponent } from '../../../../components/StarRatingComponent
 import { resourceUrl } from '@magento/venia-drivers';
 
 import { Price } from '@magento/peregrine';
-import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail'
+import { useProductFullDetail } from '../../../peregrine/talons/ProductFullDetail/useProductFullDetail'
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
@@ -28,7 +28,6 @@ import {
 import {
     ADD_DOWNLOADABLE_MUTATION
 } from './downloadableProduct.gql';
-import RadioTextArea from "./productOptionsComponent/RadioTextArea";
 import { isProductConfigurable, productOptionsType } from '../../../peregrine/util/isProductConfigurable';
 import Options  from '../../components/ProductOptions';
 const PRODUCT_URL_SUFFIX = '.html';
@@ -61,7 +60,7 @@ const ProductFullDetail = props => {
 
     const classes = mergeClasses(defaultClasses, props.classes);
     const productOptions = productOptionsType(product);
-    const options = isProductConfigurable(product) ? (
+    const options = product.options && isProductConfigurable(product) ? (
         <Suspense fallback={fullPageLoadingIndicator}>
             <Options
                 onSelectionChange={handleSelectionChange}
@@ -123,17 +122,19 @@ const ProductFullDetail = props => {
                     <h1 className={classes.productName}>
                         {productDetails.name}
                     </h1>
+                </section>
+                <section className={classes.imageCarousel}>
+                    <Carousel images={mediaGalleryEntries} />
+                </section>
+                <section className={classes.options}>
                     <p className={classes.productPrice}>
                         <Price
                             currencyCode={productDetails.price.currency}
                             value={productDetails.price.value}
                         />
                     </p>
+                    {options}
                 </section>
-                <section className={classes.imageCarousel}>
-                    <Carousel images={mediaGalleryEntries} />
-                </section>
-                <section className={classes.options}>{options}</section>
                 <section className={classes.quantity}>
                     <h2 className={classes.quantityTitle}>Quantity</h2>
                     <Quantity
