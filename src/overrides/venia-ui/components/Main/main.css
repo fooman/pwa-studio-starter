@@ -1,0 +1,18 @@
+.root {
+    background-color: rgb(var(--venia-global-color-background));
+    color: rgb(var(--venia-global-color-text));
+    position: relative;
+    z-index: 1;
+}
+
+.root_masked {
+    composes: root;
+}
+
+.page {
+
+}
+
+.page_masked {
+    composes: page;
+}

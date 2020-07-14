@@ -23,13 +23,16 @@ const AnyQuestion = props => {
                 <p className={classes.questionSection}>{"Any Questions?"}</p>
                 <p className={classes.description}>{"Get in touch and I'll give you my honest opinion about whether I think this extension is right for you"}</p>
                 <div className={classes.allButton}>
-                    <Button className={classes.talkButton}>
+                    <Button
+                        priority="high"
+                    >
                         {"I have a question"}
                     </Button>
                     {props.demoUrl?
                         (
-                            <Button className={classes.demoButton}
-                                    onClick = {clickOnTryDemoHandler}>
+                            <Button
+                                priority="low"
+                                onClick = {clickOnTryDemoHandler}>
                                 {"Try the demo"}
                             </Button>
                         ) :
@@ -49,8 +52,6 @@ AnyQuestion.propTypes = {
         developerName: string,
         questionSection: string,
         description: string,
-        talkButton: string,
-        demoButton: string,
         allButton: string
     })
 };

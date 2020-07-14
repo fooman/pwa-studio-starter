@@ -98,7 +98,7 @@ export const StarRatingComponent = props => {
     }
 
     const renderIcon = (index, value, name, id) => {
-        const {renderStarIcon, renderStarIconHalf} = props;
+        const {renderStarIcon, renderStarIconHalf, size} = props;
 
         if (
             typeof renderStarIconHalf === 'function' &&
@@ -112,7 +112,7 @@ export const StarRatingComponent = props => {
             return renderStarIcon(index, value, name, id);
         }
 
-        return <FontAwesomeIcon icon={faStar} size={'2x'}/>
+        return <FontAwesomeIcon icon={faStar} size={size}/>
     }
 
     return  <div style={{display: 'inline-block', position: 'relative'}} className={classes}>
@@ -124,6 +124,7 @@ export const StarRatingComponent = props => {
 StarRatingComponent.propTypes = {
     name: PropTypes.string,
     value: PropTypes.number,
+    size: PropTypes.string,
     editing: PropTypes.bool,
     starCount: PropTypes.number,
     starColor: PropTypes.string,
@@ -136,6 +137,7 @@ StarRatingComponent.propTypes = {
 
 StarRatingComponent.defaultProps = {
     starCount: 5,
+    size: '2x',
     name: "rate-summary",
     editing: false,
     starColor: '#ffb400',
