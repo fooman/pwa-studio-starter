@@ -1,6 +1,7 @@
 import React from "react";
 import {shape, string} from "prop-types";
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
+import { Link, resourceUrl } from '@magento/venia-drivers';
 import img18 from './Images/master2018.png';
 import img17 from './Images/master2017.png';
 import img16 from './Images/master2016.png';
@@ -30,11 +31,13 @@ const HeroComponent = () => {
                 <p className={classes.separateHeading}>Hi! I'm Kristof <br/>Here at Fooman we create awesome Magento extensions ... </p>
             </div>
             <div className={classes.extensionButton}>
-                <Button
-                    priority='high'
-                >
-                    {'View Magento extensions'}
-                </Button>
+                <Link to = {resourceUrl('/extensions.html')}>
+                    <Button
+                        priority='high'
+                    >
+                        {'View Magento extensions'}
+                    </Button>
+                </Link>
             </div>
         </div>
     );
