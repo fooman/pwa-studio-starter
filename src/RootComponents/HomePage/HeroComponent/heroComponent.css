@@ -1,0 +1,44 @@
+.HeroImg {
+    background-image: url("Images/mainbanner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 35.31%;
+}
+
+.Heading {
+    position: absolute;
+    top: 27%;
+    left: 50%;
+    z-index: 999999;
+    color: rgb(var(--venia-global-color-gray-50));
+    width: 27.875rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.separateHeading {
+    font-size: var(--venia-global-fontSize-1700);
+    line-height: 3.4375rem;
+    font-weight: var(--venia-global-fontWeight-thin);
+}
+.extensionButton {
+    position: absolute;
+    top: 54%;
+    right: 22rem;
+}
+.MagentoImages {
+    display: flex;
+    position: absolute;
+    left: 49%;
+    top: 13%;
+}
+.commonImg {
+    width: 6.875rem;
+    height: 6.875rem;
+}
+.commonImg img{
+    width:100%;
+    height: 100%;
+}
