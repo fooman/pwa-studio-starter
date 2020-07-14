@@ -151,16 +151,21 @@ const ProductFullDetail = props => {
                 {/*        Add to Cart*/}
                 {/*    </Button>*/}
                 {/*</section>*/}
+
                 <div>
                     <div className={classes.reviewDesc}>
-                    <div className={classes.reviewDiv}>
-                        <StarRatingComponent
-                            value={Math.round(product.review_summary.rating_summary/20)}
-                        />
-                        <span className={classes.reviewCounts}>
-                            {`${product.review_summary.review_count} Reviews`}
-                        </span>
-                    </div>
+                        {product.review_summary.review_count? (
+                            <div className={classes.reviewDiv}>
+                                <StarRatingComponent
+                                    value={Math.round(product.review_summary.rating_summary/20)}
+                                />
+                                <span className={classes.reviewCounts}>
+                                    {`${product.review_summary.review_count} Reviews`}
+                                </span>
+                            </div>
+                        ) :
+                            null
+                        }
                     <div className={classes.contentDes}>
                         <h2 className={classes.descriptionTitle}>
                             Product Description
