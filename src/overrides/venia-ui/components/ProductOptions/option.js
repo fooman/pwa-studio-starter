@@ -14,6 +14,7 @@ import defaultClasses from './option.css';
 import { useOption } from '../../../peregrine/talons/ProductOptions/useOption';
 import RadioGroup from "@magento/venia-ui/lib/components/RadioGroup";
 import TextInput from "@magento/venia-ui/lib/components/TextInput";
+import Field from "@magento/venia-ui/lib/components/Field";
 
 const getItemKey = ({ value_index }) => value_index;
 
@@ -64,18 +65,17 @@ const Option = props => {
             <h3 className={classes.title}>
                 <span>{title}</span>
             </h3>
+            <Field id="options">
             <ValueList
-                getItemKey={getItemKey}
-                selectedValue={initialSelection}
                 items={values}
-                disabled={true}
-                field="email"
+                disabled={false}
+                field="options"
                 classes={ {
                     root: classes.radioRoot
                 }}
-                fieldState={ {value: 'value' }}
-                onSelectionChange={handleSelectionChange}
+                onValueChange={handleSelectionChange}
             />
+            </Field>
         </div>
     );
 };
