@@ -21,26 +21,23 @@
         padding: 2.5rem 4rem;
     }
 }
+
 @media screen and (max-width: 767px) {
     .root {
         flex-direction: column;
     }
-
 }
+
 .section {
     margin: 0 1.5rem;
     padding: 2.5rem 4rem !important;
     position: relative;
 }
 
-.section:after {
-    background: rgb(var(--venia-global-color-border));
-    position: absolute;
-    content: '';
+.hr1 {
     width: 50%;
-    height: 0.1rem;
-    top: 0;
-    z-index: 9;
+    margin-left: 70px;
+    border: 1px solid #eaeaea;
 }
 
 .sectionTitle {
@@ -92,6 +89,7 @@
     grid-row: 1 / fold;
     margin: 0 auto;
     max-width: 31.2rem;
+    width: 400px;
 }
 
 @media (min-width: 1024px) {
@@ -188,41 +186,44 @@
 
 .reviewCounts {
     margin-left: 0.6rem;
-    font-size: var(--venia-global-fontSize-600);
     font-weight: var(--venia-global-fontWeight-normal);
     margin-top: 0.3rem;
+    font-size: var(--venia-global-fontSize-400);
 }
 
 .childButton {
     display: inline-block;
     margin-top: 1.2rem;
-    margin-left: 0.6rem;
+    margin-right: 0.6rem;
 }
+
 .contentDes {
-    width: 90%;
+    width: 100%;
     margin-top: 1.5rem;
 }
+
 .productTitle {
     font-weight: bold;
     margin-bottom: 1.2rem;
 }
 
-.reviewDesc {
+.reviewDesc1 {
+    padding: 2.5rem 35px !important;
+    width: 440px;
     composes: section;
     grid-column: 1 / span 1;
     grid-row: fold / span 1;
-    padding: 1.5rem;
 }
 
 @media (min-width: 1024px) {
-    .reviewDesc {
+    .reviewDesc1 {
         align-self: stretch;
         margin: 0;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
 }@media (max-width: 1024px) {
-    .reviewDesc {
+    .reviewDesc1 {
         align-self: stretch;
         margin: 0;
         padding-left: 0.5rem;
@@ -236,5 +237,31 @@
     .root {
         margin: 1.9rem 0;
         padding: 0 1rem;
+    }
+}
+
+.formMainDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.licensePurchaseSidebar {
+    display: flex;
+    width: 250px;
+    height: 400px;
+    background-color: #0b3c5d;
+}
+
+@media only screen and (max-width: 1124px) {
+    .root {
+        display: flex;
+        flex-direction: column;
+        grid-auto-flow: column;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .formMainDiv {
+        flex-direction: column;
     }
 }

@@ -113,87 +113,88 @@ const ProductFullDetail = props => {
             </Helmet>
             {breadcrumbs}
             <Form className={classes.root}>
-                {/*<section className={classes.title}>*/}
-                {/*    <h1 className={classes.productName}>*/}
-                {/*        {productDetails.name}*/}
-                {/*    </h1>*/}
-                {/*    <p className={classes.productPrice}>*/}
-                {/*        <Price*/}
-                {/*            currencyCode={productDetails.price.currency}*/}
-                {/*            value={productDetails.price.value}*/}
-                {/*        />*/}
-                {/*    </p>*/}
-                {/*</section>*/}
-                <section className={classes.imageCarousel}>
-                    <div className={classes.productTitle}>
-                        <h1>
-                            {productDetails.name}
-                        </h1>
-                    </div>
-                    <div>
-                        <Carousel images={mediaGalleryEntries} />
-                    </div>
-                </section>
-                <section className={classes.options}>{options}</section>
-                {/*<section className={classes.quantity}>*/}
-                {/*    <h2 className={classes.quantityTitle}>Quantity</h2>*/}
-                {/*    <Quantity*/}
-                {/*        initialValue={quantity}*/}
-                {/*        onValueChange={handleSetQuantity}*/}
-                {/*    />*/}
-                {/*</section>*/}
-                {/*<section className={classes.cartActions}>*/}
-                {/*    <Button*/}
-                {/*        priority="high"*/}
-                {/*        onClick={handleAddToCart}*/}
-                {/*        disabled={isAddToCartDisabled}*/}
-                {/*    >*/}
-                {/*        Add to Cart*/}
-                {/*    </Button>*/}
-                {/*</section>*/}
-
-                <div>
-                    <div className={classes.reviewDesc}>
+                <div className={classes.formMainDiv}>
+                    {/*<section className={classes.title}>*/}
+                    {/*    <h1 className={classes.productName}>*/}
+                    {/*        {productDetails.name}*/}
+                    {/*    </h1>*/}
+                    {/*    <p className={classes.productPrice}>*/}
+                    {/*        <Price*/}
+                    {/*            currencyCode={productDetails.price.currency}*/}
+                    {/*            value={productDetails.price.value}*/}
+                    {/*        />*/}
+                    {/*    </p>*/}
+                    {/*</section>*/}
+                    <section className={classes.imageCarousel}>
+                        <div className={classes.productTitle}>
+                            <h1>
+                                {productDetails.name}
+                            </h1>
+                        </div>
+                        <div>
+                            <Carousel images={mediaGalleryEntries} />
+                        </div>
+                    </section>
+                    {/*<section className={classes.options}>{options}</section>*/}
+                    {/*<section className={classes.quantity}>*/}
+                    {/*    <h2 className={classes.quantityTitle}>Quantity</h2>*/}
+                    {/*    <Quantity*/}
+                    {/*        initialValue={quantity}*/}
+                    {/*        onValueChange={handleSetQuantity}*/}
+                    {/*    />*/}
+                    {/*</section>*/}
+                    {/*<section className={classes.cartActions}>*/}
+                    {/*    <Button*/}
+                    {/*        priority="high"*/}
+                    {/*        onClick={handleAddToCart}*/}
+                    {/*        disabled={isAddToCartDisabled}*/}
+                    {/*    >*/}
+                    {/*        Add to Cart*/}
+                    {/*    </Button>*/}
+                    {/*</section>*/}
+                    <div className={classes.reviewDesc1}>
                         {product.review_summary.review_count? (
                             <div className={classes.reviewDiv}>
                                 <StarRatingComponent
+                                    size = {'1x'}
                                     value={Math.round(product.review_summary.rating_summary/20)}
                                 />
                                 <span className={classes.reviewCounts}>
                                     {`${product.review_summary.review_count} Reviews`}
                                 </span>
                             </div>
-                        ) :
-                            null
+                            ) :
+                                null
                         }
-                    <div className={classes.contentDes}>
-                        <h2 className={classes.descriptionTitle}>
-                            Product Description
-                        </h2>
-                        <span>
-                            {product.short_description.html}
-                        </span>
-                    </div>
-                    <div>
-                        <div className={classes.childButton}>
-                            <Button
-                                priority="high"
-                            >
-                                {"Try the Demo"}
-                            </Button>
+                        <div className={classes.contentDes}>
+                            <h2 className={classes.descriptionTitle}>
+                                Product Description
+                            </h2>
+                            <span>
+                                {product.short_description.html}
+                            </span>
                         </div>
-                        <div className={classes.childButton}>
-                            <Button
-                                priority="low"
-                            >
-                                {"User Manual"}
-                            </Button>
+                        <div>
+                            <div className={`${classes.childButton}`}>
+                                <Button
+                                    priority="high"
+                                >
+                                    {"Try the Demo"}
+                                </Button>
+                            </div>
+                            <div className={classes.childButton}>
+                                <Button
+                                    priority="low"
+                                >
+                                    {"User Manual"}
+                                </Button>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
-
+                <div className={classes.licensePurchaseSidebar}></div>
             </Form>
+            <hr className={classes.hr1}></hr>
             <section className={classes.description}>
                 <h2 className={classes.descriptionTitle}>
                     Product Description
@@ -228,8 +229,11 @@ ProductFullDetail.propTypes = {
         buttonDiv: string,
         childButton: string,
         productTitle: string,
-        reviewDesc: string,
-        contentDes: string
+        reviewDesc1: string,
+        contentDes: string,
+        hr1:string,
+        formMainDiv: string,
+        licensePurchaseSidebar: string
 
     }),
     product: shape({
