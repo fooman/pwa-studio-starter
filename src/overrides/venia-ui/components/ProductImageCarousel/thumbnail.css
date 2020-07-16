@@ -1,13 +1,12 @@
 
 .root {
-    border: 0;
-    border-radius: 0;
-    height: auto;
-    margin: 10px;
-    width: 100px;
+    margin: 0px 1%;
+    border: 1px solid rgb(var(--venia-global-color-text));
+    border-radius: 50%;
+    height: 0.875rem;
+    width: 0.875rem;
     box-shadow: 0 0 0 1px #ffffff;
     outline: none;
-
 }
 
 .rootSelected {

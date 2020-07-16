@@ -192,7 +192,11 @@ const ProductFullDetail = props => {
                         </div>
                     </div>
                 </div>
-                <div className={classes.licensePurchaseSidebar}></div>
+                <div className={classes.licensePurchaseSidebar}>
+                    <fieldset>
+                        <legend>License Purchase Side Bar (l</legend>
+                    </fieldset>
+                </div>
             </Form>
             <hr className={classes.hr1}></hr>
             <section className={classes.description}>

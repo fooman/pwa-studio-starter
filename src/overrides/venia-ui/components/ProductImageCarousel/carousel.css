@@ -11,10 +11,10 @@
 
 .carouselContainer {
     display: flex;
-    background-color: #fff;
+    background-color: rgb(var(--venia-global-color-gray));
     margin-bottom: 30px;
     width: 400px;
-    max-height: 400px;
+    height: auto;
 }
 
 .imageContainer {
@@ -24,8 +24,6 @@
 
 .currentImage {
     width: 100%;
-    min-height: 400px;
-    max-height: 400px;
 }
 
 .currentImage1 {
@@ -112,8 +110,11 @@
 .mainCarousel {
     position: relative;
 }
-
+.thumbnailWebList { display: flex; }
+.thumbnailMobileList { display: none; }
 @media only screen and (max-width: 1023px) {
+    .thumbnailWebList { display: none; }
+    .thumbnailMobileList { display: flex; }
     .carouselContainer {
         width: 100%;
     }
@@ -125,3 +126,4 @@
         display: block;
     }
 }
+

@@ -112,7 +112,8 @@ import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thu
                                 <Icon src={ChevronRightIcon} size={40} />
                             </button>
                         </div>
-                        <div className={classes.thumbnailList}>{thumbnailSlider}</div>
+                        <div className={`${classes.thumbnailList} ${classes.thumbnailWebList}`}>{thumbnailSlider}</div>
+                        <div className={`${classes.thumbnailList} ${classes.thumbnailMobileList}`}>{thumbnails}</div>
                     </div>
                     <button className={classes.btnPrev}
                         priority="high"
