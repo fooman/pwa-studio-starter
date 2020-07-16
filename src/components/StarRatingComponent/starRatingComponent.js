@@ -141,6 +141,6 @@ StarRatingComponent.defaultProps = {
     name: "rate-summary",
     editing: false,
     starColor: '#ffb400',
-    emptyStarColor: '#333'
+    emptyStarColor: 'rgb(var(--venia-global-color-gray-400))'
 };
 
