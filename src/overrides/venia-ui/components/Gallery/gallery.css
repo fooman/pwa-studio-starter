@@ -7,19 +7,11 @@
     line-height: 1;
 }
 
-.galleryItemsWrap {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 .items {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 0 7.5rem;
 }
 
 @media (max-width: 640px) {

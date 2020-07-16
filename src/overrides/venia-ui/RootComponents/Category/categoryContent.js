@@ -12,7 +12,7 @@ import { resourceUrl } from '@magento/venia-drivers';
 import GET_PRODUCT_FILTERS_BY_CATEGORY from '@magento/venia-ui/lib/queries/getProductFiltersByCategory.graphql';
 import Button from '@magento/venia-ui/lib/components/Button';
 import defaultClasses from './categoryContent.css';
-import Gallery from '../../components/Gallery/gallery';
+import Gallery from '@magento/venia-ui/lib/components/Gallery';
 
 const FilterModal = React.lazy(() => import('@magento/venia-ui/lib/components/FilterModal'));
 
