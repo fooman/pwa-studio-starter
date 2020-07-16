@@ -5,7 +5,7 @@ import Option from './option';
 import { useOptions } from '../../../peregrine/talons/ProductOptions/useOptions';
 
 const Options = props => {
-    const { classes, onSelectionChange, options, selectedValues = [] } = props;
+    const { classes, onSelectionChange, options, selectedValues = [], price } = props;
     const talonProps = useOptions({
         onSelectionChange,
         selectedValues
@@ -17,6 +17,7 @@ const Options = props => {
         <Option
             {...option}
             classes={classes}
+            price={price}
             key={option.option_id}
             onSelectionChange={handleSelectionChange}
             selectedValue={selectedValueMap.get(option.title)}

@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense } from 'react';
+import React, {Fragment, Suspense, useState} from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
@@ -20,7 +20,7 @@ import RichText from '@magento/venia-ui/lib/components/RichText';
 import CREATE_CART_MUTATION from '@magento/venia-ui/lib/queries/createCart.graphql';
 import GET_CART_DETAILS_QUERY from '@magento/venia-ui/lib/queries/getCartDetails.graphql';
 import defaultClasses from '@magento/venia-ui/lib/components/ProductFullDetail/productFullDetail.css';
-import customClasses from '../ProductFullDetail/productOptionsComponent/RadioTextArea.css'
+
 import {
     ADD_CONFIGURABLE_MUTATION,
     ADD_SIMPLE_MUTATION
@@ -29,7 +29,7 @@ import {
     ADD_DOWNLOADABLE_MUTATION
 } from './downloadableProduct.gql';
 import { isProductConfigurable, productOptionsType } from '../../../peregrine/util/isProductConfigurable';
-import Options  from '../../components/ProductOptions';
+import Options  from '../ProductOptions';
 const PRODUCT_URL_SUFFIX = '.html';
 
 const ProductFullDetail = props => {
@@ -65,6 +65,7 @@ const ProductFullDetail = props => {
             <Options
                 onSelectionChange={handleSelectionChange}
                 options={productOptions}
+                price={product.price}
             />
         </Suspense>
     ) : null;
@@ -152,11 +153,6 @@ const ProductFullDetail = props => {
                         Add to Cart
                     </Button>
                 </section>
-                {/*{ product.options.length>0 &&*/}
-                {/*    <div className={customClasses.mainWrapper}>*/}
-                {/*        <RadioTextArea productOptions={product.options}/>*/}
-                {/*    </div>*/}
-                {/*}*/}
                 <section className={classes.description}>
                     <h2 className={classes.descriptionTitle}>
                         Product Description

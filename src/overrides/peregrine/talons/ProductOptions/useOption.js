@@ -17,10 +17,10 @@ export const useOption = props => {
         selectedValue,
         values
     } = props;
-    let valuesMap = ''
+    let valuesMap
     const [selection, setSelection] = useState(null);
     const initialSelection = useMemo(() => {
-        let initialSelection = {};
+        let initialSelection = { value: 0, label: 'None' };
         const searchValue = selection || selectedValue;
         if (searchValue) {
             initialSelection =
@@ -28,18 +28,12 @@ export const useOption = props => {
         }
         return initialSelection;
     }, [selectedValue, selection, values]);
-
     if(values.length) {
         valuesMap = useMemo(() => {
             return new Map(
                 values.map(value => [value.option_type_id, value.title])
             );
         }, [values]);
-    }
-    else {
-        valuesMap = useMemo( () => {
-         return { value: values.title}
-        })
     }
 
     const selectedValueLabel = `Selected ${title}:`;
@@ -49,17 +43,23 @@ export const useOption = props => {
     const handleSelectionChange = useCallback(
         selection => {
             setSelection(valuesMap.get(selection));
-
             if (onSelectionChange) {
                 onSelectionChange(option_id, selection);
             }
         },
         [option_id, onSelectionChange, valuesMap]
     );
+
+    const handleTextChange = useCallback( (selection) => {
+        if (onSelectionChange) {
+            onSelectionChange(option_id, selection);
+        }
+    } ,[option_id, onSelectionChange])
     return {
         handleSelectionChange,
         initialSelection,
         selectedValueLabel,
+        handleTextChange,
         selectedValueDescription
     };
 };

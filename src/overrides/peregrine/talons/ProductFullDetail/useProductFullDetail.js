@@ -95,15 +95,17 @@ const getMediaGalleryEntries = (product, optionCodes, optionSelections) => {
         // variant's image to the media gallery. NOTE: This _can_, and does,
         // include variants such as size. If Magento is configured to display
         // an image for a size attribute, it will render that image.
-        const item = findMatchingVariant({
-            optionCodes,
-            optionSelections,
-            variants
-        });
+        // const item = findMatchingVariant({
+        //     optionCodes,
+        //     optionSelections,
+        //     variants
+        // });
 
-        value = item
-            ? [...item.product.media_gallery_entries, ...media_gallery_entries]
-            : media_gallery_entries;
+        // value = item
+        //     ? [...item.product.media_gallery_entries, ...media_gallery_entries]
+        //     : media_gallery_entries;
+
+        value = media_gallery_entries;
     }
 
     return value;
@@ -149,15 +151,16 @@ const getConfigPrice = (product, optionCodes, optionSelections) => {
     if (!isConfigurable || !optionsSelected) {
         value = product.price.regularPrice.amount;
     } else {
-        const item = findMatchingVariant({
-            optionCodes,
-            optionSelections,
-            variants
-        });
+        // const item = findMatchingVariant({
+        //     optionCodes,
+        //     optionSelections,
+        //     variants
+        // });
 
-        value = item
-            ? item.product.price.regularPrice.amount
-            : product.price.regularPrice.amount;
+        // value = item
+        //     ? item.product.price.regularPrice.amount
+        //     : product.price.regularPrice.amount;
+        value = product.price.regularPrice.amount
     }
 
     return value;
