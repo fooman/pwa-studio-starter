@@ -20,7 +20,7 @@ import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thu
         const { images } = props;
         const thumbnailImgLength = 4;
         const [thumbnailIndex, setThumbnailIndex] = useState(0);
-
+        let thumbnailSlider;
             const talonProps = useProductImageCarousel({
                 images,
                 imageWidth: IMAGE_WIDTH
@@ -58,7 +58,7 @@ import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thu
                         <Image
                             alt={altText}
                             classes={{
-                                image: classes.currentImage,
+                                image: classes.currentImage1,
                                 root: classes.imageContainer
                             }}
                             resource={currentImage.file}
@@ -70,7 +70,7 @@ import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thu
                         <Image
                             alt={altText}
                             classes={{
-                                image: classes.currentImage_placeholder,
+                                image: classes.currentImage,
                                 root: classes.imageContainer
                             }}
                             src={transparentPlaceholder}
@@ -78,17 +78,23 @@ import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thu
                 );
             }
 
-        let thumbnailSlider = thumbnails.slice(thumbnailIndex, thumbnailIndex + thumbnailImgLength);
+            thumbnailSlider = thumbnails.slice(thumbnailIndex, thumbnailIndex + thumbnailImgLength);
+
             const thumbnailPrev = () => {
                 const imgFirstIndex = (thumbnailIndex - 1);
-                imgFirstIndex >= 0 ? setThumbnailIndex(thumbnailIndex - 1) : null;
+                imgFirstIndex >= 0 ? setThumbnailIndex(thumbnailIndex - 1) :
+                    activeItemIndex === thumbnails.length ? setThumbnailIndex(thumbnails.length -4 ) :
+                        null;
+                handlePrevious();
             }
 
             const thumbnailNext = () => {
                 const imgLastIndex = (thumbnailIndex + 1) + thumbnailImgLength;
-                imgLastIndex <= thumbnails.length -1 ? setThumbnailIndex(thumbnailIndex + 1) : null;
+                imgLastIndex <= thumbnails.length ? setThumbnailIndex(thumbnailIndex + 1) :
+                    null;
+                activeItemIndex === thumbnails.length ? setThumbnailIndex(0) : null;
+                handleNext();
             }
-
 
             return (
                 <div className={classes.mainCarousel}>
@@ -101,7 +107,8 @@ import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thu
                                 <Icon src={ChevronLeftIcon} size={40} />
                             </button>
                             {image}
-                            <button className={classes.nextButton} onClick={handleNext}>
+                            <button className={classes.nextButton}
+                                    onClick={handleNext}>
                                 <Icon src={ChevronRightIcon} size={40} />
                             </button>
                         </div>
@@ -126,7 +133,7 @@ import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thu
 ProductImageCarousel.propTypes = {
     classes: shape({
         carouselContainer: string,
-        currentImage: string,
+        currentImage1: string,
         currentImage_placeholder: string,
         imageContainer: string,
         nextButton: string,

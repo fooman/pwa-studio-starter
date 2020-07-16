@@ -28,6 +28,11 @@
     max-height: 400px;
 }
 
+.currentImage1 {
+    width: 100%;
+    height: auto;
+}
+
 .currentImage_placeholder {
     composes: currentImage;
     background-color: rgb(var(--venia-global-color-gray));
@@ -109,6 +114,9 @@
 }
 
 @media only screen and (max-width: 1023px) {
+    .carouselContainer {
+        width: 100%;
+    }
     .btnNext, .btnPrev {
         display: none;
     }

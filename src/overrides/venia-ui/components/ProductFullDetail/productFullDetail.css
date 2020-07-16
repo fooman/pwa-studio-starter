@@ -5,7 +5,7 @@
 
 @media (min-width: 1024px) {
     .root {
-        align-items: start;
+        align-items: center;
         display: flex;
         flex-direction: row;
         grid-auto-flow: row;
@@ -260,8 +260,21 @@
     }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1023px) {
+    .root {
+        align-items: center;
+    }
     .formMainDiv {
         flex-direction: column;
+        width: 100%;
     }
+    .reviewDesc1 {
+        width: 100%;
+    }
+
+    .imageCarousel {
+        max-width: unset;
+        width: 100%;
+    }
+
 }
