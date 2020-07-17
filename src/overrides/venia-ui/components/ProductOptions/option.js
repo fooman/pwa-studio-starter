@@ -40,16 +40,16 @@ const Option = props => {
         handleSelectionChange,
         handleTextChange,
         initialSelection,
-        selectedValueLabel,
-        selectedValueDescription
     } = talonProps;
 
-    if(values.length && values[0].title !== 'None')
-    values.unshift({
-        title: 'None',
-        option_type_id: 0,
-        price: 0
-    })
+    useMemo(() => {
+        values.length && values.unshift({
+            option_type_id: 0,
+            price: 'none',
+            title: 'None'
+        })
+    }, [values])
+
     const ValueList = props.__typename === 'CustomizableFieldOption' ?
         <ProductOptionText
             {...props}

@@ -46,7 +46,6 @@ const ProductFullDetail = props => {
         getCartDetailsQuery: GET_CART_DETAILS_QUERY,
         product
     });
-
     const {
         breadcrumbCategoryId,
         handleAddToCart,

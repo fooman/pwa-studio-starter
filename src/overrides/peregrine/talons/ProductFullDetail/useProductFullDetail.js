@@ -71,7 +71,7 @@ const getIsMissingOptions = (product, optionSelections) => {
     const { configurable_options = {}, options = {} } = product;
     const numProductOptions = configurable_options.length ? configurable_options.length : options.length;
     const numProductSelections = Array.from(optionSelections.values()).filter(
-        value => !!value
+        value => !undefined
     ).length;
 
     return numProductSelections < numProductOptions;
@@ -141,7 +141,6 @@ const getBreadcrumbCategoryId = categories => {
 const getConfigPrice = (product, optionCodes, optionSelections) => {
     let value;
 
-    const { variants } = product;
     const isConfigurable = isProductConfigurable(product);
 
     const optionsSelected = product.options &&
@@ -151,16 +150,11 @@ const getConfigPrice = (product, optionCodes, optionSelections) => {
     if (!isConfigurable || !optionsSelected) {
         value = product.price.regularPrice.amount;
     } else {
-        // const item = findMatchingVariant({
-        //     optionCodes,
-        //     optionSelections,
-        //     variants
-        // });
-
-        // value = item
-        //     ? item.product.price.regularPrice.amount
-        //     : product.price.regularPrice.amount;
-        value = product.price.regularPrice.amount
+        const item = Array.from(optionSelections.values()).filter(value => typeof (value) === 'number')
+        value = Number(item[0])? {
+            ...product.price.regularPrice.amount,
+            value: product.price.regularPrice.amount.value + item[0]
+            }: product.price.regularPrice.amount
     }
 
     return value;
@@ -236,7 +230,12 @@ export const useProductFullDetail = props => {
 
     const handleAddToCart = useCallback(async () => {
         const payload = {
-            item: product,
+            item: { ...product, price: {
+                regular_price:{
+                ...product.price.regularPrice,
+                    amount: productPrice
+                }
+            }} ,
             productType,
             quantity
         };

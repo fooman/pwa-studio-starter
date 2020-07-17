@@ -20,7 +20,7 @@ export const useOption = props => {
     let valuesMap
     const [selection, setSelection] = useState(null);
     const initialSelection = useMemo(() => {
-        let initialSelection = { value: 0, label: 'None' };
+        let initialSelection = 'none'
         const searchValue = selection || selectedValue;
         if (searchValue) {
             initialSelection =
@@ -35,10 +35,6 @@ export const useOption = props => {
             );
         }, [values]);
     }
-
-    const selectedValueLabel = `Selected ${title}:`;
-    const selectedValueDescription =
-        selection || initialSelection.default_label || 'None';
 
     const handleSelectionChange = useCallback(
         selection => {
@@ -58,8 +54,6 @@ export const useOption = props => {
     return {
         handleSelectionChange,
         initialSelection,
-        selectedValueLabel,
         handleTextChange,
-        selectedValueDescription
     };
 };

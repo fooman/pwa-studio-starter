@@ -4,36 +4,33 @@ import RadioGroup from "@magento/venia-ui/lib/components/RadioGroup";
 
 export const ProductOptionsRadio = props => {
     const {
-        radioValue:
-        values,
-        price : {
-            regularPrice: {
-                amount = {}
-            } = {}
-        } = {},
+        radioValue: values,
         initialSelection,
+        price: { regular_price : { amount: {currency = 'USD'} = {} } = {}} = {},
         handleSelectionChange,
         classes
     } = props
-    const priceElement = amount ? (
-        <Price value={amount.value} currencyCode={amount.currency} />
-    ) : (
-        <span>FREE</span>
-    );
+    const priceElement = (option) =>{
+       return option.price !== 'none'
+           ? <span>
+               <span>+</span>
+               <Price value={option.price} currencyCode={currency} />
+           </span>
+           : '';
+}
     const radioComponents = values.map(option => {
+        const price = priceElement(option)
         return {
             label: (
                     <Fragment>
                         <span>{option.title}</span>
-                        <span>+</span>
-                        <span>{priceElement}</span>
+                        {price}
                     </Fragment>
 
             ),
-            value: option.option_type_id
+            value: option.price
         };
     });
-
     return (
         <RadioGroup
             classes={classes}

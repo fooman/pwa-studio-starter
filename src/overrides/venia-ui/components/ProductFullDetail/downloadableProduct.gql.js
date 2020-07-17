@@ -7,11 +7,14 @@ export const ADD_DOWNLOADABLE_MUTATION = gql`
         $cartId: String!
         $quantity: Float!
         $sku: String!
+        $customizableOptions: [CustomizableOptionInput]
     ) {
         addDownloadableProductsToCart(
             input: {
                 cart_id: $cartId
-                cart_items: [{ data: { quantity: $quantity, sku: $sku } }]
+                cart_items: [{ data: { quantity: $quantity, sku: $sku },
+                 customizable_options: $customizableOptions
+                 }]
             }
         ) @connection(key: "addDownloadableProductsToCart") {
             cart {
