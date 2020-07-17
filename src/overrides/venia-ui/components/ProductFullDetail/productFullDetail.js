@@ -5,22 +5,20 @@ import { Helmet } from 'react-helmet-async';
 import  { StarRatingComponent } from '../../../../components/StarRatingComponent/starRatingComponent';
 import { resourceUrl } from '@magento/venia-drivers';
 
-import { Price } from '@magento/peregrine';
 import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail';
 import { isProductConfigurable } from '@magento/peregrine/lib/util/isProductConfigurable';
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
 import Button from '@magento/venia-ui/lib/components/Button';
-import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel';
+import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel/carousel';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
-import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
 import ProductStaticArea from './staticComponent/productDetailStaticArea';
 import AnyQuestion from './staticComponent/anyQuestion';
 import RichText from '@magento/venia-ui/lib/components/RichText';
 import CREATE_CART_MUTATION from '@magento/venia-ui/lib/queries/createCart.graphql';
 import GET_CART_DETAILS_QUERY from '@magento/venia-ui/lib/queries/getCartDetails.graphql';
-import defaultClasses from '@magento/venia-ui/lib/components/ProductFullDetail/productFullDetail.css';
+import defaultClasses from './productFullDetail.css';
 import {
     ADD_CONFIGURABLE_MUTATION,
     ADD_SIMPLE_MUTATION
@@ -106,6 +104,7 @@ const ProductFullDetail = props => {
             "reviewCount": product.review_summary.review_count
         }
     });
+
     return (
         <Fragment>
             <Helmet>
@@ -113,48 +112,99 @@ const ProductFullDetail = props => {
                 <link rel="canonical" href={productUrl}/>
             </Helmet>
             {breadcrumbs}
-            <StarRatingComponent
-                value={Math.round(product.review_summary.rating_summary/20)}
-            />
             <Form className={classes.root}>
-                <section className={classes.title}>
-                    <h1 className={classes.productName}>
-                        {productDetails.name}
-                    </h1>
-                    <p className={classes.productPrice}>
-                        <Price
-                            currencyCode={productDetails.price.currency}
-                            value={productDetails.price.value}
-                        />
-                    </p>
-                </section>
-                <section className={classes.imageCarousel}>
-                    <Carousel images={mediaGalleryEntries} />
-                </section>
-                <section className={classes.options}>{options}</section>
-                <section className={classes.quantity}>
-                    <h2 className={classes.quantityTitle}>Quantity</h2>
-                    <Quantity
-                        initialValue={quantity}
-                        onValueChange={handleSetQuantity}
-                    />
-                </section>
-                <section className={classes.cartActions}>
-                    <Button
-                        priority="high"
-                        onClick={handleAddToCart}
-                        disabled={isAddToCartDisabled}
-                    >
-                        Add to Cart
-                    </Button>
-                </section>
-                <section className={classes.description}>
-                    <h2 className={classes.descriptionTitle}>
-                        Product Description
-                    </h2>
-                    <RichText content={productDetails.description} />
-                </section>
+                <div className={classes.formMainDiv}>
+                    {/*<section className={classes.title}>*/}
+                    {/*    <h1 className={classes.productName}>*/}
+                    {/*        {productDetails.name}*/}
+                    {/*    </h1>*/}
+                    {/*    <p className={classes.productPrice}>*/}
+                    {/*        <Price*/}
+                    {/*            currencyCode={productDetails.price.currency}*/}
+                    {/*            value={productDetails.price.value}*/}
+                    {/*        />*/}
+                    {/*    </p>*/}
+                    {/*</section>*/}
+                    <section className={classes.imageCarousel}>
+                        <div className={classes.productTitle}>
+                            <h1>
+                                {productDetails.name}
+                            </h1>
+                        </div>
+                        <div>
+                            <Carousel images={mediaGalleryEntries} />
+                        </div>
+                    </section>
+                    {/*<section className={classes.options}>{options}</section>*/}
+                    {/*<section className={classes.quantity}>*/}
+                    {/*    <h2 className={classes.quantityTitle}>Quantity</h2>*/}
+                    {/*    <Quantity*/}
+                    {/*        initialValue={quantity}*/}
+                    {/*        onValueChange={handleSetQuantity}*/}
+                    {/*    />*/}
+                    {/*</section>*/}
+                    {/*<section className={classes.cartActions}>*/}
+                    {/*    <Button*/}
+                    {/*        priority="high"*/}
+                    {/*        onClick={handleAddToCart}*/}
+                    {/*        disabled={isAddToCartDisabled}*/}
+                    {/*    >*/}
+                    {/*        Add to Cart*/}
+                    {/*    </Button>*/}
+                    {/*</section>*/}
+                    <div className={classes.reviewDesc1}>
+                        {product.review_summary.review_count? (
+                            <div className={classes.reviewDiv}>
+                                <StarRatingComponent
+                                    size = {'1x'}
+                                    value={Math.round(product.review_summary.rating_summary/20)}
+                                />
+                                <span className={classes.reviewCounts}>
+                                    {`${product.review_summary.review_count} Reviews`}
+                                </span>
+                            </div>
+                            ) :
+                                null
+                        }
+                        <div className={classes.contentDes}>
+                            <h2 className={classes.descriptionTitle}>
+                                Product Description
+                            </h2>
+                            <span>
+                                {product.short_description.html}
+                            </span>
+                        </div>
+                        <div>
+                            <div className={`${classes.childButton}`}>
+                                <Button
+                                    priority="high"
+                                >
+                                    {"Try the Demo"}
+                                </Button>
+                            </div>
+                            <div className={classes.childButton}>
+                                <Button
+                                    priority="low"
+                                >
+                                    {"User Manual"}
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={classes.licensePurchaseSidebar}>
+                    <fieldset>
+                        <legend>License Purchase Side Bar (l</legend>
+                    </fieldset>
+                </div>
             </Form>
+            <hr className={classes.hr1}></hr>
+            <section className={classes.description}>
+                <h2 className={classes.descriptionTitle}>
+                    Product Description
+                </h2>
+                <RichText content={productDetails.description} />
+            </section>
             <ProductStaticArea/>
             <AnyQuestion
                 demoUrl = {demoUrl}
@@ -177,7 +227,18 @@ ProductFullDetail.propTypes = {
         quantity: string,
         quantityTitle: string,
         root: string,
-        title: string
+        title: string,
+        reviewDiv: string,
+        reviewCounts: string,
+        buttonDiv: string,
+        childButton: string,
+        productTitle: string,
+        reviewDesc1: string,
+        contentDes: string,
+        hr1:string,
+        formMainDiv: string,
+        licensePurchaseSidebar: string
+
     }),
     product: shape({
         __typename: string,

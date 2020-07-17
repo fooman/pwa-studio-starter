@@ -15,29 +15,35 @@ const HeroComponent = () => {
 
     return (
         <div>
-            <div className={classes.HeroImg}></div>
-            <div className={classes.MagentoImages}>
-                <div className={classes.commonImg}>
-                    <img src={img18}/>
+            <div className={classes.HeroImg}>
+                <div className={classes.textContent}>
+                <div className={classes.MagentoImages}>
+                    <div className={classes.commonImg}>
+                        <img src={img18}/>
+                    </div>
+                    <div className={classes.commonImg}>
+                        <img src={img17}/>
+                    </div>
+                    <div className={classes.commonImg}>
+                        <img src={img16}/>
+                    </div>
                 </div>
-                <div className={classes.commonImg}>
-                    <img src={img17}/>
+                <div className={classes.Heading}>
+                    <p className={classes.separateHeading}>
+                        Hi! I'm Kristof
+                   <br/>
+                   Here at Fooman we create awesome Magento extensions ... </p>
                 </div>
-                <div className={classes.commonImg}>
-                    <img src={img16}/>
+                <div className={classes.extensionButton}>
+                    <Link to = {resourceUrl('/extensions.html')}>
+                        <Button
+                            priority='high'
+                        >
+                            {'View Magento extensions'}
+                        </Button>
+                    </Link>
                 </div>
-            </div>
-            <div className={classes.Heading}>
-                <p className={classes.separateHeading}>Hi! I'm Kristof <br/>Here at Fooman we create awesome Magento extensions ... </p>
-            </div>
-            <div className={classes.extensionButton}>
-                <Link to = {resourceUrl('/extensions.html')}>
-                    <Button
-                        priority='high'
-                    >
-                        {'View Magento extensions'}
-                    </Button>
-                </Link>
+                </div>
             </div>
         </div>
     );
