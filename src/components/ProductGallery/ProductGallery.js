@@ -1,0 +1,73 @@
+import React from "react";
+
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
+import {useProductImageCarousel} from "@magento/peregrine/lib/talons/ProductImageCarousel/useProductImageCarousel";
+import {useResourceImage} from "@magento/peregrine/lib/talons/Image/useResourceImage";
+import defaultClasses from './ProductGallery.css';
+import {generateSrcset, generateUrl} from "@magento/venia-ui/lib/util/images";
+import { mergeClasses } from '@magento/venia-ui/lib/classify';
+import { shape, string } from "prop-types";
+
+
+const IMAGE_WIDTH = 640;
+
+const type =  'image-product';
+
+
+const ProductGallery = props => {
+
+    const classes = mergeClasses(defaultClasses);
+
+    const state = {
+        showBullets: true,
+        showPlayButton: false
+    };
+
+    const { images } = props;
+
+    const talonProps = useProductImageCarousel({
+        images,
+        imageWidth: IMAGE_WIDTH
+    });
+
+    const {
+        sortedImages
+    } = talonProps;
+
+    let imagesContent = [];
+    let singleImg = {};
+
+    const ImageData = () => {
+        sortedImages.forEach((item) => {
+            const talonPropsForResource = useResourceImage({
+                generateSrcset,
+                generateUrl,
+                resource: item.file,
+                type
+            });
+            const { src } = talonPropsForResource;
+            singleImg = {};
+            singleImg["original"] = src;
+            singleImg["thumbnail"] = src;
+            imagesContent.push(singleImg);
+        })
+    };
+
+    ImageData();
+
+    return <ImageGallery
+        items={imagesContent}
+        showBullets={state.showBullets}
+        showPlayButton={state.showPlayButton}
+        additionalClass = {classes.appImageGallery}
+    />
+}
+
+ProductGallery.propTypes = {
+    classes: shape({
+        appImageGallery: string
+    })
+};
+
+export default ProductGallery;

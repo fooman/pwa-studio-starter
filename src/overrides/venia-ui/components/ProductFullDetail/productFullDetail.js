@@ -15,6 +15,7 @@ import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel/caro
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import ProductStaticArea from './staticComponent/productDetailStaticArea';
 import AnyQuestion from './staticComponent/anyQuestion';
+import ProductGallery from '../../../../components/ProductGallery/ProductGallery';
 import RichText from '@magento/venia-ui/lib/components/RichText';
 import CREATE_CART_MUTATION from '@magento/venia-ui/lib/queries/createCart.graphql';
 import GET_CART_DETAILS_QUERY from '@magento/venia-ui/lib/queries/getCartDetails.graphql';
@@ -132,7 +133,8 @@ const ProductFullDetail = props => {
                             </h1>
                         </div>
                         <div>
-                            <Carousel images={mediaGalleryEntries} />
+                            <ProductGallery images={mediaGalleryEntries} />
+                            {/*<Carousel images={mediaGalleryEntries} />*/}
                         </div>
                     </section>
                     {/*<section className={classes.options}>{options}</section>*/}
