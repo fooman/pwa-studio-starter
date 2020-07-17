@@ -11,14 +11,13 @@
     grid-template-rows: auto;
 }
 
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
     .root {
-        grid-template-columns: repeat(2, 20em);;
+        grid-template-columns: repeat(2, 20em);
     }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 640px) {
     .root {
         grid-template-columns: 1fr;
     }

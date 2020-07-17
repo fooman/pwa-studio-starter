@@ -53,12 +53,14 @@ const Option = props => {
     const ValueList = props.__typename === 'CustomizableFieldOption' ?
         <ProductOptionText
             {...props}
+            classes={defaultClasses}
             handleTextChange={handleTextChange}/>
          :
             <Form>
             <ProductOptionsRadio
                 {...props}
                 classes={ {
+                    ...defaultClasses,
                     root: defaultClasses.radioRoot
                 }}
                 initialSelection={initialSelection}
@@ -68,9 +70,6 @@ const Option = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
     return (
         <div className={classes.root}>
-            <h3 className={classes.title}>
-                <span>{title}</span>
-            </h3>
             {ValueList}
         </div>
     );

@@ -1,7 +1,5 @@
 .root {
-    border-bottom: 1px solid rgb(var(--venia-global-color-border));
-    margin: 0 1.5rem;
-    padding: 1.75rem 0;
+    margin-bottom: 1.2rem;
 }
 
 .title {
@@ -25,4 +23,13 @@
 .radioRoot{
     display: grid;
     gap: 0.5rem;
+}
+.price {
+    margin-left: 0.5rem;
+    color: rgb(var(--venia-global-color-gray-600))
+}
+.textLabel {
+    font-size: var(--venia-global-fontSize-400);
+    margin: 1.2rem 0;
+    font-weight: var( --venia-global-fontWeight-normal);
 }

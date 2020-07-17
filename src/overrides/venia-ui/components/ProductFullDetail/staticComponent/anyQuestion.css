@@ -1,5 +1,6 @@
 .backgroundImage {
-    background-image: url("./anyQuestion_bg_v2.jpg");
+    background-color: rgb(var(--fooman-global-color-light-gray));
+    background-image: unset;
     background-size: cover;
     background-position: center center;
     text-align: left;
@@ -42,14 +43,13 @@ p {
     display: flex;
 }
 
-@media screen and (max-width: 767px) {
+@media only screen and (min-width: 769px) {
     .backgroundImage {
-        background-image: unset;
-        background-color: rgb(var(--fooman-global-color-light-gray));
+        background-image: url("./anyQuestion_bg_v2.jpg");
     }
 }
 
-@media screen and (max-width: 400px) {
+@media (max-width: 480px) {
     .allButton {
         flex-direction: column;
     }

@@ -1,0 +1,45 @@
+
+.root {
+    margin: 0px 1%;
+    border: 1px solid rgb(var(--venia-global-color-text));
+    border-radius: 50%;
+    height: 0.875rem;
+    width: 0.875rem;
+    box-shadow: 0 0 0 1px #ffffff;
+    outline: none;
+}
+
+.rootSelected {
+    composes: root;
+    background-color: rgb(var(--venia-global-color-text));
+}
+
+.image {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .root {
+        border: 0;
+        border-radius: 0;
+        height: auto;
+        margin: 10px;
+        width: 100px;
+    }
+    .rootSelected {
+        composes: root;
+        box-shadow: 0 0 10px 0 rgb(var(--venia-global-color-teal));
+        background-color: rgb(var(--venia-global-color-text));
+    }
+
+    .image {
+        background-color: rgb(var(--venia-global-color-gray));
+        border-radius: 2px;
+        box-shadow: 0 0 0 1px white;
+        display: block;
+        object-fit: contain;
+        object-position: center;
+        height: 75px;
+        width: 75px;
+    }
+}

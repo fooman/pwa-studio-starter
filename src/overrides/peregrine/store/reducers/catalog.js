@@ -19,7 +19,7 @@ const initialState = {
     currentPage: 1,
     pageSize: 6,
     prevPageTotal: null,
-    rootCategoryId: 3
+    rootCategoryId: 4
 };
 
 const reducerMap = {

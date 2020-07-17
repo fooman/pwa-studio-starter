@@ -23,16 +23,14 @@ AUTHED_USER
 list of the breakpoints to be used
 
 ```
-@media screen and (min-width: 769px) and (max-width: 1024px)
-
-@media screen and (max-width: 768px)
-
-@media only screen and (max-width: 767px)
-
-@media only screen and (max-width: 599px)
-
-@media screen and (max-width: 400px)
-
-@media screen and (max-width: 767px)
+@media (max-width: 1280px) {
+@media (max-width: 480px) {
+@media (max-width: 640px) {
+@media (max-width: 960px) {
+@media (min-width: 1024px) {
+@media (min-width: 641px) {
+@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
 ```
 

@@ -12,7 +12,7 @@ export const ProductOptionsRadio = props => {
     } = props
     const priceElement = (option) =>{
        return option.price !== 'none'
-           ? <span>
+           ? <span className={classes.price}>
                <span>+</span>
                <Price value={option.price} currencyCode={currency} />
            </span>
