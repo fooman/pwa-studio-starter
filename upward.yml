@@ -27,6 +27,9 @@ SubfolderResponse:
     - matches: request.url.pathname
       pattern: '^/(releases|manuals)(/|$)'
       use: subfolderProxyResponse
+    - matches: fileExtension
+      pattern: '(jpg|gif)'
+      use: veniaStatic
   default: veniaResponse #veniaResponse
 
 notFoundResponse:
