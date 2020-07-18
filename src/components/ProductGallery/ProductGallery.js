@@ -21,7 +21,8 @@ const ProductGallery = props => {
 
     const state = {
         showBullets: true,
-        showPlayButton: false
+        showPlayButton: true,
+        showGalleryPlayButton: true
     };
 
     const { images } = props;
@@ -48,8 +49,12 @@ const ProductGallery = props => {
             });
             const { src } = talonPropsForResource;
             singleImg = {};
+
             singleImg["original"] = src;
             singleImg["thumbnail"] = src;
+            singleImg["originalClass"] = classes.originalClass;
+            singleImg["thumbnailClass"] = classes.thumbnailClass;
+
             imagesContent.push(singleImg);
         })
     };
@@ -59,14 +64,15 @@ const ProductGallery = props => {
     return <ImageGallery
         items={imagesContent}
         showBullets={state.showBullets}
-        showPlayButton={state.showPlayButton}
         additionalClass = {classes.appImageGallery}
     />
 }
 
 ProductGallery.propTypes = {
     classes: shape({
-        appImageGallery: string
+        appImageGallery: string,
+        originalClass: string,
+        thumbnailClass: string
     })
 };
 
