@@ -174,7 +174,7 @@ const ProductFullDetail = props => {
                                 Product Description
                             </h2>
                             <span>
-                                {product.short_description.html}
+                               <RichText content={product.short_description.html}/>
                             </span>
                         </div>
                         <div>

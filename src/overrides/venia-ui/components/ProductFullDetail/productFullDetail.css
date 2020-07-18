@@ -3,31 +3,6 @@
     flex-direction: row;
 }
 
-@media (min-width: 1024px) {
-    .root {
-        align-items: flex-start;
-        display: flex;
-        flex-direction: row;
-        grid-auto-flow: row;
-        grid-template-areas:
-            'images title'
-            'images actions'
-            'images options'
-            'images quantity'
-            'images cart'
-            'images .';
-        grid-template-columns: 1.5625fr 1fr;
-        grid-template-rows: repeat(5, min-content) 1fr [fold];
-        padding: 2.5rem 4rem;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .root {
-        flex-direction: column;
-    }
-}
-
 .section {
     margin-top: 1.5rem;
     position: relative;
@@ -60,22 +35,9 @@
     padding: 1rem 1.5rem;
 }
 
-@media (min-width: 1024px) {
-    .title {
-        padding: 1.5rem;
-    }
-}
-
 .productName {
     font-size: 1rem;
     font-weight: 600;
-}
-
-@media (min-width: 1024px) {
-    .productName {
-        font-size: 1.3125rem;
-        font-weight: 400;
-    }
 }
 
 .productPrice {
@@ -94,14 +56,6 @@
     width: 25rem;
 }
 
-@media (min-width: 1024px) {
-    .imageCarousel {
-        margin: 0;
-        max-width: 31.2rem;
-        padding: 1.5rem 0;
-    }
-}
-
 .options {
     grid-area: options;
 }
@@ -109,6 +63,7 @@
 .quantity {
     composes: section;
     grid-area: quantity;
+    display: none;
 }
 
 .quantityTitle {
@@ -124,25 +79,10 @@
     font-size: var(--venia-global-fontSize-200);
 }
 
-@media (min-width: 1024px) {
-    .cartActions {
-        border-bottom-width: 0;
-    }
-}
-
 .description {
     composes: section;
     grid-column: 1 / span 1;
     grid-row: fold / span 1;
-}
-
-@media (min-width: 1024px) {
-    .description {
-        align-self: stretch;
-        margin: 0;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
 }
 
 .descriptionTitle {
@@ -154,16 +94,6 @@
     composes: section;
     grid-column: 2 / span 1;
     grid-row: fold / span 1;
-}
-
-@media (min-width: 1024px) {
-    .details {
-        align-self: stretch;
-        border-top-width: 1px;
-        margin: 0;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
 }
 
 .detailsTitle {
@@ -215,19 +145,91 @@
     padding: 2.5rem 2.2rem !important;
     width: 27.5rem;
     composes: section;
-    min-width: 30rem;
     grid-column: 1 / span 1;
     grid-row: fold / span 1;
 }
 
+.formMainDiv {
+    display: flex;
+    flex-direction: row;
+    min-width: fit-content;
+}
+
+.licensePurchaseSidebar {
+    display: flex;
+    width: 15.6rem;
+    height: 25rem;
+}
+
+
 @media (min-width: 1024px) {
+    .root {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        grid-auto-flow: row;
+        grid-template-areas:
+            'images title'
+            'images actions'
+            'images options'
+            'images quantity'
+            'images cart'
+            'images .';
+        grid-template-columns: 1.5625fr 1fr;
+        grid-template-rows: repeat(5, min-content) 1fr [fold];
+        padding: 2.5rem 4rem;
+    }
     .reviewDesc {
         align-self: stretch;
         margin: 0;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
-}@media (max-width: 1024px) {
+    .formMainDiv {
+        width: 100%;
+    }
+    .title {
+        padding: 1.5rem;
+    }
+    .cartActions {
+        border-bottom-width: 0;
+    }
+    .imageCarousel {
+        margin: 0;
+        max-width: 31.2rem;
+        padding: 1.5rem 0;
+        width: fit-content;
+    }
+    .productName {
+        font-size: 1.3125rem;
+        font-weight: 400;
+    }
+    .details {
+        align-self: stretch;
+        border-top-width: 1px;
+        margin: 0;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .description {
+        align-self: stretch;
+        margin: 0;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .root {
+        flex-direction: column;
+    }
+    .formMainDiv{
+        display: flex;
+    }
+}
+
+@media (max-width: 1024px) {
     .reviewDesc {
         align-self: stretch;
         margin: 0;
@@ -243,19 +245,6 @@
         margin: 1.9rem 0;
         padding: 0 1rem;
     }
-}
-
-.formMainDiv {
-    display: flex;
-    flex-direction: row;
-    width: 65%;
-    max-width: fit-content;
-}
-
-.licensePurchaseSidebar {
-    display: flex;
-    width: 15.6rem;
-    height: 25rem;
 }
 
 @media only screen and (max-width: 1124px) {
