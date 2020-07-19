@@ -66,7 +66,7 @@ export const useFlow = props => {
     const handleCloseReceipt = useCallback(() => {
         setStep('cart');
     }, [setStep]);
-    console.log(cartState);
+
     return {
         cartState,
         checkoutDisabled: checkoutState.isSubmitting || cartState.isEmpty,
