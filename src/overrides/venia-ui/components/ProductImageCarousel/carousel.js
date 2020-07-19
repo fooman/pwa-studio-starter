@@ -95,7 +95,7 @@ import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thu
                 activeItemIndex === thumbnails.length ? setThumbnailIndex(0) : null;
                 handleNext();
             }
-
+            const chevronClasses = { root: classes.chevron };
             return (
                 <div className={classes.mainCarousel}>
                     <div className={classes.root}>
@@ -104,12 +104,20 @@ import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thu
                                 className={classes.previousButton}
                                 onClick={handlePrevious}
                             >
-                                <Icon src={ChevronLeftIcon} size={40} />
+                                <Icon
+                                    classes={chevronClasses}
+                                    src={ChevronLeftIcon}
+                                    size={40}
+                                />
                             </button>
                             {image}
                             <button className={classes.nextButton}
                                     onClick={handleNext}>
-                                <Icon src={ChevronRightIcon} size={40} />
+                                <Icon
+                                    classes={chevronClasses}
+                                    src={ChevronRightIcon}
+                                    size={40}
+                                />
                             </button>
                         </div>
                         <div className={`${classes.thumbnailList} ${classes.thumbnailWebList}`}>{thumbnailSlider}</div>
