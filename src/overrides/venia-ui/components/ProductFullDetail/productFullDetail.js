@@ -12,7 +12,7 @@ import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
 import Button from '@magento/venia-ui/lib/components/Button';
 import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel/carousel';
-import FormError from '../FormError';
+import FormError from '@magento/venia-ui/lib/components/FormError';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
 import ProductStaticArea from '../../../../components/ProductFullDetail/Static/productDetailStaticArea';
@@ -29,7 +29,7 @@ import {
     ADD_DOWNLOADABLE_MUTATION
 } from '../../../../components/ProductFullDetail/downloadableProduct.gql';
 import { isProductConfigurable, productOptionsType } from '../../../peregrine/util/isProductConfigurable';
-import Options  from '../ProductOptions';
+import Options  from '@magento/venia-ui/lib/components/ProductOptions';
 const PRODUCT_URL_SUFFIX = '.html';
 
 // Correlate a GQL error message to a field. GQL could return a longer error
