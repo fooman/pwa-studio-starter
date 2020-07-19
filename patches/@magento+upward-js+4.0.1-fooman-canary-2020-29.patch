@@ -1,8 +1,8 @@
 diff --git a/node_modules/@magento/upward-js/lib/resolvers/ProxyResolver.js b/node_modules/@magento/upward-js/lib/resolvers/ProxyResolver.js
-index e74a219..bd5f4fb 100644
+index 1b534de..5251362 100644
 --- a/node_modules/@magento/upward-js/lib/resolvers/ProxyResolver.js
 +++ b/node_modules/@magento/upward-js/lib/resolvers/ProxyResolver.js
-@@ -25,9 +25,12 @@ class ProxyResolver extends AbstractResolver {
+@@ -26,9 +26,12 @@ class ProxyResolver extends AbstractResolver {
              this.visitor.upward(definition, 'target'),
              definition.ignoreSSLErrors
                  ? this.visitor.upward(definition, 'ignoreSSLErrors')
@@ -17,13 +17,13 @@ index e74a219..bd5f4fb 100644
  
          debug('resolved target %o', targetUrl);
          if (typeof targetUrl !== 'string' && !targetUrl.href) {
-@@ -46,7 +49,8 @@ class ProxyResolver extends AbstractResolver {
-                 secure: !ignoreSSLErrors,
+@@ -48,7 +51,8 @@ class ProxyResolver extends AbstractResolver {
+                 cookieDomainRewrite: '',
                  changeOrigin: true,
-                 autoRewrite: true,
--                cookieDomainRewrite: ''
-+                cookieDomainRewrite: '',
+                 secure: !ignoreSSLErrors,
+-                target: targetUrl.toString()
++                target: targetUrl.toString(),
 +                pathRewrite: pathRewrite ? JSON.parse(pathRewrite) : null
              };
+ 
              if (target.username) {
-                 opts.auth = [target.username, target.password].join(':');
