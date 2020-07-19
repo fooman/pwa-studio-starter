@@ -20,6 +20,8 @@ confirm_all_overrides_valid () {
         if [ ! -f $fileToCheck ]; then
             echo "$file is not an override"
             exit 1
+        else
+            git --no-pager diff --no-index --patch $fileToCheck $file  > $file-our-orig-changes.patch
         fi
     done
     find ./src/overrides/peregrine -not -name "*.patch" -type f -print0 | while read -d $'\0' file
@@ -28,6 +30,8 @@ confirm_all_overrides_valid () {
         if [ ! -f $fileToCheck ]; then
             echo "$file is not an override"
             exit 1
+        else
+            git --no-pager diff --no-index --patch $fileToCheck $file  > $file-our-orig-changes.patch
         fi
 done
 }
