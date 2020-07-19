@@ -20,11 +20,21 @@ const deriveOptionCodesFromProduct = product => {
 
     // Initialize optionCodes based on the options of the product.
     const initialOptionCodes = new Map();
-    for (const {
-        attribute_id,
-        attribute_code
-    } of product.configurable_options) {
-        initialOptionCodes.set(attribute_id, attribute_code);
+    if(product.options){
+        for (const {
+            option_id,
+            title
+        } of product.options) {
+            initialOptionCodes.set(option_id, title);
+        }
+    }
+    else{
+        for (const {
+            attribute_id,
+            attribute_code
+        } of product.configurable_options) {
+            initialOptionCodes.set(attribute_id, attribute_code);
+        }
     }
 
     return initialOptionCodes;
@@ -35,10 +45,16 @@ const deriveOptionSelectionsFromProduct = product => {
     if (!isProductConfigurable(product)) {
         return INITIAL_OPTION_SELECTIONS;
     }
-
     const initialOptionSelections = new Map();
-    for (const { attribute_id } of product.configurable_options) {
-        initialOptionSelections.set(attribute_id, undefined);
+    if(product.options){
+        for (const { option_id } of product.options) {
+            initialOptionSelections.set(option_id, undefined);
+        }
+    }
+    else {
+        for (const {attribute_id} of product.configurable_options) {
+            initialOptionSelections.set(attribute_id, undefined);
+        }
     }
 
     return initialOptionSelections;
@@ -52,10 +68,10 @@ const getIsMissingOptions = (product, optionSelections) => {
 
     // Configurable products are missing options if we have fewer
     // option selections than the product has options.
-    const { configurable_options } = product;
-    const numProductOptions = configurable_options.length;
+    const { configurable_options = {}, options = {} } = product;
+    const numProductOptions = configurable_options.length ? configurable_options.length : options.length;
     const numProductSelections = Array.from(optionSelections.values()).filter(
-        value => !!value
+        value => !undefined
     ).length;
 
     return numProductSelections < numProductOptions;
@@ -68,7 +84,7 @@ const getMediaGalleryEntries = (product, optionCodes, optionSelections) => {
     const isConfigurable = isProductConfigurable(product);
 
     // Selections are initialized to "code => undefined". Once we select a value, like color, the selections change. This filters out unselected options.
-    const optionsSelected =
+    const optionsSelected = product.options &&
         Array.from(optionSelections.values()).filter(value => !!value).length >
         0;
 
@@ -79,15 +95,17 @@ const getMediaGalleryEntries = (product, optionCodes, optionSelections) => {
         // variant's image to the media gallery. NOTE: This _can_, and does,
         // include variants such as size. If Magento is configured to display
         // an image for a size attribute, it will render that image.
-        const item = findMatchingVariant({
-            optionCodes,
-            optionSelections,
-            variants
-        });
+        // const item = findMatchingVariant({
+        //     optionCodes,
+        //     optionSelections,
+        //     variants
+        // });
 
-        value = item
-            ? [...item.product.media_gallery_entries, ...media_gallery_entries]
-            : media_gallery_entries;
+        // value = item
+        //     ? [...item.product.media_gallery_entries, ...media_gallery_entries]
+        //     : media_gallery_entries;
+
+        value = media_gallery_entries;
     }
 
     return value;
@@ -123,25 +141,20 @@ const getBreadcrumbCategoryId = categories => {
 const getConfigPrice = (product, optionCodes, optionSelections) => {
     let value;
 
-    const { variants } = product;
     const isConfigurable = isProductConfigurable(product);
 
-    const optionsSelected =
+    const optionsSelected = product.options &&
         Array.from(optionSelections.values()).filter(value => !!value).length >
         0;
 
     if (!isConfigurable || !optionsSelected) {
         value = product.price.regularPrice.amount;
     } else {
-        const item = findMatchingVariant({
-            optionCodes,
-            optionSelections,
-            variants
-        });
-
-        value = item
-            ? item.product.price.regularPrice.amount
-            : product.price.regularPrice.amount;
+        const item = Array.from(optionSelections.values()).filter(value => typeof (value) === 'number')
+        value = Number(item[0])? {
+            ...product.price.regularPrice.amount,
+            value: product.price.regularPrice.amount.value + item[0]
+            }: product.price.regularPrice.amount
     }
 
     return value;
@@ -191,7 +204,7 @@ export const useProductFullDetail = props => {
         [product.categories]
     );
 
-    const derivedOptionSelections = useMemo(
+    const derivedOptionSelections = product.options && useMemo(
         () => deriveOptionSelectionsFromProduct(product),
         [product]
     );
@@ -200,13 +213,13 @@ export const useProductFullDetail = props => {
         derivedOptionSelections
     );
 
-    const derivedOptionCodes = useMemo(
+    const derivedOptionCodes = product.options && useMemo(
         () => deriveOptionCodesFromProduct(product),
         [product]
     );
     const [optionCodes] = useState(derivedOptionCodes);
 
-    const isMissingOptions = useMemo(
+    const isMissingOptions = product.options && useMemo(
         () => getIsMissingOptions(product, optionSelections),
         [product, optionSelections]
     );
@@ -217,7 +230,12 @@ export const useProductFullDetail = props => {
 
     const handleAddToCart = useCallback(async () => {
         const payload = {
-            item: product,
+            item: { ...product, price: {
+                regular_price:{
+                ...product.price.regularPrice,
+                    amount: productPrice
+                }
+            }} ,
             productType,
             quantity
         };

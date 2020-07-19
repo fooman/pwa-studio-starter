@@ -3,40 +3,14 @@
     flex-direction: row;
 }
 
-@media (min-width: 1024px) {
-    .root {
-        align-items: flex-start;
-        display: flex;
-        flex-direction: row;
-        grid-auto-flow: row;
-        grid-template-areas:
-            'images title'
-            'images actions'
-            'images options'
-            'images quantity'
-            'images cart'
-            'images .';
-        grid-template-columns: 1.5625fr 1fr;
-        grid-template-rows: repeat(5, min-content) 1fr [fold];
-        padding: 2.5rem 4rem;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .root {
-        flex-direction: column;
-    }
-}
-
 .section {
-    margin: 0 1.5rem;
-    padding: 2.5rem 4rem !important;
+    margin-top: 1.5rem;
     position: relative;
 }
 
 .hr1 {
     width: 50%;
-    margin-left: 70px;
+    margin-left: 29.3rem;
     border: 1px solid #eaeaea;
 }
 
@@ -61,26 +35,16 @@
     padding: 1rem 1.5rem;
 }
 
-@media (min-width: 1024px) {
-    .title {
-        padding: 1.5rem;
-    }
-}
-
 .productName {
     font-size: 1rem;
     font-weight: 600;
 }
 
-@media (min-width: 1024px) {
-    .productName {
-        font-size: 1.3125rem;
-        font-weight: 400;
-    }
-}
-
 .productPrice {
     display: block;
+    margin-top: 1.5rem;
+    position: relative;
+    font-size:var(--venia-global-fontSize-700);
 }
 
 .imageCarousel {
@@ -89,15 +53,7 @@
     grid-row: 1 / fold;
     margin: 0 auto;
     max-width: 31.2rem;
-    width: 400px;
-}
-
-@media (min-width: 1024px) {
-    .imageCarousel {
-        margin: 0;
-        max-width: 31.2rem;
-        padding: 1.5rem 0;
-    }
+    width: 25rem;
 }
 
 .options {
@@ -107,6 +63,7 @@
 .quantity {
     composes: section;
     grid-area: quantity;
+    display: none;
 }
 
 .quantityTitle {
@@ -119,27 +76,13 @@
     display: flex;
     grid-area: cart;
     justify-content: center;
-}
-
-@media (min-width: 1024px) {
-    .cartActions {
-        border-bottom-width: 0;
-    }
+    font-size: var(--venia-global-fontSize-200);
 }
 
 .description {
     composes: section;
     grid-column: 1 / span 1;
     grid-row: fold / span 1;
-}
-
-@media (min-width: 1024px) {
-    .description {
-        align-self: stretch;
-        margin: 0;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
 }
 
 .descriptionTitle {
@@ -151,16 +94,6 @@
     composes: section;
     grid-column: 2 / span 1;
     grid-row: fold / span 1;
-}
-
-@media (min-width: 1024px) {
-    .details {
-        align-self: stretch;
-        border-top-width: 1px;
-        margin: 0;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
 }
 
 .detailsTitle {
@@ -194,6 +127,7 @@
 .childButton {
     display: inline-block;
     margin-top: 1.2rem;
+    font-size: var(--venia-global-fontSize-75);
     margin-right: 0.6rem;
 }
 
@@ -207,23 +141,96 @@
     margin-bottom: 1.2rem;
 }
 
-.reviewDesc1 {
-    padding: 2.5rem 35px !important;
-    width: 440px;
+.reviewDesc {
+    padding: 2.5rem 2.2rem !important;
+    width: 27.5rem;
     composes: section;
     grid-column: 1 / span 1;
     grid-row: fold / span 1;
 }
 
+.formMainDiv {
+    display: flex;
+    flex-direction: row;
+    min-width: fit-content;
+}
+
+.licensePurchaseSidebar {
+    display: flex;
+    width: 15.6rem;
+    height: 25rem;
+}
+
+
 @media (min-width: 1024px) {
-    .reviewDesc1 {
+    .root {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        grid-auto-flow: row;
+        grid-template-areas:
+            'images title'
+            'images actions'
+            'images options'
+            'images quantity'
+            'images cart'
+            'images .';
+        grid-template-columns: 1.5625fr 1fr;
+        grid-template-rows: repeat(5, min-content) 1fr [fold];
+        padding: 2.5rem 4rem;
+    }
+    .reviewDesc {
         align-self: stretch;
         margin: 0;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
-}@media (max-width: 1024px) {
-    .reviewDesc1 {
+    .formMainDiv {
+        width: 100%;
+    }
+    .title {
+        padding: 1.5rem;
+    }
+    .cartActions {
+        border-bottom-width: 0;
+    }
+    .imageCarousel {
+        margin: 0;
+        max-width: 31.2rem;
+        padding: 1.5rem 0;
+        width: fit-content;
+    }
+    .productName {
+        font-size: 1.3125rem;
+        font-weight: 400;
+    }
+    .details {
+        align-self: stretch;
+        border-top-width: 1px;
+        margin: 0;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .description {
+        align-self: stretch;
+        margin: 0;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .root {
+        flex-direction: column;
+    }
+    .formMainDiv{
+        display: flex;
+    }
+}
+
+@media (max-width: 1024px) {
+    .reviewDesc {
         align-self: stretch;
         margin: 0;
         padding-left: 0.5rem;
@@ -240,23 +247,21 @@
     }
 }
 
-.formMainDiv {
-    display: flex;
-    flex-direction: row;
-}
-
-.licensePurchaseSidebar {
-    display: flex;
-    width: 250px;
-    height: 400px;
-}
-
 @media only screen and (max-width: 1124px) {
     .root {
         display: flex;
         flex-direction: column;
         grid-auto-flow: column;
     }
+    .cartActions {
+        composes: section;
+        align-items: center;
+        display: flex;
+        grid-area: cart;
+        justify-content: center;
+        font-size: var(--venia-global-fontSize-300);
+    }
+
 }
 
 @media only screen and (max-width: 1023px) {
@@ -265,7 +270,7 @@
         flex-direction: column;
         width: 100%;
     }
-    .reviewDesc1 {
+    .reviewDesc {
         width: 100%;
     }
 
@@ -278,18 +283,18 @@
 
 @media only screen and (max-width: 600px) {
     .childButton {
-        font-size: 14px;
+        font-size: var(--venia-global-fontSize-100);
     }
 }
 
 @media only screen and (max-width: 425px) {
     .childButton {
-        font-size: 11px;
+        font-size: var(--venia-global-fontSize-50);
     }
 }
 
 @media only screen and (max-width: 320px) {
     .childButton {
-        font-size: 7px;
+        font-size: var(--venia-global-fontSize-25);
     }
 }

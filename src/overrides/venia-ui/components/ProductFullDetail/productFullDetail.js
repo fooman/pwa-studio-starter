@@ -5,16 +5,18 @@ import { Helmet } from 'react-helmet-async';
 import  { StarRatingComponent } from '../../../../components/StarRatingComponent/starRatingComponent';
 import { resourceUrl } from '@magento/venia-drivers';
 
-import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail';
-import { isProductConfigurable } from '@magento/peregrine/lib/util/isProductConfigurable';
+import { Price } from '@magento/peregrine';
+import { useProductFullDetail } from '../../../peregrine/talons/ProductFullDetail/useProductFullDetail'
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
 import Button from '@magento/venia-ui/lib/components/Button';
 import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel/carousel';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
+import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
 import ProductStaticArea from './staticComponent/productDetailStaticArea';
 import AnyQuestion from './staticComponent/anyQuestion';
+import ProductGallery from '../../../../components/ProductGallery/ProductGallery';
 import RichText from '@magento/venia-ui/lib/components/RichText';
 import CREATE_CART_MUTATION from '@magento/venia-ui/lib/queries/createCart.graphql';
 import GET_CART_DETAILS_QUERY from '@magento/venia-ui/lib/queries/getCartDetails.graphql';
@@ -26,12 +28,13 @@ import {
 import {
     ADD_DOWNLOADABLE_MUTATION
 } from './downloadableProduct.gql';
-
-const Options = React.lazy(() => import('@magento/venia-ui/lib/components/ProductOptions'));
+import { isProductConfigurable, productOptionsType } from '../../../peregrine/util/isProductConfigurable';
+import Options  from '../ProductOptions';
 const PRODUCT_URL_SUFFIX = '.html';
 
 const ProductFullDetail = props => {
     const { product } = props;
+
 
     const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
 
@@ -56,12 +59,13 @@ const ProductFullDetail = props => {
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses, props.classes);
-
-    const options = isProductConfigurable(product) ? (
+    const productOptions = productOptionsType(product);
+    const options = product.options && isProductConfigurable(product) ? (
         <Suspense fallback={fullPageLoadingIndicator}>
             <Options
                 onSelectionChange={handleSelectionChange}
-                options={product.configurable_options}
+                options={productOptions}
+                price={product.price}
             />
         </Suspense>
     ) : null;
@@ -132,7 +136,8 @@ const ProductFullDetail = props => {
                             </h1>
                         </div>
                         <div>
-                            <Carousel images={mediaGalleryEntries} />
+                            <ProductGallery images={mediaGalleryEntries} />
+                            {/*<Carousel images={mediaGalleryEntries} />*/}
                         </div>
                     </section>
                     {/*<section className={classes.options}>{options}</section>*/}
@@ -152,7 +157,7 @@ const ProductFullDetail = props => {
                     {/*        Add to Cart*/}
                     {/*    </Button>*/}
                     {/*</section>*/}
-                    <div className={classes.reviewDesc1}>
+                    <div className={classes.reviewDesc}>
                         {product.review_summary.review_count? (
                             <div className={classes.reviewDiv}>
                                 <StarRatingComponent
@@ -171,7 +176,7 @@ const ProductFullDetail = props => {
                                 Product Description
                             </h2>
                             <span>
-                                {product.short_description.html}
+                               <RichText content={product.short_description.html}/>
                             </span>
                         </div>
                         <div>
@@ -189,6 +194,32 @@ const ProductFullDetail = props => {
                                     {"User Manual"}
                                 </Button>
                             </div>
+                        </div>
+                        <section className={classes.options}>
+                            <p className={classes.productPrice}>
+                                <Price
+                                    currencyCode={productDetails.price.currency}
+                                    value={productDetails.price.value}
+                                />
+                            </p>
+                            {options}
+                        </section>
+                        <div className={classes.quantity}>
+                            <h2 className={classes.quantityTitle}>Quantity</h2>
+                            <Quantity
+                                initialValue={quantity}
+                                onValueChange={handleSetQuantity}
+                            />
+                        </div>
+
+                        <div className={classes.cartActions}>
+                            <Button
+                                priority="high"
+                                onClick={handleAddToCart}
+                                disabled={isAddToCartDisabled}
+                            >
+                                Add to Cart
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -233,7 +264,7 @@ ProductFullDetail.propTypes = {
         buttonDiv: string,
         childButton: string,
         productTitle: string,
-        reviewDesc1: string,
+        reviewDesc: string,
         contentDes: string,
         hr1:string,
         formMainDiv: string,
