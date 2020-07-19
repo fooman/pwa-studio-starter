@@ -48,12 +48,14 @@
     .extensionButton {
         width: max-content;
         font-size: var(--venia-global-fontSize-100);
+        position: absolute;
+        bottom: -21%;
+        left: 3%;
     }
 
     .separateHeading {
-        line-height: 2.2rem;
-        font-weight: var(--venia-global-fontWeight-thin);
-        font-size: var(--venia-global-fontSize-700);
+        line-height: 1.5rem;
+        font-size: var(--venia-global-fontSize-600);
     }
     .textContent {
         position: absolute;
@@ -63,6 +65,63 @@
         line-height: 1.1em;
         width: 38%;
         height: auto;
+    }
+
+    .commonImg {
+        display: inline-block;
+        width: 30%;
+        max-width: 9.0rem;
+    }
+    .commonImg img{
+        width:89%;
+        height: 89%;
+    }
+    .Heading {
+        width: 230px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    .extensionButton {
+        width: max-content;
+        font-size: var(--venia-global-fontSize-100);
+        position: absolute;
+        bottom: -20%;
+        left: 3%;
+    }
+
+    .separateHeading {
+        font-size: var(--venia-global-fontSize-1200);
+        line-height: 2.2rem;
+    }
+
+    .commonImg img{
+        width: 90%;
+        height: 90%;
+    }
+
+    .Heading {
+        width: 380px;
+    }
+
+}
+
+@media screen and (min-width: 1441px) {
+    .extensionButton {
+        width: max-content;
+        font-size: var(--venia-global-fontSize-100);
+        position: absolute;
+        bottom: -15%;
+        left: 1%;
+    }
+
+    .separateHeading {
+        font-size: var(--venia-global-fontSize-1300);
+        line-height: 2.2rem;
+    }
+
+    .Heading {
+        width: 430px;
     }
 }
 

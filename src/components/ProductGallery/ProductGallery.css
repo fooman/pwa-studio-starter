@@ -1,0 +1,14 @@
+.appImageGallery {
+    width: 100%;
+}
+
+.originalClass {
+    background: var(--venia-global-color-gray-900);
+    min-height: 25rem;
+    height: auto;
+}
+
+.thumbnailClass {
+    background: var(--venia-global-color-gray-900);
+    min-height: 6.25rem;
+}
