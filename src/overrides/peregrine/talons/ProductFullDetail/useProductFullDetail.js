@@ -161,6 +161,7 @@ const getConfigPrice = (product, optionCodes, optionSelections) => {
 const SUPPORTED_PRODUCT_TYPES = ['SimpleProduct', 'ConfigurableProduct', 'DownloadableProduct'];
 
 /**
+ * @param {GraphQLQuery} props.addDownloadableProductToCartMutation - downloadable product mutation
  * @param {GraphQLQuery} props.addConfigurableProductToCartMutation - configurable product mutation
  * @param {GraphQLQuery} props.addSimpleProductToCartMutation - configurable product mutation
  * @param {Object} props.product - the product, see RootComponents/Product
@@ -193,9 +194,10 @@ export const useProductFullDetail = props => {
 
     const [{ cartId }] = useCartContext();
 
-    const [addDownloadableProductToCart] = useMutation(
-        addDownloadableProductToCartMutation
-    );
+    const [
+        addDownloadableProductToCart,
+        { error: errorAddingDownloadableProduct, loading: isAddDownloadableLoading }
+    ] = useMutation(addDownloadableProductToCartMutation);
 
     const [
         addConfigurableProductToCart,
@@ -283,7 +285,13 @@ export const useProductFullDetail = props => {
                     return;
                 }
             } else if (productType === 'DownloadableProduct') {
-                addItemMutation = addDownloadableProductToCart;
+                try {
+                    await addDownloadableProductToCart({
+                        variables
+                    });
+                } catch {
+                    return;
+                }
             }
         } else {
             console.error('Unsupported product type. Cannot add to cart.');
