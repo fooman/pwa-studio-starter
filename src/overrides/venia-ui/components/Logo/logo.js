@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Image from '@magento/venia-ui/lib/components/Image';
-import logo from './FoomonLogo_Landscape.svg';
+import logo from '../../../../components/Logo/FoomonLogo_Landscape.svg';
 
 /**
  * A component that renders a logo in the header.

@@ -14,8 +14,8 @@ import Button from '@magento/venia-ui/lib/components/Button';
 import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel/carousel';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
-import ProductStaticArea from './staticComponent/productDetailStaticArea';
-import AnyQuestion from './staticComponent/anyQuestion';
+import ProductStaticArea from '../../../../components/ProductFullDetail/Static/productDetailStaticArea';
+import AnyQuestion from '../../../../components/ProductFullDetail/Static/anyQuestion';
 import ProductGallery from '../../../../components/ProductGallery/ProductGallery';
 import RichText from '@magento/venia-ui/lib/components/RichText';
 import CREATE_CART_MUTATION from '@magento/venia-ui/lib/queries/createCart.graphql';
@@ -27,7 +27,7 @@ import {
 } from '@magento/venia-ui/lib/components/ProductFullDetail/productFullDetail.gql';
 import {
     ADD_DOWNLOADABLE_MUTATION
-} from './downloadableProduct.gql';
+} from '../../../../components/ProductFullDetail/downloadableProduct.gql';
 import { isProductConfigurable, productOptionsType } from '../../../peregrine/util/isProductConfigurable';
 import Options  from '../ProductOptions';
 const PRODUCT_URL_SUFFIX = '.html';

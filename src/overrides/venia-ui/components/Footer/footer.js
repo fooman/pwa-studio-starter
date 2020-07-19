@@ -10,8 +10,8 @@ import { Link, resourceUrl } from '@magento/venia-drivers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import Image from "@magento/venia-ui/lib/components/Image";
-import logo from "../Logo/FoomonLogo_Landscape_White.svg";
-import extdn from "./ExtDN_Logo.svg";
+import logo from "../../../../components/Logo/FoomonLogo_Landscape_White.svg";
+import extdn from "../../../../components/Footer/ExtDN_Logo.svg";
 
 const Footer = props => {
     const classes = mergeClasses(defaultClasses, props.classes);

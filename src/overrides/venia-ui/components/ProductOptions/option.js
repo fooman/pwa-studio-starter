@@ -13,8 +13,8 @@ import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import { Form } from 'informed';
 import defaultClasses from './option.css';
 import { useOption } from '../../../peregrine/talons/ProductOptions/useOption';
-import { ProductOptionsRadio } from "./productOptionsRadio";
-import {ProductOptionText} from "./productOptionText";
+import { ProductOptionsRadio } from "../../../../components/ProductOptions/productOptionsRadio";
+import { ProductOptionText } from "../../../../components/ProductOptions/productOptionText";
 
 
 // TODO: get an explicit field from the API
