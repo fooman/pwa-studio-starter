@@ -1,0 +1,17 @@
+.trustedComponent {
+    padding: 77px 0;;
+    width: 100%;
+    position: relative;
+    background-color: #474747;
+}
+.commonComponent {
+    padding: 60px 0;
+    width: 100%;
+    position: relative;
+}
+.teamComponent {
+    padding: 60px 0;
+    width: 100%;
+    position: relative;
+    background-color: #193c5a;
+}
