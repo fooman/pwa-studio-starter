@@ -1,0 +1,9 @@
+.readyToSaveRoot {
+    background-image: url("image.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 35.31%;
+}
