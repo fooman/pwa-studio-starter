@@ -161,13 +161,6 @@
     min-width: fit-content;
 }
 
-.licensePurchaseSidebar {
-    display: flex;
-    width: 15.6rem;
-    height: 25rem;
-}
-
-
 @media (min-width: 1024px) {
     .root {
         align-items: flex-start;

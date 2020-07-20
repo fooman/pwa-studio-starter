@@ -18,10 +18,8 @@ query productSearch(
             small_image {
                 url
             }
-            review_summary {
-                rating_summary
-                review_count
-            }
+            rating_summary
+            review_count
             short_description {
                 html
             }

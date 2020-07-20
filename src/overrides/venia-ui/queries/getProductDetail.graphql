@@ -25,10 +25,8 @@ query productDetail($urlKey: String, $onServer: Boolean!) {
                 disabled
                 file
             }
-            review_summary {
-                review_count
-                rating_summary
-            }
+            review_count
+            rating_summary
             reviews {
                 nickname
                 detail

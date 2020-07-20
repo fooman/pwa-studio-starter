@@ -39,10 +39,8 @@ query category(
             meta_keyword @include(if: $onServer)
             meta_description
             name
-            review_summary {
-             rating_summary
-             review_count
-            }
+            rating_summary
+            review_count
             short_description {
                 html
             }

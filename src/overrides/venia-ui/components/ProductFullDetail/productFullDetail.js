@@ -116,9 +116,9 @@ const ProductFullDetail = props => {
         "sku": productDetails.sku,
         "aggregateRating": {
             "@type":"AggregateRating",
-            "ratingValue": product.review_summary.rating_summary,
+            "ratingValue": product.rating_summary,
             "bestRating":"100",
-            "reviewCount": product.review_summary.review_count
+            "reviewCount": product.review_count
         }
     });
 
@@ -202,14 +202,14 @@ const ProductFullDetail = props => {
                     {/*    </Button>*/}
                     {/*</section>*/}
                     <div className={classes.reviewDesc}>
-                        {product.review_summary.review_count? (
+                        {product.review_count? (
                             <div className={classes.reviewDiv}>
                                 <StarRatingComponent
                                     size = {'1x'}
-                                    value={Math.round(product.review_summary.rating_summary/20)}
+                                    value={Math.round(product.rating_summary/20)}
                                 />
                                 <span className={classes.reviewCounts}>
-                                    {`${product.review_summary.review_count} Reviews`}
+                                    {`${product.review_count} Reviews`}
                                 </span>
                             </div>
                             ) :
@@ -272,11 +272,6 @@ const ProductFullDetail = props => {
                             </Button>
                         </div>
                     </div>
-                </div>
-                <div className={classes.licensePurchaseSidebar}>
-                    <fieldset>
-                        <legend>License Purchase Side Bar (l</legend>
-                    </fieldset>
                 </div>
             </Form>
             <hr className={classes.hr1}></hr>

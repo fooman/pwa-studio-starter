@@ -47,19 +47,19 @@ const GalleryItem = props => {
     if (!item) {
         return <ItemPlaceholder classes={classes} />;
     }
-    const { name, price, small_image, url_key, review_summary, short_description } = item;
+    const { name, price, small_image, url_key, review_count, rating_summary, short_description } = item;
 
     const productLink = resourceUrl(`/${url_key}${productUrlSuffix}`);
-    const reviewSummary = review_summary.review_count > 0 ? (
+    const reviewSummary = review_count > 0 ? (
                 <div className={classes.starRating}>
                     <div className={classes.ratReview}>
                         <StarRatingComponent
-                            value={Math.round(review_summary.rating_summary/20)}
+                            value={Math.round(rating_summary/20)}
                             size={'1x'}
                         />
                     </div>
                     <div className={classes.ratReview}>
-                        <text className={classes.reviews}>{`${review_summary.review_count} Reviews` }</text>
+                        <text className={classes.reviews}>{`${review_count} Reviews` }</text>
                     </div>
                 </div>
             ) :

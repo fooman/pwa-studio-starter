@@ -103,7 +103,7 @@ const CategoryContent = props => {
                     <div className={classes.categoryTitle}>{categoryName}</div>
                 </h1>
                 <div className={classes.linkTitle}>
-                    <a className={classes.magentoLinks} active={true} href={resourceUrl('/extensions.html')}>{'Magento 1'}</a>
+                    <a className={classes.magentoLinks} href={resourceUrl('/extensions.html')}>{'Magento 1'}</a>
                     <a className={classes.magentoLinks} href={resourceUrl('/extensions/magento2.html')}>{'Magento 2'}</a>
                     {/*<select title="Select Your Currency" className={classes.selectCurrency}>*/}
                     {/*    {currencyOptions()}*/}
