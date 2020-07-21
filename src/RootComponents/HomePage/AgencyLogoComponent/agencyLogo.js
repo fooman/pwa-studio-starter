@@ -8,14 +8,15 @@ const AgencyLogo = () => {
     const classes = mergeClasses(defaultClasses);
 
     return (
-        <div className={classes.agencyLogoRoot}>
+        <div className={classes.root}>
+
         </div>
     );
 }
 
 AgencyLogo.propTypes = {
     classes: shape({
-        agencyLogoRoot: string
+        root: string
     })
 };
 
