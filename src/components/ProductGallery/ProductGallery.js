@@ -9,7 +9,7 @@ import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import { shape, string } from "prop-types";
 
 
-const IMAGE_WIDTH = 640;
+const IMAGE_WIDTH = 1200;
 
 const type =  'image-product';
 
@@ -41,8 +41,8 @@ const ProductGallery = props => {
     const ImageData = () => {
         sortedImages.forEach((item) => {
             const src= generateUrl(item.file, type)(
-                500,
-                500
+                IMAGE_WIDTH,
+                IMAGE_WIDTH
             );
             singleImg = {};
 
