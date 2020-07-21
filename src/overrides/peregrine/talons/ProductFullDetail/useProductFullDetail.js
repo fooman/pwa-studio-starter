@@ -286,8 +286,9 @@ export const useProductFullDetail = props => {
                 }
             } else if (productType === 'DownloadableProduct') {
                 try {
+                    let customizableOptions =  payload.options
                     await addDownloadableProductToCart({
-                        variables
+                        ...variables,customizableOptions
                     });
                 } catch {
                     return;

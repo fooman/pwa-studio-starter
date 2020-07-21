@@ -28,7 +28,7 @@ export const ProductOptionsRadio = props => {
                     </Fragment>
 
             ),
-            value: option.price
+            value: option.price === 'none' ? option.price : option.option_type_id.toString()
         };
     });
     return (
