@@ -15,18 +15,18 @@ const Experts = () => {
     return (
         <div className={classes.root}>
             <div className = {classes.heading}>
-                <h2>{"... rated by industry experts..."}</h2>
+                <h2 className = {classes.h2}>{"... rated by industry experts..."}</h2>
                 <div className = {classes.line}>
                     <div className={classes.unit}>
                         <div className={classes.portRait}>
-                            <img src = {davidBestImg} />
+                            <img  src = {davidBestImg} />
                         </div>
                         <div className = {classes.rText}>
                             <p className = {classes.clientName}>{"David Wain-Heapy"}</p>
                             <p className = {classes.clientOrg}>{"Best Response Media"}</p>
                             <p className = {classes.clientQuote}>{"We have had great experiences with Fooman extensions... The code is really well written"}</p>
                             <p>
-                                <img src = {bestResponseImg} />
+                                <img className = {classes.strikeImg} src = {bestResponseImg} />
                             </p>
                         </div>
                     </div>
@@ -39,7 +39,7 @@ const Experts = () => {
                             <p className = {classes.clientOrg}>{"Meanbee"}</p>
                             <p className = {classes.clientQuote}>{"Fooman is a Magento name you can trust"}</p>
                             <p>
-                                <img src = {meanBee} />
+                                <img className = {classes.strikeImg} src = {meanBee} />
                             </p>
                         </div>
                     </div>
@@ -53,13 +53,15 @@ Experts.propTypes = {
     classes: shape({
         root: string,
         heading: string,
+        h2: string,
         line: string,
         unit: string,
         portRait: string,
         rText: string,
         clientName: string,
         clientOrg: string,
-        clientQuote: string
+        clientQuote: string,
+        strikeImg: string
     })
 };
 

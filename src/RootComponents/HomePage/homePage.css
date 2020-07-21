@@ -9,9 +9,16 @@
     width: 100%;
     position: relative;
 }
-.teamComponent {
-    padding: 60px 0;
+
+.expertsComponent {
+    padding: 100px 0;
     width: 100%;
     position: relative;
-    background-color: #193c5a;
+}
+
+.teamComponent {
+    padding: 100px 0;
+    width: 100%;
+    position: relative;
+    background: #0b3c5d;
 }

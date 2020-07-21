@@ -16,7 +16,7 @@ const BackedByEveryThing = () => {
     return (
         <div className = {classes.root}>
             <div className = {classes.heading}>
-                <h2>{"...and backed by everything you need in an extension"}</h2>
+                <h2 className = {classes.h2}>{"...and backed by everything you need in an extension"}</h2>
                 <div className = {classes.line}>
                     <div className = {classes.singleCol}>
                         <div className = {classes.media}>

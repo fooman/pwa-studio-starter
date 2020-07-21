@@ -21,7 +21,7 @@ const HomePage = () => {
             <div className={classes.trustedComponent}>
              <TrustedBy/>
             </div>
-            <div className={classes.commonComponent}>
+            <div className={classes.expertsComponent}>
              <Experts/>
             </div>
             <div>
@@ -30,7 +30,7 @@ const HomePage = () => {
             <div className={classes.teamComponent}>
             <Team/>
             </div>
-            <div className={classes.commonComponent}>
+            <div className={classes.backedBy}>
             <BackedByEveryThing/>
             </div>
             <div>
@@ -44,7 +44,9 @@ HomePage.propTypes = {
     classes: shape({
         trustedComponent: string,
         commonComponent: string,
-        teamComponent: string
+        teamComponent: string,
+        backedBy: string,
+        expertsComponent: string
     })
 };
 

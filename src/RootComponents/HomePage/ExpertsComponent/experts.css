@@ -5,37 +5,66 @@
     background-position: center;
     position: relative;
     width: 100%;
-    height: 455px;
+    height: 28.438rem;
 }
 
-.heading {
-
+.h2 {
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 5rem;
+    line-height: 1.1em;
+    text-align: center;
+    font-weight: var(--venia-global-fontWeight-thin);
+    color: rgb(var(--fooman-global-color-heading-gray));
 }
 
 .line {
-
+    width: auto;
+    max-width: 75rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
 }
 
 .unit {
-
-}
-
-.portRait {
-
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.25rem;
+    width: 50%;
+    padding-left: 0.625rem;
 }
 
 .rText {
-
+    vertical-align: top;
+    max-width: 19.375rem;
+    text-align: left;
+    padding-left: 2.188rem;
 }
 
 .clientName {
-
+    font-size: var(--venia-global-fontSize-700);
+    color: rgb(var(--fooman-global-color-font-gray));
 }
 
 .clientOrg {
-
+    font-size: 14px;
+    line-height: 2.5em;
+    color: rgb(var(--fooman-global-color-font-gray));
+    font-weight: 400;
+    opacity: 0.8;
 }
 
 .clientQuote {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-style: normal;
+    color: rgb(var(--fooman-global-color-font-gray));
+    font-weight: var(--venia-global-fontWeight-thin);
+    line-height: 1.3em;
+    background-image: url("./images/quote-bg.png");
+}
 
+.strikeImg {
+    max-width: 7.188rem;
+    height: 2.813rem;
+    display: block;
 }

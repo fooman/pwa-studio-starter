@@ -16,17 +16,17 @@ const Team = () => {
     return (
         <div className = {classes.root}>
             <div className = {classes.heading}>
-                <h2>{"...developed & supported by our team of Magento enthusiasts..."}</h2>
+                <h2 className = {classes.h2}>{"...developed & supported by our team of Magento enthusiasts..."}</h2>
                 <div className = {classes.line}>
                     <div className = {classes.singleCol}>
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img src = {kristofRingleff} />
+                                    <img className = {classes.memberImg} src = {kristofRingleff} />
                                 </div>
-                                <img src = {developerPlus} />
+                                <img className = {classes.devPlusImg} src = {developerPlus} />
                             </div>
-                            <div style={{clear: "both"}}></div>
+                            <div style={{clear: "both"}}>&nbsp;</div>
                             <div>
                                 <span className={classes.memberName}>{"Kristof"}</span>
                                 <br/>
@@ -39,11 +39,11 @@ const Team = () => {
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img src = {Dusan} />
+                                    <img className = {classes.memberImg} src = {Dusan} />
                                 </div>
-                                <img src = {developerPlus} />
+                                <img className = {classes.devPlusImg} src = {developerPlus} />
                             </div>
-                            <div style={{clear: "both"}}></div>
+                            <div style={{clear: "both"}}>&nbsp;</div>
                             <div>
                                 <span className={classes.memberName}>{"Dusan"}</span>
                                 <br/>
@@ -56,10 +56,10 @@ const Team = () => {
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img src = {Michael} />
+                                    <img className = {classes.memberImg} src = {Michael} />
                                 </div>
                             </div>
-                            <div style={{clear: "both"}}></div>
+                            <div style={{clear: "both"}}>&nbsp;</div>
                             <div>
                                 <span className={classes.memberName}>{"Michael"}</span>
                                 <br/>
@@ -72,10 +72,10 @@ const Team = () => {
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img src = {Martha} />
+                                    <img className = {classes.memberImg} src = {Martha} />
                                 </div>
                             </div>
-                            <div style={{clear: "both"}}></div>
+                            <div style={{clear: "both"}}>&nbsp;</div>
                             <div>
                                 <span className={classes.memberName}>{"Martha"}</span>
                                 <br/>
@@ -88,10 +88,10 @@ const Team = () => {
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img src = {Irfan} />
+                                    <img className = {classes.memberImg} src = {Irfan} />
                                 </div>
                             </div>
-                            <div style={{clear: "both"}}></div>
+                            <div style={{clear: "both"}}>&nbsp;</div>
                             <div>
                                 <span className={classes.memberName}>{"Irfan"}</span>
                                 <br/>
@@ -108,10 +108,13 @@ const Team = () => {
 Team.propTypes = {
     classes: shape({
         root: string,
+        h2: string,
         heading: string,
         line: string,
         singleCol: string,
         mediaMember: string,
+        memberImg: string,
+        devPlusImg: string,
         frameWrapper: string,
         roundFrame: string,
         memberName: string,
