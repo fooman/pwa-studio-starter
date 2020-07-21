@@ -2,10 +2,9 @@ import React from "react";
 
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import {useProductImageCarousel} from "@magento/peregrine/lib/talons/ProductImageCarousel/useProductImageCarousel";
-import {useResourceImage} from "@magento/peregrine/lib/talons/Image/useResourceImage";
+import { useProductImageCarousel } from "@magento/peregrine/lib/talons/ProductImageCarousel/useProductImageCarousel";
 import defaultClasses from './ProductGallery.css';
-import {generateSrcset, generateUrl} from "@magento/venia-ui/lib/util/images";
+import { generateUrl } from "@magento/venia-ui/lib/util/images";
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import { shape, string } from "prop-types";
 
@@ -41,13 +40,10 @@ const ProductGallery = props => {
 
     const ImageData = () => {
         sortedImages.forEach((item) => {
-            const talonPropsForResource = useResourceImage({
-                generateSrcset,
-                generateUrl,
-                resource: item.file,
-                type
-            });
-            const { src } = talonPropsForResource;
+            const src= generateUrl(item.file, type)(
+                500,
+                500
+            );
             singleImg = {};
 
             singleImg["original"] = src;

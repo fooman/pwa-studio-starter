@@ -22,6 +22,9 @@ SubfolderResponse:
   resolver: conditional
   when:
     - matches: request.url.pathname
+      pattern: '^/(graphql|rest|media)(/|$)'
+      use: veniaProxy
+    - matches: request.url.pathname
       pattern: '^/404.html$'
       use: notFoundResponse
     - matches: request.url.pathname
@@ -128,7 +131,7 @@ staticFromRoot:
           filename: request.url.pathname
         template:
           resolver: inline
-          inline: './assets/{{ filename }}'
+          inline: './assets{{ filename }}'
 
 foomanStaticIncludes:
   resolver: directory
