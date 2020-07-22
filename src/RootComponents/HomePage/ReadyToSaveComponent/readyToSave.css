@@ -1,20 +1,19 @@
 .root {
     background: url('./images/readybg.png') #c2cbd0 bottom center no-repeat;
-    padding: 120px 0;
-    font-family: "robotothin";
-    text-align: center;
+    padding: 7.5rem 0;
     font-family: "robotothin";
     text-align: center;
 }
 
 .h2 {
-    font-size: 56px;
-    margin-bottom: 40px;
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 2.5rem;
     line-height: 1.1em;
     display: inline-block;
-    max-width: 770px;
-    font-family: "robotothin";
+    max-width: 48.125rem;
     font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(var(--fooman-global-color-heading-gray));
 }
 
 .line {
@@ -24,6 +23,17 @@
 }
 
 .unit {
-    padding-left: 20px;
-    padding-right: 10px;
+    padding-left: 1.25rem;
+    padding-right: 0.625rem;
+}
+
+@media only screen and (max-width: 478px) {
+    .h2 {
+        font-size: 3.4rem;
+    }
+}
+@media only screen and (max-width: 535px) {
+    .line {
+        flex-direction: column;
+    }
 }

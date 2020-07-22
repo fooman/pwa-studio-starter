@@ -24,7 +24,7 @@ const HomePage = () => {
             <div className={classes.expertsComponent}>
              <Experts/>
             </div>
-            <div>
+            <div className = {classes.agencyComponent}>
              <AgencyLogo/>
             </div>
             <div className={classes.teamComponent}>
@@ -44,6 +44,7 @@ HomePage.propTypes = {
     classes: shape({
         trustedComponent: string,
         commonComponent: string,
+        agencyComponent: string,
         teamComponent: string,
         backedBy: string,
         expertsComponent: string

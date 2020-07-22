@@ -1,5 +1,6 @@
 import React from "react";
 import {shape, string} from "prop-types";
+import { Link, resourceUrl } from '@magento/venia-drivers';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import defaultClasses from "./readyToSave.css";
 import Button from "@magento/venia-ui/lib/components/Button";
@@ -15,22 +16,26 @@ const ReadyToSave = () => {
                     <div className = {classes.unit}>
                     </div>
                     <div className = {classes.unit}>
-                        <Button
+                        <Link className={classes.link} to={resourceUrl('/extensions.html')}>
+                         <Button
                                 priority="high"
-                        >
+                         >
                             <span>
                                 <span>{"View Magento 1 Extensions"}</span>
                             </span>
-                        </Button>
+                         </Button>
+                        </Link>
                     </div>
                     <div className = {classes.unit}>
-                        <Button
+                        <Link className={classes.link} to={resourceUrl('/extensions/magento2.html')}>
+                         <Button
                                 priority="high"
-                        >
+                         >
                             <span>
                                 <span>{"View Magento 2 Extensions"}</span>
                             </span>
-                        </Button>
+                         </Button>
+                        </Link>
                     </div>
                     <div className = {classes.unit}>
                     </div>

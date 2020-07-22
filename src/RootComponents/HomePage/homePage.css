@@ -1,24 +1,37 @@
 .trustedComponent {
-    padding: 100px 0;
+    padding: 6.25rem 0;
     width: 100%;
     position: relative;
     background-color: #474747;
 }
 .commonComponent {
-    padding: 60px 0;
+    padding: 3.75rem 0;
     width: 100%;
     position: relative;
 }
 
 .expertsComponent {
-    padding: 100px 0;
+    padding: 4.375rem 0 0 0;
     width: 100%;
     position: relative;
+    border-bottom: 1px solid #e2e1e1;
 }
 
 .teamComponent {
-    padding: 100px 0;
+    padding: 6.25rem 0;
     width: 100%;
     position: relative;
     background: #0b3c5d;
 }
+
+.agencyComponent:nth-child(4){
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .expertsComponent {
+        padding: 4.375rem 0 1.875rem 0;
+    }
+}
+

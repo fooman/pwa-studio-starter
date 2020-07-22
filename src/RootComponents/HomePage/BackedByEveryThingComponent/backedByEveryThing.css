@@ -21,18 +21,20 @@
     line-height: 1.1em;
     display: inline-block;
     max-width: 43.75rem;
-    font-family: "robotothin";
+    font-family: 'Roboto', sans-serif;
     color: rgb(var(--fooman-global-color-font-gray));
+    font-weight: 300;
 }
 
 .line {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .singleCol {
     float: left;
-    width: 20%;
+    width: 15rem;
     margin: 1.25rem 0;
     max-width: 18.75rem;
 }
@@ -49,4 +51,10 @@
     max-width: 12.813rem;
     color: rgb(var(--fooman-global-color-font-gray));
     margin: 0.625rem auto;
+}
+
+@media only screen and (max-width: 478px) {
+    .h2 {
+        font-size: 3.4rem;
+    }
 }
