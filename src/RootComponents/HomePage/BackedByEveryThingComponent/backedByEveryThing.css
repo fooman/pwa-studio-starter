@@ -1,0 +1,60 @@
+.root {
+    border-bottom: 0.063rem solid #e2e1e1;
+    padding: 6.25rem 0 7.5rem;
+    font-size: var(--venia-global-fontSize-300);
+    font-family: "robotothin";
+    line-height: 1.5em;
+    text-align: center;
+    background-color: white;
+}
+
+.heading {
+    text-align: center;
+    width: auto;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.h2 {
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 2.5rem;
+    line-height: 1.1em;
+    display: inline-block;
+    max-width: 43.75rem;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(var(--fooman-global-color-font-gray));
+    font-weight: 300;
+}
+
+.line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.singleCol {
+    float: left;
+    width: 15rem;
+    margin: 1.25rem 0;
+    max-width: 18.75rem;
+}
+
+.media {
+    margin: 0.625rem;
+}
+
+.text {
+    font-family: "robotoregular",Arial;
+    font-size: var(--venia-global-fontSize-500);
+    line-height: 1.3em;
+    text-align: center;
+    max-width: 12.813rem;
+    color: rgb(var(--fooman-global-color-font-gray));
+    margin: 0.625rem auto;
+}
+
+@media only screen and (max-width: 478px) {
+    .h2 {
+        font-size: 3.4rem;
+    }
+}

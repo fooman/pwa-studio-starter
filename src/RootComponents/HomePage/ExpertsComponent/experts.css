@@ -1,0 +1,99 @@
+.root {
+    background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    height: 28.438rem;
+}
+
+.h2 {
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 5rem;
+    line-height: 1.1em;
+    text-align: center;
+    font-weight: var(--venia-global-fontWeight-thin);
+    color: rgb(var(--fooman-global-color-heading-gray));
+}
+
+.line {
+    width: auto;
+    max-width: 75rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.unit {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.25rem;
+    width: 50%;
+    padding-left: 0.625rem;
+    justify-content: center;
+}
+
+.rText {
+    vertical-align: top;
+    max-width: 19.375rem;
+    text-align: left;
+    padding-left: 2.188rem;
+}
+
+.clientName {
+    font-size: var(--venia-global-fontSize-700);
+    color: rgb(var(--fooman-global-color-font-gray));
+}
+
+.clientOrg {
+    font-size: var(--venia-global-fontSize-100);
+    line-height: 2.5em;
+    color: rgb(var(--fooman-global-color-font-gray));
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.clientQuote {
+    font-size: var(--venia-global-fontSize-400);
+    margin-bottom: 0.625rem;
+    font-style: normal;
+    color: rgb(var(--fooman-global-color-font-gray));
+    font-weight: var(--venia-global-fontWeight-thin);
+    line-height: 1.3em;
+    background-image: url("./images/quote-bg.png");
+}
+
+.strikeImg {
+    max-width: 7.188rem;
+    height: 2.813rem;
+    display: block;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .expertsComponent {
+        padding: 4.375rem 1.875rem 0;
+    }
+    .root{
+        height: auto;
+        margin-bottom: 0.625rem;
+    }
+    .line {
+        width: 100%;
+        max-width: 75rem;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .unit {
+        width: 100%;
+
+    }
+}
+
+@media only screen and (max-width: 478px) {
+    .h2 {
+        font-size: 3.4rem;
+    }
+}

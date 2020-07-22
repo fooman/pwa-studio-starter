@@ -1,0 +1,39 @@
+.root {
+    background: url('./images/readybg.png') #c2cbd0 bottom center no-repeat;
+    padding: 7.5rem 0;
+    font-family: "robotothin";
+    text-align: center;
+}
+
+.h2 {
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 2.5rem;
+    line-height: 1.1em;
+    display: inline-block;
+    max-width: 48.125rem;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(var(--fooman-global-color-heading-gray));
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.unit {
+    padding-left: 1.25rem;
+    padding-right: 0.625rem;
+}
+
+@media only screen and (max-width: 478px) {
+    .h2 {
+        font-size: 3.4rem;
+    }
+}
+@media only screen and (max-width: 535px) {
+    .line {
+        flex-direction: column;
+    }
+}

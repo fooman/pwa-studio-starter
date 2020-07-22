@@ -1,0 +1,62 @@
+.root {
+    background-color: #474747;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    width: 100%;
+}
+
+.heading {
+    max-width: 75rem;
+    margin: 0rem auto;
+}
+
+.h2 {
+    font-size: var(--venia-global-fontSize-1900);
+    margin-bottom: 0.938rem;
+    color: white;
+    line-height: 1.1em;
+    font-weight: 300;
+    text-align: center;
+}
+
+.line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.unit {
+    padding: 1.875rem 4.375rem;
+    margin-top: 2.5rem;
+    width: 399px;
+}
+
+.icon {
+    text-align: center;
+    height: 4.688rem;
+}
+
+.h3 {
+    font-size: var(--venia-global-fontSize-1000);
+    color: white;
+    text-transform: uppercase;
+    line-height: 1.2em;
+    margin: 1.875rem 0;
+    text-align: center;
+}
+
+.pTag {
+    font-size: var(--venia-global-fontSize-300);
+    line-height: 1.5em;
+    color: white;
+    text-align: center;
+    margin: 0.625rem 0.625rem 1.875rem 0.625rem;
+}
+
+@media only screen and (max-width: 478px) {
+    .h2 {
+        font-size: 3.4rem;
+    }
+}
