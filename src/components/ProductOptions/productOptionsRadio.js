@@ -8,7 +8,9 @@ export const ProductOptionsRadio = props => {
         initialSelection,
         price: { regular_price : { amount: {currency = 'USD'} = {} } = {}} = {},
         handleSelectionChange,
-        classes
+        classes,
+        option_id,
+        fieldErrorObj
     } = props
     const priceElement = (option) =>{
        return option.price !== 'none'
@@ -32,13 +34,20 @@ export const ProductOptionsRadio = props => {
         };
     });
     return (
-        <RadioGroup
-            classes={classes}
-            field="option"
-            initialValue={initialSelection}
-            items={radioComponents}
-            onValueChange={handleSelectionChange}
-        />
+        <div>
+            <div>
+                <RadioGroup
+                    classes={classes}
+                    field="option"
+                    initialValue={initialSelection}
+                    items={radioComponents}
+                    onValueChange={handleSelectionChange}
+                />
+            </div>
+            <div style={{color: "red" , paddingTop: '0.625rem'}}>
+                {fieldErrorObj[option_id] ? (<span style={{color: "red"}}>{fieldErrorObj[option_id]}</span>) : false}
+            </div>
+        </div>
     );
 
 }

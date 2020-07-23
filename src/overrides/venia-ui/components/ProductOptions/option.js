@@ -25,8 +25,10 @@ const Option = props => {
         option_id,
         title,
         onSelectionChange,
-        selectedValue
+        selectedValue,
+        fieldErrorObj
     } = props;
+
     let values = props.fieldValue ? props.fieldValue : props.radioValue
     const talonProps = useOption({
         option_id,
@@ -49,12 +51,12 @@ const Option = props => {
             title: 'None'
         })
     }, [values])
-
     const ValueList = props.__typename === 'CustomizableFieldOption' ?
         <ProductOptionText
             {...props}
             classes={defaultClasses}
-            handleTextChange={handleTextChange}/>
+            handleTextChange={handleTextChange}
+        />
          :
             <Form>
             <ProductOptionsRadio
