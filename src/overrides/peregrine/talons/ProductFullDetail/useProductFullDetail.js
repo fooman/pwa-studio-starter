@@ -151,7 +151,10 @@ const getConfigPrice = (product, optionCodes, optionSelections) => {
 
         value = product.price.regularPrice.amount;
     } else {
-
+        let customizableMultipleOptions = product.options.filter(singleObj => singleObj.__typename === 'CustomizableMultipleOption')[0];
+        if (customizableMultipleOptions && Object.keys(customizableMultipleOptions).length) {
+            return product.price.regularPrice.amount;
+        }
         let customizableOptions = product.options.filter(singleObj => singleObj.__typename === 'CustomizableRadioOption')[0];
         let customizableRadioValue = customizableOptions.radioValue;
 
@@ -266,7 +269,7 @@ export const useProductFullDetail = props => {
                 if (k === fieldObj.option_id) {
                     if (fieldObj.title === 'URL of main store') {
                         let isValid = urlValidation( k, v );
-                        !isValid ? errorObj[k] = 'Enter a valid url and is required' : delete errorObj[k];
+                        !isValid ? errorObj[k] = 'Please enter a valid URL. For example "example.com" or "www.example.com".' : delete errorObj[k];
                     }
                     else {
                         v === '0' ? errorObj[k] = 'This field is required!' : delete errorObj[k];
@@ -280,7 +283,7 @@ export const useProductFullDetail = props => {
     }
 
     const urlValidation = ( optionId, selection ) => {
-        let matchUrl = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+        let matchUrl = /^[a-z0-9][a-z0-9_\/-]+(\.[a-z0-9_-]+)*$/gi;
         if (!selection.match(matchUrl)) {
             return false;
         }
@@ -294,7 +297,7 @@ export const useProductFullDetail = props => {
         let optionTitle = product.options[product.options.findIndex(singleObj => singleObj.option_id === optionId)].title;
         if (optionTitle === 'URL of main store') {
             let isValid = urlValidation( optionId, selection);
-            !isValid ? errorObj[optionId] = 'Enter a valid url and is required' : delete errorObj[optionId];
+            !isValid ? errorObj[optionId] = 'Please enter a valid URL. For example "example.com" or "www.example.com".' : delete errorObj[optionId];
             if (Object.keys(errorObj).length > 0) {
                 setFieldErrorObj(errorObj);
             }

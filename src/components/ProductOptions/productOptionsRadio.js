@@ -1,8 +1,13 @@
 import React, { Fragment } from "react";
 import { Price } from "@magento/peregrine";
 import RadioGroup from "@magento/venia-ui/lib/components/RadioGroup";
+import { mergeClasses } from '@magento/venia-ui/lib/classify';
+import defaultClasses from './productOptionRadio.css';
+import {shape, string} from "prop-types";
+
 
 export const ProductOptionsRadio = props => {
+    const cssClasses = mergeClasses(defaultClasses);
     const {
         radioValue: values,
         initialSelection,
@@ -44,10 +49,16 @@ export const ProductOptionsRadio = props => {
                     onValueChange={handleSelectionChange}
                 />
             </div>
-            <div style={{color: "red" , paddingTop: '0.625rem'}}>
-                {fieldErrorObj[option_id] ? (<span style={{color: "red"}}>{fieldErrorObj[option_id]}</span>) : false}
+            <div className={cssClasses.spanSection}>
+                {fieldErrorObj[option_id] ? (<span>{fieldErrorObj[option_id]}</span>) : false}
             </div>
         </div>
     );
 
 }
+
+ProductOptionsRadio.propTypes = {
+    cssClasses: shape({
+        spanSection: string
+    })
+};

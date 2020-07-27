@@ -28,7 +28,8 @@ export const useOption = props => {
         }
         return initialSelection;
     }, [selectedValue, selection, values]);
-    if(values.length) {
+
+    if(values && values.length) {
         valuesMap = useMemo(() => {
             return new Map(
                 values.map(value => [value.option_type_id, value.title])

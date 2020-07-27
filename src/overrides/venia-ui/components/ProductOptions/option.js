@@ -45,19 +45,20 @@ const Option = props => {
     } = talonProps;
 
     useMemo(() => {
-        values.length && values.unshift({
+        values && values.length && values.unshift({
             option_type_id: 0,
             price: 'none',
             title: 'None'
         })
     }, [values])
+
     const ValueList = props.__typename === 'CustomizableFieldOption' ?
         <ProductOptionText
             {...props}
             classes={defaultClasses}
             handleTextChange={handleTextChange}
         />
-         :
+         : props.__typename === 'CustomizableMultipleOption' ? null :
             <Form>
             <ProductOptionsRadio
                 {...props}
