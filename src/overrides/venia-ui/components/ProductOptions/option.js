@@ -25,8 +25,10 @@ const Option = props => {
         option_id,
         title,
         onSelectionChange,
-        selectedValue
+        selectedValue,
+        fieldErrorObj
     } = props;
+
     let values = props.fieldValue ? props.fieldValue : props.radioValue
     const talonProps = useOption({
         option_id,
@@ -43,7 +45,7 @@ const Option = props => {
     } = talonProps;
 
     useMemo(() => {
-        values.length && values.unshift({
+        values && values.length && values.unshift({
             option_type_id: 0,
             price: 'none',
             title: 'None'
@@ -54,8 +56,9 @@ const Option = props => {
         <ProductOptionText
             {...props}
             classes={defaultClasses}
-            handleTextChange={handleTextChange}/>
-         :
+            handleTextChange={handleTextChange}
+        />
+         : props.__typename === 'CustomizableMultipleOption' ? null :
             <Form>
             <ProductOptionsRadio
                 {...props}
