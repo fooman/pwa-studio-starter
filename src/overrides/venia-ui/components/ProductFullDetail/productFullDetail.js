@@ -19,6 +19,7 @@ import ProductStaticArea from '../../../../components/ProductFullDetail/Static/p
 import AnyQuestion from '../../../../components/ProductFullDetail/Static/anyQuestion';
 import ProductGallery from '../../../../components/ProductGallery/ProductGallery';
 import RichText from '@magento/venia-ui/lib/components/RichText';
+import RichContent from '@magento/venia-ui/lib/components/RichContent';
 
 import defaultClasses from './productFullDetail.css';
 import {
@@ -279,7 +280,7 @@ const ProductFullDetail = props => {
                 <h2 className={classes.descriptionTitle}>
                     Product Description
                 </h2>
-                <RichText content={productDetails.description} />
+                <RichContent html = {productDetails.description}/>
             </section>
             <ProductStaticArea/>
             <AnyQuestion

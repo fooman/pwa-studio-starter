@@ -38,8 +38,14 @@ function localIntercept(targets) {
             exact: true,
             path: '../../../../../../src/RootComponents/HomePage'
         }
-    ]);
-
+    ]), targets.of('@magento/venia-ui').richContentRenderers.tap(richContentRenderers => {
+          richContentRenderers.add({componentName: 'BlueWords', importPath: require.resolve('./src/components/CustomReachContent/CustomReachContent')});
+        })
 }
+
+
+//     function localIntercept(targets) {
+//
+//     }
 
 module.exports = localIntercept;
