@@ -69,7 +69,8 @@ const ProductFullDetail = props => {
         isAddToCartDisabled,
         mediaGalleryEntries,
         productDetails,
-        quantity
+        quantity,
+        fieldErrorObj
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses, props.classes);
@@ -80,6 +81,7 @@ const ProductFullDetail = props => {
                 onSelectionChange={handleSelectionChange}
                 options={productOptions}
                 price={product.price}
+                fieldErrorObj = {fieldErrorObj}
             />
         </Suspense>
     ) : null;
@@ -153,7 +155,6 @@ const ProductFullDetail = props => {
             ]);
         }
     }
-
     return (
         <Fragment>
             <Helmet>

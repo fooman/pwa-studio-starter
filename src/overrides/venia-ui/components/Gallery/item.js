@@ -51,7 +51,7 @@ const GalleryItem = props => {
 
     const productLink = resourceUrl(`/${url_key}${productUrlSuffix}`);
     const reviewSummary = review_count > 0 ? (
-                <div className={classes.starRating}>
+            <div className={classes.starRating}>
                     <div className={classes.ratReview}>
                         <StarRatingComponent
                             value={Math.round(rating_summary/20)}
@@ -61,9 +61,10 @@ const GalleryItem = props => {
                     <div className={classes.ratReview}>
                         <text className={classes.reviews}>{`${review_count} Reviews` }</text>
                     </div>
-                </div>
+            </div>
+
             ) :
-            null
+        <div className = {classes.noReview}></div>
     const productDescription = short_description.html.replace(/<\s*\/?br\s*[\/]?>/gi, '');
 
     return (
@@ -116,6 +117,7 @@ GalleryItem.propTypes = {
         nameDiv: string,
         pName: string,
         starRating: string,
+        noReview: string,
         ratReview: string,
         reviews: string
     }),

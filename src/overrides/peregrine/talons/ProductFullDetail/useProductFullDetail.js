@@ -5,6 +5,7 @@ import { useCartContext } from '@magento/peregrine/lib/context/cart';
 import { appendOptionsToPayload } from '@magento/peregrine/lib/util/appendOptionsToPayload';
 import { findMatchingVariant } from '@magento/peregrine/lib/util/findMatchingProductVariant';
 import { isProductConfigurable } from '@magento/peregrine/lib/util/isProductConfigurable';
+import {fal} from "@fortawesome/pro-light-svg-icons";
 
 const INITIAL_OPTION_CODES = new Map();
 const INITIAL_OPTION_SELECTIONS = new Map();
@@ -45,16 +46,18 @@ const deriveOptionSelectionsFromProduct = product => {
     }
     const initialOptionSelections = new Map();
     if(product.options){
+
         for (const { option_id } of product.options) {
-            initialOptionSelections.set(option_id, undefined);
+
+            initialOptionSelections.set(option_id, '0');
         }
     }
     else {
         for (const {attribute_id} of product.configurable_options) {
-            initialOptionSelections.set(attribute_id, undefined);
+
+            initialOptionSelections.set(attribute_id, '0');
         }
     }
-
     return initialOptionSelections;
 };
 
@@ -63,7 +66,6 @@ const getIsMissingOptions = (product, optionSelections) => {
     if (!isProductConfigurable(product)) {
         return false;
     }
-
     // Configurable products are missing options if we have fewer
     // option selections than the product has options.
     const { configurable_options = {}, options = {} } = product;
@@ -71,7 +73,6 @@ const getIsMissingOptions = (product, optionSelections) => {
     const numProductSelections = Array.from(optionSelections.values()).filter(
         value => !undefined
     ).length;
-
     return numProductSelections < numProductOptions;
 };
 
@@ -108,6 +109,7 @@ const getMediaGalleryEntries = (product, optionCodes, optionSelections) => {
 
     return value;
 };
+
 
 // We only want to display breadcrumbs for one category on a PDP even if a
 // product has multiple related categories. This function filters and selects
@@ -146,15 +148,30 @@ const getConfigPrice = (product, optionCodes, optionSelections) => {
         0;
 
     if (!isConfigurable || !optionsSelected) {
+
         value = product.price.regularPrice.amount;
     } else {
-        const item = Array.from(optionSelections.values()).filter(value => typeof (value) === 'number')
+        let customizableMultipleOptions = product.options.filter(singleObj => singleObj.__typename === 'CustomizableMultipleOption')[0];
+        if (customizableMultipleOptions && Object.keys(customizableMultipleOptions).length) {
+            return product.price.regularPrice.amount;
+        }
+        let customizableOptions = product.options.filter(singleObj => singleObj.__typename === 'CustomizableRadioOption')[0];
+        let customizableRadioValue = customizableOptions.radioValue;
+
+        let item = [];
+        for( let [k, v] of optionSelections) {
+            if (k === customizableOptions.option_id) {
+                item.push(v);
+            }
+        }
+
         value = Number(item[0])? {
+
             ...product.price.regularPrice.amount,
-            value: product.price.regularPrice.amount.value + item[0]
+            // value: product.price.regularPrice.amount.value + item[0]
+            value: product.price.regularPrice.amount.value + customizableRadioValue.filter(singleRadioObj => singleRadioObj.option_type_id.toString() === item[0])[0].price
             }: product.price.regularPrice.amount
     }
-
     return value;
 };
 
@@ -193,6 +210,9 @@ export const useProductFullDetail = props => {
     );
 
     const [{ cartId }] = useCartContext();
+
+    let initialState = {};
+    const [fieldErrorObj, setFieldErrorObj] = useState(initialState);
 
     const [
         addDownloadableProductToCart,
@@ -238,12 +258,62 @@ export const useProductFullDetail = props => {
         () => getIsMissingOptions(product, optionSelections),
         [product, optionSelections]
     );
+
+    const isRequiredFieldEntered = ( optionSelections , product) => {
+        let errorObj = {...fieldErrorObj};
+        let requiredField =  product.options && product.options.filter(optionObj => {
+            return optionObj.required
+        });
+        requiredField && requiredField.forEach(fieldObj => {
+            for( let [ k, v] of optionSelections) {
+                if (k === fieldObj.option_id) {
+                    if (fieldObj.title === 'URL of main store') {
+                        let isValid = urlValidation( k, v );
+                        !isValid ? errorObj[k] = 'Please enter a valid URL. For example "example.com" or "www.example.com".' : delete errorObj[k];
+                    }
+                    else {
+                        v === '0' ? errorObj[k] = 'This field is required!' : delete errorObj[k];
+                    }
+                }
+            }
+        });
+        setFieldErrorObj(errorObj);
+        if (Object.keys(errorObj).length) return true;
+        else return false;
+    }
+
+    const urlValidation = ( optionId, selection ) => {
+        let matchUrl = /^[a-z0-9][a-z0-9_\/-]+(\.[a-z0-9_-]+)*$/gi;
+        if (!selection.match(matchUrl)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    const setValidationError = (optionId, selection ) => {
+        let errorObj = {...fieldErrorObj};
+        let optionTitle = product.options[product.options.findIndex(singleObj => singleObj.option_id === optionId)].title;
+        if (optionTitle === 'URL of main store') {
+            let isValid = urlValidation( optionId, selection);
+            !isValid ? errorObj[optionId] = 'Please enter a valid URL. For example "example.com" or "www.example.com".' : delete errorObj[optionId];
+            if (Object.keys(errorObj).length > 0) {
+                setFieldErrorObj(errorObj);
+            }
+        }
+    }
     const mediaGalleryEntries = useMemo(
         () => getMediaGalleryEntries(product, optionCodes, optionSelections),
         [product, optionCodes, optionSelections]
     );
 
     const handleAddToCart = useCallback(async () => {
+
+        let isError =  isRequiredFieldEntered(optionSelections, product);
+
+        if (isError) return false;
+
         const payload = {
             item: { ...product, price: {
                 regular_price:{
@@ -265,8 +335,10 @@ export const useProductFullDetail = props => {
                 parentSku: payload.parentSku,
                 product: payload.item,
                 quantity: payload.quantity,
-                sku: payload.item.sku
+                sku: payload.item.sku,
+                customizableOptions: payload.options
             };
+
             // Use the proper mutation for the type.
             if (productType === 'SimpleProduct') {
                 try {
@@ -278,18 +350,21 @@ export const useProductFullDetail = props => {
                 }
             } else if (productType === 'ConfigurableProduct') {
                 try {
-                    await addConfigurableProductToCart({
+
+                   await addConfigurableProductToCart({
                         variables
                     });
-                } catch {
+                } catch{
                     return;
                 }
             } else if (productType === 'DownloadableProduct') {
                 try {
+
                     await addDownloadableProductToCart({
                         variables
                     });
-                } catch {
+
+                } catch{
                     return;
                 }
             }
@@ -311,11 +386,13 @@ export const useProductFullDetail = props => {
 
     const handleSelectionChange = useCallback(
         (optionId, selection) => {
+            selection = selection === undefined ? '0' : selection;
             // We must create a new Map here so that React knows that the value
             // of optionSelections has changed.
             const nextOptionSelections = new Map([...optionSelections]);
             nextOptionSelections.set(optionId, selection);
             setOptionSelections(nextOptionSelections);
+            setValidationError(optionId, selection);
         },
         [optionSelections]
     );
@@ -361,6 +438,7 @@ export const useProductFullDetail = props => {
         handleAddToCart,
         handleSelectionChange,
         handleSetQuantity,
+        fieldErrorObj : fieldErrorObj,
         isAddToCartDisabled:
             !isSupportedProductType ||
             isMissingOptions ||
