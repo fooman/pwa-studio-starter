@@ -1,24 +1,33 @@
 import React from 'react';
-import parse from 'html-react-parser';
+import ReactDOMServer from 'react-dom/server';
+import parse, { domToReact } from 'html-react-parser';
 import Image from "@magento/venia-ui/lib/components/Image";
-import RichContent from "@magento/venia-ui/lib/components/RichContent";
+import { mergeClasses } from '@magento/venia-ui/lib/classify';
+import RichContent from "@magento/venia-ui/lib/components/RichText";
+import defaultClasses from './CustomRichContent.css';
 
 const CustomRichContent = ({ html }) => {
-     return parse(html,{
-         replace: domNode => {
+    const classes = mergeClasses(defaultClasses);
+    return <RichContent content = { ReactDOMServer.renderToString(parse(html,{
+             replace: domNode => {
              if (domNode.attribs && domNode.attribs.src) {
                  return <Image
-                     style={{width: domNode.attribs.width,lineHeight:"1.5rem"}}
+                     classes={{ image: classes.descriptionImage }}
                      alt={domNode.attribs.alt}
                      src={domNode.attribs.src}
                      title={domNode.attribs.title}
                  />;
              }
+             if(domNode.attribs && domNode.attribs.class === "customers-logos"){
+                 return  <div className="custom-customer-logos" >
+                             {domToReact(domNode.children)}
+                        </div>
+             }
          }
-     });
-     // return <RichContent html={html}/>
-
+     })
+ )}/>
 }
 
-export const canRender = (html) => /^[^<>]+$/gm.test(html);
+export const canRender = html => !!html;
+
 export { CustomRichContent as Component };

@@ -39,8 +39,13 @@ function localIntercept(targets) {
             path: '../../../../../../src/RootComponents/HomePage'
         }
     ]);
-    targets.of('@magento/venia-ui').richContentRenderers.tap(richContentRenderers => {
-          richContentRenderers.add({componentName: 'CustomRichContent', importPath: require.resolve('./src/components/CustomRichContent/CustomRichContent')});
+    targets
+        .of('@magento/venia-ui')
+        .richContentRenderers.tap(richContentRenderers => {
+          richContentRenderers.add({
+              componentName: 'CustomRichContent',
+              importPath: require.resolve('./src/components/CustomRichContent/CustomRichContent')
+          });
     })
 }
 
