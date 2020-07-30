@@ -278,18 +278,17 @@ export const useProductFullDetail = props => {
             }
         });
         setFieldErrorObj(errorObj);
-        if (Object.keys(errorObj).length) return true;
-        else return false;
+        return !!Object.keys(errorObj).length;
     }
 
     const urlValidation = ( optionId, selection ) => {
-        let matchUrl = /^[a-z0-9][a-z0-9_\/-]+(\.[a-z0-9_-]+)*$/gi;
-        if (!selection.match(matchUrl)) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        const re =  new RegExp('^(https?:\\/\\/)?'+
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+
+            '((\\d{1,3}\\.){3}\\d{1,3}))'+
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+
+            '(\\?[;&a-z\\d%_.~+=-]*)?'+
+            '(\\#[-a-z\\d_]*)?$','i');
+        return re.test(selection);
     }
 
     const setValidationError = (optionId, selection ) => {
@@ -298,9 +297,7 @@ export const useProductFullDetail = props => {
         if (optionTitle === 'URL of main store') {
             let isValid = urlValidation( optionId, selection);
             !isValid ? errorObj[optionId] = 'Please enter a valid URL. For example "example.com" or "www.example.com".' : delete errorObj[optionId];
-            if (Object.keys(errorObj).length > 0) {
-                setFieldErrorObj(errorObj);
-            }
+            setFieldErrorObj(errorObj);
         }
     }
     const mediaGalleryEntries = useMemo(
