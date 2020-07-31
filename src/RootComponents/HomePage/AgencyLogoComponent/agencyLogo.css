@@ -25,6 +25,8 @@
 
 .imgDiv .imgCls {
     filter: grayscale(1);
+    width: 60%;
+    height: 50%;
 }
 
 .imgDiv .imgCls:hover{
