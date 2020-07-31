@@ -44,8 +44,7 @@
     "react-ga": "^3.1.2",
     "react-image-gallery": "^1.0.7",
     "react-items-carousel": "^2.8.0",
-    "react-with-breakpoints": "^4.0.4",
-    "react-wordart": "^1.9.3"
+    "react-with-breakpoints": "^4.0.4"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.0",
