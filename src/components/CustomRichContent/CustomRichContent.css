@@ -2,3 +2,8 @@
     visibility: visible;
     position: relative;
 }
+
+.imagePlaceHolder{
+    width: unset !important;
+}
+
