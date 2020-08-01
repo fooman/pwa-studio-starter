@@ -1,0 +1,15 @@
+.root {
+    width: 90%;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+.heading {
+    font-size: 250%;
+    font-weight: normal;
+    font-style: normal;
+    color: rgb(var(--fooman-global-color-font-gray));
+    font-family: robotolight,sans-serif;
+    margin-bottom: 3.875rem;
+    margin-top: 2.5rem;
+}
+
