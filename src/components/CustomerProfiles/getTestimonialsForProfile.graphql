@@ -1,0 +1,11 @@
+query {
+    testimonials {
+ 	items {
+ 	    content
+        hero_image
+        logo_image
+        url
+ 	}
+ 	items_count
+  }
+}
