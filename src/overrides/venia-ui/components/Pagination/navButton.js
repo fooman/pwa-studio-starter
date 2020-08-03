@@ -2,7 +2,7 @@ import React from 'react';
 import { shape, string } from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faForward, faBackward, faChevronRight, faChevronLeft } from '@fortawesome/pro-light-svg-icons'
+import { faChevronDoubleRight, faChevronDoubleLeft, faChevronRight, faChevronLeft } from '@fortawesome/pro-solid-svg-icons'
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import defaultClasses from '@magento/venia-ui/lib/components/Pagination/navButton.css';
@@ -10,8 +10,8 @@ import defaultClasses from '@magento/venia-ui/lib/components/Pagination/navButto
 const icons = new Map()
     .set('ChevronLeft', faChevronLeft)
     .set('ChevronRight', faChevronRight)
-    .set('FastForward', faForward)
-    .set('Rewind', faBackward);
+    .set('FastForward', faChevronDoubleRight)
+    .set('Rewind', faChevronDoubleLeft);
 
 const NavButton = props => {
     const { active, buttonLabel, name, onClick } = props;
