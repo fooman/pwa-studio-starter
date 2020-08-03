@@ -63,7 +63,6 @@
     "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-7.0.0-fooman-canary-2020-31.tgz",
     "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-6.0.0-fooman-canary-2020-31.tgz",
     "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-4.0.2-fooman-canary-2020-31.tgz",
-    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-0.0.1-fooman-canary-2020-31.tgz",
     "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-4.0.0-fooman-canary-2020-31.tgz",
     "@storybook/react": "~5.2.6",
     "apollo-cache-inmemory": "~1.6.3",
