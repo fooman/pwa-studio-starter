@@ -1,0 +1,16 @@
+.root {
+    align-items: center;
+    border: 1px none currentColor;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    min-height: 2rem;
+    outline: none;
+    position: relative;
+}
+
+.root_active {
+    composes: root;
+    border-style: solid;
+    border-width: 2px;
+}

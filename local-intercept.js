@@ -37,6 +37,12 @@ function localIntercept(targets) {
             pattern: '/',
             exact: true,
             path: '../../../../../../src/RootComponents/HomePage'
+        },
+        {
+            name: 'Customer Profiles',
+            pattern: '/customer-profiles',
+            exact: true,
+            path: '../../../../../../src/components/CustomerProfiles/customerProfile'
         }
     ]);
 

@@ -9,6 +9,10 @@
     grid-area: image;
 }
 
+.imageRoot {
+    height: 100%;
+}
+
 .image {
     border-radius: 2px;
     height: 100%;

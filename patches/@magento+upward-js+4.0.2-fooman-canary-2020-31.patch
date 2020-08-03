@@ -1,29 +1,28 @@
 diff --git a/node_modules/@magento/upward-js/lib/resolvers/ProxyResolver.js b/node_modules/@magento/upward-js/lib/resolvers/ProxyResolver.js
-index 1b534de..5251362 100644
+index 59d570f..f0a8d78 100644
 --- a/node_modules/@magento/upward-js/lib/resolvers/ProxyResolver.js
 +++ b/node_modules/@magento/upward-js/lib/resolvers/ProxyResolver.js
 @@ -26,9 +26,12 @@ class ProxyResolver extends AbstractResolver {
              this.visitor.upward(definition, 'target'),
              definition.ignoreSSLErrors
                  ? this.visitor.upward(definition, 'ignoreSSLErrors')
--                : false
 +                : false,
 +            definition.pathRewrite
 +                ? this.visitor.upward(definition, 'pathRewrite')
-+                : false,
+                 : false
          ];
 -        const [targetUrl, ignoreSSLErrors] = await Promise.all(toResolve);
 +        const [targetUrl, ignoreSSLErrors, pathRewrite] = await Promise.all(toResolve);
  
          debug('resolved target %o', targetUrl);
          if (typeof targetUrl !== 'string' && !targetUrl.href) {
-@@ -48,7 +51,8 @@ class ProxyResolver extends AbstractResolver {
-                 cookieDomainRewrite: '',
+@@ -63,7 +66,8 @@ class ProxyResolver extends AbstractResolver {
+                 target: target.href,
                  changeOrigin: true,
-                 secure: !ignoreSSLErrors,
--                target: targetUrl.toString()
-+                target: targetUrl.toString(),
+                 autoRewrite: true,
+-                cookieDomainRewrite: ''
++                cookieDomainRewrite: '',
 +                pathRewrite: pathRewrite ? JSON.parse(pathRewrite) : null
              };
- 
              if (target.username) {
+                 debug(`target URL contains a username, adding auth to proxy`);
