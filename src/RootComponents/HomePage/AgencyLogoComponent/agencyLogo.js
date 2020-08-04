@@ -6,10 +6,23 @@ import agencyLogosQuery from '../../../queries/testimonialsLogo.graphql';
 import Button from "@magento/venia-ui/lib/components/Button";
 import {shape, string} from "prop-types";
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
+import Image from "@magento/venia-ui/lib/components/Image";
 import defaultClasses from "./agencyLogo.css";
+import {fullPageLoadingIndicator} from "@magento/venia-ui/lib/components/LoadingIndicator";
 
 const AgencyLogo = () => {
-    const { data  } = useQuery(agencyLogosQuery);
+    const { loading, error, data } = useQuery(agencyLogosQuery);
+    const classes = mergeClasses(defaultClasses);
+    const [activeItemIndex, setActiveItemIndex] = useState(0);
+    if (error) {
+        if (process.env.NODE_ENV !== 'production') {
+            console.error(error);
+        }
+        return <div>Page Fetch Error</div>;
+    }
+    if (loading) {
+        return fullPageLoadingIndicator;
+    }
     let interval;
     const noOfItems = (data.testimonials && data.testimonials.items && data.testimonials.items.length) || 0;
     const noOfCards = 4;
@@ -17,9 +30,6 @@ const AgencyLogo = () => {
     const chevronWidth = 40;
 
     const imgArray = (data.testimonials && data.testimonials.items) || [] ;
-
-    const classes = mergeClasses(defaultClasses);
-    const [activeItemIndex, setActiveItemIndex] = useState(0);
 
     useEffect(() => {
             interval = setInterval(tick, autoPlayDelay)
@@ -44,35 +54,46 @@ const AgencyLogo = () => {
     }
 
     const carouselItems = range(noOfItems).map(index => (
-        <div className={classes.imgDiv} key={index}>
-                <img className={classes.imgCls} src={imgArray[index].logo_image}/>
+        <div key={index} className={classes.imgDiv}>
+            <Image
+                alt="agency-logo"
+                classes={{
+                    root: classes.imgDiv,
+                    image: classes.imgCls,
+                    loaded: classes.imgWidth,
+                }}
+                src={imgArray[index].logo_image}
+            />
         </div>
     ));
 
-    return (
-        <div className = {classes.root}>
-            <div className = {classes.slider}>
-            <ItemsCarousel
-                gutter={12}
-                numberOfCards={noOfCards}
-                activeItemIndex={activeItemIndex}
-                requestToChangeActive={onChangeValue}
-                chevronWidth={chevronWidth}
-                outsideChevron
-            >
-                    {carouselItems}
-            </ItemsCarousel>
-            </div>
+    if(data){
+        return (
+            <div className = {classes.root}>
+                <div className = {classes.slider}>
+                    <ItemsCarousel
+                        gutter={12}
+                        numberOfCards={noOfCards}
+                        activeItemIndex={activeItemIndex}
+                        requestToChangeActive={onChangeValue}
+                        chevronWidth={chevronWidth}
+                        outsideChevron
+                    >
+                        {carouselItems}
+                    </ItemsCarousel>
+                </div>
 
-        <div className = {classes.btnDiv}>
-            <Button className={classes.btnCls}
-                priority="normal"
-            >
-                {"Read Client Stories"}
-            </Button>
-        </div>
-        </div>
-    );
+                <div className = {classes.btnDiv}>
+                    <Button className={classes.btnCls}
+                            priority="normal"
+                    >
+                        {"Read Client Stories"}
+                    </Button>
+                </div>
+            </div>
+        );
+    }
+    return null;
 }
 
 AgencyLogo.propTypes = {
@@ -82,7 +103,8 @@ AgencyLogo.propTypes = {
         btnCls: string,
         imgDiv: string,
         imgCls: string,
-        slider: string
+        slider: string,
+        imgWidth :string
     })
 };
 
