@@ -141,6 +141,11 @@ export const useCheckoutPage = props => {
 
     const setShippingInformationDone = useCallback(() => {
         if (checkoutStep === CHECKOUT_STEP.SHIPPING_ADDRESS) {
+            window.scrollTo({
+                left: 0,
+                top: 0,
+                behavior: 'smooth'
+            });
             setCheckoutStep(CHECKOUT_STEP.PAYMENT);
         }
     }, [checkoutStep, setCheckoutStep]);
