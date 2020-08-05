@@ -139,9 +139,7 @@ export const useCreditCard = props => {
     const [
         updateBillingAddress,
         {
-            error: billingAddressMutationErrors,
-            called: billingAddressMutationCalled,
-            loading: billingAddressMutationLoading
+            error: billingAddressMutationErrors
         }
     ] = useMutation(setBillingAddressMutation);
     const [
@@ -318,6 +316,7 @@ export const useCreditCard = props => {
     const updateCCDetailsOnCart = useCallback(
         braintreeNonce => {
             const { nonce } = braintreeNonce;
+            debugger
             updateCCDetails({
                 variables: {
                     cartId,
@@ -335,11 +334,13 @@ export const useCreditCard = props => {
      */
     const onPaymentSuccess = useCallback(
         braintreeNonce => {
+            debugger
             setPaymentDetailsInCache(braintreeNonce);
             /**
              * Updating payment braintreeNonce and selected payment method on cart.
              */
             updateCCDetailsOnCart(braintreeNonce);
+            debugger
             setStepNumber(3);
         },
         [setPaymentDetailsInCache, updateCCDetailsOnCart]
@@ -393,32 +394,8 @@ export const useCreditCard = props => {
     useEffect(() => {
         try {
             if (shouldSubmit) {
-                /**
-                 * Validate billing address fields and only process with
-                 * submit if there are no errors.
-                 *
-                 * We do this because the user can click Review Order button
-                 * without fillig in all fields and the form submission
-                 * happens manually. The informed Form component validates
-                 * on submission but that only happens when we use the onSubmit
-                 * prop. In this case we are using manually submission because
-                 * of the nature of the credit card submission process.
-                 */
-                validateBillingAddressForm();
-
-                const hasErrors = Object.keys(formState.errors).length;
-
-                if (!hasErrors) {
-                    setStepNumber(1);
-                    if (isBillingAddressSame) {
-                        setShippingAddressAsBillingAddress();
-                    } else {
-                        setBillingAddress();
-                    }
-                    setIsBillingAddressSameInCache();
-                } else {
-                    throw new Error('Errors in the billing address form');
-                }
+                setStepNumber(2);
+                setShouldRequestPaymentNonce(true);
             }
         } catch (err) {
             console.error(err);
@@ -435,51 +412,6 @@ export const useCreditCard = props => {
         resetShouldSubmit,
         validateBillingAddressForm,
         formState.errors
-    ]);
-
-    /**
-     * Step 2 effect
-     *
-     * Billing address mutation has completed
-     */
-    useEffect(() => {
-        try {
-            const billingAddressMutationCompleted =
-                billingAddressMutationCalled && !billingAddressMutationLoading;
-
-            if (
-                billingAddressMutationCompleted &&
-                !billingAddressMutationErrors
-            ) {
-                /**
-                 * Billing address save mutation is successful
-                 * we can initiate the braintree nonce request
-                 */
-                setStepNumber(2);
-                setShouldRequestPaymentNonce(true);
-            }
-
-            if (
-                billingAddressMutationCompleted &&
-                billingAddressMutationErrors
-            ) {
-                /**
-                 * Billing address save mutation is not successful.
-                 * Reset update button clicked flag.
-                 */
-                throw new Error('Billing address mutation failed');
-            }
-        } catch (err) {
-            console.error(err);
-            setStepNumber(0);
-            resetShouldSubmit();
-            setShouldRequestPaymentNonce(false);
-        }
-    }, [
-        billingAddressMutationErrors,
-        billingAddressMutationCalled,
-        billingAddressMutationLoading,
-        resetShouldSubmit
     ]);
 
     /**

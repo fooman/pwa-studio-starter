@@ -146,13 +146,18 @@ const CheckoutPage = props => {
 
         const paymentInformationSection =
             checkoutStep >= CHECKOUT_STEP.PAYMENT ? (
-                <PaymentInformation
-                    onSave={setPaymentInformationDone}
-                    checkoutError={error}
-                    resetShouldSubmit={resetReviewOrderButtonClicked}
-                    setCheckoutStep={setCheckoutStep}
-                    shouldSubmit={reviewOrderButtonClicked}
-                />
+                <div>
+                    <h3 className={classes.payment_information_heading}>
+                        {'2. Payment Information'}
+                    </h3>
+                    <PaymentInformation
+                        onSave={setPaymentInformationDone}
+                        checkoutError={error}
+                        resetShouldSubmit={resetReviewOrderButtonClicked}
+                        setCheckoutStep={setCheckoutStep}
+                        shouldSubmit={reviewOrderButtonClicked}
+                    />
+                </div>
             ) : (
                 <h3 className={classes.payment_information_heading}>
                     {'2. Payment Information'}
@@ -230,10 +235,13 @@ const CheckoutPage = props => {
                     </h1>
                 </div>
                 <div className={classes.shipping_information_container}>
-                    <ShippingInformation
-                        onSave={setShippingInformationDone}
-                        toggleActiveContent={toggleActiveContent}
-                    />
+                    {checkoutStep === CHECKOUT_STEP.SHIPPING_ADDRESS ? (
+                        <ShippingInformation
+                            onSave={setShippingInformationDone}
+                            toggleActiveContent={toggleActiveContent}
+                        />
+                        ) :null
+                    }
                 </div>
                 {!cart.is_virtual ? (
                         <div className={classes.shipping_method_container}>
