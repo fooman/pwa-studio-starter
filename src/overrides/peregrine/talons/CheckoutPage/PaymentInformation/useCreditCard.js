@@ -316,7 +316,7 @@ export const useCreditCard = props => {
     const updateCCDetailsOnCart = useCallback(
         braintreeNonce => {
             const { nonce } = braintreeNonce;
-            debugger
+
             updateCCDetails({
                 variables: {
                     cartId,
@@ -334,13 +334,11 @@ export const useCreditCard = props => {
      */
     const onPaymentSuccess = useCallback(
         braintreeNonce => {
-            debugger
             setPaymentDetailsInCache(braintreeNonce);
             /**
              * Updating payment braintreeNonce and selected payment method on cart.
              */
             updateCCDetailsOnCart(braintreeNonce);
-            debugger
             setStepNumber(3);
         },
         [setPaymentDetailsInCache, updateCCDetailsOnCart]
