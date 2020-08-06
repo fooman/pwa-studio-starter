@@ -16,7 +16,7 @@ const ReadyToSave = () => {
                     <div className = {classes.unit}>
                     </div>
                     <div className = {classes.unit}>
-                        <Link className={classes.link} to={resourceUrl('/extensions.html')}>
+                        <Link className={classes.link} to={resourceUrl('/extensions')}>
                          <Button
                                 priority="high"
                          >
@@ -27,7 +27,7 @@ const ReadyToSave = () => {
                         </Link>
                     </div>
                     <div className = {classes.unit}>
-                        <Link className={classes.link} to={resourceUrl('/extensions/magento2.html')}>
+                        <Link className={classes.link} to={resourceUrl('/extensions/magento2')}>
                          <Button
                                 priority="high"
                          >
