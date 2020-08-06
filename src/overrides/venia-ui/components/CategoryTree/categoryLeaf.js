@@ -2,9 +2,9 @@ import React from 'react';
 import { func, shape, string } from 'prop-types';
 import { useCategoryLeaf } from '@magento/peregrine/lib/talons/CategoryTree';
 
-import { mergeClasses } from '../../classify';
-import { Link, resourceUrl } from '../../drivers';
-import defaultClasses from './categoryLeaf.css';
+import { mergeClasses } from '@magento/venia-ui/lib/classify';
+import { Link, resourceUrl } from '@magento/venia-ui/lib/drivers';
+import defaultClasses from '@magento/venia-ui/lib/components/CategoryTree/categoryLeaf.css';
 
 const suffix = '';
 
