@@ -35,7 +35,7 @@ const HeroComponent = () => {
                    Here at Fooman we create awesome Magento extensions ... </p>
                 </div>
                 <div className={classes.extensionButton}>
-                    <Link to = {resourceUrl('/extensions.html')}>
+                    <Link to = {resourceUrl('/extensions')}>
                         <Button
                             priority='high'
                         >
