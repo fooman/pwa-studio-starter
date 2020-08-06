@@ -1,0 +1,33 @@
+import { useQuery } from '@apollo/react-hooks';
+import { useFieldState } from 'informed';
+
+import { useCartContext } from '@magento/peregrine/lib/context/cart';
+
+export const usePaymentMethods = props => {
+    const { queries } = props;
+    const { getPaymentMethodsQuery } = queries;
+    const [{ cartId }] = useCartContext();
+
+    const { data, loading } = useQuery(getPaymentMethodsQuery, {
+        skip: !cartId,
+        variables: { cartId }
+    });
+
+    const { value: currentSelectedPaymentMethod } = useFieldState(
+        'selectedPaymentMethod'
+    );
+
+    const availablePaymentMethods =
+        (data && data.cart.available_payment_methods) || [];
+
+    const initialSelectedMethod =
+        (availablePaymentMethods.length && availablePaymentMethods[1].code) ||
+        null;
+
+    return {
+        availablePaymentMethods,
+        currentSelectedPaymentMethod,
+        initialSelectedMethod,
+        isLoading: loading
+    };
+};

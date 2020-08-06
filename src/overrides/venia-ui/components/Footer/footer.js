@@ -59,17 +59,17 @@ const Footer = props => {
                 <h3 className={classes.tileTitle}>Extensions</h3>
                 <ul className={classes.tileBody}>
                     <li>
-                        <Link className={classes.link} to={resourceUrl('/extensions.html')}>
+                        <Link className={classes.link} to={resourceUrl('/extensions')}>
                             Magento 1
                         </Link>
                     </li>
                     <li>
-                        <Link className={classes.link} to={resourceUrl('/extensions/magento2.html')}>
+                        <Link className={classes.link} to={resourceUrl('/extensions/magento2')}>
                             Magento 2
                         </Link>
                     </li>
                     <li>
-                        <Link className={classes.link} to={resourceUrl('/extensions/magento2/free-m2.html')}>
+                        <Link className={classes.link} to={resourceUrl('/extensions/magento2/free-m2')}>
                             Free Stuff
                         </Link>
                     </li>

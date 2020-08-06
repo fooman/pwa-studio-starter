@@ -19,6 +19,15 @@
     --fooman-global-color-heading-gray: 101 101 101;
     --fooman-global-color-exclamation-red:178 46 47;
     --fooman-text-on-light: 204 204 204;
+    --fooman-global-color-blue-100: 187, 223, 247;
+    --fooman-global-color-blue-200: 141, 201, 242;
+    --fooman-global-color-blue-300: 95, 179, 236;
+    --fooman-global-color-blue-400: 50, 158, 231;
+    --fooman-global-color-blue-500: 24, 132, 205;
+    --fooman-global-color-blue-600: 19, 103, 160;
+    --fooman-global-color-blue-700: 13, 74, 114;
+    --fooman-global-color-blue-800: 8, 44, 68;
+
     --venia-global-color-blue-100: 194 200 255;
     --venia-global-color-blue-400: 61 132 255;
     --venia-global-color-blue-500: 51 109 255;
@@ -113,12 +122,12 @@
 /* alias tokens */
 :global(:root) {
     /* colors */
-    --venia-brand-color-1-100: var(--venia-global-color-blue-100);
-    --venia-brand-color-1-400: var(--venia-global-color-blue-400);
-    --venia-brand-color-1-500: var(--venia-global-color-blue-500);
-    --venia-brand-color-1-600: var(--venia-global-color-blue-600);
-    --venia-brand-color-1-700: var(--venia-global-color-blue-700);
-    --venia-brand-color-1-800: var(--venia-global-color-blue-800);
+    --venia-brand-color-1-100: var(--fooman-global-color-blue-100);
+    --venia-brand-color-1-400: var(--fooman-global-color-blue-400);
+    --venia-brand-color-1-500: var(--fooman-global-color-blue-500);
+    --venia-brand-color-1-600: var(--fooman-global-color-blue-600);
+    --venia-brand-color-1-700: var(--fooman-global-color-blue-700);
+    --venia-brand-color-1-800: var(--fooman-global-color-blue-800);
 
     /* typography */
     /* heading */
