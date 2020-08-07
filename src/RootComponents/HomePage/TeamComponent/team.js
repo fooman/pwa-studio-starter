@@ -22,9 +22,9 @@ const Team = () => {
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img className = {classes.memberImg} src = {kristofRingleff} />
+                                    <img alt={"photo of Kristof"} className = {classes.memberImg} src = {kristofRingleff} />
                                 </div>
-                                <img className = {classes.devPlusImg} src = {developerPlus} />
+                                <img alt={"logo certified developer"} className = {classes.devPlusImg} src = {developerPlus} />
                             </div>
                             <div style={{clear: "both"}}>&nbsp;</div>
                             <div>
@@ -39,9 +39,9 @@ const Team = () => {
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img className = {classes.memberImg} src = {Dusan} />
+                                    <img alt={"photo of Dusan"} className = {classes.memberImg} src = {Dusan} />
                                 </div>
-                                <img className = {classes.devPlusImg} src = {developerPlus} />
+                                <img alt={"logo certified developer"} className = {classes.devPlusImg} src = {developerPlus} />
                             </div>
                             <div style={{clear: "both"}}>&nbsp;</div>
                             <div>
@@ -56,7 +56,7 @@ const Team = () => {
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img className = {classes.memberImg} src = {Michael} />
+                                    <img alt={"photo of Michael"} className = {classes.memberImg} src = {Michael} />
                                 </div>
                             </div>
                             <div style={{clear: "both"}}>&nbsp;</div>
@@ -72,7 +72,7 @@ const Team = () => {
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img className = {classes.memberImg} src = {Martha} />
+                                    <img alt={"photo of Martha"} className = {classes.memberImg} src = {Martha} />
                                 </div>
                             </div>
                             <div style={{clear: "both"}}>&nbsp;</div>
@@ -88,7 +88,7 @@ const Team = () => {
                         <div className = {classes.mediaMember}>
                             <div className = {classes.frameWrapper}>
                                 <div className = {classes.roundFrame}>
-                                    <img className = {classes.memberImg} src = {Irfan} />
+                                    <img alt={"photo of Irfan"} className = {classes.memberImg} src = {Irfan} />
                                 </div>
                             </div>
                             <div style={{clear: "both"}}>&nbsp;</div>

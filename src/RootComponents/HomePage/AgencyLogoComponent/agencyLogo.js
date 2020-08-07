@@ -43,7 +43,7 @@ const AgencyLogo = ({data}) => {
     const carouselItems = range(noOfItems).map(index => (
         <div key={index} className={classes.imgDiv}>
             <Image
-                alt="agency-logo"
+                alt={imgArray[index].name + " Agency Logo"}
                 classes={{
                     root: classes.imgDiv,
                     image: classes.imgCls,
