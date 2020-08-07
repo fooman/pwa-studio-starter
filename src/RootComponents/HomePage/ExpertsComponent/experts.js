@@ -19,27 +19,27 @@ const Experts = () => {
                 <div className = {classes.line}>
                     <div className={classes.unit}>
                         <div className={classes.portRait}>
-                            <img  src = {davidBestImg} />
+                            <img alt={"photo of David"} src = {davidBestImg} />
                         </div>
                         <div className = {classes.rText}>
                             <p className = {classes.clientName}>{"David Wain-Heapy"}</p>
                             <p className = {classes.clientOrg}>{"Best Response Media"}</p>
                             <p className = {classes.clientQuote}>{"We have had great experiences with Fooman extensions... The code is really well written"}</p>
                             <p>
-                                <img className = {classes.strikeImg} src = {bestResponseImg} />
+                                <img alt={"Logo Best Response Media"} className = {classes.strikeImg} src = {bestResponseImg} />
                             </p>
                         </div>
                     </div>
                     <div className={classes.unit}>
                         <div className={classes.portRait}>
-                            <img src = {tomRobertsImg} />
+                            <img alt={"photo of Tom"} src = {tomRobertsImg} />
                         </div>
                         <div className = {classes.rText}>
                             <p className = {classes.clientName}>{"Tom Robertshaw"}</p>
                             <p className = {classes.clientOrg}>{"Meanbee"}</p>
                             <p className = {classes.clientQuote}>{"Fooman is a Magento name you can trust"}</p>
                             <p>
-                                <img className = {classes.strikeImg} src = {meanBee} />
+                                <img alt={"Logo Meanbee"} className = {classes.strikeImg} src = {meanBee} />
                             </p>
                         </div>
                     </div>

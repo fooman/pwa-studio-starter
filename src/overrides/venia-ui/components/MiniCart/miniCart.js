@@ -98,7 +98,6 @@ const MiniCart = React.forwardRef((props, ref) => {
         </div>
     ) : (
         <Fragment>
-            <div className={classes.header}>{header}</div>
             <div className={classes.body}>
                 <ProductList
                     items={productList}
@@ -115,7 +114,7 @@ const MiniCart = React.forwardRef((props, ref) => {
                     disabled={loading || isCartEmpty}
                 >
                     <FontAwesomeIcon icon={faLock} color='white' size='1x' className={classes.checkoutIcon}/>
-                    {'CHECKOUT'}
+                    {'Checkout'}
                 </Button>
                 <Button
                     onClick={handleEditCart}
@@ -123,7 +122,7 @@ const MiniCart = React.forwardRef((props, ref) => {
                     className={classes.editCartButton}
                     disabled={loading || isCartEmpty}
                 >
-                    {'Edit Shopping Bag'}
+                    {'Edit Cart'}
                 </Button>
             </div>
         </Fragment>

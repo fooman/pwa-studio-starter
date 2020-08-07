@@ -1,0 +1,8 @@
+query {
+    testimonials {
+ 	items {
+      name
+      logo_image
+    }
+  }
+}
