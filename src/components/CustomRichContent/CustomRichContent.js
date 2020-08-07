@@ -16,17 +16,32 @@ function replaceHtmlWithReact({ attribs, children , type , name }) {
         return <Image
             alt={attribs.alt}
             style={{width:`${attribs.width}px`}}
-            classes={{ image: classes.descriptionImage ,placeholder: classes.imagePlaceHolder }}
-            src={attribs.src}
+            classes={{ image: classes.descriptionImage ,root: classes.imageContainer,placeholder: classes.imagePlaceHolder }}
+            src={new URL(attribs.src).pathname}
             title={attribs.title}
         />;
     }
     if(attribs.class === "media feature") {
-        return  <ProductFeatureComponent content={domToReact(children,{ replace: replaceHtmlWithReact })}/>
+        const data = children && children.length && children.map(item => {
+            if(item && item.attribs) {
+                if(item.attribs.class === "bd"){
+                    item.attribs.class = classes.featureBd
+                }
+                else if(item.attribs.class === "img"){
+                    item.attribs.class = classes.featureImgLeft
+                }
+                else if(item.attribs.class === "imgExt"){
+                    item.attribs.class = classes.featureImgRight
+                }
+            }
+            return item;
+        })
+        return  <ProductFeatureComponent content={domToReact(data,{ replace: replaceHtmlWithReact })}/>
     }
     else if(attribs.class === "customers-logos"){
         return  <HighlightedCustomersComponent content={domToReact(children,{ replace: replaceHtmlWithReact })}/>
     }
+
 }
 
 const CustomRichContent = ({ html }) => {
