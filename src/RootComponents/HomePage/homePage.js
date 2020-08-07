@@ -10,8 +10,22 @@ import ReadyToSave from './ReadyToSaveComponent/readyToSave';
 import {mergeClasses} from "@magento/venia-ui/lib/classify";
 import defaultClasses from "./homePage.css";
 import {shape, string} from "prop-types";
+import { fullPageLoadingIndicator } from "@magento/venia-ui/lib/components/LoadingIndicator";
+import { useQuery } from '@apollo/react-hooks';
+import agencyLogosQuery from './testimonialsLogo.graphql';
+
 
 const HomePage = () => {
+    const { loading, error, data } = useQuery(agencyLogosQuery);
+    if (error) {
+        if (process.env.NODE_ENV !== 'production') {
+            console.error(error);
+        }
+        return <div>Page Fetch Error</div>;
+    }
+    if (loading) {
+        return fullPageLoadingIndicator;
+    }
     const classes = mergeClasses(defaultClasses);
     return (
         <div>
@@ -25,7 +39,7 @@ const HomePage = () => {
              <Experts/>
             </div>
             <div className = {classes.agencyComponent}>
-             <AgencyLogo/>
+                <AgencyLogo data = {data}/>
             </div>
             <div className={classes.teamComponent}>
             <Team/>
