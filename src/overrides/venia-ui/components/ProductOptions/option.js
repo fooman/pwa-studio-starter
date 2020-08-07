@@ -10,7 +10,6 @@ import {
 } from 'prop-types';
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
-import { Form } from 'informed';
 import defaultClasses from './option.css';
 import { useOption } from '../../../peregrine/talons/ProductOptions/useOption';
 import { ProductOptionsRadio } from "../../../../components/ProductOptions/productOptionsRadio";
@@ -59,7 +58,6 @@ const Option = props => {
             handleTextChange={handleTextChange}
         />
          : props.__typename === 'CustomizableMultipleOption' ? null :
-            <Form>
             <ProductOptionsRadio
                 {...props}
                 classes={ {
@@ -69,7 +67,6 @@ const Option = props => {
                 initialSelection={initialSelection}
                 handleSelectionChange={handleSelectionChange}
             />
-            </Form>
     const classes = mergeClasses(defaultClasses, props.classes);
     return (
         <div className={classes.root}>
@@ -79,16 +76,16 @@ const Option = props => {
 };
 
 Option.propTypes = {
-    attribute_code: string.isRequired,
+    attribute_code: string,
     attribute_id: string,
     classes: shape({
         root: string,
         title: string
     }),
-    label: string.isRequired,
+    label: string,
     onSelectionChange: func,
     selectedValue: oneOfType([number, string]),
-    values: arrayOf(object).isRequired
+    values: arrayOf(object)
 };
 
 export default Option;
