@@ -4,8 +4,8 @@
 }
 
 .imageContainer{
-    width: 300px;
-    height: 300px;
+    width: 18.75rem;
+    height: 18.75rem;
     display: block;
 }
 .imagePlaceHolder{
@@ -13,22 +13,22 @@
 }
 
 .feature {
-    margin: 10px auto 20px;
-    border-radius: 10px;
-    padding: 10px;
+    margin: 0.625rem auto 1.25rem;
+    border-radius: 0.625rem;
+    padding: 0.625rem;
     border: 1px #f5f5f5 solid;
     overflow: hidden;
     zoom: 1;
 }
 
 .featureImgLeft {
-    margin: 10px 30px;
+    margin: 0.625rem 1.875rem;
     float: left;
     width: 34%;
 }
 
 .featureImgRight {
-    margin: 10px 30px;
+    margin: 0.625rem 1.875rem;
     float: right;
     width: 34%;
     display: flex;
@@ -51,9 +51,9 @@
 }
 
 .featureBd p {
-    margin: 10px 10px 30px 10px;
-    font-size: 16px;
-    color: #585858;
+    margin: 0.625rem 0.625rem 1.875rem 0.625rem;
+    font-size: var(--venia-global-fontSize-300);
+    color: rgb(var(--fooman-global-color-font-gray));
 }
 
 .featureBd div {
@@ -63,12 +63,12 @@
 
 .feature h4 {
     font-weight: bold;
-    color: var(--fooman-global-color-font-gray);
+    color: #2b2b2b;
     font-family: var(--venia-global-fontFamily-roboto-light-sansSerif);
     line-height: 1.2em;
     padding: 0;
-    margin: 20px 10px !important;
-    font-size:1.25rem;
+    margin: 1.25rem 0.625rem !important;
+    font-size: 1.25rem;
     font-style: normal;
     display: block;
     margin-block-start: 1.33em;

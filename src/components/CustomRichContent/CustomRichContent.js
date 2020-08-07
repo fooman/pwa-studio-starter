@@ -3,7 +3,7 @@ import ReactDOMServer from 'react-dom/server';
 import parse , { domToReact } from 'html-react-parser';
 import Image from "@magento/venia-ui/lib/components/Image";
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
-import RichContent from "@magento/venia-ui/lib/components/RichText";
+import RichContent from "@magento/venia-ui/lib/components/RichContent";
 import HighlightedCustomersComponent  from "./HighlightedCustomersComponent";
 import ProductFeatureComponent  from "./ProductFeatureComponent";
 import defaultClasses from "./CustomRichContent.css";
@@ -45,11 +45,10 @@ function replaceHtmlWithReact({ attribs, children , type , name }) {
 }
 
 const CustomRichContent = ({ html }) => {
-    return <RichContent content = { ReactDOMServer.renderToString(parse(html,{
+    return <RichContent html = { ReactDOMServer.renderToString(parse(html,{
              replace: replaceHtmlWithReact
      }))}/>
 }
 
-export const canRender = html => !!html;
 
-export { CustomRichContent as Component };
+export default  CustomRichContent ;
