@@ -1,28 +1,15 @@
-import React, {useEffect, useState, useRef} from "react";
+import React, {useEffect, useState} from "react";
 import ItemsCarousel from 'react-items-carousel';
 import range from 'lodash/range';
-import { useQuery } from '@apollo/react-hooks';
-import agencyLogosQuery from '../../../queries/testimonialsLogo.graphql';
 import Button from "@magento/venia-ui/lib/components/Button";
 import {shape, string} from "prop-types";
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Image from "@magento/venia-ui/lib/components/Image";
 import defaultClasses from "./agencyLogo.css";
-import {fullPageLoadingIndicator} from "@magento/venia-ui/lib/components/LoadingIndicator";
 
-const AgencyLogo = () => {
-    const { loading, error, data } = useQuery(agencyLogosQuery);
-    const classes = mergeClasses(defaultClasses);
+const AgencyLogo = ({data}) => {
     const [activeItemIndex, setActiveItemIndex] = useState(0);
-    if (error) {
-        if (process.env.NODE_ENV !== 'production') {
-            console.error(error);
-        }
-        return <div>Page Fetch Error</div>;
-    }
-    if (loading) {
-        return fullPageLoadingIndicator;
-    }
+    const classes = mergeClasses(defaultClasses);
     let interval;
     const noOfItems = (data.testimonials && data.testimonials.items && data.testimonials.items.length) || 0;
     const noOfCards = 4;
