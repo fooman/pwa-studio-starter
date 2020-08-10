@@ -30,6 +30,9 @@ SubfolderResponse:
     - matches: request.url.pathname
       pattern: '^/(releases|manuals)(/|$)'
       use: subfolderProxyResponse
+    - matches: request.url.pathname
+      pattern: '^/(sitemap\.xml)'
+      use: staticFromRoot
     - matches: fileExtension
       pattern: '(jpg|gif)'
       use: veniaStatic
@@ -138,3 +141,24 @@ foomanStaticIncludes:
   directory:
     resolver: inline
     inline: './assets'
+
+contentTypeFromExtension:
+  when:
+    - matches: fileExtension
+      pattern: '^ico$'
+      use:
+        inline: image/x-icon
+    - matches: fileExtension
+      pattern: '^txt$'
+      use:
+        inline: text/plain
+    - matches: fileExtension
+      pattern: '^json$'
+      use:
+        inline: application/json
+    - matches: fileExtension
+      pattern: '^xml'
+      use:
+        inline: application/xml
+  default:
+    inline: text/html
