@@ -21,7 +21,7 @@ export const useMyDownloads = prop => {
         loading: isDownloadableLoading,
         data: customerDownloadableProduct,
         error
-    } = useQuery(useCustomerDownloadableProductQuery);
+    } = useQuery(useCustomerDownloadableProductQuery, { skip: !isSignedIn });
 
     return {
         data: customerDownloadableProduct,
