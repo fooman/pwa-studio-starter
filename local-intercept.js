@@ -48,7 +48,7 @@ function localIntercept(targets) {
             name: 'MyDownloads',
             pattern: '/my-downloads',
             exact: true,
-            path: '../../../../../../src/overrides/venia-ui/components/MyDownloads'
+            path: '../../../../../../src/components/MyDownloads'
         }
     ]);
 

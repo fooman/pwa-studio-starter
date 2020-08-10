@@ -1,17 +1,19 @@
 import React from "react";
 
-import {useMyDownloads} from '../../../peregrine/talons/MyDownloads/useMyDownloads';
+import {useMyDownloads} from '../../overrides/peregrine/talons/MyDownloads/useMyDownloads';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 
-import customerDownloadableProductQuery from 'src/overrides/venia-ui/components/MyDownloads/customerDownloadableProduct.graphql';
+import customerDownloadableProductQuery from 'src/components/MyDownloads/customerDownloadableProduct.graphql';
 
 import defaultClasses from './myDownloads.css';
 import {Title} from "@magento/venia-ui/lib/components/Head";
 
-const PAGE_TITLE = `My Downloads`;
-const EMPTY_DATA_MESSAGE = `You don't have any downloadable product's.`;
+import ProductTable from './productTable'
+
+const PAGE_TITLE = `My Downloadable Products`;
+const EMPTY_DATA_MESSAGE = `You don't have any downloadable products.`;
 
 const MyDownloads = () => {
     const talonProps = useMyDownloads({
@@ -47,7 +49,7 @@ const MyDownloads = () => {
         else {
             pageContents = (
                 <div className={classes.downloadableProductTable}>
-                    TBD - data view goes here
+                    <ProductTable items = {items}/>
                 </div>
             );
         }

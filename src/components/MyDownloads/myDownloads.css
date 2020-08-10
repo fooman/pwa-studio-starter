@@ -1,14 +1,13 @@
 .root {
     padding: 2.5rem 3rem;
-    max-width: 1080px;
+    max-width: 67.5rem;
     margin: 0 auto;
 }
 
 .heading {
-    text-transform: capitalize;
-    line-height: 1.25em;
-    margin-bottom: 2rem;
-    text-align: center;
+    font-size: 2.5em;
+    text-align: left;
+    padding-bottom: 1.25rem;
 }
 
 .emptyProductMessage {
