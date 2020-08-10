@@ -2,23 +2,23 @@
     "name": "Fooman",
     "short_name": "Fooman",
     "start_url": "/",
-    "theme_color": "#ff6334",
+    "theme_color": "#0b3c5d",
     "display": "standalone",
     "background_color": "#fff",
     "description": "Magento 2 Extensions",
     "icons": [
         {
-            "src": "/venia-static/icons/venia_circle_144.png",
+            "src": "/assets/icons/fooman_logo_144x144.png",
             "sizes": "144x144",
             "type": "image/png"
         },
         {
-            "src": "/venia-static/icons/venia_circle_192.png",
+            "src": "/assets/icons/fooman_logo_192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/venia-static/icons/venia_circle_512.png",
+            "src": "/assets/icons/fooman_logo_512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }

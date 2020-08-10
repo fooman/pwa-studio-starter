@@ -31,12 +31,12 @@ SubfolderResponse:
       pattern: '^/(releases|manuals)(/|$)'
       use: subfolderProxyResponse
     - matches: request.url.pathname
-      pattern: '^/(sitemap\.xml)'
+      pattern: '^/(robots\.txt|favicon\.ico|manifest\.json|sitemap\.xml)'
       use: staticFromRoot
     - matches: fileExtension
-      pattern: '(jpg|gif)'
+      pattern: '(js|json|png|svg|ico|css|txt|jpg|gif)'
       use: veniaStatic
-  default: veniaResponse #veniaResponse
+  default: veniaResponse
 
 notFoundResponse:
   resolver: inline
@@ -71,30 +71,12 @@ comingSoonResponse:
       file:
         resolver: inline
         inline: './templates/coming-soon.html'
-#redirectResponse:
-#  inline:
-#    status: 301
-#    headers:
-#      resolver: inline
-#      inline:
-#        location: constructReleasesTarget
-#    body:
-#      inline: ''
 
 subfolderProxyResponse:
   resolver: proxy
   target: constructSubfolderTarget
   pathRewrite:
     inline: '{"^/(releases|manuals)":""}'
-
-requestedResource:
-  resolver: conditional
-  when:
-    - matches: request.url.pathname
-      pattern: '^/(releases|manuals)(/|$)'
-      use: $match.$2
-  default:
-    inline: ''
 
 requestedHost:
   resolver: conditional
@@ -110,7 +92,6 @@ constructSubfolderTarget:
   engine: mustache
   provide:
     host: requestedHost
-    url: requestedResource
   template:
     inline: "https://{{ host }}.fooman.com/"
 

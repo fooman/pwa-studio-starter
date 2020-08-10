@@ -13,6 +13,29 @@ adjust_patch_to_override_folder () {
     gsed -i 's#packages/peregrine/lib#src/overrides/peregrine#g' current.patch
 }
 
+show_overrides_changes () {
+    find ./src/overrides/venia-ui -not -name "*.patch" -type f -print0 | while read -d $'\0' file
+    do
+        fileToCheck=$(echo "$file" | gsed "s#src/overrides/venia-ui#node_modules/@magento/venia-ui/lib#g")
+        if [ ! -f $fileToCheck ]; then
+            echo "$file is not an override"
+            exit 1
+        else
+            git --no-pager diff --no-index --patch $fileToCheck $file
+        fi
+    done
+    find ./src/overrides/peregrine -not -name "*.patch" -type f -print0 | while read -d $'\0' file
+    do
+        fileToCheck=$(echo "$file" | gsed "s#src/overrides/peregrine#node_modules/@magento/peregrine/lib#g")
+        if [ ! -f $fileToCheck ]; then
+            echo "$file is not an override"
+            exit 1
+        else
+            git --no-pager diff --no-index --patch $fileToCheck $file
+        fi
+done
+}
+
 confirm_all_overrides_valid () {
     find ./src/overrides/venia-ui -not -name "*.patch" -type f -print0 | while read -d $'\0' file
     do
@@ -36,8 +59,11 @@ confirm_all_overrides_valid () {
 done
 }
 
-confirm_all_overrides_valid
-download_diff $1 $2
+show_overrides_changes
+exit 0
+
+#confirm_all_overrides_valid
+#download_diff $1 $2
 adjust_patch_to_override_folder
 
 find ./src/overrides -type f -print0 | while read -d $'\0' file
