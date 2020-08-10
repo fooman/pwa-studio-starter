@@ -1,6 +1,6 @@
 import React from "react";
 
-import {useMyDownloads} from '../../overrides/peregrine/talons/MyDownloads/useMyDownloads';
+import {useMyDownloads} from './useMyDownloads';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
