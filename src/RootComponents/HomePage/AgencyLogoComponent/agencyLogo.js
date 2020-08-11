@@ -6,6 +6,7 @@ import {shape, string} from "prop-types";
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Image from "@magento/venia-ui/lib/components/Image";
 import defaultClasses from "./agencyLogo.css";
+import { Link, resourceUrl } from '@magento/venia-drivers';
 
 const AgencyLogo = ({data}) => {
     const [activeItemIndex, setActiveItemIndex] = useState(0);
@@ -24,16 +25,15 @@ const AgencyLogo = ({data}) => {
             return () => {
                 clearInterval(interval);
             }
-
         }
-        ,[activeItemIndex]);
+        , [activeItemIndex]);
 
     const tick = () => setActiveItemIndex(
         (activeItemIndex + 1) % (noOfItems-noOfCards + 1)
     );
 
     const onChangeValue = value => {
-        setActiveItemIndex( value );
+        setActiveItemIndex(value);
     }
 
     const imgHandleClick = imgLink => {
@@ -54,7 +54,7 @@ const AgencyLogo = ({data}) => {
         </div>
     ));
 
-    if(data){
+    if (data) {
         return (
             <div className = {classes.root}>
                 <div className = {classes.slider}>
@@ -69,14 +69,15 @@ const AgencyLogo = ({data}) => {
                         {carouselItems}
                     </ItemsCarousel>
                 </div>
-
-                <div className = {classes.btnDiv}>
-                    <Button className={classes.btnCls}
-                            priority="normal"
-                    >
-                        {"Read Client Stories"}
-                    </Button>
-                </div>
+                <Link className={classes.link} to={resourceUrl('/customer-profiles')}>
+                    <div className = {classes.btnDiv}>
+                        <Button className={classes.btnCls}
+                                priority="normal"
+                        >
+                            {"Read Client Stories"}
+                        </Button>
+                    </div>
+                </Link>
             </div>
         );
     }
