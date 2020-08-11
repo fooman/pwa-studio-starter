@@ -1712,10 +1712,6 @@
     iltorb "^2.4.5"
     node-zopfli-es "^1.0.3"
 
-"@magento/upward-security-headers@https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-0.0.1-fooman-canary-2020-31.tgz":
-  version "0.0.1-fooman-canary-2020-31"
-  resolved "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-0.0.1-fooman-canary-2020-31.tgz#2ad7a9b7aae4621bc72b9d7055ce0bb3c82059f9"
-
 "@magento/venia-ui@https://canary-packages.fooman.com/venia-ui/magento-venia-ui-4.0.0-fooman-canary-2020-31.tgz":
   version "4.0.0-fooman-canary-2020-31"
   resolved "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-4.0.0-fooman-canary-2020-31.tgz#d5e6881d072a23f6d55c2bdc18a6773cea979450"
