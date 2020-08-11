@@ -1,5 +1,5 @@
 import React from 'react';
-import defaultClasses from "./CustomRichContent.css";
+import defaultClasses from "./ProductFeatureComponent.css";
 import { mergeClasses } from "@magento/venia-ui/lib/classify";
 
 const classes = mergeClasses(defaultClasses);
