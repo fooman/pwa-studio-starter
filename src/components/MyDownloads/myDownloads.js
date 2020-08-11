@@ -61,6 +61,7 @@ const MyDownloads = () => {
             </div>
         );
     }
+    return null;
 }
 
 export default MyDownloads;

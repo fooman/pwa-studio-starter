@@ -12,12 +12,13 @@ const ExtensionsTable = props => {
     const mapExtensionDetail = () => {
         return items.slice(0).reverse().map((singleItem, index) => {
             const { order_increment_id, product_name, purchased_host, free_upgrades_until } = singleItem;
+            const upgradeUntilDate = new Date(new Date(free_upgrades_until * 1000)).toLocaleDateString();
             return (
                 <tr key={index}>
                     <td className={classes.tdClass}>{order_increment_id}</td>
                     <td className={classes.tdClass}>{product_name}</td>
                     <td className={classes.tdClass}>{purchased_host}</td>
-                    <td className={classes.tdClass}>{free_upgrades_until}</td>
+                    <td className={classes.tdClass}>{upgradeUntilDate}</td>
                 </tr>
             );
         });

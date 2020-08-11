@@ -19,6 +19,7 @@ const MyExtensions = () => {
     const talonProps = useMyExtensions({
         useCustomerPurchasedExtensionsQuery: customerPurchasedExtensionsQuery
     });
+
     const { data, isLoading, error } = talonProps;
 
     const classes = mergeClasses(defaultClasses);
@@ -27,11 +28,11 @@ const MyExtensions = () => {
         if (process.env.NODE_ENV !== 'production') {
             console.error(error);
         }
-        return <div>Data Fetch Error</div>;
+        return (<div>Data Fetch Error</div>);
     }
 
     if (isLoading) {
-        return fullPageLoadingIndicator;
+        return (fullPageLoadingIndicator);
     }
 
     let pageContents;
@@ -61,6 +62,7 @@ const MyExtensions = () => {
             </div>
         );
     }
+    return null;
 }
 
 export default MyExtensions;

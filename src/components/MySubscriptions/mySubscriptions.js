@@ -61,6 +61,7 @@ const MySubscriptions = () => {
             </div>
         );
     }
+    return null;
 }
 
 export default MySubscriptions;
