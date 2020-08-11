@@ -14,7 +14,9 @@ const MENU_ITEMS = [
     { name: 'Saved Payments', url: '' },
     { name: 'Communications', url: '' },
     { name: 'Account Information', url: '' },
-    { name: 'My Downloads', url: '/my-downloads' }
+    { name: 'My Downloads', url: '/my-downloads' },
+    { name: 'My Subscriptions', url: '/my-subscriptions' },
+    { name: 'My Extensions', url: '/my-extensions' },
 ];
 
 const AccountMenuItems = props => {

@@ -1,0 +1,10 @@
+query {
+    customerPurchasedExtensions {
+        items {
+            order_increment_id
+            product_name
+            purchased_host
+            free_upgrades_until
+        }
+    }
+}
