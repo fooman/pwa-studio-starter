@@ -12,3 +12,17 @@
 .imagePlaceHolder {
     width: unset !important;
 }
+
+@media screen and (max-width: 960px) {
+    .imageContainer{
+        width: 20rem;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .imageContainer{
+        width: 18.75rem;
+        height: auto;
+        display: block;
+    }
+}

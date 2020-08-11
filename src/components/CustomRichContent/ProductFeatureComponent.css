@@ -67,7 +67,7 @@
 @media screen and (max-width: 960px) {
 
     .feature {
-        width: 100%;
+        width: 60%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -82,6 +82,12 @@
     .featureImgRight {
         display: flex;
         justify-content: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .feature {
         width: 100%;
     }
 }
