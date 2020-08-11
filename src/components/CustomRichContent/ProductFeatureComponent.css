@@ -23,12 +23,66 @@
     margin-inline-end: 0;
 }
 
+
+.featureImgLeft {
+    margin: 0.625rem 1.875rem;
+    float: left;
+    width: 34%;
+}
+
+.featureImgRight {
+    margin: 0.625rem 1.875rem;
+    float: right;
+    width: 34%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.featureImgLeft img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.featureImgLeft div{
+    padding: 0;
+}
+
+.featureBd, .ft, .hd {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.featureBd p {
+    margin: 0.625rem 0.625rem 1.875rem 0.625rem;
+    font-size: var(--venia-global-fontSize-300);
+    color: rgb(var(--fooman-global-color-font-gray));
+}
+
+.featureBd div {
+    margin: 0;
+    padding: 0;
+}
+
 @media screen and (max-width: 960px) {
+
     .feature {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .featureImgLeft {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .featureImgRight {
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 }
 

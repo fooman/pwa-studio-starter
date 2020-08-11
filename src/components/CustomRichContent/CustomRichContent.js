@@ -7,8 +7,10 @@ import RichContent from "@magento/venia-ui/lib/components/RichContent";
 import HighlightedCustomersComponent  from "./HighlightedCustomersComponent";
 import ProductFeatureComponent  from "./ProductFeatureComponent";
 import defaultClasses from "./CustomRichContent.css";
+import productFeatureClasses from "./ProductFeatureComponent.css";
 
-const classes = mergeClasses(defaultClasses);
+
+const classes = mergeClasses(defaultClasses,productFeatureClasses);
 
 function replaceHtmlWithReact({ attribs, children , type , name }) {
     if (!attribs) return;
