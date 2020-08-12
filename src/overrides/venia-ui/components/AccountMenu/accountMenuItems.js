@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { func, shape, string } from 'prop-types';
 
+import { useAppContext } from '@magento/peregrine/lib/context/app';
+
 import { Link } from '@magento/venia-drivers';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
@@ -14,7 +16,9 @@ const MENU_ITEMS = [
     { name: 'Saved Payments', url: '' },
     { name: 'Communications', url: '' },
     { name: 'Account Information', url: '' },
-    { name: 'My Downloads', url: '/my-downloads' }
+    { name: 'My Downloads', url: '/my-downloads' },
+    { name: 'My Subscriptions', url: '/my-subscriptions' },
+    { name: 'My Extensions', url: '/my-extensions' },
 ];
 
 const AccountMenuItems = props => {
@@ -22,9 +26,16 @@ const AccountMenuItems = props => {
 
     const classes = mergeClasses(defaultClasses, props.classes);
 
+    const [appState, { closeDrawer }] = useAppContext();
+    const { drawer } = appState;
+
+    const handleAccountMenu = () => {
+        drawer === 'nav' ? closeDrawer() : null;
+    }
+
     const menuItems = MENU_ITEMS.map(item => {
         return (
-            <Link className={classes.link} to={item.url} key={item.name}>
+            <Link className={classes.link} to={item.url} key={item.name} onClick={() => handleAccountMenu()}>
                 {item.name}
             </Link>
         );

@@ -1,23 +1,23 @@
 import React from "react";
 
-import {useMyDownloads} from './useMyDownloads';
+import { useMySubscriptions } from './useMySubscriptions';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 
-import customerDownloadableProductQuery from 'src/components/MyDownloads/customerDownloadableProduct.graphql';
+import customerSubscriptionsQuery from './customerSubscriptions.graphql';
 
-import defaultClasses from './myDownloads.css';
+import defaultClasses from './mySubscriptions.css';
 import {Title} from "@magento/venia-ui/lib/components/Head";
 
-import ProductTable from './productTable'
+import SubscriptionsTable from './subscriptionsTable';
 
-const PAGE_TITLE = `My Downloadable Products`;
-const EMPTY_DATA_MESSAGE = `You don't have any downloadable products.`;
+const PAGE_TITLE = `My Subscriptions`;
+const EMPTY_DATA_MESSAGE = `You don't have any subscriptions.`;
 
-const MyDownloads = () => {
-    const talonProps = useMyDownloads({
-        useCustomerDownloadableProductQuery: customerDownloadableProductQuery
+const MySubscriptions = () => {
+    const talonProps = useMySubscriptions({
+        useCustomerSubscriptionsQuery: customerSubscriptionsQuery
     });
     const { data, isLoading, error } = talonProps;
 
@@ -36,20 +36,20 @@ const MyDownloads = () => {
 
     let pageContents;
     if (data) {
-        let { customerDownloadableProducts } = data;
-        let { items } = customerDownloadableProducts;
 
-        if (!items.length) {
+        let { subscriptions } = data;
+
+        if (!subscriptions.length) {
             pageContents = (
-                <h3 className={classes.emptyProductMessage}>
+                <h3 className={classes.emptySubscriptionMessage}>
                     {EMPTY_DATA_MESSAGE}
                 </h3>
             );
         }
         else {
             pageContents = (
-                <div className={classes.downloadableProductTable}>
-                    <ProductTable items = {items}/>
+                <div className={classes.subscriptionTable}>
+                    <SubscriptionsTable items = { subscriptions }/>
                 </div>
             );
         }
@@ -64,4 +64,4 @@ const MyDownloads = () => {
     return null;
 }
 
-export default MyDownloads;
+export default MySubscriptions;

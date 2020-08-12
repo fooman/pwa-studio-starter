@@ -49,6 +49,18 @@ function localIntercept(targets) {
             pattern: '/my-downloads',
             exact: true,
             path: '../../../../../../src/components/MyDownloads'
+        },
+        {
+            name: 'MySubscriptions',
+            pattern: '/my-subscriptions',
+            exact: true,
+            path: '../../../../../../src/components/MySubscriptions'
+        },
+        {
+            name: 'MyExtensions',
+            pattern: '/my-extensions',
+            exact: true,
+            path: '../../../../../../src/components/MyExtensions'
         }
     ]);
 }

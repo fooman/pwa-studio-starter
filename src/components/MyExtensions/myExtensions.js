@@ -1,24 +1,25 @@
 import React from "react";
 
-import {useMyDownloads} from './useMyDownloads';
+import {useMyExtensions} from './useMyExtensions';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 
-import customerDownloadableProductQuery from 'src/components/MyDownloads/customerDownloadableProduct.graphql';
+import customerPurchasedExtensionsQuery from './customerPurchasedExtensions.graphql';
 
-import defaultClasses from './myDownloads.css';
+import defaultClasses from './myExtensions.css';
 import {Title} from "@magento/venia-ui/lib/components/Head";
 
-import ProductTable from './productTable'
+import ExtensionsTable from './extensionsTable';
 
-const PAGE_TITLE = `My Downloadable Products`;
-const EMPTY_DATA_MESSAGE = `You don't have any downloadable products.`;
+const PAGE_TITLE = `My Extensions`;
+const EMPTY_DATA_MESSAGE = `You don't have any extensions.`;
 
-const MyDownloads = () => {
-    const talonProps = useMyDownloads({
-        useCustomerDownloadableProductQuery: customerDownloadableProductQuery
+const MyExtensions = () => {
+    const talonProps = useMyExtensions({
+        useCustomerPurchasedExtensionsQuery: customerPurchasedExtensionsQuery
     });
+
     const { data, isLoading, error } = talonProps;
 
     const classes = mergeClasses(defaultClasses);
@@ -27,29 +28,29 @@ const MyDownloads = () => {
         if (process.env.NODE_ENV !== 'production') {
             console.error(error);
         }
-        return <div>Data Fetch Error</div>;
+        return (<div>Data Fetch Error</div>);
     }
 
     if (isLoading) {
-        return fullPageLoadingIndicator;
+        return (fullPageLoadingIndicator);
     }
 
     let pageContents;
     if (data) {
-        let { customerDownloadableProducts } = data;
-        let { items } = customerDownloadableProducts;
+        let { customerPurchasedExtensions } = data;
+        let { items } = customerPurchasedExtensions;
 
         if (!items.length) {
             pageContents = (
-                <h3 className={classes.emptyProductMessage}>
+                <h3 className={classes.emptyExtensionsMessage}>
                     {EMPTY_DATA_MESSAGE}
                 </h3>
             );
         }
         else {
             pageContents = (
-                <div className={classes.downloadableProductTable}>
-                    <ProductTable items = {items}/>
+                <div className={classes.downloadableExtensionsTable}>
+                    <ExtensionsTable items = {items}/>
                 </div>
             );
         }
@@ -64,4 +65,4 @@ const MyDownloads = () => {
     return null;
 }
 
-export default MyDownloads;
+export default MyExtensions;
