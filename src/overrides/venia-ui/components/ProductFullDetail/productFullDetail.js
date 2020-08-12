@@ -18,7 +18,7 @@ import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
 import ProductStaticArea from '../../../../components/ProductFullDetail/Static/productDetailStaticArea';
 import AnyQuestion from '../../../../components/ProductFullDetail/Static/anyQuestion';
 import ProductGallery from '../../../../components/ProductGallery/ProductGallery';
-import RichText from '@magento/venia-ui/lib/components/RichText';
+import CustomRichContent from '../../../../components/CustomRichContent/CustomRichContent';
 
 import defaultClasses from './productFullDetail.css';
 import {
@@ -174,45 +174,14 @@ const ProductFullDetail = props => {
             {breadcrumbs}
             <Form className={classes.root}>
                 <div className={classes.formMainDiv}>
-                    {/*<section className={classes.title}>*/}
-                    {/*    <h1 className={classes.productName}>*/}
-                    {/*        {productDetails.name}*/}
-                    {/*    </h1>*/}
-                    {/*    <p className={classes.productPrice}>*/}
-                    {/*        <Price*/}
-                    {/*            currencyCode={productDetails.price.currency}*/}
-                    {/*            value={productDetails.price.value}*/}
-                    {/*        />*/}
-                    {/*    </p>*/}
-                    {/*</section>*/}
                     <section className={classes.imageCarousel}>
                         <div className={classes.productTitle}>
                             <h1>
                                 {productDetails.name}
                             </h1>
                         </div>
-                        <div>
-                            <ProductGallery images={mediaGalleryEntries} />
-                            {/*<Carousel images={mediaGalleryEntries} />*/}
-                        </div>
+                        <ProductGallery images={mediaGalleryEntries} />
                     </section>
-                    {/*<section className={classes.options}>{options}</section>*/}
-                    {/*<section className={classes.quantity}>*/}
-                    {/*    <h2 className={classes.quantityTitle}>Quantity</h2>*/}
-                    {/*    <Quantity*/}
-                    {/*        initialValue={quantity}*/}
-                    {/*        onValueChange={handleSetQuantity}*/}
-                    {/*    />*/}
-                    {/*</section>*/}
-                    {/*<section className={classes.cartActions}>*/}
-                    {/*    <Button*/}
-                    {/*        priority="high"*/}
-                    {/*        onClick={handleAddToCart}*/}
-                    {/*        disabled={isAddToCartDisabled}*/}
-                    {/*    >*/}
-                    {/*        Add to Cart*/}
-                    {/*    </Button>*/}
-                    {/*</section>*/}
                     <div className={classes.reviewDesc}>
                         {product.review_count? (
                             <div className={classes.reviewDiv}>
@@ -232,7 +201,7 @@ const ProductFullDetail = props => {
                                 Product Description
                             </h2>
                             <span>
-                               <RichText content={product.short_description.html}/>
+                               <CustomRichContent html={product.short_description.html}/>
                             </span>
                         </div>
                         <div>
@@ -291,7 +260,7 @@ const ProductFullDetail = props => {
                 <h2 className={classes.descriptionTitle}>
                     Product Description
                 </h2>
-                <RichText content={productDetails.description} />
+                <CustomRichContent html = {productDetails.description}/>
             </section>
             <ProductStaticArea/>
             <AnyQuestion

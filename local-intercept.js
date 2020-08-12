@@ -51,7 +51,6 @@ function localIntercept(targets) {
             path: '../../../../../../src/components/MyDownloads'
         }
     ]);
-
 }
 
 module.exports = localIntercept;
