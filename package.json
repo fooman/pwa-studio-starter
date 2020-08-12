@@ -43,6 +43,7 @@
     "classnames": "^2.2.6",
     "html-react-parser": "^0.13.0",
     "lodash": "^4.17.19",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-ga": "^3.1.2",
     "react-image-gallery": "^1.0.7",
     "react-items-carousel": "^2.8.0",

@@ -57,7 +57,6 @@ const MyExtensions = () => {
         return (
             <div className={classes.root}>
                 <Title>{`${PAGE_TITLE} - ${STORE_NAME}`}</Title>
-                <h1 className={classes.heading}>{PAGE_TITLE}</h1>
                 {pageContents}
             </div>
         );
