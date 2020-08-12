@@ -21,24 +21,20 @@ const ComposerInfo = props => {
         win.focus();
     }
 
-    let mappedUniqueRepoUrl = uniqueRepoUrlItem.map((singleUrl, index) => {
-        let slash = "\\";
-        let newLine = "\n";
-        let commandLine = `composer config repositories.fooman composer${slash}${singleUrl}`;
-        let commandWithNewLine = `composer config repositories.fooman composer${slash}${newLine}${singleUrl}`;
+    const mappedUniqueRepoUrl = uniqueRepoUrlItem.map((singleUrl, index) => {
+        let commandLine = `composer config repositories.fooman composer ${singleUrl}`;
         return (
             <div key={index} className={classes.commandSection}>
                 <div className = {classes.headingUrl}>
                     {singleUrl}
                 </div>
                 <div className={classes.commandDescription}>
-                    {`Copy and paste the below command and run it from your Magento 2 root directory as
-                    the first step of your installation process (all lines are part of the same command):`}
+                    {"Copy and paste the below command and run it from your Magento 2 root directory as the first step of your installation process (all lines are part of the same command):"}
                 </div>
                 <div className={classes.wrapCommandSection}>
                     <div className = {classes.commandLine}>
                         <textarea
-                            value={commandWithNewLine}
+                            value={commandLine}
                         />
                     </div>
                     <div className={classes.btnSection}>
@@ -66,8 +62,8 @@ const ComposerInfo = props => {
 
     return (
         <div>
-            <h1 className={classes.heading}>{`Magento 2 Extension Installation`}</h1>
-            <div className={classes.title}>{`Command for setting up Fooman Hosted Installation Method`}</div>
+            <h1 className={classes.heading}>{"Magento 2 Extension Installation"}</h1>
+            <div className={classes.title}>{"Command for setting up Fooman Hosted Installation Method"}</div>
             {mappedUniqueRepoUrl}
         </div>
     )
