@@ -5,6 +5,7 @@ query {
             product_name
             purchased_host
             free_upgrades_until
+            repo_url
         }
     }
 }

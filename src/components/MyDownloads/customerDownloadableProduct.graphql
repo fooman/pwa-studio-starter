@@ -1,10 +1,10 @@
 query {
-  customerDownloadableProducts {
-    items {
-			status
+    customerDownloadableProducts {
+        items {
+            status
             date
             download_url
             order_increment_id
+        }
     }
-  }
 }
