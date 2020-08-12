@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React from "react";
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
@@ -15,8 +15,6 @@ const ComposerInfo = props => {
     const { uniqueRepoUrlItem } = props;
 
     const classes = mergeClasses(defaultClasses);
-
-    const commandEl = useRef(null);
 
     const viewBtnClickHandle = (repoUrl) => {
         let win = window.open(repoUrl, '_blank');
@@ -40,7 +38,6 @@ const ComposerInfo = props => {
                 <div className={classes.wrapCommandSection}>
                     <div className = {classes.commandLine}>
                         <textarea
-                            ref={commandEl}
                             value={commandWithNewLine}
                         />
                     </div>
