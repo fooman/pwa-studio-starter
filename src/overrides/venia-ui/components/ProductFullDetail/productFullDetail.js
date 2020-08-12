@@ -174,45 +174,14 @@ const ProductFullDetail = props => {
             {breadcrumbs}
             <Form className={classes.root}>
                 <div className={classes.formMainDiv}>
-                    {/*<section className={classes.title}>*/}
-                    {/*    <h1 className={classes.productName}>*/}
-                    {/*        {productDetails.name}*/}
-                    {/*    </h1>*/}
-                    {/*    <p className={classes.productPrice}>*/}
-                    {/*        <Price*/}
-                    {/*            currencyCode={productDetails.price.currency}*/}
-                    {/*            value={productDetails.price.value}*/}
-                    {/*        />*/}
-                    {/*    </p>*/}
-                    {/*</section>*/}
                     <section className={classes.imageCarousel}>
                         <div className={classes.productTitle}>
                             <h1>
                                 {productDetails.name}
                             </h1>
                         </div>
-                        <div>
-                            <ProductGallery images={mediaGalleryEntries} />
-                            {/*<Carousel images={mediaGalleryEntries} />*/}
-                        </div>
+                        <ProductGallery images={mediaGalleryEntries} />
                     </section>
-                    {/*<section className={classes.options}>{options}</section>*/}
-                    {/*<section className={classes.quantity}>*/}
-                    {/*    <h2 className={classes.quantityTitle}>Quantity</h2>*/}
-                    {/*    <Quantity*/}
-                    {/*        initialValue={quantity}*/}
-                    {/*        onValueChange={handleSetQuantity}*/}
-                    {/*    />*/}
-                    {/*</section>*/}
-                    {/*<section className={classes.cartActions}>*/}
-                    {/*    <Button*/}
-                    {/*        priority="high"*/}
-                    {/*        onClick={handleAddToCart}*/}
-                    {/*        disabled={isAddToCartDisabled}*/}
-                    {/*    >*/}
-                    {/*        Add to Cart*/}
-                    {/*    </Button>*/}
-                    {/*</section>*/}
                     <div className={classes.reviewDesc}>
                         {product.review_count? (
                             <div className={classes.reviewDiv}>

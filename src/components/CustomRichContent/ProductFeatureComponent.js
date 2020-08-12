@@ -5,7 +5,7 @@ import { mergeClasses } from "@magento/venia-ui/lib/classify";
 const classes = mergeClasses(defaultClasses);
 
 const ProductFeatureComponent = props => {
-    return <div className={classes.feature}>{props.content}</div>
+    return <div className={classes.root}>{props.content}</div>
 }
 
 export default ProductFeatureComponent;

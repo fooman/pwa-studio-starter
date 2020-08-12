@@ -1,7 +1,7 @@
 .root {
     max-width: 18rem;
     width: 100%;
-    padding: 1.2rem 3.1rem;
+    padding: 1.2rem 3rem;
     border: 1px solid rgb(var(--venia-global-color-border));
     margin: 0.6rem;
     justify-content: center;
