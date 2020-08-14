@@ -11,20 +11,21 @@ import Field, { Message } from '@magento/venia-ui/lib/components/Field';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import Region from '@magento/venia-ui/lib/components/Region';
 import TextInput from '@magento/venia-ui/lib/components/TextInput';
-import defaultClasses from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/AddressForm/guestForm.css';
+import defaultClasses from './guestForm.css';
 import GuestFormOperations from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/AddressForm/guestForm.gql';
+import checkEmailExist from '../../../../../venia-ui/components/CheckoutPage/ShippingInformation/AddressForm/checkEmailIsAvailable.graphql';
 import {SET_BILLING_ADDRESS} from '@magento/venia-ui/lib/components/CheckoutPage/PaymentInformation/creditCard.gql';
 import {SET_GUEST_EMAIL} from '../../setGuestEmailMutation.gql';
 import {useCartContext} from '@magento/peregrine/lib/context/cart';
 
 const GuestForm = props => {
     const { afterSubmit, classes: propClasses, onCancel, shippingData, onSubmitBillingAddress } = props;
-
     const talonProps = useGuestForm({
         afterSubmit,
         ...GuestFormOperations,
         SetBillingAddressMutation: SET_BILLING_ADDRESS,
         setGuestEmailMutation: SET_GUEST_EMAIL,
+        checkEmailIsExist: checkEmailExist,
         onCancel,
         shippingData,
         onSubmitBillingAddress
@@ -35,7 +36,8 @@ const GuestForm = props => {
         handleSubmit,
         initialValues,
         isSaving,
-        isUpdate
+        isUpdate,
+        existEmailError,
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses, propClasses);
@@ -76,6 +78,7 @@ const GuestForm = props => {
     return (
         <Fragment>
             <FormError errors={formErrors} />
+            {existEmailError ? (<span className={classes.error}>{existEmailError}</span>) : null}
             <Form
                 className={classes.root}
                 initialValues={initialValues}
@@ -183,7 +186,9 @@ GuestForm.propTypes = {
         telephone: string,
         buttons: string,
         submit: string,
-        submit_update: string
+        submit_update: string,
+        error: string,
+
     }),
     onCancel: func,
     shippingData: shape({
