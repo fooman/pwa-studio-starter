@@ -15,7 +15,7 @@ import defaultClasses from './guestForm.css';
 import GuestFormOperations from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/AddressForm/guestForm.gql';
 import checkEmailExist from '../../../../../venia-ui/components/CheckoutPage/ShippingInformation/AddressForm/checkEmailIsAvailable.graphql';
 import {SET_BILLING_ADDRESS} from '@magento/venia-ui/lib/components/CheckoutPage/PaymentInformation/creditCard.gql';
-import {SET_GUEST_EMAIL} from '../../setGuestEmailMutation.gql';
+import {SET_GUEST_EMAIL} from '../../../../../../queries/setGuestEmailMutation.gql';
 import {useCartContext} from '@magento/peregrine/lib/context/cart';
 
 const GuestForm = props => {
