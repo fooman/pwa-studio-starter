@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
-import { useMutation } from '@apollo/react-hooks';
+import {useCallback, useEffect, useState} from 'react';
+import { useMutation, useLazyQuery} from '@apollo/react-hooks';
 
 import { useCartContext } from '@magento/peregrine/lib/context/cart';
 
@@ -9,10 +9,15 @@ export const useGuestForm = props => {
         mutations: { setGuestShippingMutation },
         SetBillingAddressMutation,
         setGuestEmailMutation,
+        checkEmailIsExist,
         onCancel,
         shippingData,
         onSubmitBillingAddress
     } = props;
+
+    /*state to store form data*/
+    const [formData, setFormData] = useState(null);
+    const [existEmailError, setExistEmail] = useState(null);
 
     const [{ cartId }] = useCartContext();
 
@@ -46,41 +51,77 @@ export const useGuestForm = props => {
     // Simple heuristic to indicate form was submitted prior to this render
     const isUpdate = !!shippingData.city;
 
+    const [ checkEmail, { loading: isEmailLoading, data: isEmailData }] = useLazyQuery(checkEmailIsExist,{fetchPolicy: 'network-only'});
+
+    const onSubmitOperation = async() => {
+        const { country, email, firstname, lastname, street, city, postcode, region, telephone } = formData;
+        try {
+            await setGuestEmailOnCart({
+                variables: {
+                    cartId,
+                    email
+                }
+            });
+
+            await setBillingAddress({
+                variables: {
+                    cartId: cartId,
+                    firstName: firstname,
+                    lastName: lastname,
+                    country: country,
+                    street1: street[0],
+                    street2: street.length > 1 ? street[1] : '',
+                    city: city,
+                    state: region,
+                    postalCode : postcode,
+                    phoneNumber: telephone,
+                    sameAsShipping: false
+                }
+            })
+            onSubmitBillingAddress();
+            setExistEmail(null);
+        }
+        catch(e) {
+            return;
+        }
+
+        if (afterSubmit) {
+            afterSubmit();
+        }
+    }
+
+    useEffect(() => {
+        if (!isEmailLoading && isEmailData) {
+            const { isEmailAvailable: {is_email_available} } = isEmailData;
+            if (!is_email_available) {
+                window.scrollTo({
+                    left: 0,
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                let emailExistError = 'Entered email is already exist..';
+                setExistEmail(emailExistError);
+            }
+            else onSubmitOperation();
+        }
+    }, [
+        isEmailLoading,
+        isEmailData
+    ]);
+
     const handleSubmit = useCallback(
         async formValues => {
-            const { country, email, firstname, lastname, street, city, postcode, region, telephone } = formValues;
-
             try {
+                setFormData(formValues);
 
-                await setGuestEmailOnCart({
+                 await checkEmail({
                     variables: {
-                        cartId,
-                        email
+                        email: formValues.email
                     }
                 });
 
-                 await setBillingAddress({
-                    variables: {
-                        cartId: cartId,
-                        firstName: firstname,
-                        lastName: lastname,
-                        country: country,
-                        street1: street[0],
-                        street2: street.length > 1 ? street[1] : '',
-                        city: city,
-                        state: region,
-                        postalCode : postcode,
-                        phoneNumber: telephone,
-                        sameAsShipping: false
-                    }
-                })
             } catch(e) {
                 return;
-            }
-
-            onSubmitBillingAddress();
-            if (afterSubmit) {
-                afterSubmit();
             }
         },
         [afterSubmit, cartId, setBillingAddress]
@@ -96,6 +137,7 @@ export const useGuestForm = props => {
         handleSubmit,
         initialValues,
         isSaving: loading,
-        isUpdate
+        isUpdate,
+        existEmailError
     };
 };
