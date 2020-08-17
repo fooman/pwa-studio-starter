@@ -1,8 +1,6 @@
 import React from 'react';
 import { func, shape, string } from 'prop-types';
 
-import { useAppContext } from '@magento/peregrine/lib/context/app';
-
 import { Link } from '@magento/venia-drivers';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
