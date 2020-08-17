@@ -22,6 +22,7 @@ const Logo = props => {
         <Image
             alt="Fooman"
             classes={{ image: classes.logo }}
+            style={{top: '2px'}}
             height={height}
             src={logo}
             title="Fooman"

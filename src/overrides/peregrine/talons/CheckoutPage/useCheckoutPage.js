@@ -120,6 +120,10 @@ export const useCheckoutPage = props => {
         }
     });
 
+    const cartItems = useMemo(() => {
+        return (checkoutData && checkoutData.cart.items) || [];
+    }, [checkoutData]);
+
     /**
      * For more info about network statues check this out
      *
@@ -252,9 +256,10 @@ export const useCheckoutPage = props => {
 
     return {
         activeContent,
+        cartItems,
         checkoutStep,
-        error: checkoutError,
         customer,
+        error: checkoutError,
         handleSignIn,
         handlePlaceOrder,
         hasError: !!checkoutError,

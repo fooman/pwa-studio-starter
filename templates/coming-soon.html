@@ -28,25 +28,27 @@
             font-display: swap;
             src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2) format('woff2');
         }
-        .fallback-nojs {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .main {
+            color: white;
+            font-family: sans-serif;
+            padding-left: 2rem;
         }
-        .fallback-nojs a {
-            color: currentColor;
+        .main img {
+            margin-left:6rem;
         }
-        .fallback-closed {
-            height: 40vh;
+        html {
+            background: url("assets/images/joe-hepburn-EcWFOYOpkpY-unsplash.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
     </style>
 </head>
 <body>
-<div class="fallback-nojs">
-    <img class="fallback-closed" alt="JavaScript is disabled" src="/venia-static/veniaClosed.png">
-    <h1 class="fallback-heading">Not yet launched</h1>
-    <div>We are working on it ...</div>
+<div class="main">
+    <h1>We are working on it ...</h1>
+    <img src="/assets/icons/fooman_logo_144x144.png" alt="Fooman Logo"/>
 </div>
 </body>
 </html>

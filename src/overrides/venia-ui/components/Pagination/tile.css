@@ -1,7 +1,7 @@
 .root {
     align-items: center;
     border: 1px none currentColor;
-    border-radius: 2px;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     min-height: 2rem;

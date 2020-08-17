@@ -20,7 +20,7 @@ const BackedByEveryThing = () => {
                 <div className = {classes.line}>
                     <div className = {classes.singleCol}>
                         <div className = {classes.media}>
-                            <img className = {classes.memberImg} src = {backEnd1}/>
+                            <img alt={"Magento Logo"} className = {classes.memberImg} src = {backEnd1}/>
                         </div>
                         <div className = {classes.text}>
                             <span>{"Decade of Magento experience"}</span>
@@ -29,7 +29,7 @@ const BackedByEveryThing = () => {
 
                     <div className = {classes.singleCol}>
                         <div className = {classes.media}>
-                            <img className = {classes.memberImg} src = {backEnd2}/>
+                            <img alt={"Certified Logo"} className = {classes.memberImg} src = {backEnd2}/>
                         </div>
                         <div className = {classes.text}>
                             <span>{"Developed by Certified Magento Developers"}</span>
@@ -38,7 +38,7 @@ const BackedByEveryThing = () => {
 
                     <div className = {classes.singleCol}>
                         <div className = {classes.media}>
-                            <img className = {classes.memberImg} src = {backEnd3}/>
+                            <img alt={"12 months support"} className = {classes.memberImg} src = {backEnd3}/>
                         </div>
                         <div className = {classes.text}>
                             <span>{"12 months free support & updates"}</span>
@@ -47,16 +47,16 @@ const BackedByEveryThing = () => {
 
                     <div className = {classes.singleCol}>
                         <div className = {classes.media}>
-                            <img className = {classes.memberImg} src = {backEnd4}/>
+                            <img alt={"money back guarantee"} className = {classes.memberImg} src = {backEnd4}/>
                         </div>
                         <div className = {classes.text}>
-                            <span>{"30 day moneyback guarantee"}</span>
+                            <span>{"30 day money back guarantee"}</span>
                         </div>
                     </div>
 
                     <div className = {classes.singleCol}>
                         <div className = {classes.media}>
-                            <img className = {classes.memberImg} src = {backEnd5}/>
+                            <img alt={"open source"}  className = {classes.memberImg} src = {backEnd5}/>
                         </div>
                         <div className = {classes.text}>
                             <span>{"100% open source and unencrypted code"}</span>

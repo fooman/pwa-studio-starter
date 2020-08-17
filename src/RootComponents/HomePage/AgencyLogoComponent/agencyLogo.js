@@ -1,38 +1,23 @@
-import React, {useEffect, useState, useRef} from "react";
+import React, {useEffect, useState} from "react";
 import ItemsCarousel from 'react-items-carousel';
 import range from 'lodash/range';
-
-import { Link, resourceUrl } from '@magento/venia-drivers';
 import Button from "@magento/venia-ui/lib/components/Button";
 import {shape, string} from "prop-types";
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
-import classic from './images/524b430d94340.png';
-import meanBee from './images/524b42dadff25.png';
-import amazing from './images/524b43888b6e0.png';
-import younify from './images/524b422510cf4.png';
-import bestResp from './images/58c88efcee1be.png';
-import purPointDesign from './images/56f065a3e4800.png';
+import Image from "@magento/venia-ui/lib/components/Image";
 import defaultClasses from "./agencyLogo.css";
+import { Link, resourceUrl } from '@magento/venia-drivers';
 
-const AgencyLogo = () => {
-
+const AgencyLogo = ({data}) => {
+    const [activeItemIndex, setActiveItemIndex] = useState(0);
+    const classes = mergeClasses(defaultClasses);
     let interval;
-    const noOfItems = 6;
+    const noOfItems = (data.testimonials && data.testimonials.items && data.testimonials.items.length) || 0;
     const noOfCards = 4;
     const autoPlayDelay = 3000;
     const chevronWidth = 40;
 
-    const imgArray = [
-            {img: classic, link: 'https://www.classyllama.com'},
-            {img: meanBee, link: 'http://www.meanbee.com/'},
-            {img: younify, link: 'https://www.younify.nl/'},
-            {img: amazing, link: 'http://amazing.nl/'},
-            {img: purPointDesign, link: 'https://www.pinpointdesigns.co.uk/'},
-            {img: bestResp, link: 'https://www.bestresponsemedia.co.uk/'}
-        ];
-
-    const classes = mergeClasses(defaultClasses);
-    const [activeItemIndex, setActiveItemIndex] = useState(0);
+    const imgArray = (data.testimonials && data.testimonials.items) || [] ;
 
     useEffect(() => {
             interval = setInterval(tick, autoPlayDelay)
@@ -40,16 +25,15 @@ const AgencyLogo = () => {
             return () => {
                 clearInterval(interval);
             }
-
         }
-        ,[activeItemIndex]);
+        , [activeItemIndex]);
 
     const tick = () => setActiveItemIndex(
         (activeItemIndex + 1) % (noOfItems-noOfCards + 1)
     );
 
     const onChangeValue = value => {
-        setActiveItemIndex( value );
+        setActiveItemIndex(value);
     }
 
     const imgHandleClick = imgLink => {
@@ -57,35 +41,47 @@ const AgencyLogo = () => {
     }
 
     const carouselItems = range(noOfItems).map(index => (
-        <div className={classes.imgDiv} key={index}>
-                <img className={classes.imgCls} src={imgArray[index].img} onClick={() => imgHandleClick(imgArray[index].link)}/>
+        <div key={index} className={classes.imgDiv}>
+            <Image
+                alt={imgArray[index].name + " Agency Logo"}
+                classes={{
+                    root: classes.imgDiv,
+                    image: classes.imgCls,
+                    loaded: classes.imgWidth,
+                }}
+                src={imgArray[index].logo_image}
+            />
         </div>
     ));
 
-    return (
-        <div className = {classes.root}>
-            <div className = {classes.slider}>
-            <ItemsCarousel
-                gutter={12}
-                numberOfCards={noOfCards}
-                activeItemIndex={activeItemIndex}
-                requestToChangeActive={onChangeValue}
-                chevronWidth={chevronWidth}
-                outsideChevron
-            >
-                    {carouselItems}
-            </ItemsCarousel>
+    if (data) {
+        return (
+            <div className = {classes.root}>
+                <div className = {classes.slider}>
+                    <ItemsCarousel
+                        gutter={12}
+                        numberOfCards={noOfCards}
+                        activeItemIndex={activeItemIndex}
+                        requestToChangeActive={onChangeValue}
+                        chevronWidth={chevronWidth}
+                        outsideChevron
+                    >
+                        {carouselItems}
+                    </ItemsCarousel>
+                </div>
+                <Link className={classes.link} to={resourceUrl('/customer-profiles')}>
+                    <div className = {classes.btnDiv}>
+                        <Button className={classes.btnCls}
+                                priority="normal"
+                        >
+                            {"Read Client Stories"}
+                        </Button>
+                    </div>
+                </Link>
             </div>
-
-        <div className = {classes.btnDiv}>
-            <Button className={classes.btnCls}
-                priority="normal"
-            >
-                {"Read Client Stories"}
-            </Button>
-        </div>
-        </div>
-    );
+        );
+    }
+    return null;
 }
 
 AgencyLogo.propTypes = {
@@ -95,7 +91,8 @@ AgencyLogo.propTypes = {
         btnCls: string,
         imgDiv: string,
         imgCls: string,
-        slider: string
+        slider: string,
+        imgWidth :string
     })
 };
 

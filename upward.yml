@@ -22,7 +22,7 @@ SubfolderResponse:
   resolver: conditional
   when:
     - matches: request.url.pathname
-      pattern: '^/(graphql|rest|media)(/|$)'
+      pattern: '^/(graphql|rest|media|downloadable)(/|$)'
       use: veniaProxy
     - matches: request.url.pathname
       pattern: '^/404.html$'
@@ -30,10 +30,13 @@ SubfolderResponse:
     - matches: request.url.pathname
       pattern: '^/(releases|manuals)(/|$)'
       use: subfolderProxyResponse
+    - matches: request.url.pathname
+      pattern: '^/(robots\.txt|favicon\.ico|manifest\.json|sitemap\.xml)'
+      use: staticFromRoot
     - matches: fileExtension
-      pattern: '(jpg|gif)'
+      pattern: '(js|json|png|svg|ico|css|txt|jpg|gif)'
       use: veniaStatic
-  default: veniaResponse #veniaResponse
+  default: veniaResponse
 
 notFoundResponse:
   resolver: inline
@@ -68,30 +71,12 @@ comingSoonResponse:
       file:
         resolver: inline
         inline: './templates/coming-soon.html'
-#redirectResponse:
-#  inline:
-#    status: 301
-#    headers:
-#      resolver: inline
-#      inline:
-#        location: constructReleasesTarget
-#    body:
-#      inline: ''
 
 subfolderProxyResponse:
   resolver: proxy
   target: constructSubfolderTarget
   pathRewrite:
     inline: '{"^/(releases|manuals)":""}'
-
-requestedResource:
-  resolver: conditional
-  when:
-    - matches: request.url.pathname
-      pattern: '^/(releases|manuals)(/|$)'
-      use: $match.$2
-  default:
-    inline: ''
 
 requestedHost:
   resolver: conditional
@@ -107,7 +92,6 @@ constructSubfolderTarget:
   engine: mustache
   provide:
     host: requestedHost
-    url: requestedResource
   template:
     inline: "https://{{ host }}.fooman.com/"
 
@@ -138,3 +122,24 @@ foomanStaticIncludes:
   directory:
     resolver: inline
     inline: './assets'
+
+contentTypeFromExtension:
+  when:
+    - matches: fileExtension
+      pattern: '^ico$'
+      use:
+        inline: image/x-icon
+    - matches: fileExtension
+      pattern: '^txt$'
+      use:
+        inline: text/plain
+    - matches: fileExtension
+      pattern: '^json$'
+      use:
+        inline: application/json
+    - matches: fileExtension
+      pattern: '^xml'
+      use:
+        inline: application/xml
+  default:
+    inline: text/html

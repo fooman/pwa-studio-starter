@@ -13,3 +13,4 @@ lastCachedGraphQLSchema.json
 test-report.xml
 test-results.json
 yarn-error.log
+*.patch

@@ -76,6 +76,7 @@
     --venia-global-fontFamily-sansSerif: 'Roboto', sans-serif;
     --venia-global-fontFamily-serif: 'Source Serif Pro', serif;
     --venia-global-fontFamily-roboto-light: 'robotolight';
+    --venia-global-fontFamily-roboto-light-sansSerif: 'robotolight', sans-serif;
 
     /* font size */
     --venia-global-fontSize-25: 0.5rem;

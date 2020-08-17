@@ -1,0 +1,24 @@
+.gridContent {
+    padding-top: 2.5rem;
+}
+
+.heading {
+    font-size: 2.5em;
+    text-align: left;
+    padding-bottom: 1.25rem;
+}
+
+.tableClass {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.thClass {
+    height: 2.813rem;
+    text-align: left;
+}
+
+.tdClass ,.thClass {
+    padding: 0.938rem 0;
+    border-bottom: 1px solid rgb(var(--venia-global-color-border));
+}

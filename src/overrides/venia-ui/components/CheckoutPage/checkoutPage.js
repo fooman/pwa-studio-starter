@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { AlertCircle as AlertCircleIcon } from 'react-feather';
+import { Link } from 'react-router-dom';
 
 import { useWindowSize, useToasts } from '@magento/peregrine';
 import {
@@ -10,7 +11,9 @@ import {
 import { Title } from '@magento/venia-ui/lib/components/Head';
 import Button from '@magento/venia-ui/lib/components/Button';
 import Icon from '@magento/venia-ui/lib/components/Icon';
+import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
+import StockStatusMessage from '@magento/venia-ui/lib/components/StockStatusMessage';
 import AddressBook from '@magento/venia-ui/lib/components/CheckoutPage/AddressBook';
 import OrderSummary from '@magento/venia-ui/lib/components/CheckoutPage/OrderSummary';
 import PaymentInformation from '@magento/venia-ui/lib/components/CheckoutPage/PaymentInformation';
@@ -27,7 +30,6 @@ import AddressBookOperation from "@magento/venia-ui/lib/components/CheckoutPage/
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
 import defaultClasses from '@magento/venia-ui/lib/components/CheckoutPage/checkoutPage.css';
-import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
 
 const errorIcon = <Icon src={AlertCircleIcon} size={20} />;
 
@@ -47,6 +49,7 @@ const CheckoutPage = props => {
          * SHIPPING_ADDRESS, SHIPPING_METHOD, PAYMENT, REVIEW
          */
         activeContent,
+        cartItems,
         checkoutStep,
         customer,
         error,
@@ -237,10 +240,24 @@ const CheckoutPage = props => {
                 />);
         }
 
+        const stockStatusMessageElement = (
+            <Fragment>
+                {
+                    'An item in your cart is currently out-of-stock and must be removed in order to Checkout. Please return to your cart to remove the item.'
+                }{' '}
+                <Link className={classes.cartLink} to={'/cart'}>
+                    Return to Cart
+                </Link>
+            </Fragment>
+        );
         checkoutContent = (
             <div className={checkoutContentClass}>
                 {loginButton}
                 <div className={classes.heading_container}>
+                    <StockStatusMessage
+                        cartItems={cartItems}
+                        message={stockStatusMessageElement}
+                    />
                     <h1 className={classes.heading}>
                         {guestCheckoutHeaderText}
                     </h1>

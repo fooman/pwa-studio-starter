@@ -59,7 +59,7 @@ const GalleryItem = props => {
                         />
                     </div>
                     <div className={classes.ratReview}>
-                        <text className={classes.reviews}>{`${review_count} Reviews` }</text>
+                        <span className={classes.reviews}>{`${review_count} Reviews` }</span>
                     </div>
             </div>
 
