@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { func, shape, string } from 'prop-types';
 
 import { useAppContext } from '@magento/peregrine/lib/context/app';
@@ -14,7 +14,7 @@ const MENU_ITEMS = [
     { name: 'Favorites Lists', url: '' },
     { name: 'Address Book', url: '' },
     { name: 'Saved Payments', url: '' },
-    { name: 'Communications', url: '' },
+    { name: 'Communications', url: '/communications' },
     { name: 'Account Information', url: '' },
     { name: 'My Downloads', url: '/my-downloads' },
     { name: 'My Subscriptions', url: '/my-subscriptions' },
@@ -22,34 +22,32 @@ const MENU_ITEMS = [
 ];
 
 const AccountMenuItems = props => {
-    const { handleSignOut } = props;
+    const { onSignOut, onClose } = props;
 
     const classes = mergeClasses(defaultClasses, props.classes);
 
-    const [appState, { closeDrawer }] = useAppContext();
-    const { drawer } = appState;
-
-    const handleAccountMenu = () => {
-        drawer === 'nav' ? closeDrawer() : null;
-    }
-
     const menuItems = MENU_ITEMS.map(item => {
         return (
-            <Link className={classes.link} to={item.url} key={item.name} onClick={() => handleAccountMenu()}>
+            <Link
+                className={classes.link}
+                to={item.url}
+                key={item.name}
+                onClick={onClose}
+            >
                 {item.name}
             </Link>
         );
     });
 
     return (
-        <Fragment>
+        <div className={classes.root}>
             {menuItems}
             <button
                 className={classes.signOut}
-                onClick={handleSignOut}
+                onClick={onSignOut}
                 type="button"
             >{`Sign Out`}</button>
-        </Fragment>
+        </div>
     );
 };
 
@@ -60,5 +58,6 @@ AccountMenuItems.propTypes = {
         link: string,
         signOut: string
     }),
-    handleSignOut: func
+    onClose: func,
+    onSignOut: func
 };

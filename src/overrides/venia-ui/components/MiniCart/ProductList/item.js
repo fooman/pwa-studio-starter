@@ -30,6 +30,8 @@ const Item = props => {
         () => resourceUrl(`/${product.url_key}${product.url_suffix}`),
         [product.url_key, product.url_suffix]
     );
+    const stockStatusText =
+        product.stock_status === 'OUT_OF_STOCK' ? 'Out-of-stock' : '';
 
     const { isDeleting, removeItem } = useItem({
         id,
@@ -72,6 +74,7 @@ const Item = props => {
                     value={prices.row_total_including_tax.value}
                 />
             </span>
+            <span className={classes.stockStatus}>{stockStatusText}</span>
             <button
                 onClick={removeItem}
                 type="button"
@@ -111,8 +114,10 @@ Item.propTypes = {
     quantity: number,
     configurable_options: arrayOf(
         shape({
-            label: string,
-            value: string
+            id: number,
+            option_label: string,
+            value_id: number,
+            value_label: string
         })
     ),
     handleRemoveItem: func,
