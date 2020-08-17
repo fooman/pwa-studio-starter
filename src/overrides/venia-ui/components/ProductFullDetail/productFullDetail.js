@@ -95,8 +95,24 @@ const ProductFullDetail = props => {
         />
     ) : null;
 
-    //TODO add reviews
     //TODO image from media gallery or small thumbnail
+    const mappedReviews = (product && product.reviews && product.reviews.items) ?
+        product.reviews.items.map((singleReview) => {
+            return {
+                "@type": "Review",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": Math.round(singleReview.average_rating / 20)
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": singleReview.nickname
+                },
+                "reviewBody": singleReview.text,
+                "abstract": singleReview.summary
+            }
+        }) : null;
+
     const productUrl = "https://fooman.com" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
@@ -124,7 +140,8 @@ const ProductFullDetail = props => {
             "ratingValue": product.rating_summary,
             "bestRating":"100",
             "reviewCount": product.review_count
-        }
+        },
+        "review": mappedReviews
     });
 
     // Fill a map with field/section -> error.
