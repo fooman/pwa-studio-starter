@@ -178,12 +178,10 @@
 }
 
 .reviewSection {
-    font-size: 0.8125rem;
     height: auto !important;
     line-height: normal;
     margin: 0.625rem;
     min-height: 1.125rem;
-    overflow: hidden;
 }
 
 @media (min-width: 1024px) {

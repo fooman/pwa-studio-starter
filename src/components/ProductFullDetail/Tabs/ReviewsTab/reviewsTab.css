@@ -1,21 +1,2 @@
-.reviewBy {
-    margin-bottom: 0.3125rem;
-    padding: 0.3125rem 0 1.25rem;
-}
-
-.reviewSummary {
-    line-height: 1.125rem;
-}
-
-.reviewText {
-    line-height: 0.875rem;
-}
-
-.itemsCount {
-    line-height: 2.8125rem;
-}
-
-.wrapRateSummary {
-    margin-bottom: 1.25rem;
-    padding: 0.625rem;
+.root {
 }

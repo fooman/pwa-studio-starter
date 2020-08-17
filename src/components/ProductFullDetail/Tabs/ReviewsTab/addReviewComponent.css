@@ -15,39 +15,3 @@
     font-size: var(--venia-global-fontSize-300);
     color: rgb(var(--fooman-global-color-font-gray));
 }
-
-.btnIconSection {
-    height: 1.4375rem;
-    line-height: 0.1875rem;
-    padding: 0.625rem 0.625rem;
-    background-color: black;
-    color: rgb(var(--venia-global-color-gray-50));
-    border-radius: 0;
-    font-weight: 500;
-}
-
-.logInBtn {
-    height: 1.4375rem;
-    line-height: 0.1875rem;
-    padding: 0.625rem 0.625rem;
-    background-color: black;
-    color: rgb(var(--venia-global-color-gray-50));
-    border-radius: 0;
-    font-weight: 500;
-}
-
-.wrapLoginIcon {
-    display: flex;
-    flex-direction: row;
-    height: 2.5rem  ;
-    align-items: center;
-    margin-top: 0.625rem;
-}
-
-.fontIcon {
-    width: 1.4375rem !important;
-    height: 1.4375rem;
-    color: rgb(var(--venia-global-color-gray-50));
-    background-color: rgb(var(--fooman-global-color-shado-gray));
-    margin-left: 0.1875rem;
-}

@@ -262,14 +262,19 @@ const ProductFullDetail = props => {
             <div className={classes.reactTab}>
             <Tabs>
                 <TabList>
-                    <Tab>Features</Tab>
-                    <Tab>Reviews</Tab>
+                    <Tab>
+                        <h2>
+                            Product Features
+                        </h2>
+                    </Tab>
+                    <Tab>
+                        <h2>
+                            Reviews
+                        </h2>
+                    </Tab>
                 </TabList>
                 <TabPanel>
                     <section className={classes.description}>
-                        <h2 className={classes.descriptionTitle}>
-                            Product Description
-                        </h2>
                         <CustomRichContent html = {productDetails.description}/>
                     </section>
                 </TabPanel>
