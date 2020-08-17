@@ -1,17 +1,3 @@
 .addReviewRoot {
     margin-top: 3.125rem;
 }
-
-.heading {
-    margin-bottom: 1.25rem;
-    display: block;
-}
-
-.wrapBtnNotice {
-    margin: 0.625rem 0.625rem 1.875rem 0.625rem;
-}
-
-.notice {
-    font-size: var(--venia-global-fontSize-300);
-    color: rgb(var(--fooman-global-color-font-gray));
-}

@@ -10,24 +10,18 @@ const AddReview = () => {
 
     return (
         <div className={classes.addReviewRoot}>
-            <h1 className={classes.heading}>{`Add your Review`}</h1>
-            <div className={classes.wrapBtnNotice}>
-                <div className={classes.notice}>{`Only registered users can write reviews. Please`}</div>
-                <Button
-                    priority="low"
-                >
-                    {"Log In"}
-                </Button>
-            </div>
+            <Button
+                priority="low"
+            >
+                {"Add your Review"}
+            </Button>
         </div>
     );
 }
 
 AddReview.propTypes = {
     classes: shape({
-        addReviewRoot: string,
-        heading: string,
-        notice: string,
+        addReviewRoot: string
     })
 }
 
