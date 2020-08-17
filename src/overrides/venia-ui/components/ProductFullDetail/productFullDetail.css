@@ -11,7 +11,7 @@
 .hr1 {
     width: 50%;
     margin-left: 29.3rem;
-    border: 1px solid #eaeaea;
+    border: 1px solid rgb(var(--venia-global-color-gray-200));
 }
 
 .sectionTitle {
@@ -160,6 +160,30 @@
     flex-direction: row;
 }
 
+.reactTab {
+    padding: 2.5rem 4rem 0;
+}
+.reactTab li {
+    padding: 0.9375rem 1.875rem;
+}
+
+.reactTab li[aria-selected=true]  {
+    border-top: 0.1875rem solid rgb(var(--fooman-global-color-darked-orange));
+    font-size: 1.25rem;
+}
+
+.reviews {
+    margin: 1.875rem 0 1.25rem;
+    padding-top: 1.875rem;
+}
+
+.reviewSection {
+    height: auto !important;
+    line-height: normal;
+    margin: 0.625rem;
+    min-height: 1.125rem;
+}
+
 @media (min-width: 1024px) {
     .root {
         align-items: flex-start;
@@ -204,7 +228,7 @@
     }
     .details {
         align-self: stretch;
-        border-top-width: 1px;
+        border-top-width: 0.0625rem;
         margin: 0;
         padding-left: 1.5rem;
         padding-right: 1.5rem;

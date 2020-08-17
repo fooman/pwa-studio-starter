@@ -1,0 +1,21 @@
+.root {
+    margin-bottom: 2rem;
+    line-height: var(--venia-global-lineHeight-400);
+
+}
+.reviewSummary {
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+.reviewText {
+
+}
+
+.reviewBy {
+    font-style: italic;
+}
+
+.starRating{
+    margin-bottom: 0;
+    line-height: var(--venia-global-lineHeight-100);
+}

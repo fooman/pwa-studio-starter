@@ -46,6 +46,7 @@
     "react-ga": "^3.1.2",
     "react-image-gallery": "^1.0.7",
     "react-items-carousel": "^2.8.0",
+    "react-tabs": "^3.1.1",
     "react-with-breakpoints": "^4.0.4"
   },
   "devDependencies": {
@@ -121,7 +122,6 @@
     "react-redux": "~7.1.1",
     "react-router-dom": "~5.1.0",
     "react-slick": "~0.25.2",
-    "react-tabs": "~3.0.0",
     "react-test-renderer": "~16.9.0",
     "redux": "~4.0.1",
     "redux-actions": "~2.6.4",

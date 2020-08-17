@@ -1,4 +1,5 @@
-import React, { Fragment, Suspense } from 'react';
+import React, {Fragment, Suspense, useState} from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
@@ -11,7 +12,6 @@ import { useProductFullDetail } from '../../../peregrine/talons/ProductFullDetai
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
 import Button from '@magento/venia-ui/lib/components/Button';
-import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel/carousel';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
@@ -19,8 +19,12 @@ import ProductStaticArea from '../../../../components/ProductFullDetail/Static/p
 import AnyQuestion from '../../../../components/ProductFullDetail/Static/anyQuestion';
 import ProductGallery from '../../../../components/ProductGallery/ProductGallery';
 import CustomRichContent from '../../../../components/CustomRichContent/CustomRichContent';
+import ReviewsTab from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/reviewsTab';
+import AddReview from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/addReviewComponent';
 
 import defaultClasses from './productFullDetail.css';
+import 'react-tabs/style/react-tabs.css';
+
 import {
     ADD_CONFIGURABLE_MUTATION,
     ADD_SIMPLE_MUTATION
@@ -48,7 +52,6 @@ const ERROR_FIELD_TO_MESSAGE_MAPPING = {
 
 const ProductFullDetail = props => {
     const { product } = props;
-
 
     const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
 
@@ -92,8 +95,24 @@ const ProductFullDetail = props => {
         />
     ) : null;
 
-    //TODO add reviews
     //TODO image from media gallery or small thumbnail
+    const mappedReviews = (product && product.reviews && product.reviews.items) ?
+        product.reviews.items.map((singleReview) => {
+            return {
+                "@type": "Review",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": Math.round(singleReview.average_rating / 20)
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": singleReview.nickname
+                },
+                "reviewBody": singleReview.text,
+                "abstract": singleReview.summary
+            }
+        }) : null;
+
     const productUrl = "https://fooman.com" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
@@ -121,7 +140,8 @@ const ProductFullDetail = props => {
             "ratingValue": product.rating_summary,
             "bestRating":"100",
             "reviewCount": product.review_count
-        }
+        },
+        "review": mappedReviews
     });
 
     // Fill a map with field/section -> error.
@@ -165,6 +185,7 @@ const ProductFullDetail = props => {
             ]);
         }
     }
+
     return (
         <Fragment>
             <Helmet>
@@ -255,13 +276,39 @@ const ProductFullDetail = props => {
                     </div>
                 </div>
             </Form>
-            <hr className={classes.hr1}></hr>
-            <section className={classes.description}>
-                <h2 className={classes.descriptionTitle}>
-                    Product Description
-                </h2>
-                <CustomRichContent html = {productDetails.description}/>
-            </section>
+            <div className={classes.reactTab}>
+            <Tabs>
+                <TabList>
+                    <Tab>
+                        <h2>
+                            Product Features
+                        </h2>
+                    </Tab>
+                    <Tab>
+                        <h2>
+                            Reviews
+                        </h2>
+                    </Tab>
+                </TabList>
+                <TabPanel>
+                    <section className={classes.description}>
+                        <CustomRichContent html = {productDetails.description}/>
+                    </section>
+                </TabPanel>
+                <div className={classes.reviews}>
+                    <TabPanel>
+                        <section className={classes.reviewSection}>
+                            <div>
+                                <ReviewsTab reviews = {product.reviews}/>
+                            </div>
+                            <div>
+                                <AddReview/>
+                            </div>
+                        </section>
+                    </TabPanel>
+                </div>
+            </Tabs>
+            </div>
             <ProductStaticArea/>
             <AnyQuestion
                 demoUrl = {demoUrl}
@@ -274,6 +321,8 @@ ProductFullDetail.propTypes = {
     classes: shape({
         cartActions: string,
         description: string,
+        reactTab: string,
+        reviews: string,
         descriptionTitle: string,
         details: string,
         detailsTitle: string,
@@ -294,7 +343,8 @@ ProductFullDetail.propTypes = {
         contentDes: string,
         hr1:string,
         formMainDiv: string,
-        licensePurchaseSidebar: string
+        licensePurchaseSidebar: string,
+        reviewSection: string
 
     }),
     product: shape({
