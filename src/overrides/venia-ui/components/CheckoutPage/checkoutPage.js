@@ -22,6 +22,7 @@ import ItemsReview from '@magento/venia-ui/lib/components/CheckoutPage/ItemsRevi
 
 import CheckoutPageOperations from '@magento/venia-ui/lib/components/CheckoutPage/checkoutPage.gql.js';
 import {GET_CART_DETAILS} from '@magento/venia-ui/lib/components/CartPage/cartPage.gql';
+import AddressBookOperation from "@magento/venia-ui/lib/components/CheckoutPage/AddressBook/addressBook.gql";
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
@@ -36,7 +37,8 @@ const CheckoutPage = props => {
         ...CheckoutPageOperations,
         getCategoryDetailQueries: {
             getCartDetails: GET_CART_DETAILS
-        }
+        },
+        getAddress: AddressBookOperation.queries.getCustomerAddressesQuery
     });
 
     const {
@@ -69,6 +71,7 @@ const CheckoutPage = props => {
         reviewOrderButtonClicked,
         toggleActiveContent,
         cart,
+        userHasBillingAddress,
         loading
     } = talonProps;
 
@@ -225,6 +228,14 @@ const CheckoutPage = props => {
             activeContent === 'checkout'
                 ? classes.checkoutContent
                 : classes.checkoutContent_hidden;
+        let shippingAddress = null;
+        if (checkoutStep === CHECKOUT_STEP.SHIPPING_ADDRESS ||
+            (checkoutStep === CHECKOUT_STEP.PAYMENT && !isGuestCheckout && userHasBillingAddress)) {
+            shippingAddress = (<ShippingInformation
+                    onSave={setShippingInformationDone}
+                    toggleActiveContent={toggleActiveContent}
+                />);
+        }
 
         checkoutContent = (
             <div className={checkoutContentClass}>
@@ -235,20 +246,8 @@ const CheckoutPage = props => {
                     </h1>
                 </div>
                 <div className={classes.shipping_information_container}>
-                    {checkoutStep === CHECKOUT_STEP.SHIPPING_ADDRESS ? (
-                        <ShippingInformation
-                            onSave={setShippingInformationDone}
-                            toggleActiveContent={toggleActiveContent}
-                        />
-                        ) :null
-                    }
+                    {shippingAddress}
                 </div>
-                {!cart.is_virtual ? (
-                        <div className={classes.shipping_method_container}>
-                            {shippingMethodSection}
-                        </div>
-                    ) : null
-                }
 
                 <div className={classes.payment_information_container}>
                     {paymentInformationSection}

@@ -78,9 +78,12 @@ export const useShippingInformation = props => {
                         primaryAddress[field] = [''];
                     }
                 }
+
                 filteredData = {
                     email,
-                    ...primaryAddress
+                    ...primaryAddress,
+                    country: { label : primaryAddress.country_code},
+                    region: { label : primaryAddress.region.region}
                 };
             }
         }
