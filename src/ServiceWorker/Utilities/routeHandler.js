@@ -26,7 +26,6 @@ export const isPage = url => {
  */
 export const isHTMLRoute = url => {
     const result = isHomeRoute(url) || isPage(url);
-    window.console.warn(url + ' isHTMLRoute ' + result);
     return result;
 }
 
