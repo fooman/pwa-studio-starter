@@ -33,6 +33,9 @@ fragment ProductDetails on ProductInterface {
             text
             average_rating
         }
+        page_info {
+            total_pages
+        }
     }
     meta_title
     meta_keyword
