@@ -59,7 +59,7 @@ const ChangeLog = props => {
 
     return (
         <div className={classes.changeLogRoot}>
-            {firstFiveItem.length ? (
+            {itemData.length ? (
                 <div className={classes.gridContent}>
                     <h1 className={classes.heading}>{`Releases`}</h1>
                     <table className={classes.tableClass}>
