@@ -14,6 +14,14 @@ import { Adapter } from '@magento/venia-drivers';
 import store from './store';
 import app from '@magento/peregrine/lib/store/actions/app';
 import App, { AppContextProvider } from '@magento/venia-ui/lib/components/App';
+import { BreakpointsProvider } from 'react-with-breakpoints';
+
+const breakpoints = {
+    small: 480,
+    medium: 768,
+    large: 1024,
+    xlarge: Infinity,
+}
 
 import { registerSW } from './registerSW';
 
@@ -113,7 +121,9 @@ const apolloLink = ApolloLink.from([
 ReactDOM.render(
     <Adapter apiBase={apiBase} apollo={{ link: apolloLink }} store={store}>
         <AppContextProvider>
-            <App />
+            <BreakpointsProvider breakpoints={ breakpoints }>
+                <App />
+            </BreakpointsProvider>
         </AppContextProvider>
     </Adapter>,
     document.getElementById('root')

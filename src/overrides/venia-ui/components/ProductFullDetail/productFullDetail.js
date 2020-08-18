@@ -21,6 +21,7 @@ import ProductGallery from '../../../../components/ProductGallery/ProductGallery
 import CustomRichContent from '../../../../components/CustomRichContent/CustomRichContent';
 import ReviewsTab from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/reviewsTab';
 import AddReview from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/addReviewComponent';
+import { HideAt, ShowAt } from 'react-with-breakpoints';
 
 import defaultClasses from './productFullDetail.css';
 import 'react-tabs/style/react-tabs.css';
@@ -276,39 +277,54 @@ const ProductFullDetail = props => {
                     </div>
                 </div>
             </Form>
-            <div className={classes.reactTab}>
-            <Tabs>
-                <TabList>
-                    <Tab>
-                        <h2>
-                            Product Features
-                        </h2>
-                    </Tab>
-                    <Tab>
-                        <h2>
-                            Reviews
-                        </h2>
-                    </Tab>
-                </TabList>
-                <TabPanel>
-                    <section className={classes.description}>
-                        <CustomRichContent html = {productDetails.description}/>
-                    </section>
-                </TabPanel>
-                <div className={classes.reviews}>
-                    <TabPanel>
-                        <section className={classes.reviewSection}>
-                            <div>
-                                <ReviewsTab reviews = {product.reviews}/>
-                            </div>
-                            <div>
-                                <AddReview/>
-                            </div>
-                        </section>
-                    </TabPanel>
+            <HideAt breakpoint="mediumAndBelow">
+                <div className={classes.reactTab}>
+                    <Tabs>
+                        <TabList>
+                            <Tab>
+                                <h2>
+                                    Product Features
+                                </h2>
+                            </Tab>
+                            <Tab>
+                                <h2>
+                                    Reviews
+                                </h2>
+                            </Tab>
+                        </TabList>
+                        <TabPanel>
+                            <section className={classes.description}>
+                                <CustomRichContent html = {productDetails.description}/>
+                            </section>
+                        </TabPanel>
+                        <div className={classes.reviews}>
+                            <TabPanel>
+                                <section className={classes.reviewSection}>
+                                    <div>
+                                        <ReviewsTab reviews = {product.reviews}/>
+                                    </div>
+                                    <div>
+                                        <AddReview/>
+                                    </div>
+                                </section>
+                            </TabPanel>
+                        </div>
+                    </Tabs>
                 </div>
-            </Tabs>
-            </div>
+            </HideAt>
+            <ShowAt breakpoint="mediumAndBelow">
+                <section className={classes.description}>
+                    <CustomRichContent html = {productDetails.description}/>
+                </section>
+                <section className={classes.reviewSection}>
+                    <div>
+                        <ReviewsTab reviews = {product.reviews}/>
+                    </div>
+                    <div>
+                        <AddReview/>
+                    </div>
+                </section>
+            </ShowAt>
             <ProductStaticArea/>
             <AnyQuestion
                 demoUrl = {demoUrl}
