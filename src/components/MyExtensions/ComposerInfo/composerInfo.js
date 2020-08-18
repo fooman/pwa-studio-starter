@@ -21,12 +21,14 @@ const ComposerInfo = props => {
         win.focus();
     }
 
-    const mappedUniqueRepoUrl = uniqueRepoUrlItem.map((singleUrl, index) => {
-        let commandLine = `composer config repositories.fooman composer ${singleUrl}`;
+    const mappedUniqueRepoUrl = uniqueRepoUrlItem.map((singleObj, index) => {
+        const { repo_url, purchased_host } = singleObj;
+
+        let commandLine = `composer config repositories.fooman composer ${repo_url}`;
         return (
             <div key={index} className={classes.commandSection}>
                 <div className = {classes.headingUrl}>
-                    {singleUrl}
+                    {purchased_host}
                 </div>
                 <div className={classes.commandDescription}>
                     {"Copy and paste the below command and run it from your Magento 2 root directory as the first step of your installation process (all lines are part of the same command):"}
@@ -39,7 +41,7 @@ const ComposerInfo = props => {
                     </div>
                     <div className={classes.btnSection}>
                         <div>
-                            <Button onClick = {() => viewBtnClickHandle(singleUrl)}
+                            <Button onClick = {() => viewBtnClickHandle(repo_url)}
                                     priority="low"
                             >
                                 {"View"}
