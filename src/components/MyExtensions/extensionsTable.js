@@ -22,9 +22,9 @@ const ExtensionsTable = props => {
 
             /*operation for get unique repo_url*/
             !unique_repo_url_item.length ?
-                unique_repo_url_item.push(repo_url) :
-                !unique_repo_url_item.includes(repo_url) ?
-                    unique_repo_url_item.push(repo_url) :
+                unique_repo_url_item.push({ repo_url, purchased_host }) :
+                !unique_repo_url_item.some(obj => obj.repo_url === repo_url) ?
+                    unique_repo_url_item.push({ repo_url, purchased_host }) :
                     null;
 
             const upgradeUntilDate = new Date(new Date(free_upgrades_until * 1000)).toLocaleDateString();
