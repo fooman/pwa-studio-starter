@@ -12,7 +12,8 @@ export const useShippingInformation = props => {
         onSave,
         queries: { getDefaultShippingQuery, getShippingInformationQuery },
         toggleActiveContent,
-        getAddress
+        getAddress,
+        selectedAddressId
     } = props;
 
     const [, { toggleDrawer }] = useAppContext();
@@ -61,8 +62,12 @@ export const useShippingInformation = props => {
             let defaultBillingAddress = [];
             const { customer } = customerAddressesData;
             const { email, addresses: billingAddresses } = customer;
+
             if (billingAddresses.length) {
-                defaultBillingAddress = billingAddresses.filter((singleAddress) => singleAddress.default_billing);
+                defaultBillingAddress = selectedAddressId?
+                    billingAddresses.filter((singleAddress) => singleAddress.id === selectedAddressId)
+                    :
+                    billingAddresses.filter((singleAddress) => singleAddress.default_billing);
             }
             if (defaultBillingAddress.length) {
                 const primaryAddress = defaultBillingAddress[0];
@@ -88,7 +93,7 @@ export const useShippingInformation = props => {
             }
         }
         return filteredData;
-    }, [customerAddressesData]);
+    }, [customerAddressesData, selectedAddressId]);
 
     // Simple heuristic to check shipping data existed prior to this render.
     // On first submission, when we have data, we should tell the checkout page

@@ -102,15 +102,6 @@ const CustomerForm = props => {
                         />
                     </Field>
                 </div>
-                <div className={classes.email}>
-                    <Field id="email" label="Email">
-                        <TextInput
-                            disabled={!hasDefaultShipping}
-                            field="email"
-                            validate={isRequired}
-                        />
-                    </Field>
-                </div>
                 <div className={classes.country}>
                     <Country validate={isRequired} />
                 </div>

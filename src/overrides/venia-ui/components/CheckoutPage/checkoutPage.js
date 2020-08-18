@@ -75,6 +75,8 @@ const CheckoutPage = props => {
         toggleActiveContent,
         cart,
         userHasBillingAddress,
+        selectedAddressId,
+        selectedAddressCallBack,
         loading
     } = talonProps;
 
@@ -237,6 +239,7 @@ const CheckoutPage = props => {
             shippingAddress = (<ShippingInformation
                     onSave={setShippingInformationDone}
                     toggleActiveContent={toggleActiveContent}
+                    selectedAddressId={selectedAddressId}
                 />);
         }
 
@@ -282,6 +285,7 @@ const CheckoutPage = props => {
         <AddressBook
             activeContent={activeContent}
             toggleActiveContent={toggleActiveContent}
+            selectedAddressCallBack = {selectedAddressCallBack}
         />
     ) : null;
 

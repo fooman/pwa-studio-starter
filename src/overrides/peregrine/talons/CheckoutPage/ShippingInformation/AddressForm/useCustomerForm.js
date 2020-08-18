@@ -54,12 +54,13 @@ export const useCustomerForm = props => {
 
     const { country, region } = shippingData;
     const { code: countryCode } = country;
-    const { id: regionId } = region;
-
+    // const { id: regionId } = region;
+    const { code: regionCode } = region;
     let initialValues = {
         ...shippingData,
         country: countryCode,
-        region: regionId && regionId.toString()
+        // region: regionId && regionId.toString()
+        region: regionCode
     };
 
     const hasDefaultShipping =
@@ -84,13 +85,17 @@ export const useCustomerForm = props => {
                 const customerAddress = {
                     ...address,
                     country_code: country,
+                    // region: {
+                    //     region_id: region
+                    // }
                     region: {
-                        region_id: region
+                        region: region
                     }
                 };
 
                 if (isUpdate) {
                     const { id: addressId } = shippingData;
+
                     await updateCustomerAddress({
                         variables: {
                             addressId,
@@ -98,7 +103,9 @@ export const useCustomerForm = props => {
                         },
                         refetchQueries: [{ query: getCustomerAddressesQuery }]
                     });
+
                 } else {
+
                     await createCustomerAddress({
                         variables: {
                             address: customerAddress
@@ -108,11 +115,12 @@ export const useCustomerForm = props => {
                             { query: getDefaultShippingQuery }
                         ]
                     });
+                    onSubmitBillingAddress();
                 }
             } catch {
                 return;
             }
-            onSubmitBillingAddress();
+
             if (afterSubmit) {
                 afterSubmit();
             }

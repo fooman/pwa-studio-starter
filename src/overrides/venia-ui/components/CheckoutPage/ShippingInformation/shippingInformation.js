@@ -15,12 +15,13 @@ import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
 import AddressBookOperation from '@magento/venia-ui/lib/components/CheckoutPage/AddressBook/addressBook.gql';
 
 const ShippingInformation = props => {
-    const { classes: propClasses, onSave, toggleActiveContent } = props;
+    const { classes: propClasses, onSave, toggleActiveContent, selectedAddressId } = props;
     const talonProps = useShippingInformation({
         onSave,
         toggleActiveContent,
         ...ShippingInformationOperations,
-        getAddress: AddressBookOperation.queries.getCustomerAddressesQuery
+        getAddress: AddressBookOperation.queries.getCustomerAddressesQuery,
+        selectedAddressId
     });
     const {
         doneEditing,

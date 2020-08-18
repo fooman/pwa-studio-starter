@@ -44,6 +44,7 @@ export const useCheckoutPage = props => {
         CHECKOUT_STEP.SHIPPING_ADDRESS
     );
     const [userHasBillingAddress, setUserHasBillingAddress] = useState(false);
+    const [selectedAddressId, setSelectedAddressId] = useState(null);
     const [, { toggleDrawer }] = useAppContext();
     const [{ isSignedIn }] = useUserContext();
     const [{ cartId }, { createCart, removeCart }] = useCartContext();
@@ -144,6 +145,10 @@ export const useCheckoutPage = props => {
             activeContent === 'checkout' ? 'addressBook' : 'checkout';
         setActiveContent(nextContentState);
     }, [activeContent]);
+
+    const selectedAddressCallBack = useCallback((addressId) => {
+        setSelectedAddressId(addressId);
+    }, [selectedAddressId]);
 
     const checkoutError = useMemo(() => {
         if (placeOrderError) {
@@ -284,6 +289,8 @@ export const useCheckoutPage = props => {
         toggleActiveContent,
         cart,
         userHasBillingAddress,
+        selectedAddressId,
+        selectedAddressCallBack,
         loading
     };
 };
