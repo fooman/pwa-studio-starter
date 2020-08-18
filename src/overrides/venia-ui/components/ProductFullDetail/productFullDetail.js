@@ -21,6 +21,7 @@ import ProductGallery from '../../../../components/ProductGallery/ProductGallery
 import CustomRichContent from '../../../../components/CustomRichContent/CustomRichContent';
 import ReviewsTab from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/reviewsTab';
 import AddReview from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/addReviewComponent';
+import ChangeLog from "../../../../components/ProductFullDetail/Tabs/ChangeLog/changeLog";
 import { HideAt, ShowAt } from 'react-with-breakpoints';
 
 import defaultClasses from './productFullDetail.css';
@@ -55,6 +56,7 @@ const ProductFullDetail = props => {
     const { product } = props;
 
     const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
+    const changeLogUrl = "https://releases.fooman.com/Fooman_PdfCustomiser/feed.json";
 
     const talonProps = useProductFullDetail({
         addDownloadableProductToCartMutation: ADD_DOWNLOADABLE_MUTATION,
@@ -291,12 +293,19 @@ const ProductFullDetail = props => {
                                     Reviews
                                 </h2>
                             </Tab>
+                            <Tab>
+                                <h2>
+                                    Changelog
+                                </h2>
+                            </Tab>
                         </TabList>
-                        <TabPanel>
-                            <section className={classes.description}>
-                                <CustomRichContent html = {productDetails.description}/>
-                            </section>
-                        </TabPanel>
+                        <div>
+                            <TabPanel>
+                                <section className={classes.description}>
+                                    <CustomRichContent html = {productDetails.description}/>
+                                </section>
+                            </TabPanel>
+                        </div>
                         <div className={classes.reviews}>
                             <TabPanel>
                                 <section className={classes.reviewSection}>
@@ -306,6 +315,13 @@ const ProductFullDetail = props => {
                                     <div>
                                         <AddReview/>
                                     </div>
+                                </section>
+                            </TabPanel>
+                        </div>
+                        <div>
+                            <TabPanel>
+                                <section className={classes.changelog}>
+                                    <ChangeLog changeLogUrl = {changeLogUrl} />
                                 </section>
                             </TabPanel>
                         </div>
@@ -360,7 +376,8 @@ ProductFullDetail.propTypes = {
         hr1:string,
         formMainDiv: string,
         licensePurchaseSidebar: string,
-        reviewSection: string
+        reviewSection: string,
+        changelog: string
 
     }),
     product: shape({
