@@ -25,8 +25,9 @@ fragment ProductDetails on ProductInterface {
     }
     review_count
     rating_summary
-    reviews {
+    reviews (currentPage: 1, pageSize: 20) {
         items {
+            created_at
             nickname
             summary
             text
