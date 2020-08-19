@@ -59,8 +59,7 @@ const ProductFullDetail = props => {
     const { product } = props;
 
     const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
-    const changeLogUrl = "https://releases.fooman.com/Fooman_PdfCustomiser/feed.json";
-    // const changeLogUrl = "http://releases/Fooman_PdfCustomiser/feed.json";
+    const changeLogUrl = window.location.protocol + "//" +window.location.host + "/releases/Fooman_PdfCustomiser/feed.json";
 
     const talonProps = useProductFullDetail({
         addDownloadableProductToCartMutation: ADD_DOWNLOADABLE_MUTATION,

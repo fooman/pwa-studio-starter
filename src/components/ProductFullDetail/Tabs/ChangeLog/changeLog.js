@@ -17,12 +17,10 @@ const ChangeLog = props => {
     const displayLimit = 5;
     const classes = mergeClasses(defaultClasses);
 
-    const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
-
     useEffect(() => {
         axios({
             method: 'get',
-            url: PROXY_URL+changeLogUrl,
+            url: changeLogUrl,
         })
             .then(response => {
                 if (response.status === 200) {
@@ -54,13 +52,9 @@ const ChangeLog = props => {
         return itemData.length ?
             itemsMapped.map((singleObj, index) => {
                  const { title, content_html } = singleObj;
-                 const dashIndex = title.indexOf('-');
-                 let id = (title.slice(0, dashIndex)).replace(/\s+/g,'');
-                 let date = (title.slice(dashIndex+1)).replace(/\s+/g,'');
-                 date = new Date(date).toLocaleDateString();
                 return (
                     <tr key={index} className={classes.trBorder}>
-                        <td className={classes.tdIdClass}>{`${id} ${date}`}</td>
+                        <td className={classes.tdIdClass}>{title}</td>
                         <td className={classes.tdClass}><RichContent html={content_html}/></td>
                     </tr>
                 );
