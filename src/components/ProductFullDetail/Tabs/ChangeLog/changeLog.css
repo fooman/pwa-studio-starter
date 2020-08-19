@@ -1,6 +1,6 @@
 
 .gridContent {
-    padding-top: 2.5rem;
+    /*padding-top: 2.5rem;*/
 }
 
 .heading {
@@ -14,6 +14,10 @@
     width: 100%;
 }
 
+.trBorder {
+    border-bottom: 1px solid rgb(var(--venia-global-color-border));
+}
+
 .thClass {
     height: 2.813rem;
     text-align: left;
@@ -21,5 +25,9 @@
 
 .tdClass ,.thClass {
     padding: 0.938rem 0;
-    border-bottom: 1px solid rgb(var(--venia-global-color-border));
+}
+
+.tdIdClass {
+    min-width: 10.938rem;
+    width: 10.938rem;
 }

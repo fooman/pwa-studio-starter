@@ -5,11 +5,14 @@ import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
 import defaultClasses from './changeLog.css';
 import {shape, string} from "prop-types";
+import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import Button from "@magento/venia-ui/lib/components/Button";
+import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 
 const ChangeLog = props => {
     const { changeLogUrl } = props;
     const [ itemData, setItemData ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
     const [ viewAllData, allowViewAllData] = useState(false);
     const displayLimit = 5;
     const classes = mergeClasses(defaultClasses);
@@ -30,9 +33,17 @@ const ChangeLog = props => {
                         setItemData(item);
                     }
                 }
+                setLoading(false)
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+            });
     }, [changeLogUrl]);
+
+    if (loading) {
+        return <LoadingIndicator/>
+    }
 
     const viewAllReleasesHandle = () => {
         allowViewAllData(true);
@@ -42,16 +53,15 @@ const ChangeLog = props => {
         let itemsMapped = viewAllData? itemData : itemData.slice(0, displayLimit);
         return itemData.length ?
             itemsMapped.map((singleObj, index) => {
-                 const { id, title, date_published, date_modified, content_html } = singleObj;
-                 let publishedAt = (new Date(date_published)).toLocaleDateString();
-                 let modifiedAt = (new Date(date_modified)).toLocaleDateString()
+                 const { title, content_html } = singleObj;
+                 const dashIndex = title.indexOf('-');
+                 let id = (title.slice(0, dashIndex)).replace(/\s+/g,'');
+                 let date = (title.slice(dashIndex+1)).replace(/\s+/g,'');
+                 date = new Date(date).toLocaleDateString();
                 return (
-                    <tr key={index}>
-                        <td className={classes.tdClass}>{id}</td>
-                        <td className={classes.tdClass}>{title}</td>
-                        <td className={classes.tdClass}>{publishedAt}</td>
-                        <td className={classes.tdClass}>{modifiedAt}</td>
-                        <td className={classes.tdClass}>{content_html}</td>
+                    <tr key={index} className={classes.trBorder}>
+                        <td className={classes.tdIdClass}>{`${id} ${date}`}</td>
+                        <td className={classes.tdClass}><RichContent html={content_html}/></td>
                     </tr>
                 );
             }) : null
@@ -65,10 +75,7 @@ const ChangeLog = props => {
                     <table className={classes.tableClass}>
                         <thead>
                         <tr className={classes.trClass}>
-                            <th className={classes.thClass}>Id #</th>
                             <th className={classes.thClass}>Title</th>
-                            <th className={classes.thClass}>Published</th>
-                            <th className={classes.thClass}>Modified</th>
                             <th className={classes.thClass}>Html content</th>
                         </tr>
                         </thead>
@@ -99,7 +106,9 @@ ChangeLog.propTypes = {
         heading: string,
         tableClass: string,
         thClass: string,
-        tdClass: string
+        tdClass: string,
+        tdIdClass: string,
+        trBorder: string
     })
 };
 

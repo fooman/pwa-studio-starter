@@ -14,6 +14,7 @@ import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
 import Button from '@magento/venia-ui/lib/components/Button';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
+import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
 import ProductStaticArea from '../../../../components/ProductFullDetail/Static/productDetailStaticArea';
 import AnyQuestion from '../../../../components/ProductFullDetail/Static/anyQuestion';
@@ -21,7 +22,6 @@ import ProductGallery from '../../../../components/ProductGallery/ProductGallery
 import CustomRichContent from '../../../../components/CustomRichContent/CustomRichContent';
 import ReviewsTab from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/reviewsTab';
 import AddReview from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/addReviewComponent';
-import ChangeLog from "../../../../components/ProductFullDetail/Tabs/ChangeLog/changeLog";
 import { HideAt, ShowAt } from 'react-with-breakpoints';
 
 import defaultClasses from './productFullDetail.css';
@@ -52,11 +52,15 @@ const ERROR_FIELD_TO_MESSAGE_MAPPING = {
     quantity: 'The requested quantity is not available.'
 };
 
+/*Lasy Loading Component*/
+const ChangeLog = React.lazy(() => import('../../../../components/ProductFullDetail/Tabs/ChangeLog/changeLog'));
+
 const ProductFullDetail = props => {
     const { product } = props;
 
     const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
     const changeLogUrl = "https://releases.fooman.com/Fooman_PdfCustomiser/feed.json";
+    // const changeLogUrl = "http://releases/Fooman_PdfCustomiser/feed.json";
 
     const talonProps = useProductFullDetail({
         addDownloadableProductToCartMutation: ADD_DOWNLOADABLE_MUTATION,
@@ -96,6 +100,10 @@ const ProductFullDetail = props => {
             categoryId={breadcrumbCategoryId}
             currentProduct={productDetails.name}
         />
+    ) : null;
+
+    const changeLog = changeLogUrl? (
+        <ChangeLog changeLogUrl = {changeLogUrl} />
     ) : null;
 
     //TODO image from media gallery or small thumbnail
@@ -317,14 +325,15 @@ const ProductFullDetail = props => {
                                     </div>
                                 </section>
                             </TabPanel>
-                        </div>
-                        <div>
                             <TabPanel>
                                 <section className={classes.changelog}>
-                                    <ChangeLog changeLogUrl = {changeLogUrl} />
+                                    <Suspense fallback={<LoadingIndicator />}>
+                                        {changeLog}
+                                    </Suspense>
                                 </section>
                             </TabPanel>
                         </div>
+
                     </Tabs>
                 </div>
             </HideAt>
