@@ -1,0 +1,26 @@
+query productReviews($urlKey: String, $currentPage: Int, $pageSize: Int) {
+    productReviews: products(filter: { url_key: { eq: $urlKey } }) {
+        items {
+            # Once graphql-ce/1027 is resolved, use a ProductDetails fragment
+            # here instead. Until then, changes to this query (within "items")
+            # must be mirrored in productDetails.graphql.
+            __typename
+            id
+            review_count
+            rating_summary
+            reviews (currentPage: $currentPage, pageSize: $pageSize) {
+                items {
+                    created_at
+                    nickname
+                    summary
+                    text
+                    average_rating
+                }
+                page_info {
+                    total_pages
+                }
+            }
+            url_key
+        }
+    }
+}

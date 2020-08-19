@@ -99,6 +99,7 @@ const ProductFullDetail = props => {
     //TODO image from media gallery or small thumbnail
     const mappedReviews = (product && product.reviews && product.reviews.items) ?
         product.reviews.items.map((singleReview) => {
+
             return {
                 "@type": "Review",
                 "reviewRating": {
@@ -301,7 +302,11 @@ const ProductFullDetail = props => {
                             <TabPanel>
                                 <section className={classes.reviewSection}>
                                     <div>
-                                        <ReviewsTab reviews = {product.reviews}/>
+                                        <ReviewsTab
+                                            reviews = {product.reviews}
+                                            review_count = {product.review_count}
+                                            url_key = {product.url_key}
+                                        />
                                     </div>
                                     <div>
                                         <AddReview/>
