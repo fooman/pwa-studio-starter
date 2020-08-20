@@ -14,6 +14,7 @@ import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
 import Button from '@magento/venia-ui/lib/components/Button';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
+import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
 import ProductStaticArea from '../../../../components/ProductFullDetail/Static/productDetailStaticArea';
 import AnyQuestion from '../../../../components/ProductFullDetail/Static/anyQuestion';
@@ -51,10 +52,14 @@ const ERROR_FIELD_TO_MESSAGE_MAPPING = {
     quantity: 'The requested quantity is not available.'
 };
 
+/*Lasy Loading Component*/
+const ChangeLog = React.lazy(() => import('../../../../components/ProductFullDetail/Tabs/ChangeLog/changeLog'));
+
 const ProductFullDetail = props => {
     const { product } = props;
 
     const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
+    const changeLogUrl = window.location.protocol + "//" +window.location.host + "/releases/Fooman_PdfCustomiser/feed.json";
 
     const talonProps = useProductFullDetail({
         addDownloadableProductToCartMutation: ADD_DOWNLOADABLE_MUTATION,
@@ -94,6 +99,10 @@ const ProductFullDetail = props => {
             categoryId={breadcrumbCategoryId}
             currentProduct={productDetails.name}
         />
+    ) : null;
+
+    const changeLog = changeLogUrl? (
+        <ChangeLog changeLogUrl = {changeLogUrl} />
     ) : null;
 
     //TODO image from media gallery or small thumbnail
@@ -291,12 +300,19 @@ const ProductFullDetail = props => {
                                     Reviews
                                 </h2>
                             </Tab>
+                            <Tab>
+                                <h2>
+                                    Changelog
+                                </h2>
+                            </Tab>
                         </TabList>
-                        <TabPanel>
-                            <section className={classes.description}>
-                                <CustomRichContent html = {productDetails.description}/>
-                            </section>
-                        </TabPanel>
+                        <div>
+                            <TabPanel>
+                                <section className={classes.description}>
+                                    <CustomRichContent html = {productDetails.description}/>
+                                </section>
+                            </TabPanel>
+                        </div>
                         <div className={classes.reviews}>
                             <TabPanel>
                                 <section className={classes.reviewSection}>
@@ -308,7 +324,15 @@ const ProductFullDetail = props => {
                                     </div>
                                 </section>
                             </TabPanel>
+                            <TabPanel>
+                                <section className={classes.changelog}>
+                                    <Suspense fallback={<LoadingIndicator />}>
+                                        {changeLog}
+                                    </Suspense>
+                                </section>
+                            </TabPanel>
                         </div>
+
                     </Tabs>
                 </div>
             </HideAt>
@@ -360,7 +384,8 @@ ProductFullDetail.propTypes = {
         hr1:string,
         formMainDiv: string,
         licensePurchaseSidebar: string,
-        reviewSection: string
+        reviewSection: string,
+        changelog: string
 
     }),
     product: shape({
