@@ -1,15 +1,15 @@
-import {useCallback, useEffect, useState} from 'react';
+import { useCallback } from 'react';
 import {
     useLazyQuery
-} from '@apollo/react-hooks';;
+} from '@apollo/react-hooks';
 
 export const useReviewsTab = prop => {
 
     const { productReviews, urlKey, review_count } = prop;
-
+    const currentPage = 1;
     const [
         getAllProductReviews,
-        { data: allReviewData, loading: allReviewLoading, error: allReviewError }
+        { data: allReviewData, loading: allReviewLoading }
     ] = useLazyQuery(productReviews, {
         fetchPolicy: 'network-only'
     });
@@ -18,7 +18,7 @@ export const useReviewsTab = prop => {
         await getAllProductReviews({
             variables: {
                 urlKey,
-                currentPage: 1,
+                currentPage,
                 pageSize: review_count
             }
         });

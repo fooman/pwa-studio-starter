@@ -12,8 +12,6 @@ const ReviewsTab = props => {
 
     const { reviews, review_count, url_key } = props;
     const [reviewsItem, setReviewsItem] = useState([]);
-    const [ currentPage, setCurrentPage] = useState(1);
-    const reviewLimit = 20;
     const talonProps = useReviewsTab({
         productReviews,
         urlKey: url_key,
@@ -23,10 +21,6 @@ const ReviewsTab = props => {
     const { allReviewsItem, allReviewLoading, viewAllReviews } = talonProps;
 
     const classes = mergeClasses(defaultClasses);
-
-    const viewNextReviews = () => {
-        viewAllReviews();
-    }
 
     useEffect(() => {
 
@@ -42,14 +36,12 @@ const ReviewsTab = props => {
 
     if(allReviewsItem.length) {
         if (allReviewsItem.length !== reviewsItem.length) {
-
-            setReviewsItem([...reviewsItem, ...allReviewsItem]);
+            setReviewsItem(allReviewsItem);
         }
     }
 
     const mapReviews = () => {
         if (reviewsItem.length) {
-
             return reviewsItem.map(( singleItems , index ) => {
                 return (
                     <Review review={singleItems} key={index} />
@@ -65,11 +57,11 @@ const ReviewsTab = props => {
                 {mapReviews()}
             </div>
             <div>
-                {review_count > reviewLimit ?
+                {review_count > reviewsItem.length ?
                     (
                         <Button
                             priority="high"
-                            onClick={() => viewNextReviews()}
+                            onClick={() => viewAllReviews()}
                         >
                             {"Show more"}
                         </Button>
