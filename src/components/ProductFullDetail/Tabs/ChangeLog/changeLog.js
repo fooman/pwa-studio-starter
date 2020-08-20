@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import axios from 'axios';
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 
@@ -18,25 +17,22 @@ const ChangeLog = props => {
     const classes = mergeClasses(defaultClasses);
 
     useEffect(() => {
-        axios({
-            method: 'get',
-            url: changeLogUrl,
-        })
-            .then(response => {
-                if (response.status === 200) {
-                    const {data} = response;
-                    const { items } = data;
-                    if (data && items.length) {
-                        let item = items.reverse();
-                        setItemData(item);
-                    }
+
+        fetch(changeLogUrl)
+            .then(response => response.json())
+            .then(data => {
+                const { items } = data;
+                if (data && items.length) {
+                    let item = items.reverse();
+                    setItemData(item);
                 }
                 setLoading(false)
             })
             .catch(err => {
-                console.log(err);
-                setLoading(false);
-            });
+            console.log(err);
+            setLoading(false);
+        });
+
     }, [changeLogUrl]);
 
     if (loading) {
@@ -77,12 +73,15 @@ const ChangeLog = props => {
                         {mappedItems()}
                         </tbody>
                     </table>
-                    <Button
-                        priority="high"
-                        onClick={() => viewAllReleasesHandle()}
-                    >
-                        {"View all releases"}
-                    </Button>
+                    {!viewAllData ? (
+                        <Button
+                            priority="high"
+                            onClick={() => viewAllReleasesHandle()}
+                        >
+                            {"View all releases"}
+                        </Button>
+                    ) : null
+                    }
                 </div>
             ) : (
                 <div>
