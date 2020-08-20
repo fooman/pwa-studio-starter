@@ -1,0 +1,12 @@
+query {
+  productReviewRatingsMetadata {
+    items {
+      id
+      name
+      values {
+        value_id
+        value
+      }
+    }
+  }
+}

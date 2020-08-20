@@ -1,0 +1,29 @@
+mutation createProductReview(
+    $sku: String!
+    $summary: String!
+    $text: String!
+    $nickname: String!
+    $ratings: [ProductReviewRatingInput]!
+){
+  createProductReview (
+    input:
+    {
+      sku: $sku,
+      summary: $summary,
+      text: $text,
+      nickname: $nickname,
+      ratings: $ratings
+    }
+  ) {
+    review {
+      nickname
+      summary
+      text
+      average_rating
+      ratings_breakdown {
+        name
+        value
+      }
+    }
+  }
+}
