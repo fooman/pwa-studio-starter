@@ -39,7 +39,7 @@ const AddressBook = props => {
         isLoading,
         selectedAddress
     } = talonProps;
-    debugger
+
     const classes = mergeClasses(defaultClasses, propClasses);
 
     const [, { addToast }] = useToasts();
