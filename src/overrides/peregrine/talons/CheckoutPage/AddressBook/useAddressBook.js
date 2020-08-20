@@ -123,6 +123,7 @@ export const useAddressBook = props => {
     ) {
         const { customerCart } = customerCartAddressData;
         const { shipping_addresses: shippingAddresses } = customerCart;
+
         if (shippingAddresses.length) {
             const primaryCartAddress = shippingAddresses[0];
 
@@ -144,23 +145,24 @@ export const useAddressBook = props => {
 
     const handleApplyAddress = useCallback(async () => {
         try {
-            await setCustomerBillingAddressOnCart({
-                variables: {
-                    cartId,
-                    addressId: selectedAddress
-                }
-            });
-            selectedAddressCallBack(selectedAddress);
-            // await setCustomerAddressOnCart({
-            //     variables: {
-            //         cartId,
-            //         addressId: selectedAddress
-            //     }
-            // });
+            if (selectedAddress) {
+                await setCustomerBillingAddressOnCart({
+                    variables: {
+                        cartId,
+                        addressId: selectedAddress
+                    }
+                });
+                selectedAddressCallBack(selectedAddress);
+                // await setCustomerAddressOnCart({
+                //     variables: {
+                //         cartId,
+                //         addressId: selectedAddress
+                //     }
+                // });
+            }
         } catch {
             return;
         }
-
         toggleActiveContent();
     }, [
         cartId,

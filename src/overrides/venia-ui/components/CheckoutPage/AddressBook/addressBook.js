@@ -39,6 +39,7 @@ const AddressBook = props => {
         isLoading,
         selectedAddress
     } = talonProps;
+    debugger
     const classes = mergeClasses(defaultClasses, propClasses);
 
     const [, { addToast }] = useToasts();
@@ -114,7 +115,7 @@ const AddressBook = props => {
         <Fragment>
             <div className={rootClass}>
                 <h1 className={classes.headerText}>
-                    Change Shipping Information
+                    Change Billing Information
                 </h1>
                 <div className={classes.buttonContainer}>
                     <Button

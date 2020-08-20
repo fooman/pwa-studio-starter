@@ -115,7 +115,10 @@ export const useCustomerForm = props => {
                             { query: getDefaultShippingQuery }
                         ]
                     });
-                    onSubmitBillingAddress();
+
+                    if ( onSubmitBillingAddress ) {
+                        await onSubmitBillingAddress();
+                    }
                 }
             } catch {
                 return;
