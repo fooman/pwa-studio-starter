@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo} from "react";
+import React from "react";
 import defaultClasses from './addReviewComponent.css'
 import {mergeClasses} from "@magento/venia-ui/lib/classify";
 import {shape, string} from "prop-types";
@@ -14,11 +14,14 @@ import productReviewRatingsMetadataQuery from './productReviewRatingsMetadata.gr
 import addProductRatingMutation from './addProductReviewMutation.graphql';
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
 
-const AddReview = () => {
+const AddReview = props => {
+
+    const { productSku } = props;
 
     const talonProps = useAddReviewComponent({
         productReviewRatingsMetadataQuery,
-        addProductRatingMutation
+        addProductRatingMutation,
+        productSku
     });
 
     const {
@@ -28,7 +31,7 @@ const AddReview = () => {
             isLoadingReviewRating,
             ReviewRatingData,
             onStarClickHandler,
-            starRating,
+            ratingValue,
             handleSubmit
     } = talonProps;
 
@@ -38,18 +41,14 @@ const AddReview = () => {
         return <LoadingIndicator/>
     }
 
-    const starRatingComponent = useMemo(() => {
-
-        return (
-            <StarRatingComponent
-                className ={classes.starRating}
-                size = {'1x'}
-                editing = {true}
-                value = {Number(starRating)}
-                onStarClick={onStarClickHandler}
-            />
-        )
-    }, [starRating, onStarClickHandler])
+    let starRatingComponent = (
+        <StarRatingComponent
+            size = {'1x'}
+            editing = {true}
+            value = {ratingValue}
+            onStarClick={onStarClickHandler}
+        />
+    )
 
     const dialogComponent = (
         <Dialog
@@ -58,11 +57,18 @@ const AddReview = () => {
             onConfirm={handleSubmit}
             onCancel={closeDialog}
         >
-                <div className={classes.name}>
-                    <Field id="name" label="Name">
-                        <TextInput field="name" validate={isRequired} />
+            <div className={classes.formRoot}>
+                <div className={classes.nickname}>
+                    <Field id="nickname" label="Name">
+                        <TextInput field="nickname" validate={isRequired} />
                     </Field>
                 </div>
+
+            <div className={classes.text}>
+                <Field id="text" label="Text">
+                    <TextInput field="text" validate={isRequired} />
+                </Field>
+            </div>
 
                 <div className={classes.summary}>
                     <Field id="summary" label="Summary">
@@ -70,12 +76,12 @@ const AddReview = () => {
                     </Field>
                 </div>
 
-                <div>
+                <div className={classes.rating}>
                     <Field id="review" label="Review">
                         {starRatingComponent}
-                        <TextInput type="hidden" field="rating" validation={isRequired} />
                     </Field>
                 </div>
+            </div>
         </Dialog>
     );
 
@@ -98,7 +104,12 @@ const AddReview = () => {
 
 AddReview.propTypes = {
     classes: shape({
-        addReviewRoot: string
+        addReviewRoot: string,
+        formRoot: string,
+        nickname: string,
+        text: string,
+        summary: string,
+        rating: string
     })
 }
 

@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 export const StarRatingComponent = props => {
+
     const [value, selectStar] = useState(props.value);
+
+    useEffect(() => {
+        selectStar(props.value);
+    }, [props.value]);
 
     const { editing, className } = props;
     const classes = cx('dv-star-rating', {

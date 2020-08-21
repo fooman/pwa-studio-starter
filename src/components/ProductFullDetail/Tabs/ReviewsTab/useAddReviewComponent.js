@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 
 export const useAddReviewComponent = prop => {
 
-    const { productReviewRatingsMetadataQuery, addProductRatingMutation } = prop;
+    const { productReviewRatingsMetadataQuery, addProductRatingMutation, productSku } = prop;
 
     const [ isOpen, setIsOpen] = useState(false);
 
@@ -32,21 +32,29 @@ export const useAddReviewComponent = prop => {
     }, []);
 
     const onStarClickHandler = useCallback((value) => {
-        ratingValue !== value ? setRatingValue(value) : null;
-    }, []);
+        ratingValue !== value ? setRatingValue(value) : setRatingValue(0);
+    }, [ratingValue]);
+
+    /*Remove rating value on close dialog*/
+    !isOpen? ratingValue? setRatingValue(0) : null : null;
 
     const handleSubmit = useCallback(
         async formValues => {
             try {
+                const { productReviewRatingsMetadata: {items} } = ReviewRatingData;
+                const { id , values } = items[0];
+                const selectedRatingResult = values.filter(singleValueObj => singleValueObj.value === (ratingValue).toString());
+                const { nickname, text, summary } = formValues;
+
                 await createProductReview({
                     variables: {
-                        sku: "FM0024_OMAN",
-                        summary: "works well",
-                        text: "awesome pdfs for our customers",
-                        nickname: "Customer Name",
+                        sku: productSku,
+                        summary: summary,
+                        text: text,
+                        nickname: nickname,
                         ratings: [{
-                                id: "MQ==",
-                                value_id: "NQ=="
+                                id: id,
+                                value_id: selectedRatingResult[0].value_id
                         }]
                     }
                 });
@@ -55,9 +63,8 @@ export const useAddReviewComponent = prop => {
             }
             closeDialog();
         },
-        []);
+        [ratingValue]);
 
-    const starRating = ratingValue;
     return {
         handleAddReviewClick,
         isOpen,
@@ -65,7 +72,7 @@ export const useAddReviewComponent = prop => {
         isLoadingReviewRating,
         ReviewRatingData,
         onStarClickHandler,
-        starRating,
+        ratingValue,
         handleSubmit
     };
 

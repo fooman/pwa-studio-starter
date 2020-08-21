@@ -1,3 +1,28 @@
 .addReviewRoot {
     margin-top: 3.125rem;
 }
+
+.formRoot {
+    display: grid;
+    gap: 0.5rem 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.field {
+    grid-column-end: span 2;
+}
+
+.nickname,
+.text,
+.summary,
+.rating {
+    composes: field;
+}
+
+.rating {
+    display: flex;
+    position: relative;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
