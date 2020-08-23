@@ -317,7 +317,11 @@ const ProductFullDetail = props => {
                             <TabPanel>
                                 <section className={classes.reviewSection}>
                                     <div>
-                                        <ReviewsTab reviews = {product.reviews}/>
+                                        <ReviewsTab
+                                            reviews = {product.reviews}
+                                            review_count = {product.review_count}
+                                            url_key = {product.url_key}
+                                        />
                                     </div>
                                     <div>
                                         <AddReview/>
