@@ -108,6 +108,7 @@ const ProductFullDetail = props => {
     //TODO image from media gallery or small thumbnail
     const mappedReviews = (product && product.reviews && product.reviews.items) ?
         product.reviews.items.map((singleReview) => {
+
             return {
                 "@type": "Review",
                 "reviewRating": {
