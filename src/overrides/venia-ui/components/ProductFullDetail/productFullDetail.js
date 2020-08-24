@@ -325,7 +325,7 @@ const ProductFullDetail = props => {
                                         />
                                     </div>
                                     <div>
-                                        <AddReview/>
+                                        <AddReview productSku = {productDetails.sku}/>
                                     </div>
                                 </section>
                             </TabPanel>
