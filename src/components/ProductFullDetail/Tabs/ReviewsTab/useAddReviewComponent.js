@@ -35,9 +35,6 @@ export const useAddReviewComponent = prop => {
         ratingValue !== value ? setRatingValue(value) : setRatingValue(0);
     }, [ratingValue]);
 
-    /*Remove rating value on close dialog*/
-    !isOpen? ratingValue? setRatingValue(0) : null : null;
-
     const handleSubmit = useCallback(
         async formValues => {
             try {
@@ -64,6 +61,9 @@ export const useAddReviewComponent = prop => {
             closeDialog();
         },
         [ratingValue]);
+
+    /*Remove rating value on close dialog*/
+    !isOpen? ratingValue? setRatingValue(0) : null : null;
 
     return {
         handleAddReviewClick,

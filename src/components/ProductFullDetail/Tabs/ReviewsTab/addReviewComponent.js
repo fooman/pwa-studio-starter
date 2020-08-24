@@ -65,14 +65,14 @@ const AddReview = props => {
                 </div>
 
             <div className={classes.text}>
-                <Field id="text" label="Text">
-                    <TextInput field="text" validate={isRequired} />
+                <Field id="summary" label="Summary">
+                    <TextInput field="summary" validate={isRequired} />
                 </Field>
             </div>
 
                 <div className={classes.summary}>
-                    <Field id="summary" label="Summary">
-                        <TextArea field="summary" validate={isRequired} />
+                    <Field id="text" label="Text">
+                        <TextArea field="text" validate={isRequired} />
                     </Field>
                 </div>
 
