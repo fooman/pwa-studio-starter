@@ -1,10 +1,13 @@
 import {useCallback, useState} from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
+import {useUserContext} from "@magento/peregrine/lib/context/user";
 
 
 export const useAddReviewComponent = prop => {
 
     const { productReviewRatingsMetadataQuery, addProductRatingMutation, productSku } = prop;
+
+    const [{ isSignedIn }] = useUserContext();
 
     const [ isOpen, setIsOpen] = useState(false);
 
@@ -73,7 +76,8 @@ export const useAddReviewComponent = prop => {
         ReviewRatingData,
         onStarClickHandler,
         ratingValue,
-        handleSubmit
+        handleSubmit,
+        isSignedIn
     };
 
 }

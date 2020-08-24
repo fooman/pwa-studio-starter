@@ -32,7 +32,8 @@ const AddReview = props => {
             ReviewRatingData,
             onStarClickHandler,
             ratingValue,
-            handleSubmit
+            handleSubmit,
+            isSignedIn
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses);
@@ -88,12 +89,15 @@ const AddReview = props => {
     return (
         <div className={classes.addReviewRoot}>
             <div>
-                <Button
-                    priority="low"
-                    onClick={handleAddReviewClick}
-                >
-                {"Add your Review"}
-                </Button>
+                { isSignedIn? (
+                    <Button
+                        priority="low"
+                        onClick={handleAddReviewClick}
+                    >
+                        {"Add your Review"}
+                    </Button>
+                ) : null
+                }
             </div>
             <div>
                 {dialogComponent}
