@@ -80,15 +80,6 @@ const OrderConfirmationPage = props => {
                 <div className={classes.itemsReview}>
                     <ItemsReview data={data} />
                 </div>
-                {!isSignedIn ?
-                    <div className={classes.additionalText}>
-                        {
-                            'You will also receive an email with the details and we will let you know when your order has shipped.'
-                        }
-                    </div>
-                    :
-                    null
-                }
             </div>
             <div className={classes.sidebarContainer}>{createAccountForm}</div>
         </div>
