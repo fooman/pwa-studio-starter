@@ -1,3 +1,8 @@
+.productContainer {
+    max-width: var(--venia-global-maxWidth);
+    margin: auto;
+}
+
 .root {
     display: flex;
     flex-direction: row;
