@@ -32,7 +32,7 @@
     content:"";
     display: block;
     width: 3.1rem;
-    border-bottom: 1px solid rgb(var( --venia-global-color-orange));
+    border-bottom: 1px solid rgb(var(--fooman-global-color-darked-orange));
     margin: 1.5em 0 1.5em;
 }
 
