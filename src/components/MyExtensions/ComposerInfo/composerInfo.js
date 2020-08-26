@@ -36,7 +36,7 @@ const ComposerInfo = props => {
                 <div className={classes.wrapCommandSection}>
                     <div className = {classes.commandLine}>
                         <textarea
-                            value={commandLine}
+                            defaultValue={commandLine}
                         />
                     </div>
                     <div className={classes.btnSection}>
