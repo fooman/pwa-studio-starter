@@ -13,12 +13,12 @@ const ExtensionsTable = props => {
 
     const {items} = props;
 
-    useEffect(() => {
+    useEffect( () => {
         let mappedItem = [];
         let unique_repo_url_item = [];
-        const reverseItems = items.reverse();
-        reverseItems.forEach((singleItem, index) => {
-            const { order_increment_id, product_name, purchased_host, free_upgrades_until, repo_url } = singleItem;
+
+        for (let i = items.length -1 ; i >= 0; i--) {
+            const { order_increment_id, product_name, purchased_host, free_upgrades_until, repo_url } = items[i];
 
             /*operation for get unique repo_url*/
             !unique_repo_url_item.length ?
@@ -29,14 +29,14 @@ const ExtensionsTable = props => {
 
             const upgradeUntilDate = new Date(new Date(free_upgrades_until * 1000)).toLocaleDateString();
             mappedItem.push(
-                <tr key={index}>
+                <tr key={i}>
                     <td className={classes.tdClass}>{order_increment_id}</td>
                     <td className={classes.tdClass}>{product_name}</td>
                     <td className={classes.tdClass}>{purchased_host}</td>
                     <td className={classes.tdClass}>{upgradeUntilDate}</td>
                 </tr>
             );
-        });
+        }
         setMappedItem(mappedItem);
         setMappedRepoUrl(unique_repo_url_item);
     }, [items]);
@@ -44,22 +44,22 @@ const ExtensionsTable = props => {
     return (
         <div>
             <ComposerInfo uniqueRepoUrlItem = {mappedRepoUrl} />
-          <div className={classes.gridContent}>
-              <h1 className={classes.heading}>{`My Extensions`}</h1>
-            <table className={classes.tableClass}>
-                <thead>
-                <tr className={classes.trClass}>
-                    <th className={classes.thClass}>Order #</th>
-                    <th className={classes.thClass}>Product Title</th>
-                    <th className={classes.thClass}>Purchased Host</th>
-                    <th className={classes.thClass}>Free Upgrades Until</th>
-                </tr>
-                </thead>
-                <tbody>
-                {mappedItem}
-                </tbody>
-            </table>
-          </div>
+            <div className={classes.gridContent}>
+                <h1 className={classes.heading}>{`My Extensions`}</h1>
+                <table className={classes.tableClass}>
+                    <thead>
+                    <tr className={classes.trClass}>
+                        <th className={classes.thClass}>Order #</th>
+                        <th className={classes.thClass}>Product Title</th>
+                        <th className={classes.thClass}>Purchased Host</th>
+                        <th className={classes.thClass}>Free Upgrades Until</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {mappedItem}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

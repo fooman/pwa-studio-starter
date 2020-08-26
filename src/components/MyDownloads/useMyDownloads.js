@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
+import { useLazyQuery } from '@apollo/react-hooks';
 
 import { useUserContext } from '@magento/peregrine/lib/context/user';
 
@@ -10,23 +10,22 @@ export const useMyDownloads = prop => {
     const history = useHistory();
     const [{ isSignedIn }] = useUserContext();
 
+    const [
+        customerDownloadableProductQuery,
+        { loading: isDownloadableLoading, data: customerDownloadableProduct, error }
+    ] = useLazyQuery(useCustomerDownloadableProductQuery, { fetchPolicy: 'network-only', skip: !isSignedIn });
+
     // If the user is no longer signed in, redirect to the home page.
     useEffect(() => {
         if (!isSignedIn) {
             history.push('/');
         }
+        customerDownloadableProductQuery();
     }, [history, isSignedIn]);
-
-    const {
-        loading: isDownloadableLoading,
-        data: customerDownloadableProduct,
-        error
-    } = useQuery(useCustomerDownloadableProductQuery, { skip: !isSignedIn });
 
     return {
         data: customerDownloadableProduct,
         isLoading: isDownloadableLoading,
         error
     };
-
 }
