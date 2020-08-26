@@ -12,13 +12,16 @@ import EditModal from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInf
 import defaultClasses from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/shippingInformation.css';
 import ShippingInformationOperations from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/shippingInformation.gql';
 import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
+import AddressBookOperation from '@magento/venia-ui/lib/components/CheckoutPage/AddressBook/addressBook.gql';
 
 const ShippingInformation = props => {
-    const { classes: propClasses, onSave, toggleActiveContent } = props;
+    const { classes: propClasses, onSave, toggleActiveContent, selectedAddressId } = props;
     const talonProps = useShippingInformation({
         onSave,
         toggleActiveContent,
-        ...ShippingInformationOperations
+        ...ShippingInformationOperations,
+        getAddress: AddressBookOperation.queries.getCustomerAddressesQuery,
+        selectedAddressId
     });
     const {
         doneEditing,

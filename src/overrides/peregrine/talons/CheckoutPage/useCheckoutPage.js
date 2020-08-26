@@ -29,7 +29,8 @@ export const useCheckoutPage = props => {
         },
         getCategoryDetailQueries: {
             getCartDetails
-        }
+        },
+        getAddress
     } = props;
 
     const [reviewOrderButtonClicked, setReviewOrderButtonClicked] = useState(
@@ -42,6 +43,8 @@ export const useCheckoutPage = props => {
     const [checkoutStep, setCheckoutStep] = useState(
         CHECKOUT_STEP.SHIPPING_ADDRESS
     );
+    const [userHasBillingAddress, setUserHasBillingAddress] = useState(false);
+    const [selectedAddressId, setSelectedAddressId] = useState(null);
     const [, { toggleDrawer }] = useAppContext();
     const [{ isSignedIn }] = useUserContext();
     const [{ cartId }, { createCart, removeCart }] = useCartContext();
@@ -68,6 +71,25 @@ export const useCheckoutPage = props => {
             called: placeOrderCalled
         }
     ] = useMutation(placeOrderMutation);
+
+    //get customer addresses for check default address
+    const {
+
+    } = useQuery(getAddress, { skip: !isSignedIn });
+
+    const [getCustomerAddress,
+            {
+                data: customerAddressesData,
+                error: customerAddressesError,
+                loading: customerAddressesLoading
+            }] = useLazyQuery(getAddress, {fetchPolicy: 'network-only' });
+
+    if (customerAddressesData) {
+        const { customer } = customerAddressesData;
+        if ( customer && customer.addresses.length ){
+            !userHasBillingAddress ? setUserHasBillingAddress(true) : null;
+        }
+    }
 
     const [
         getOrderDetails,
@@ -124,6 +146,10 @@ export const useCheckoutPage = props => {
         setActiveContent(nextContentState);
     }, [activeContent]);
 
+    const selectedAddressCallBack = useCallback((addressId) => {
+        setSelectedAddressId(addressId);
+    }, [selectedAddressId]);
+
     const checkoutError = useMemo(() => {
         if (placeOrderError) {
             return new CheckoutError(placeOrderError);
@@ -144,12 +170,16 @@ export const useCheckoutPage = props => {
     }, [setReviewOrderButtonClicked]);
 
     const setShippingInformationDone = useCallback(() => {
+
         if (checkoutStep === CHECKOUT_STEP.SHIPPING_ADDRESS) {
-            window.scrollTo({
-                left: 0,
-                top: 0,
-                behavior: 'smooth'
-            });
+
+            if (!isSignedIn) {
+                window.scrollTo({
+                    left: 0,
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
             setCheckoutStep(CHECKOUT_STEP.PAYMENT);
         }
     }, [checkoutStep, setCheckoutStep]);
@@ -182,6 +212,12 @@ export const useCheckoutPage = props => {
             }
         });
     }, [cartId, getOrderDetails]);
+
+    useEffect( () => {
+        if (isSignedIn && checkoutStep === CHECKOUT_STEP.PAYMENT) {
+            getCustomerAddress();
+        }
+    }, [checkoutStep]);
 
     useEffect(() => {
         async function placeOrderAndCleanup() {
@@ -252,6 +288,9 @@ export const useCheckoutPage = props => {
         reviewOrderButtonClicked,
         toggleActiveContent,
         cart,
+        userHasBillingAddress,
+        selectedAddressId,
+        selectedAddressCallBack,
         loading
     };
 };
