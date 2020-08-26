@@ -43,7 +43,7 @@ const ContactPage = props => {
 
     const dialogComponent = (
         <Dialog
-            title={'Contact Form'}
+            title={'Make contact'}
             formProps={formProps}
             isOpen={isOpen}
             onConfirm={handleSubmit}
