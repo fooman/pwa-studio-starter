@@ -2,6 +2,7 @@ import React from 'react';
 import TextInput from "@magento/venia-ui/lib/components/TextInput";
 import Dialog from '@magento/venia-ui/lib/components/Dialog';
 import Field from "@magento/venia-ui/lib/components/Field";
+import Button from "@magento/venia-ui/lib/components/Button";
 import {isRequired} from "@magento/venia-ui/lib/util/formValidators";
 import TextArea from "@magento/venia-ui/lib/components/TextArea";
 import { useContact } from './useContact';
@@ -21,6 +22,7 @@ const ContactPage = props => {
     const {
         isOpen,
         closeDialog,
+        handleToOpenForm,
         handleSubmit,
         isSignedIn,
         sendMessageLoading,
@@ -28,14 +30,15 @@ const ContactPage = props => {
         currentUser
     } = talonProps;
 
-    let initialValues = { name: '', email: '' };
+    let initialValues = {};
 
-    isSignedIn? initialValues = {
+    isSignedIn? initialValues = {...initialValues,
         name: `${currentUser.firstname} ${currentUser.lastname}`,
         email: currentUser.email
     } :
-        null;
+        initialValues = {...initialValues, name: '', email: '' , message: ''};
     let formProps = { initialValues }
+
     const classes = mergeClasses(defaultClasses);
 
     const dialogComponent = (
@@ -70,8 +73,19 @@ const ContactPage = props => {
     );
 
     return (
-        <div>
-            {dialogComponent}
+        <div className={classes.wrapContactForm}>
+            <h1 className={classes.heading}>{'Contact Support'}</h1>
+            <div className={classes.contactFormBtn}>
+                <Button
+                    priority="high"
+                    onClick={handleToOpenForm}
+                >
+                    Contact Form
+                </Button>
+            </div>
+            <div>
+                {dialogComponent}
+            </div>
         </div>
     );
 };
@@ -79,6 +93,8 @@ const ContactPage = props => {
 ContactPage.propTypes = {
     classes: shape({
         formRoot: string,
+        contactFormBtn: string,
+        wrapContactForm: string,
         name: string,
         email: string,
         message: string

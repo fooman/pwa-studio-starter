@@ -1,4 +1,20 @@
-formRoot {
+.heading {
+    font-size: 250%;
+    font-weight: normal;
+    font-style: normal;
+    color: rgb(var(--fooman-global-color-font-gray));
+    font-family: robotolight,sans-serif;
+    margin-bottom: 3.875rem;
+    margin-top: 2.5rem;
+}
+
+.wrapContactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formRoot {
     display: grid;
     gap: 0.5rem 1.5rem;
     grid-template-columns: 1fr 1fr;

@@ -9,7 +9,7 @@ export const useContact = prop => {
 
     const [{ currentUser, isSignedIn }] = useUserContext();
 
-    const [ isOpen, setIsOpen] = useState(true);
+    const [ isOpen, setIsOpen ] = useState(true);
 
     const [
         supportMessageMutation,
@@ -24,10 +24,14 @@ export const useContact = prop => {
         setIsOpen(false);
     }, []);
 
+    const handleToOpenForm = useCallback(() => {
+        setIsOpen(true);
+    },[]);
+
     const handleSubmit = useCallback(
         async formValues => {
             try {
-                const { name, message, email } = formValues;
+                const { name, email, message } = formValues;
 
                 await supportMessageMutation({
                     variables: {
@@ -36,6 +40,7 @@ export const useContact = prop => {
                         email: email
                     }
                 });
+
             } catch(e) {
                 return;
             }
@@ -46,6 +51,7 @@ export const useContact = prop => {
     return {
         isOpen,
         closeDialog,
+        handleToOpenForm,
         handleSubmit,
         isSignedIn,
         sendMessageLoading,
