@@ -6,6 +6,7 @@
 .section {
     margin-top: 1.5rem;
     position: relative;
+    padding: 1.2rem;
 }
 
 .hr1 {
@@ -161,7 +162,7 @@
 }
 
 .reactTab {
-    padding: 2.5rem 4rem 0;
+    padding: 0 2rem;
 }
 .reactTab li {
     padding: 0.9375rem 1.875rem;
@@ -174,7 +175,6 @@
 
 .reviews {
     margin: 1.875rem 0 1.25rem;
-    /*padding-top: 1.875rem;*/
 }
 
 .changelog {
@@ -210,6 +210,9 @@
         margin: 0;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
+    }
+    .section {
+        padding: 0;
     }
     .formMainDiv {
         width: 100%;
@@ -255,7 +258,6 @@
     }
     .section {
         margin: 1rem     0;
-        padding: 1.2rem !important;
         position: relative;
     }
     .root {
