@@ -43,11 +43,12 @@ const ContactPage = props => {
 
     const dialogComponent = (
         <Dialog
-            title={'Make contact'}
+            title={'Contact Form'}
             formProps={formProps}
             isOpen={isOpen}
             onConfirm={handleSubmit}
             onCancel={closeDialog}
+            confirmText = {'Make Contact'}
         >
             <div className={classes.formRoot}>
                 <div className={classes.name}>
