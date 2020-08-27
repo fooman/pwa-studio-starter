@@ -1,13 +1,3 @@
-.heading {
-    font-size: 250%;
-    font-weight: normal;
-    font-style: normal;
-    color: rgb(var(--fooman-global-color-font-gray));
-    font-family: robotolight,sans-serif;
-    margin-bottom: 3.875rem;
-    margin-top: 2.5rem;
-}
-
 .wrapContactForm {
     display: flex;
     flex-direction: column;
@@ -20,7 +10,6 @@
     grid-template-columns: 1fr 1fr;
     width: 100%;
 }
-
 .field {
     grid-column-end: span 2;
 }

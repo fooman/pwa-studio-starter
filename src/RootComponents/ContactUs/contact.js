@@ -1,106 +1,55 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Form } from 'informed';
 import TextInput from "@magento/venia-ui/lib/components/TextInput";
-import Dialog from '@magento/venia-ui/lib/components/Dialog';
-import Field from "@magento/venia-ui/lib/components/Field";
 import Button from "@magento/venia-ui/lib/components/Button";
+import Field from "@magento/venia-ui/lib/components/Field";
 import {isRequired} from "@magento/venia-ui/lib/util/formValidators";
 import TextArea from "@magento/venia-ui/lib/components/TextArea";
-import { useContact } from './useContact';
+import { useMutation } from '@apollo/react-hooks';
 import {
-    sendSupportMessage
+    submitContactUsMutation
 } from '../../queries/submitContactUsMutation.graphql';
-import {shape, string} from "prop-types";
-import defaultClasses from './contact.css'
-import {mergeClasses} from "@magento/venia-ui/lib/classify";
+
 
 const ContactPage = props => {
-
-    const talonProps = useContact({
-        sendSupportMessage
-    });
-
-    const {
-        isOpen,
-        closeDialog,
-        handleToOpenForm,
-        handleSubmit,
-        isSignedIn,
-        sendMessageLoading,
-        sendSupportMessageData,
-        currentUser
-    } = talonProps;
-
-    let initialValues = {};
-
-    isSignedIn? initialValues = {...initialValues,
-        name: `${currentUser.firstname} ${currentUser.lastname}`,
-        email: currentUser.email
-    } :
-        initialValues = {...initialValues, name: '', email: '' , message: ''};
-    let formProps = { initialValues }
-
-    const classes = mergeClasses(defaultClasses);
-
-    const dialogComponent = (
-        <Dialog
-            title={'Contact Form'}
-            formProps={formProps}
-            isOpen={isOpen}
-            onConfirm={handleSubmit}
-            onCancel={closeDialog}
-            confirmText = {'Make Contact'}
-        >
-            <div className={classes.formRoot}>
-                <div className={classes.name}>
-                    <Field id="name" label="Name">
-                        <TextInput field="name" validate={isRequired} />
-                    </Field>
-                </div>
-
-                <div className={classes.email}>
-                    <Field id="email" label="Email">
-                        <TextInput field="email" validate={isRequired} />
-                    </Field>
-                </div>
-
-                <div className={classes.message}>
-                    <Field id="message" label="Message">
-                        <TextArea field="message" validate={isRequired} />
-                    </Field>
-                </div>
-
-            </div>
-        </Dialog>
+    const [handleSubmit] = useMutation(
+        submitContactUsMutation
     );
-
     return (
-        <div className={classes.wrapContactForm}>
-            <h1 className={classes.heading}>{'Contact Support'}</h1>
-            <div className={classes.contactFormBtn}>
+        <Fragment>
+            <Form>
+                <Field label="Name">
+                    <TextInput
+                        id='name'
+                        field="lastname"
+                        validate={isRequired}
+                    />
+                </Field>
+                <Field label="Email">
+                    <TextInput
+                        id='email'
+                        field="lastname"
+                        validate={isRequired}
+                    />
+                </Field>
+                <Field label="Message">
+                    <TextArea
+                        id="message"
+                        field="message"
+                        placeholder="Enter your message here"
+                        validate={isRequired}
+                    />
+                </Field>
                 <Button
                     priority="high"
-                    onClick={handleToOpenForm}
+                    onClick={handleSubmit}
                 >
-                    Contact Form
+                    Submit
                 </Button>
-            </div>
-            <div>
-                {dialogComponent}
-            </div>
-        </div>
+            </Form>
+        </Fragment>
     );
 };
-
-ContactPage.propTypes = {
-    classes: shape({
-        formRoot: string,
-        contactFormBtn: string,
-        wrapContactForm: string,
-        name: string,
-        email: string,
-        message: string
-    })
-}
 
 
 export default ContactPage;

@@ -2,14 +2,13 @@ import {useCallback, useState} from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import {useUserContext} from "@magento/peregrine/lib/context/user";
 
+export const useContactDialog = prop => {
 
-export const useContact = prop => {
-
-    const { sendSupportMessage } = prop;
+    const { sendSupportMessage, onContactSupportClicked, closeContactDialogHandler } = prop;
 
     const [{ currentUser, isSignedIn }] = useUserContext();
 
-    const [ isOpen, setIsOpen ] = useState(true);
+    const [ isOpen, setIsOpen ] = useState(false);
 
     const [
         supportMessageMutation,
@@ -19,14 +18,12 @@ export const useContact = prop => {
         }
     ] = useMutation( sendSupportMessage );
 
+    onContactSupportClicked? !isOpen? setIsOpen(true) : null : null;
 
     const closeDialog = useCallback(() => {
         setIsOpen(false);
+        closeContactDialogHandler();
     }, []);
-
-    const handleToOpenForm = useCallback(() => {
-        setIsOpen(true);
-    },[]);
 
     const handleSubmit = useCallback(
         async formValues => {
@@ -51,11 +48,8 @@ export const useContact = prop => {
     return {
         isOpen,
         closeDialog,
-        handleToOpenForm,
         handleSubmit,
         isSignedIn,
-        sendMessageLoading,
-        sendSupportMessageData,
         currentUser
     };
 }

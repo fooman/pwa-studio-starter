@@ -1,16 +1,19 @@
-mutation sendSupportMessage(
-    $name: String!
-    $message: String!
+mutation submitContactUsMutation(
     $email: String!
-){
-  sendSupportMessage (
-    input:
-    {
-      name: $name,
-      message: $message,
-      email: $email
+    $firstname: String!
+    $lastname: String!
+    $password: String!
+    $is_subscribed: Boolean!
+) {
+    createCustomer(
+        input: {
+            email: $email
+            firstname: $firstname
+            lastname: $lastname
+            password: $password
+            is_subscribed: $is_subscribed
+        }
+    ) {
+        result
     }
-  ) {
-    status_message
-  }
 }

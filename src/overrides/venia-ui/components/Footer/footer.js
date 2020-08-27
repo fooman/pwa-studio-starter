@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { shape, string } from 'prop-types';
 import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
@@ -12,8 +12,11 @@ import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import Image from "@magento/venia-ui/lib/components/Image";
 import logo from "../../../../components/Logo/FoomonLogo_Landscape_White.svg";
 import extdn from "../../../../components/Footer/ExtDN_Logo.svg";
+import ContactDialog from "../../../../components/contactDialog/contactDialog";
 
 const Footer = props => {
+
+    const [contactDialogIsOpen, setContactDialogIsOpen] = useState(false);
     const classes = mergeClasses(defaultClasses, props.classes);
 
     const talonProps = useFooter({
@@ -26,7 +29,16 @@ const Footer = props => {
         copyright = <span>{copyrightText}</span>;
     }
 
+    const contactDialogHandler = () => {
+        setContactDialogIsOpen(true);
+    }
+
+    const closeContactDialog = () => {
+        setContactDialogIsOpen(false);
+    }
+
     return (
+        <div>
         <footer className={classes.root}>
             <section className={classes.tile}>
                 <Image
@@ -114,13 +126,15 @@ const Footer = props => {
                         </a>
                     </li>
                     <li>
-                        <Link className={classes.link} to={resourceUrl('/contacts')}>
+                        <a style={classes.link} onClick={contactDialogHandler} href={'#'}>
                             Contact Support
-                        </Link>
+                        </a>
                     </li>
                 </ul>
             </section>
         </footer>
+            <ContactDialog onContactSupportClicked = {contactDialogIsOpen} closeContactDialogHandler = {closeContactDialog} />
+        </div>
     );
 };
 
