@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { func, string, shape } from 'prop-types';
+import {func, string, shape, bool} from 'prop-types';
 import { Edit2 as EditIcon } from 'react-feather';
 import { useShippingInformation } from '@magento/peregrine/lib/talons/CheckoutPage/ShippingInformation/useShippingInformation';
 
@@ -13,9 +13,10 @@ import defaultClasses from '@magento/venia-ui/lib/components/CheckoutPage/Shippi
 import ShippingInformationOperations from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/shippingInformation.gql';
 import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
 import AddressBookOperation from '@magento/venia-ui/lib/components/CheckoutPage/AddressBook/addressBook.gql';
+import {Accordion, Section} from "@magento/venia-ui/lib/components/Accordion";
 
 const ShippingInformation = props => {
-    const { classes: propClasses, onSave, toggleActiveContent, selectedAddressId } = props;
+    const { classes: propClasses, onSave, toggleActiveContent, selectedAddressId , openEditMode } = props;
     const talonProps = useShippingInformation({
         onSave,
         toggleActiveContent,
@@ -74,9 +75,22 @@ const ShippingInformation = props => {
     ) : (
         <Fragment>
             <h3 className={classes.editTitle}>{'1. Billing Information'}</h3>
-            <div className={classes.editWrapper}>
-                <AddressForm shippingData={shippingData} onSubmitBillingAddress = {onSave}  />
-            </div>
+            {openEditMode ?
+                <Accordion>
+                    <Section
+                    id={'edit-billing-data'}
+                    title={'Edit billing data'}
+                    >
+                        <div className={classes.editWrapper}>
+                            <AddressForm shippingData={shippingData} onSubmitBillingAddress = {onSave}  />
+                        </div>
+                    </Section>
+                 </Accordion>
+                : <div className={classes.editWrapper}>
+                    <AddressForm shippingData={shippingData} onSubmitBillingAddress = {onSave}  />
+                  </div>
+            }
+
         </Fragment>
     );
 
@@ -98,5 +112,6 @@ ShippingInformation.propTypes = {
         editText: string
     }),
     onSave: func.isRequired,
-    toggleActiveContent: func.isRequired
+    toggleActiveContent: func.isRequired,
+    openEditMode:bool
 };

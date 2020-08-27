@@ -45,6 +45,8 @@ export const useCheckoutPage = props => {
     );
     const [userHasBillingAddress, setUserHasBillingAddress] = useState(false);
     const [selectedAddressId, setSelectedAddressId] = useState(null);
+    const [openEditMode, setEditMode] = useState(false);
+
     const [, { toggleDrawer }] = useAppContext();
     const [{ isSignedIn }] = useUserContext();
     const [{ cartId }, { createCart, removeCart }] = useCartContext();
@@ -170,9 +172,7 @@ export const useCheckoutPage = props => {
     }, [setReviewOrderButtonClicked]);
 
     const setShippingInformationDone = useCallback(() => {
-
         if (checkoutStep === CHECKOUT_STEP.SHIPPING_ADDRESS) {
-
             if (!isSignedIn) {
                 window.scrollTo({
                     left: 0,
@@ -180,6 +180,7 @@ export const useCheckoutPage = props => {
                     behavior: 'smooth'
                 });
             }
+            setEditMode(true);
             setCheckoutStep(CHECKOUT_STEP.PAYMENT);
         }
     }, [checkoutStep, setCheckoutStep]);
@@ -291,6 +292,7 @@ export const useCheckoutPage = props => {
         userHasBillingAddress,
         selectedAddressId,
         selectedAddressCallBack,
-        loading
+        loading,
+        openEditMode
     };
 };

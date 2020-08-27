@@ -77,7 +77,8 @@ const CheckoutPage = props => {
         userHasBillingAddress,
         selectedAddressId,
         selectedAddressCallBack,
-        loading
+        loading,
+        openEditMode
     } = talonProps;
 
     const [, { addToast }] = useToasts();
@@ -235,11 +236,12 @@ const CheckoutPage = props => {
                 : classes.checkoutContent_hidden;
         let shippingAddress = null;
         if (checkoutStep === CHECKOUT_STEP.SHIPPING_ADDRESS ||
-            (checkoutStep === CHECKOUT_STEP.PAYMENT && !isGuestCheckout && userHasBillingAddress)) {
+            (checkoutStep === CHECKOUT_STEP.PAYMENT)) {
             shippingAddress = (<ShippingInformation
                     onSave={setShippingInformationDone}
                     toggleActiveContent={toggleActiveContent}
                     selectedAddressId={selectedAddressId}
+                    openEditMode={openEditMode}
                 />);
         }
 
