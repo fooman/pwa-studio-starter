@@ -214,6 +214,8 @@ export const useProductFullDetail = props => {
     let initialState = {};
     const [fieldErrorObj, setFieldErrorObj] = useState(initialState);
 
+    const [tabIndex, setTabIndex] = useState(0);
+
     const [
         addDownloadableProductToCart,
         { error: errorAddingDownloadableProduct, loading: isAddDownloadableLoading }
@@ -304,6 +306,19 @@ export const useProductFullDetail = props => {
         () => getMediaGalleryEntries(product, optionCodes, optionSelections),
         [product, optionCodes, optionSelections]
     );
+
+    const onReviewsClick = () => {
+        setTabIndex(1);
+        window.scrollTo({
+            left: 0,
+            top: 715,
+            behavior: 'smooth'
+        });
+    }
+
+    const setTabIndexFun = (selectedTab) => {
+        setTabIndex(selectedTab);
+    }
 
     const handleAddToCart = useCallback(async () => {
 
@@ -443,6 +458,9 @@ export const useProductFullDetail = props => {
             isAddSimpleLoading,
         mediaGalleryEntries,
         productDetails,
-        quantity
+        quantity,
+        onReviewsClick,
+        tabIndex,
+        setTabIndexFun
     };
 };

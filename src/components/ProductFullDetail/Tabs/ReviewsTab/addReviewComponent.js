@@ -1,7 +1,10 @@
 import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import {shape, string} from "prop-types";
 import defaultClasses from './addReviewComponent.css'
 import {mergeClasses} from "@magento/venia-ui/lib/classify";
-import {shape, string} from "prop-types";
+import { Link, resourceUrl } from '@magento/venia-drivers';
 import Button from '@magento/venia-ui/lib/components/Button';
 import Dialog from '@magento/venia-ui/lib/components/Dialog';
 import { useAddReviewComponent } from './useAddReviewComponent';
@@ -86,6 +89,19 @@ const AddReview = props => {
         </Dialog>
     );
 
+    const requestForLogin = (
+        <div className={classes.requestLoginRoot}>
+            <h1 className={classes.requestHeading}>{`Add your Review`}</h1>
+            <div className={classes.requestDescription}>{`Please login to share your review of this Fooman extension`}</div>
+            <Link className={classes.wrapBtnLogo} to={resourceUrl('/login')}>
+                <button className={classes.requestLogin}>{'Log In'}</button>
+                <div className={classes.icon}>
+                    <FontAwesomeIcon  icon={ faAngleRight } size={'1x'}/>
+                </div>
+            </Link>
+        </div>
+    );
+
     return (
         <div className={classes.addReviewRoot}>
             <div>
@@ -96,7 +112,7 @@ const AddReview = props => {
                     >
                         {"Add your Review"}
                     </Button>
-                ) : null
+                ) : requestForLogin
                 }
             </div>
             <div>
@@ -109,6 +125,12 @@ const AddReview = props => {
 AddReview.propTypes = {
     classes: shape({
         addReviewRoot: string,
+        requestLoginRoot: string,
+        requestHeading: string,
+        requestDescription: string,
+        wrapBtnLogo: string,
+        requestLogin: string,
+        icon: string,
         formRoot: string,
         nickname: string,
         text: string,

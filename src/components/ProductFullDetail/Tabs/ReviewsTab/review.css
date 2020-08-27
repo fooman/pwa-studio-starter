@@ -15,6 +15,11 @@
     font-style: italic;
 }
 
+.reviewByFooman {
+    font-style: italic;
+    padding-left: 2rem;
+}
+
 .starRating{
     margin-bottom: 0;
     line-height: var(--venia-global-lineHeight-100);

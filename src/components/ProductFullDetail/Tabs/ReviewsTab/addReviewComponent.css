@@ -26,3 +26,45 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
+
+.requestLoginRoot {
+
+}
+
+.requestHeading {
+    font-size: 167%;
+    font-weight: normal;
+    font-style: normal;
+    color: #656565;
+    margin-bottom: 20px;
+    display: block;
+    line-height: 1.2em;
+    text-align: left;
+}
+
+.requestDescription {
+    color: #656565;
+}
+
+.wrapBtnLogo {
+    display: flex;
+    margin: 15px 0px;
+}
+
+.requestLogin {
+    background-color: #656565;
+    color: #fff;
+    padding: 2px 2px;
+    font-size: 16px;
+}
+
+.icon {
+    width: 20px;
+    height: 23px;
+    margin-left: 3px;
+    background-color: #656565;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
