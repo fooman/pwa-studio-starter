@@ -1,0 +1,16 @@
+mutation sendSupportMessage(
+    $name: String!
+    $message: String!
+    $email: String!
+){
+  sendSupportMessage (
+    input:
+    {
+      name: $name,
+      message: $message,
+      email: $email
+    }
+  ) {
+    status_message
+  }
+}
