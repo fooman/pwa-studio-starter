@@ -198,8 +198,9 @@ const ProductFullDetail = props => {
     }
 
     return (
+        <>
         <div className={classes.productContainer}>
-        <Fragment>
+        <Fragment >
             <Helmet>
                 <script key="structured-data" type="application/ld+json">{structuredData}</script>
                 <link rel="canonical" href={productUrl}/>
@@ -356,11 +357,12 @@ const ProductFullDetail = props => {
                 </section>
             </ShowAt>
             <ProductStaticArea/>
+        </Fragment>
+        </div>
             <AnyQuestion
                 demoUrl = {demoUrl}
             />
-        </Fragment>
-        </div>
+        </>
     );
 };
 
