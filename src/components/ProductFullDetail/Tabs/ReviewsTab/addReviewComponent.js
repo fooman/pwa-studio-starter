@@ -93,7 +93,7 @@ const AddReview = props => {
         <div className={classes.requestLoginRoot}>
             <h1 className={classes.requestHeading}>{`Add your Review`}</h1>
             <div className={classes.requestDescription}>{`Please login to share your review of this Fooman extension`}</div>
-            <Link className={classes.wrapBtnLogo} to={resourceUrl('/login')}>
+            <Link className={classes.wrapBtn} to={resourceUrl('/login')}>
                 <Button
                     priority="high"
                 >
@@ -129,7 +129,7 @@ AddReview.propTypes = {
         requestLoginRoot: string,
         requestHeading: string,
         requestDescription: string,
-        wrapBtnLogo: string,
+        wrapBtn: string,
         requestLogin: string,
         icon: string,
         formRoot: string,
