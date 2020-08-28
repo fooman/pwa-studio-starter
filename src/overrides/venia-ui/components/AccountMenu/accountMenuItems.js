@@ -17,6 +17,7 @@ const MENU_ITEMS = [
     { name: 'My Downloads', url: '/my-downloads' },
     { name: 'My Subscriptions', url: '/my-subscriptions' },
     { name: 'My Extensions', url: '/my-extensions' },
+    { name: 'Serial Numbers', url: '/serial-numbers' }
 ];
 
 const AccountMenuItems = props => {

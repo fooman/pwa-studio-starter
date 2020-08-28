@@ -1,0 +1,8 @@
+query {
+	serialNumbers {
+	items {
+		purchased_host
+		serial_number
+	}
+}
+}
