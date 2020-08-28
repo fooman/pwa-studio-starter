@@ -1,0 +1,12 @@
+.contactRoot {
+    display: grid;
+    gap: 0.9375rem;
+    justify-items: stretch;
+    padding: 3rem 30.3rem;
+}
+.actions {
+    display: grid;
+    justify-items: center;
+    margin-top: 1rem;
+}
+

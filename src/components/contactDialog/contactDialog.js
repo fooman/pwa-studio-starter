@@ -1,9 +1,6 @@
 import React from 'react';
-import TextInput from "@magento/venia-ui/lib/components/TextInput";
 import Dialog from '@magento/venia-ui/lib/components/Dialog';
-import Field from "@magento/venia-ui/lib/components/Field";
-import {isRequired} from "@magento/venia-ui/lib/util/formValidators";
-import TextArea from "@magento/venia-ui/lib/components/TextArea";
+import ContactForm from '../ContactForm/contactForm';
 import { useContactDialog } from './useContactDialog';
 import {
     sendSupportMessage
@@ -49,26 +46,7 @@ const ContactDialog = (prop) => {
             onCancel={closeDialog}
             confirmText = {'Make Contact'}
         >
-            <div className={classes.formRoot}>
-                <div className={classes.name}>
-                    <Field id="name" label="Name">
-                        <TextInput field="name" validate={isRequired} />
-                    </Field>
-                </div>
-
-                <div className={classes.email}>
-                    <Field id="email" label="Email">
-                        <TextInput field="email" validate={isRequired} />
-                    </Field>
-                </div>
-
-                <div className={classes.message}>
-                    <Field id="message" label="Message">
-                        <TextArea field="message" validate={isRequired} />
-                    </Field>
-                </div>
-
-            </div>
+            <ContactForm></ContactForm>
         </Dialog>
     );
 
