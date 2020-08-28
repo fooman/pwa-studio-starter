@@ -94,10 +94,11 @@ const AddReview = props => {
             <h1 className={classes.requestHeading}>{`Add your Review`}</h1>
             <div className={classes.requestDescription}>{`Please login to share your review of this Fooman extension`}</div>
             <Link className={classes.wrapBtnLogo} to={resourceUrl('/login')}>
-                <button className={classes.requestLogin}>{'Log In'}</button>
-                <div className={classes.icon}>
-                    <FontAwesomeIcon  icon={ faAngleRight } size={'1x'}/>
-                </div>
+                <Button
+                    priority="high"
+                >
+                    {'sign in'}
+                </Button>
             </Link>
         </div>
     );

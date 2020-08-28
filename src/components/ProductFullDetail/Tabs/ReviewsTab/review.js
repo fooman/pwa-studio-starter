@@ -13,7 +13,7 @@ const Review = props => {
     let averageRate = Math.round( average_rating/20 );
 
     return (
-        <div className={classes.root}>
+        <div className={averageRate ? classes.rootWithRating : classes.rootWithoutRating}>
             { averageRate ? (
                 <StarRatingComponent
                     className ={classes.starRating}
@@ -29,13 +29,17 @@ const Review = props => {
             <div className={classes.reviewText}>
                 {text}
             </div>
-            <div className={nickname === 'FOOMAN' ? classes.reviewByFooman : classes.reviewBy}>{`Review by ${nickname}`}</div>
+            <div className={nickname === 'FOOMAN' ? classes.reviewByFooman : classes.reviewBy}>
+                {nickname === 'FOOMAN' ? `Response from Fooman` : `Review by ${nickname}`}
+            </div>
         </div>
     );
 }
 
 Review.propTypes = {
     classes: shape({
+        rootWithRating: string,
+        rootWithoutRating: string,
         reviewBy: string,
         reviewByFooman: string,
         starRating: string,

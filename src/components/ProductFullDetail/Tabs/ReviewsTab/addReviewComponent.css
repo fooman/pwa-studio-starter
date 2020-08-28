@@ -27,10 +27,6 @@
     justify-content: flex-end;
 }
 
-.requestLoginRoot {
-
-}
-
 .requestHeading {
     font-size: 167%;
     font-weight: normal;
@@ -49,22 +45,4 @@
 .wrapBtnLogo {
     display: flex;
     margin: 15px 0px;
-}
-
-.requestLogin {
-    background-color: #656565;
-    color: #fff;
-    padding: 2px 2px;
-    font-size: 16px;
-}
-
-.icon {
-    width: 20px;
-    height: 23px;
-    margin-left: 3px;
-    background-color: #656565;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
