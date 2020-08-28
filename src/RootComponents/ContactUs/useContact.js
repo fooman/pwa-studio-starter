@@ -28,9 +28,7 @@ export const useContact = prop => {
     const handleSubmit = useCallback(
         async formValues => {
             try {
-                debugger
                 const { name, email, message } = formValues;
-                debugger
                 await callSubmitContactUsMutation({
                     variables: {}
                 });
