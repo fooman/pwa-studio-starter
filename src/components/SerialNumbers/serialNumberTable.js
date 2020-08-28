@@ -14,13 +14,12 @@ const SerialNumbersTable = props => {
         let mappedItem = [];
         for (let i = items.length -1 ; i >= 0; i--) {
             const { purchased_host, serial_number } = items[i];
-
-            mappedItem.push(
+            serial_number? mappedItem.push(
                 <tr key={i}>
-                    <td className={classes.tdClass}>{purchased_host || 'Null'}</td>
-                    <td className={classes.tdClass}>{serial_number || 'Null'}</td>
+                    <td className={classes.tdClass}>{purchased_host}</td>
+                    <td className={classes.tdClass}>{serial_number}</td>
                 </tr>
-            );
+            ) : null;
         }
         setMappedItem(mappedItem);
     }, [items]);
