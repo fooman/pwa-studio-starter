@@ -1,4 +1,4 @@
-import React from "react";
+import React, {createContext, useContext, useMemo} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {shape, string} from "prop-types";
@@ -16,6 +16,12 @@ import {StarRatingComponent} from "../../../StarRatingComponent/starRatingCompon
 import productReviewRatingsMetadataQuery from './productReviewRatingsMetadata.graphql';
 import addProductRatingMutation from './addProductReviewMutation.graphql';
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
+import Navigation from "@magento/venia-ui/lib/components/Navigation";
+import { useNavigation } from '@magento/peregrine/lib/talons/Navigation/useNavigation';
+import AuthBar from '@magento/venia-ui/lib/components/AuthBar';
+import { useSignIn } from "@magento/peregrine/lib/talons/SignIn/useSignIn";
+
+const CreateSignInRequestContext = createContext(null);
 
 const AddReview = props => {
 
@@ -36,7 +42,9 @@ const AddReview = props => {
             onStarClickHandler,
             ratingValue,
             handleSubmit,
-            isSignedIn
+            isSignedIn,
+            onSignInClick,
+            signInView
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses);
@@ -89,17 +97,32 @@ const AddReview = props => {
         </Dialog>
     );
 
+    const NavigationRender = useMemo(() => (
+            signInView? <CreateSignInRequestContext.Provider value={ signInView }>
+                    <Navigation/>
+        </CreateSignInRequestContext.Provider>
+                : null
+    )
+,[signInView]);
+
+    // const NavigationRender =
+    //     <CreateSignInRequestContext.Provider value={ true }>
+    //         <Navigation/>
+    //     </CreateSignInRequestContext.Provider>
+
+
     const requestForLogin = (
         <div className={classes.requestLoginRoot}>
             <h1 className={classes.requestHeading}>{`Add your Review`}</h1>
             <div className={classes.requestDescription}>{`Please login to share your review of this Fooman extension`}</div>
-            <Link className={classes.wrapBtn} to={resourceUrl('/login')}>
+            {/*<Link className={classes.wrapBtn} to={resourceUrl('/login')}>*/}
                 <Button
                     priority="high"
+                    onClick={onSignInClick}
                 >
                     {'sign in'}
                 </Button>
-            </Link>
+            {/*</Link>*/}
         </div>
     );
 
@@ -119,6 +142,7 @@ const AddReview = props => {
             <div>
                 {dialogComponent}
             </div>
+            {NavigationRender}
         </div>
     );
 }
@@ -141,3 +165,5 @@ AddReview.propTypes = {
 }
 
 export default AddReview;
+
+export const useSignInRequestContext = () => useContext(CreateSignInRequestContext);
