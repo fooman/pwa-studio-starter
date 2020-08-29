@@ -9,7 +9,7 @@ import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator'
 import NavHeader from '@magento/venia-ui/lib/components/Navigation/navHeader';
 import defaultClasses from '@magento/venia-ui/lib/components/Navigation/navigation.css';
 import GET_CUSTOMER_QUERY from '@magento/venia-ui/lib/queries/getCustomer.graphql';
-// import { useSignInRequestContext } from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/addReviewComponent';
+
 const AuthModal = React.lazy(() => import('@magento/venia-ui/lib/components/AuthModal'));
 
 const Navigation = props => {

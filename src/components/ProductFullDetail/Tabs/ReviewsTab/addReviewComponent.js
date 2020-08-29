@@ -105,24 +105,17 @@ const AddReview = props => {
     )
 ,[signInView]);
 
-    // const NavigationRender =
-    //     <CreateSignInRequestContext.Provider value={ true }>
-    //         <Navigation/>
-    //     </CreateSignInRequestContext.Provider>
-
 
     const requestForLogin = (
         <div className={classes.requestLoginRoot}>
             <h1 className={classes.requestHeading}>{`Add your Review`}</h1>
             <div className={classes.requestDescription}>{`Please login to share your review of this Fooman extension`}</div>
-            {/*<Link className={classes.wrapBtn} to={resourceUrl('/login')}>*/}
                 <Button
                     priority="high"
                     onClick={onSignInClick}
                 >
                     {'sign in'}
                 </Button>
-            {/*</Link>*/}
         </div>
     );
 
