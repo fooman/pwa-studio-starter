@@ -1,7 +1,7 @@
 import {useCallback, useState} from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { useUserContext } from "@magento/peregrine/lib/context/user";
-import { useAppContext } from "@magento/peregrine/lib/context/app";
+import {useUserContext} from "@magento/peregrine/lib/context/user";
+
 
 export const useAddReviewComponent = prop => {
 
@@ -9,18 +9,9 @@ export const useAddReviewComponent = prop => {
 
     const [{ isSignedIn }] = useUserContext();
 
-    const [, { toggleDrawer }] = useAppContext();
-    // const [, { toggleDrawer }] = useAppContext();
-
     const [ isOpen, setIsOpen] = useState(false);
 
-    const [ signInView, setSignInView] = useState(false);
-
     const [ ratingValue, setRatingValue ] = useState(0);
-
-    const sleep = (milliseconds) => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
 
     const {
         loading: isLoadingReviewRating,
@@ -34,23 +25,6 @@ export const useAddReviewComponent = prop => {
             loading: productReviewLoading
         }
     ] = useMutation( addProductRatingMutation );
-
-    const onSignInClick = useCallback(async () => {
-        // setSignInView(true);
-        const toggleResp = await toggleDrawer('nav');
-        if (toggleResp) {
-
-            if (toggleResp.payload === 'nav') {
-                // signInView = true;
-                await sleep(1000)
-                if (!signInView) {
-                    setSignInView(true);
-                }
-            }
-        }
-    }, [toggleDrawer]);
-
-    // drawerIsOpen? !signInView? setSignInView(true) : null : null;
 
     const handleAddReviewClick = useCallback(() => {
         setIsOpen(true);
@@ -103,8 +77,7 @@ export const useAddReviewComponent = prop => {
         onStarClickHandler,
         ratingValue,
         handleSubmit,
-        isSignedIn,
-        onSignInClick,
-        signInView
+        isSignedIn
     };
+
 }
