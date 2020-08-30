@@ -78,7 +78,10 @@ const ProductFullDetail = props => {
         mediaGalleryEntries,
         productDetails,
         quantity,
-        fieldErrorObj
+        fieldErrorObj,
+        onReviewsClick,
+        tabIndex,
+        setTabIndexFun
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses, props.classes);
@@ -222,9 +225,11 @@ const ProductFullDetail = props => {
                                     size = {'1x'}
                                     value={Math.round(product.rating_summary/20)}
                                 />
-                                <span className={classes.reviewCounts}>
-                                    {`${product.review_count} Reviews`}
-                                </span>
+                                <div className={classes.reviewCounts}>
+                                    <a onClick={onReviewsClick} href={'#'}>
+                                        {`${product.review_count} Reviews`}
+                                    </a>
+                                </div>
                             </div>
                             ) :
                                 null
@@ -290,7 +295,7 @@ const ProductFullDetail = props => {
             </Form>
             <HideAt breakpoint="mediumAndBelow">
                 <div className={classes.reactTab}>
-                    <Tabs>
+                    <Tabs selectedIndex={tabIndex} onSelect={selectTabIndex => setTabIndexFun(selectTabIndex)}>
                         <TabList>
                             <Tab>
                                 <h2>

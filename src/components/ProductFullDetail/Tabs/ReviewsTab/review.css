@@ -1,18 +1,24 @@
-.root {
+.rootWithRating {
     margin: 1rem 1rem 2rem;
     line-height: var(--venia-global-lineHeight-400);
-
 }
+
+.rootWithoutRating {
+    margin: 1rem 1rem 0rem;
+    line-height: var(--venia-global-lineHeight-400);
+}
+
 .reviewSummary {
     font-weight: var(--venia-global-fontWeight-bold);
 }
 
-.reviewText {
-
-}
-
 .reviewBy {
     font-style: italic;
+}
+
+.reviewByFooman {
+    font-style: italic;
+    padding-left: 2rem;
 }
 
 .starRating{
