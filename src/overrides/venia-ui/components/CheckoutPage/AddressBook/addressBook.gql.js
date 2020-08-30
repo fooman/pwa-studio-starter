@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 import { SET_CUSTOMER_ADDRESS_ON_CART } from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/shippingInformation.gql';
-import { CustomerAddressFragment } from '../../../queries/customerCheckoutAddressFragment.gql';
+import { CustomerAddressFragment } from '../../../../../queries/customerCheckoutAddressFragment.gql';
 import { ShippingInformationFragment } from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/shippingInformationFragments.gql';
 
 export const GET_CUSTOMER_ADDRESSES = gql`
