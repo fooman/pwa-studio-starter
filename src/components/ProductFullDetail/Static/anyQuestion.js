@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import Button from '@magento/venia-ui/lib/components/Button';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import {shape, string} from "prop-types";
 
 import defaultClasses from './anyQuestion.css';
+import ContactDialog from "../../contactDialog/contactDialog";
 
 
 const AnyQuestion = props => {
+
+    const [contactDialogIsOpen, setContactDialogIsOpen] = useState(false);
+
+    const contactDialogHandler = () => {
+        setContactDialogIsOpen(true);
+    }
+
+    const closeContactDialog = () => {
+        setContactDialogIsOpen(false);
+    }
 
     const classes = mergeClasses(defaultClasses, props.classes);
 
@@ -24,6 +35,7 @@ const AnyQuestion = props => {
                 <p className={classes.description}>{"Get in touch and I'll give you my honest opinion about whether I think this extension is right for you"}</p>
                 <div className={classes.allButton}>
                     <Button
+                        onClick={contactDialogHandler}
                         priority="high"
                     >
                         {"I have a question"}
@@ -41,6 +53,7 @@ const AnyQuestion = props => {
                 </div>
 
             </div>
+            <ContactDialog onContactSupportClicked = {contactDialogIsOpen} closeContactDialogHandler = {closeContactDialog} />
         </div>
     );
 }
