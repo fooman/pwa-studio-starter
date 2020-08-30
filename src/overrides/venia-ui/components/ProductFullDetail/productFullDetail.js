@@ -199,6 +199,7 @@ const ProductFullDetail = props => {
 
     return (
         <Fragment>
+        <div className={classes.productContainer}>
             <Helmet>
                 <script key="structured-data" type="application/ld+json">{structuredData}</script>
                 <link rel="canonical" href={productUrl}/>
@@ -355,6 +356,7 @@ const ProductFullDetail = props => {
                 </section>
             </ShowAt>
             <ProductStaticArea/>
+        </div>
             <AnyQuestion
                 demoUrl = {demoUrl}
             />
@@ -364,6 +366,7 @@ const ProductFullDetail = props => {
 
 ProductFullDetail.propTypes = {
     classes: shape({
+        productContainer: string,
         cartActions: string,
         description: string,
         reactTab: string,
@@ -391,7 +394,6 @@ ProductFullDetail.propTypes = {
         licensePurchaseSidebar: string,
         reviewSection: string,
         changelog: string
-
     }),
     product: shape({
         __typename: string,

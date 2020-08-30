@@ -1,0 +1,15 @@
+.root {
+    padding: 2.5rem 3rem;
+    max-width: 67.5rem;
+    margin: 0 auto;
+}
+
+.emptySerialNumberMessage {
+    text-align: center;
+}
+
+.serialNumbersTable {
+    display: grid;
+    grid-auto-flow: row;
+}
+

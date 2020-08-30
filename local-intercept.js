@@ -61,6 +61,12 @@ function localIntercept(targets) {
             pattern: '/my-extensions',
             exact: true,
             path: '../../../../../../src/components/MyExtensions'
+        },
+        {
+            name: 'SerialNumbers',
+            pattern: '/serial-numbers',
+            exact: true,
+            path: '../../../../../../src/components/SerialNumbers'
         }
     ]);
 }

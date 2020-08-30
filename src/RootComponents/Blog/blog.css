@@ -1,0 +1,5 @@
+.blogRoot {
+    max-width: var(--venia-global-maxWidth);
+    margin: auto;
+    padding: 0rem 1.875rem;
+}

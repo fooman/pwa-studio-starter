@@ -1,0 +1,27 @@
+.root {
+    margin-left: unset;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    height: 0.875rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0rem 4rem;
+}
+
+.text {
+    padding: 0.25rem;
+}
+
+.divider {
+    composes: text;
+}
+
+.link {
+    composes: text;
+    text-decoration: underline;
+}
+
+.currentCategory {
+    composes: text;
+}

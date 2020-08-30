@@ -4,10 +4,15 @@ import {useParams} from 'react-router';
 import gravCmsPageQuery from '../../queries/getGravCmsPage.graphql';
 import {fullPageLoadingIndicator} from '@magento/venia-ui/lib/components/LoadingIndicator';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
-import {string} from 'prop-types';
+import {mergeClasses} from "@magento/venia-ui/lib/classify";
+import {shape, string} from 'prop-types';
 import {Meta, Title} from '@magento/venia-ui/lib/components/Head';
+import defaultClasses from "./blog.css";
 
 const GravCMSPage = props => {
+
+    const classes = mergeClasses(defaultClasses);
+
     const {urlKey = 'index'} = useParams()
 
     const {loading, error, data} = useQuery(gravCmsPageQuery, {
@@ -32,7 +37,8 @@ const GravCMSPage = props => {
         content = <RichContent html={data.gravCmsPage.content}/>;
 
         return (
-            <Fragment>
+            <div className={classes.blogRoot}>
+            <Fragment >
                 <Title>{data.gravCmsPage.title}</Title>
                 <Meta
                     name="description"
@@ -44,13 +50,17 @@ const GravCMSPage = props => {
                 />
                 {content}
             </Fragment>
+            </div>
         );
     }
     return null;
 };
 
 GravCMSPage.propTypes = {
-    urlKey: string
+    urlKey: string,
+    classes: shape({
+        blogRoot: string,
+    })
 };
 
 export default GravCMSPage;
