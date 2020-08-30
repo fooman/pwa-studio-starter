@@ -16,8 +16,8 @@
 }
 
 .input {
-    background: white;
-    border: 2px solid rgb(var(--venia-global-color-gray-600));
+    background: rgb(var(--venia-global-color-gray-75));
+    border: 1px solid rgb(var(--venia-global-color-gray-400));
     border-radius: 6px;
     color: rgb(var(--venia-global-color-text));
     display: inline-flex;
