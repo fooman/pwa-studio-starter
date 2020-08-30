@@ -3,6 +3,7 @@ import { useAppContext } from '@magento/peregrine/lib/context/app';
 import { useCatalogContext } from '@magento/peregrine/lib/context/catalog';
 import { useUserContext } from '@magento/peregrine/lib/context/user';
 import { useAwaitQuery } from '@magento/peregrine/lib/hooks/useAwaitQuery';
+// import {useSignInRequestContext} from "../../../../components/ProductFullDetail/Tabs/ReviewsTab/addReviewComponent";
 
 const ancestors = {
     CREATE_ACCOUNT: 'SIGN_IN',
@@ -37,6 +38,7 @@ export const useNavigation = props => {
     // define local variables
     const category = categories[categoryId];
     const isTopLevel = categoryId === rootCategoryId;
+    // const hasModal = view !== 'MENU';
     const hasModal = view !== 'MENU';
 
     // define handlers

@@ -10,6 +10,7 @@ export const useAddReviewComponent = prop => {
     const [{ isSignedIn }] = useUserContext();
 
     const [, { toggleDrawer }] = useAppContext();
+    // const [, { toggleDrawer }] = useAppContext();
 
     const [ isOpen, setIsOpen] = useState(false);
 
@@ -48,6 +49,8 @@ export const useAddReviewComponent = prop => {
             }
         }
     }, [toggleDrawer]);
+
+    // drawerIsOpen? !signInView? setSignInView(true) : null : null;
 
     const handleAddReviewClick = useCallback(() => {
         setIsOpen(true);
