@@ -10,7 +10,7 @@ export const SET_GUEST_EMAIL = gql`
                 cart_id: $cartId
                 email: $email
             }
-        ) {
+        ) @connection(key: "setGuestEmailOnCart") {
             cart {
                 email
             }
