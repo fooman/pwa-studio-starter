@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import {
     useLazyQuery
-} from '@apollo/react-hooks';
+} from '@apollo/client';
 
 export const useReviewsTab = prop => {
 

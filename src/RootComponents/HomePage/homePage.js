@@ -11,7 +11,7 @@ import {mergeClasses} from "@magento/venia-ui/lib/classify";
 import defaultClasses from "./homePage.css";
 import {shape, string} from "prop-types";
 import { fullPageLoadingIndicator } from "@magento/venia-ui/lib/components/LoadingIndicator";
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import agencyLogosQuery from './testimonialsLogo.graphql';
 
 

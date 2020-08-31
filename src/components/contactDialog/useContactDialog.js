@@ -1,5 +1,5 @@
 import {useCallback, useState} from 'react';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import {useUserContext} from "@magento/peregrine/lib/context/user";
 
 export const useContactDialog = prop => {
