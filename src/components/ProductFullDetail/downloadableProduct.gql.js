@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
 import { CartTriggerFragment } from '@magento/venia-ui/lib/components/Header/cartTriggerFragments.gql';
 import { MiniCartFragment } from '@magento/venia-ui/lib/components/MiniCart/miniCart.gql';

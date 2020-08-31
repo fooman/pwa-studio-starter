@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { useApolloClient, useMutation } from '@apollo/client';
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
 import { useAwaitQuery } from '@magento/peregrine/lib/hooks/useAwaitQuery';
 import actions from '@magento/peregrine/lib/store/actions/cart/actions';
