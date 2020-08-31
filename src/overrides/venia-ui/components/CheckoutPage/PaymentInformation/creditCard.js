@@ -251,7 +251,6 @@ const CreditCard = props => {
                     </div>
                 ): null
                 }
-                {errorMessage}
             </div>
             {loadingIndicator}
         </div>

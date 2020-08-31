@@ -44,7 +44,7 @@ const Option = props => {
     } = talonProps;
 
     useMemo(() => {
-        values && values.length && values.unshift({
+        values && values.length && [...values].unshift({
             option_type_id: 0,
             price: 'none',
             title: 'None'
