@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, useRef } from 'react';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/client';
 
 import { useAppContext } from '@magento/peregrine/lib/context/app';
 import { useCartContext } from '@magento/peregrine/lib/context/cart';
@@ -70,7 +70,7 @@ export const useShippingInformation = props => {
                     billingAddresses.filter((singleAddress) => singleAddress.default_billing);
             }
             if (defaultBillingAddress.length) {
-                const primaryAddress = defaultBillingAddress[0];
+                const primaryAddress = { ...defaultBillingAddress[0] };
                 for (const field in MOCKED_ADDRESS) {
                     if (primaryAddress[field] === MOCKED_ADDRESS[field]) {
                         primaryAddress[field] = '';

@@ -1,5 +1,5 @@
-import {useCallback, useEffect, useState} from 'react';
-import { useMutation, useLazyQuery} from '@apollo/react-hooks';
+import {useCallback, useEffect, useState, useMemo} from 'react';
+import { useMutation, useLazyQuery} from '@apollo/client';
 
 import { useCartContext } from '@magento/peregrine/lib/context/cart';
 
@@ -131,8 +131,13 @@ export const useGuestForm = props => {
         onCancel();
     }, [onCancel]);
 
+    const errors = useMemo(
+        () => new Map([['setGuestShippingMutation', error]]),
+        [error]
+    );
+
     return {
-        formErrors: [error],
+        errors,
         handleCancel,
         handleSubmit,
         initialValues,

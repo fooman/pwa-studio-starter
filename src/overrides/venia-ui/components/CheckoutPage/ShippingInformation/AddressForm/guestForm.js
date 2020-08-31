@@ -31,7 +31,7 @@ const GuestForm = props => {
         onSubmitBillingAddress
     });
     const {
-        formErrors,
+        errors,
         handleCancel,
         handleSubmit,
         initialValues,
@@ -77,7 +77,7 @@ const GuestForm = props => {
 
     return (
         <Fragment>
-            <FormError errors={formErrors} />
+            <FormError errors={Array.from(errors.values())} />
             {existEmailError ? (<span className={classes.error}>{existEmailError}</span>) : null}
             <Form
                 className={classes.root}

@@ -11,6 +11,22 @@ import ShippingMethods from '@magento/venia-ui/lib/components/CartPage/PriceAdju
 import defaultClasses from '@magento/venia-ui/lib/components/CartPage/PriceAdjustments/priceAdjustments.css';
 import {useCartContext} from '@magento/peregrine/lib/context/cart';
 
+/**
+ * PriceAdjustments is a child component of the CartPage component.
+ * It renders the price adjustments forms for applying gift cards, coupons, and the shipping method.
+ * All of which can adjust the cart total.
+ *
+ * @param {Object} props
+ * @param {Function} props.setIsCartUpdating A callback function for setting the updating state of the cart.
+ * @param {Object} props.classes CSS className overrides.
+ * See [priceAdjustments.css]{@link https://github.com/magento/pwa-studio/blob/develop/src/overrides/venia-ui/components/CartPage/PriceAdjustments/priceAdjustments.css}
+ * for a list of classes you can override.
+ *
+ * @returns {React.Element}
+ *
+ * @example <caption>Importing into your project</caption>
+ * import PriceAdjustments from '@magento/venia-ui/lib/components/CartPage/PriceAdjustments'
+ */
 const PriceAdjustments = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
 

@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { useFieldState } from 'informed';
 
 import { useCartContext } from '@magento/peregrine/lib/context/cart';

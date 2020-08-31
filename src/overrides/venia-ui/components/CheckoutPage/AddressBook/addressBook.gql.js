@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
 import { SET_CUSTOMER_ADDRESS_ON_CART } from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/shippingInformation.gql';
 import { CustomerAddressFragment } from '../../../../../queries/customerCheckoutAddressFragment.gql';

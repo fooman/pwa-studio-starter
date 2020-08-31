@@ -16,6 +16,7 @@ import {useCartContext} from '@magento/peregrine/lib/context/cart';
 import creditCardPaymentOperations from '@magento/venia-ui/lib/components/CheckoutPage/PaymentInformation/creditCard.gql';
 
 import defaultClasses from '@magento/venia-ui/lib/components/CheckoutPage/PaymentInformation/creditCard.css';
+import FormError from '@magento/venia-ui/lib/components/FormError';
 
 const STEP_DESCRIPTIONS = [
     'Loading Payment',
@@ -56,13 +57,13 @@ const CreditCard = props => {
     });
 
     const {
+        errors,
         shouldRequestPaymentNonce,
         onPaymentError,
         onPaymentSuccess,
         onPaymentReady,
         isBillingAddressSame,
         isLoading,
-        errors,
         /**
          * `stepNumber` depicts the state of the process flow in credit card
          * payment flow.
@@ -110,22 +111,6 @@ const CreditCard = props => {
         }, {});
     }, [classes]);
 
-    const errorMessage = useMemo(() => {
-        if (errors.length) {
-            return (
-                <div className={classes.errors_container}>
-                    {errors.map(error => (
-                        <span className={classes.error} key={error}>
-                            {error}
-                        </span>
-                    ))}
-                </div>
-            );
-        } else {
-            return null;
-        }
-    }, [errors, classes.error, classes.errors_container]);
-
     /**
      * These 2 functions are wrappers around the `isRequired` function
      * of `formValidators`. They perform validations only if the
@@ -158,6 +143,10 @@ const CreditCard = props => {
     return (
         <div className={classes.root}>
             <div className={creditCardComponentClassName}>
+                <FormError
+                    classes={{ root: classes.formErrorContainer }}
+                    errors={Array.from(errors.values())}
+                />
                 <div className={classes.dropin_root}>
                     <BrainTreeDropin
                         onError={onPaymentError}
