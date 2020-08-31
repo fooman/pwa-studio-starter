@@ -23,7 +23,7 @@ export const ADD_DOWNLOADABLE_MUTATION = gql`
                     }
                 ]
             }
-        ) @connection(key: "addDownloadableProductsToCart") {
+        ) {
             cart {
                 id
                 # Update the cart trigger when adding an item.
