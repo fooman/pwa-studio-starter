@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { clone } from 'lodash';
 import {
     arrayOf,
     func,
@@ -25,10 +26,12 @@ const Option = props => {
         title,
         onSelectionChange,
         selectedValue,
-        fieldErrorObj
+        fieldErrorObj,
+        radioValue,
+        fieldValue,
     } = props;
 
-    let values = props.fieldValue ? props.fieldValue : props.radioValue
+    let values = fieldValue ? clone(fieldValue) : clone(radioValue)
     const talonProps = useOption({
         option_id,
         title,
@@ -43,8 +46,8 @@ const Option = props => {
         initialSelection,
     } = talonProps;
 
-    useMemo(() => {
-        values && values.length && [...values].unshift({
+     useMemo(() => {
+         values && values.length && values.unshift({
             option_type_id: 0,
             price: 'none',
             title: 'None'
@@ -60,7 +63,8 @@ const Option = props => {
          : props.__typename === 'CustomizableMultipleOption' ? null :
             <ProductOptionsRadio
                 {...props}
-                classes={ {
+                radioValue={values}
+                classes={{
                     ...defaultClasses,
                     root: defaultClasses.radioRoot
                 }}

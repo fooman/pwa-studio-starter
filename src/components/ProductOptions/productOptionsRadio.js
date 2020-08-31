@@ -5,10 +5,10 @@ import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './productOptionRadio.css';
 import {shape, string} from "prop-types";
 
-
 export const ProductOptionsRadio = props => {
     const cssClasses = mergeClasses(defaultClasses);
     const {
+        // radioValues,
         radioValue: values,
         initialSelection,
         price: { regular_price : { amount: {currency = 'USD'} = {} } = {}} = {},
@@ -17,6 +17,7 @@ export const ProductOptionsRadio = props => {
         option_id,
         fieldErrorObj
     } = props
+
     const priceElement = (option) =>{
        return option.price !== 'none'
            ? <span className={classes.price}>
@@ -24,7 +25,7 @@ export const ProductOptionsRadio = props => {
                <Price value={option.price} currencyCode={currency} />
            </span>
            : '';
-}
+    }
     const radioComponents = values.map(option => {
         const price = priceElement(option)
         return {
@@ -33,7 +34,6 @@ export const ProductOptionsRadio = props => {
                         <span>{option.title}</span>
                         {price}
                     </Fragment>
-
             ),
             value: option.price === 'none' ? option.price : option.option_type_id.toString()
         };
