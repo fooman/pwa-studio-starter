@@ -11,7 +11,7 @@ jobs:
         with:
           # just perform install
           runTests: false
-      - run: npm install -g devcert-cli
+      - run: sudo npm install -g devcert-cli
       - run: sudo devcert generate github.pwadev.test
       - name: Cypress run
         uses: cypress-io/github-action@v2
