@@ -25,4 +25,5 @@ jobs:
           MAGENTO_BACKEND_EDITION: CE
           IMAGE_OPTIMIZING_ORIGIN: onboard
           PORT: 28080
+          STAGING_SERVER_HOST: 0.0.0.0
           NODE_ENV: production
