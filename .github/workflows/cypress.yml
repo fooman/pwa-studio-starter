@@ -27,3 +27,4 @@ jobs:
           PORT: 28080
           STAGING_SERVER_HOST: 0.0.0.0
           NODE_ENV: production
+          CYPRESS_BASE_URL: http://0.0.0.0:28080
