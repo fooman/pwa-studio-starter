@@ -18,8 +18,13 @@ jobs:
           build: yarn build
           start: yarn start
           working-directory: e2e
+          env: host=0.0.0.0,port=28080
         env:
           MAGENTO_BACKEND_URL: ${{ secrets.MAGENTO_BACKEND_URL }}
           CHECKOUT_BRAINTREE_TOKEN: ${{ secrets.CHECKOUT_BRAINTREE_TOKEN }}
           MAGENTO_BACKEND_EDITION: CE
           IMAGE_OPTIMIZING_ORIGIN: onboard
+          PORT: 28080
+          STAGING_SERVER_HOST: 0.0.0.0
+          NODE_ENV: production
+          CYPRESS_BASE_URL: http://0.0.0.0:28080
