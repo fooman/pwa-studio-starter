@@ -29,8 +29,7 @@ jobs:
           CHECKOUT_BRAINTREE_TOKEN: ${{ secrets.CHECKOUT_BRAINTREE_TOKEN }}
           MAGENTO_BACKEND_EDITION: CE
           IMAGE_OPTIMIZING_ORIGIN: onboard
-          CUSTOM_ORIGIN_EXACT_DOMAIN: pwadev.test
-          CUSTOM_ORIGIN_SUBDOMAIN: github
+          CUSTOM_ORIGIN_EXACT_DOMAIN: github.pwadev.test
           DEV_SERVER_PORT: 28080
           CUSTOM_ORIGIN_ADD_UNIQUE_HASH: false
           NODE_ENV: development
