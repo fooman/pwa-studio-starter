@@ -13,6 +13,7 @@ export const useShippingInformation = props => {
         queries: { getDefaultShippingQuery, getShippingInformationQuery },
         toggleActiveContent,
         getAddress,
+        getGuestBillingAddress,
         selectedAddressId
     } = props;
 
@@ -37,6 +38,16 @@ export const useShippingInformation = props => {
         data: defaultShippingData,
         loading: getDefaultShippingLoading
     } = useQuery(getDefaultShippingQuery, { skip: !isSignedIn });
+
+    const {
+        data: guestBillingAddress,
+        loading: guestBillingLoading,
+    } = useQuery(getGuestBillingAddress, {
+        skip: !cartId,
+        variables: {
+            cartId
+        }
+    });
 
     const {
         data: customerAddressesData,
@@ -92,8 +103,21 @@ export const useShippingInformation = props => {
                 };
             }
         }
+        else if (!isSignedIn && !guestBillingLoading && guestBillingAddress && guestBillingAddress.cart) {
+            const { billingAddress, email } = guestBillingAddress.cart;
+            if ( billingAddress ) {
+                    filteredData = billingAddress;
+                    filteredData['firstname'] = billingAddress.firstName;
+                    filteredData['lastname'] = billingAddress.lastName;
+                    filteredData['email'] = email;
+                    filteredData['postcode'] = billingAddress.postalCode;
+                    filteredData['telephone'] = billingAddress.phoneNumber;
+                    filteredData['country']['label'] = billingAddress.country.code,
+                    filteredData['region']['label'] = billingAddress.region.code
+            }
+        }
         return filteredData;
-    }, [customerAddressesData, selectedAddressId]);
+    }, [customerAddressesData, selectedAddressId, guestBillingAddress]);
 
     // Simple heuristic to check shipping data existed prior to this render.
     // On first submission, when we have data, we should tell the checkout page

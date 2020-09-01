@@ -13,6 +13,7 @@ import defaultClasses from '@magento/venia-ui/lib/components/CheckoutPage/Shippi
 import ShippingInformationOperations from '@magento/venia-ui/lib/components/CheckoutPage/ShippingInformation/shippingInformation.gql';
 import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
 import AddressBookOperation from '@magento/venia-ui/lib/components/CheckoutPage/AddressBook/addressBook.gql';
+import { GET_BILLING_ADDRESS } from '@magento/venia-ui/lib/components/CheckoutPage/PaymentInformation/creditCard.gql';
 import {Accordion, Section} from "@magento/venia-ui/lib/components/Accordion";
 
 const ShippingInformation = props => {
@@ -22,6 +23,7 @@ const ShippingInformation = props => {
         toggleActiveContent,
         ...ShippingInformationOperations,
         getAddress: AddressBookOperation.queries.getCustomerAddressesQuery,
+        getGuestBillingAddress: GET_BILLING_ADDRESS,
         selectedAddressId
     });
     const {
@@ -30,7 +32,7 @@ const ShippingInformation = props => {
         hasUpdate,
         isSignedIn,
         isLoading,
-        shippingData
+        shippingData,
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses, propClasses);
@@ -82,7 +84,7 @@ const ShippingInformation = props => {
                     title={'Edit billing data'}
                     >
                         <div className={classes.editWrapper}>
-                            <AddressForm shippingData={shippingData} onSubmitBillingAddress = {onSave}  />
+                            <AddressForm shippingData={shippingData} onSubmitBillingAddress = {onSave} />
                         </div>
                     </Section>
                  </Accordion>
