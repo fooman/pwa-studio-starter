@@ -11,11 +11,13 @@ jobs:
         with:
           # just perform install
           runTests: false
+      - run: npm install -g devcert-cli
+      - run: sudo devcert generate github.pwadev.test
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           install: false
-          build: npm install -g devcert-cli && sudo devcert generate github.pwadev.test && sudo yarn buildpack create-custom-origin .
+          build: sudo yarn buildpack create-custom-origin .
           start: yarn watch --info-verbosity none
           working-directory: e2e
           env: host=https://github.pwadev.test,port=28080
