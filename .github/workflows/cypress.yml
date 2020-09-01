@@ -15,11 +15,19 @@ jobs:
       - run: sudo npm install -g devcert-cli
       - run: sudo devcert generate github.pwadev.test
       - run: sudo chown $USER -R ~/.config/devcert/domains/github.pwadev.test
+      - run: yarn buildpack create-custom-origin .
+        env:
+          MAGENTO_BACKEND_URL: ${{ secrets.MAGENTO_BACKEND_URL }}
+          CUSTOM_ORIGIN_ENABLED: true
+          CUSTOM_ORIGIN_ADD_UNIQUE_HASH: false
+          CUSTOM_ORIGIN_EXACT_DOMAIN: github.pwadev.test
+          DEV_SERVER_PORT: 28080
+          NODE_ENV: development
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           install: false
-          build: yarn buildpack create-custom-origin . && yarn build
+          build: yarn build
           start: yarn start
           working-directory: e2e
           env: host=https://github.pwadev.test,port=28080
