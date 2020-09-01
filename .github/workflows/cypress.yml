@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
@@ -13,6 +13,7 @@ jobs:
         with:
           build: yarn build
           start: yarn start
+          working-directory: e2e
         env:
           MAGENTO_BACKEND_URL: ${{ secrets.MAGENTO_BACKEND_URL }}
           CHECKOUT_BRAINTREE_TOKEN: ${{ secrets.CHECKOUT_BRAINTREE_TOKEN }}
