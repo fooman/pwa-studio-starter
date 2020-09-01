@@ -14,11 +14,13 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install libnss3-tools
       - run: sudo npm install -g devcert-cli
       - run: sudo devcert generate github.pwadev.test
+      - run: sudo devcert list
+      - run: devcert list
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           install: false
-          build: ls
+          build: yarn buildpack create-custom-origin .
           start: yarn watch --info-verbosity none
           working-directory: e2e
           env: host=https://github.pwadev.test,port=28080
