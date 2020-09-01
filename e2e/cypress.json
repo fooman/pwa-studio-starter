@@ -1,5 +1,7 @@
 {
     "pluginsFile": false,
     "supportFile": false,
-    "fixturesFolder": false
+    "fixturesFolder": false,
+    "baseUrl":"https://fooman-pwa-frontend-x4ssm.local.pwadev:8380",
+    "integrationFolder":"cypress/integration/specification"
 }
