@@ -15,7 +15,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
-          build: buildpack create-custom-origin .
+          build: yarn buildpack create-custom-origin .
           start: yarn watch --info-verbosity none
           working-directory: e2e
           env: host=https://github.pwadev.test,port=28080
