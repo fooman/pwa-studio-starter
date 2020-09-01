@@ -15,7 +15,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
-          build: false
+          build: ls
           start: yarn watch
           working-directory: e2e
           env: host=https://github.pwadev.test,port=28080
