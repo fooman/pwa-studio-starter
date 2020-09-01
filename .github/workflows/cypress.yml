@@ -11,7 +11,7 @@ jobs:
         with:
           # just perform install
           runTests: false
-      - run: sudo apt-get install libnss3-tools
+      - run: sudo apt-get update && sudo apt-get install libnss3-tools
       - run: sudo npm install -g devcert-cli
       - run: sudo devcert generate github.pwadev.test
       - name: Cypress run
