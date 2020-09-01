@@ -18,7 +18,7 @@ jobs:
           build: yarn build
           start: yarn start
           working-directory: e2e
-          env: port=28080
+          env: host=0.0.0.0,port=28080
         env:
           MAGENTO_BACKEND_URL: ${{ secrets.MAGENTO_BACKEND_URL }}
           CHECKOUT_BRAINTREE_TOKEN: ${{ secrets.CHECKOUT_BRAINTREE_TOKEN }}
