@@ -6,5 +6,6 @@ describe('HomePage', () => {
     })
     it('should open home page', () => {
         cy.visit('/')
+        cy.title().should('eq', 'Home Page - Fooman')
     })
 })
