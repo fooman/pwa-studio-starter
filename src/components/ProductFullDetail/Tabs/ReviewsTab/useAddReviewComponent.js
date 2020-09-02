@@ -1,6 +1,7 @@
 import {useCallback, useState} from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import {useUserContext} from "@magento/peregrine/lib/context/user";
+import {useAppContext} from "@magento/peregrine/lib/context/app";
 
 
 export const useAddReviewComponent = prop => {
@@ -8,6 +9,8 @@ export const useAddReviewComponent = prop => {
     const { productReviewRatingsMetadataQuery, addProductRatingMutation, productSku } = prop;
 
     const [{ isSignedIn }] = useUserContext();
+
+    const [, { toggleDrawer }] = useAppContext();
 
     const [ isOpen, setIsOpen] = useState(false);
 
@@ -37,6 +40,10 @@ export const useAddReviewComponent = prop => {
     const onStarClickHandler = useCallback((value) => {
         ratingValue !== value ? setRatingValue(value) : setRatingValue(0);
     }, [ratingValue]);
+
+    const onSignInClick = useCallback(async () => {
+        await toggleDrawer('review');
+    }, [toggleDrawer]);
 
     const handleSubmit = useCallback(
         async formValues => {
@@ -77,7 +84,8 @@ export const useAddReviewComponent = prop => {
         onStarClickHandler,
         ratingValue,
         handleSubmit,
-        isSignedIn
+        isSignedIn,
+        onSignInClick
     };
 
 }

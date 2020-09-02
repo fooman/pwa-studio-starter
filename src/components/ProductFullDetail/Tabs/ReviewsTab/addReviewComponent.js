@@ -1,10 +1,7 @@
-import React from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import React, {createContext, useContext } from "react";
 import {shape, string} from "prop-types";
 import defaultClasses from './addReviewComponent.css'
 import {mergeClasses} from "@magento/venia-ui/lib/classify";
-import { Link, resourceUrl } from '@magento/venia-drivers';
 import Button from '@magento/venia-ui/lib/components/Button';
 import Dialog from '@magento/venia-ui/lib/components/Dialog';
 import { useAddReviewComponent } from './useAddReviewComponent';
@@ -17,10 +14,11 @@ import productReviewRatingsMetadataQuery from './productReviewRatingsMetadata.gr
 import addProductRatingMutation from './addProductReviewMutation.graphql';
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
 
+const CreateSignInRequestContext = createContext(null);
+
 const AddReview = props => {
 
     const { productSku } = props;
-
     const talonProps = useAddReviewComponent({
         productReviewRatingsMetadataQuery,
         addProductRatingMutation,
@@ -36,7 +34,8 @@ const AddReview = props => {
             onStarClickHandler,
             ratingValue,
             handleSubmit,
-            isSignedIn
+            isSignedIn,
+            onSignInClick,
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses);
@@ -93,13 +92,11 @@ const AddReview = props => {
         <div className={classes.requestLoginRoot}>
             <h1 className={classes.requestHeading}>{`Add your Review`}</h1>
             <div className={classes.requestDescription}>{`Please login to share your review of this Fooman extension`}</div>
-            <Link className={classes.wrapBtn} to={resourceUrl('/login')}>
                 <Button
                     priority="high"
-                >
+                    onClick={() => onSignInClick()}>
                     {'sign in'}
                 </Button>
-            </Link>
         </div>
     );
 
@@ -141,3 +138,5 @@ AddReview.propTypes = {
 }
 
 export default AddReview;
+
+export const useSignInRequestContext = () => useContext(CreateSignInRequestContext);
