@@ -31,6 +31,7 @@ export const GET_BILLING_ADDRESS = gql`
     query getBillingAddress($cartId: String!) {
         cart(cart_id: $cartId) {
             id
+            email
             billingAddress: billing_address {
                 firstName: firstname
                 lastName: lastname

@@ -77,16 +77,18 @@ export const useGuestForm = props => {
                     phoneNumber: telephone,
                     sameAsShipping: false
                 }
-            })
-            onSubmitBillingAddress();
+            });
+
+            if (afterSubmit) {
+                afterSubmit();
+            }
+
+            await onSubmitBillingAddress();
+
             setExistEmail(null);
         }
         catch(e) {
             return;
-        }
-
-        if (afterSubmit) {
-            afterSubmit();
         }
     }
 
