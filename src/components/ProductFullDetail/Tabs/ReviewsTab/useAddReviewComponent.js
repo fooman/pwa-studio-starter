@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import {useUserContext} from "@magento/peregrine/lib/context/user";
 
@@ -22,7 +22,8 @@ export const useAddReviewComponent = prop => {
         createProductReview,
         {
             data: productReviewData,
-            loading: productReviewLoading
+            loading: productReviewLoading,
+            error: productReviewError
         }
     ] = useMutation( addProductRatingMutation );
 
@@ -65,6 +66,14 @@ export const useAddReviewComponent = prop => {
         },
         [ratingValue]);
 
+    const errors = useMemo(
+        () =>
+            new Map([
+                ['productReviewMutation', productReviewError ]
+            ]),
+        [ productReviewError ]
+    );
+
     /*Remove rating value on close dialog*/
     !isOpen? ratingValue? setRatingValue(0) : null : null;
 
@@ -77,7 +86,8 @@ export const useAddReviewComponent = prop => {
         onStarClickHandler,
         ratingValue,
         handleSubmit,
-        isSignedIn
+        isSignedIn,
+        errors
     };
 
 }
