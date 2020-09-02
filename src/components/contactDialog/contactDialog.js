@@ -8,6 +8,7 @@ import {
 import {shape, string} from "prop-types";
 import defaultClasses from './contactDialog.css'
 import {mergeClasses} from "@magento/venia-ui/lib/classify";
+import FormError from "@magento/venia-ui/lib/components/FormError";
 
 const ContactDialog = (prop) => {
     const { onContactSupportClicked, closeContactDialogHandler } = prop;
@@ -23,7 +24,8 @@ const ContactDialog = (prop) => {
         closeDialog,
         handleSubmit,
         isSignedIn,
-        currentUser
+        currentUser,
+        errors
     } = talonProps;
 
     let initialValues = {};
@@ -46,6 +48,7 @@ const ContactDialog = (prop) => {
             onCancel={closeDialog}
             confirmText = {'Make Contact'}
         >
+            <FormError errors={Array.from(errors.values())} />
             <ContactForm></ContactForm>
         </Dialog>
     );

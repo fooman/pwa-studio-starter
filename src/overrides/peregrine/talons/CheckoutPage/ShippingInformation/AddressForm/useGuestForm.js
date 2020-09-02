@@ -27,7 +27,11 @@ export const useGuestForm = props => {
     );
 
     /*set billing address mutation*/
-    const [setBillingAddress, { error, loading }] = useMutation(
+    const [setBillingAddress, {
+        error: setBillingAddressError,
+        loading
+        }
+        ] = useMutation(
         SetBillingAddressMutation
     );
 
@@ -51,7 +55,7 @@ export const useGuestForm = props => {
     // Simple heuristic to indicate form was submitted prior to this render
     const isUpdate = !!shippingData.city;
 
-    const [ checkEmail, { loading: isEmailLoading, data: isEmailData }] = useLazyQuery(checkEmailIsExist,{fetchPolicy: 'network-only'});
+    const [ checkEmail, { loading: isEmailLoading, data: isEmailData, error: isEmailError }] = useLazyQuery(checkEmailIsExist,{fetchPolicy: 'network-only'});
 
     const onSubmitOperation = async() => {
         const { country, email, firstname, lastname, street, city, postcode, region, telephone } = formData;
@@ -132,8 +136,13 @@ export const useGuestForm = props => {
     }, [onCancel]);
 
     const errors = useMemo(
-        () => new Map([['setGuestShippingMutation', error]]),
-        [error]
+        () =>
+            new Map([
+                ['checkEmailQuery', isEmailError ],
+                ['setGuestEmailOnCartMutation', guestEmailError],
+                ['setBillingAddressMutation', setBillingAddressError]
+            ]),
+        [ isEmailError, guestEmailError, setBillingAddressError ]
     );
 
     return {
