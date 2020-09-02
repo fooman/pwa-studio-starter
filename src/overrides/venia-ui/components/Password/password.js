@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEyeSlash } from "@fortawesome/pro-regular-svg-icons";
+import { faEye, faEyeSlash } from "@fortawesome/pro-light-svg-icons";
 import { string, bool, shape, func } from 'prop-types';
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
@@ -32,7 +32,7 @@ const Password = props => {
             className={classes.passwordButton}
             onClick={togglePasswordVisibility}
         >
-            {visible ? <FontAwesomeIcon onClick={togglePasswordVisibility} icon={ faEye } /> : <FontAwesomeIcon onClick={togglePasswordVisibility} icon={ faEyeSlash } />}
+            {visible ? <FontAwesomeIcon size={'2x'} onClick={togglePasswordVisibility} icon={ faEye } /> : <FontAwesomeIcon size={'2x'} onClick={togglePasswordVisibility} icon={ faEyeSlash } />}
         </Button>
     );
 
