@@ -1,4 +1,4 @@
-import React, {createContext, useContext } from "react";
+import React from "react";
 import {shape, string} from "prop-types";
 import defaultClasses from './addReviewComponent.css'
 import {mergeClasses} from "@magento/venia-ui/lib/classify";
@@ -13,8 +13,6 @@ import {StarRatingComponent} from "../../../StarRatingComponent/starRatingCompon
 import productReviewRatingsMetadataQuery from './productReviewRatingsMetadata.graphql';
 import addProductRatingMutation from './addProductReviewMutation.graphql';
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
-
-const CreateSignInRequestContext = createContext(null);
 
 const AddReview = props => {
 
@@ -138,5 +136,3 @@ AddReview.propTypes = {
 }
 
 export default AddReview;
-
-export const useSignInRequestContext = () => useContext(CreateSignInRequestContext);
