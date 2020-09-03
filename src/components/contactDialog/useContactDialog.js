@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import { useMutation } from '@apollo/client';
 import {useUserContext} from "@magento/peregrine/lib/context/user";
 
@@ -14,7 +14,8 @@ export const useContactDialog = prop => {
         supportMessageMutation,
         {
             data: sendSupportMessageData,
-            loading: sendMessageLoading
+            loading: sendMessageLoading,
+            error: supportMessageError
         }
     ] = useMutation( sendSupportMessage );
 
@@ -45,11 +46,20 @@ export const useContactDialog = prop => {
         },
         []);
 
+    const errors = useMemo(
+        () =>
+            new Map([
+                ['supportMessageMutation', supportMessageError ]
+            ]),
+        [ supportMessageError ]
+    );
+
     return {
         isOpen,
         closeDialog,
         handleSubmit,
         isSignedIn,
-        currentUser
+        currentUser,
+        errors
     };
 }

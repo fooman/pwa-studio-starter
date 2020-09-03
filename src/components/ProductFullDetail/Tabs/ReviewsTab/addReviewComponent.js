@@ -13,6 +13,7 @@ import {StarRatingComponent} from "../../../StarRatingComponent/starRatingCompon
 import productReviewRatingsMetadataQuery from './productReviewRatingsMetadata.graphql';
 import addProductRatingMutation from './addProductReviewMutation.graphql';
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
+import FormError from "@magento/venia-ui/lib/components/FormError";
 
 const AddReview = props => {
 
@@ -34,6 +35,7 @@ const AddReview = props => {
             handleSubmit,
             isSignedIn,
             onSignInClick,
+            errors
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses);
@@ -58,6 +60,7 @@ const AddReview = props => {
             onConfirm={handleSubmit}
             onCancel={closeDialog}
         >
+            <FormError errors={Array.from(errors.values())} />
             <div className={classes.formRoot}>
                 <div className={classes.nickname}>
                     <Field id="nickname" label="Name">
