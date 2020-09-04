@@ -1,6 +1,15 @@
 {
-    "product": {
-        "urlInput1": "gmail.in",
-        "urlInput2": "yahoo.in"
+    "freeProduct": {
+        "url": "/magento-extension-speedster.html"
+    },
+    "freeProductWithOption": {
+        "url": "/magento-extension-googleanalyticsplus-m2.html",
+        "installationOptionValue": "52"
+    },
+    "paidProductWithOption": {
+        "url": "/magento-extension-payment-surcharge-m2.html",
+        "urlInputName": "options",
+        "installationOptionValue": "51",
+        "urlInputValue": "yahoo.in"
     }
 }
