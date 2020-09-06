@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { FormattedMessage } from 'react-intl';
 import { shape, string } from 'prop-types';
 import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
@@ -48,7 +49,7 @@ const Footer = props => {
                     title="Fooman"
                 />
                 <p className={classes.tileBody}>
-                    Copyright Fooman
+                    <FormattedMessage id={'Copyright Fooman'} />
                 </p>
                 <a style={classes.link} aria-label="Kristof Ringleff on LinkedIn" href={'https://www.linkedin.com/in/kristofringleff'}>
                     <FontAwesomeIcon icon={faLinkedin} color={'white'} size={'2x'}/>
@@ -58,7 +59,7 @@ const Footer = props => {
                 </a>
 
                 <p className={classes.tileBody}>
-                    Proud member of
+                    <FormattedMessage id={'Proud member of'} />
                 </p>
                 <Image
                     style={{height: "40px"}}
@@ -82,12 +83,12 @@ const Footer = props => {
                     </li>
                     <li>
                         <Link className={classes.link} to={resourceUrl('/extensions/magento2/free-m2')}>
-                            Free Stuff
+                            <FormattedMessage id={'Free Stuff'} />
                         </Link>
                     </li>
                     <li>
                         <Link className={classes.link} to={resourceUrl('/terms')}>
-                            License Agreement
+                            <FormattedMessage id={'License Agreement'} />
                         </Link>
                     </li>
                 </ul>
@@ -97,17 +98,17 @@ const Footer = props => {
                 <ul className={classes.tileBody}>
                     <li>
                         <Link className={classes.link} to={resourceUrl('/about-fooman')}>
-                            About Fooman
+                            <FormattedMessage id={'About Fooman'} />
                         </Link>
                     </li>
                     <li>
                         <Link className={classes.link} to={resourceUrl('/customer-profiles')}>
-                            Customer Case Studies
+                            <FormattedMessage id={'Customer Case Studies'} />
                         </Link>
                     </li>
                     <li>
                         <Link className={classes.link} to={resourceUrl('/privacy')}>
-                            Privacy
+                            <FormattedMessage id={'Privacy'} />
                         </Link>
                     </li>
                 </ul>
@@ -117,17 +118,17 @@ const Footer = props => {
                 <ul className={classes.tileBody}>
                     <li>
                         <a style={classes.link} href='https://magento1-support.fooman.co.nz/'>
-                            Magento 1 Help Centre
+                            <FormattedMessage id={'Magento 1 Help Centre'} />
                         </a>
                     </li>
                     <li>
                         <a style={classes.link} href='https://magento2-support.fooman.co.nz/'>
-                            Magento 2 Help Centre
+                            <FormattedMessage id={'Magento 2 Help Centre'} />
                         </a>
                     </li>
                     <li>
                         <a style={classes.link} onClick={contactDialogHandler} href={'#'}>
-                            Contact Support
+                            <FormattedMessage id={'Contact Support'} />
                         </a>
                     </li>
                 </ul>

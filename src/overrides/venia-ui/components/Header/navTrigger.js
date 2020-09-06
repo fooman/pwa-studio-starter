@@ -3,6 +3,7 @@ import { node, shape, string } from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/pro-light-svg-icons';
+import { useIntl } from 'react-intl';
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import defaultClasses from '@magento/venia-ui/lib/components/Header/navTrigger.css';
@@ -12,13 +13,14 @@ import { useNavigationTrigger } from '@magento/peregrine/lib/talons/Header/useNa
  * A component that toggles the navigation menu.
  */
 const NavigationTrigger = props => {
+    const { formatMessage } = useIntl();
     const { handleOpenNavigation } = useNavigationTrigger();
 
     const classes = mergeClasses(defaultClasses, props.classes);
     return (
         <button
             className={classes.root}
-            aria-label="Toggle navigation panel"
+            aria-label={formatMessage({ id: 'Toggle navigation panel' })}
             onClick={handleOpenNavigation}
         >
             <FontAwesomeIcon icon={faBars} color='black' size='lg'/>

@@ -44,15 +44,12 @@ export const useCustomerForm = props => {
     // Simple heuristic to indicate form was submitted prior to this render
     const isUpdate = !!shippingData.city;
 
-    const { country, region } = shippingData;
+    const { country } = shippingData;
     const { code: countryCode } = country;
-    // const { id: regionId } = region;
-    const { code: regionCode } = region;
+
     let initialValues = {
         ...shippingData,
-        country: countryCode,
-        // region: regionId && regionId.toString()
-        region: regionCode
+        country: countryCode
     };
 
     const hasDefaultShipping =
@@ -72,17 +69,11 @@ export const useCustomerForm = props => {
     const handleSubmit = useCallback(
         async formValues => {
             // eslint-disable-next-line no-unused-vars
-            const { country, email, region, ...address } = formValues;
+            const { country, email, ...address } = formValues;
             try {
                 const customerAddress = {
                     ...address,
-                    country_code: country,
-                    // region: {
-                    //     region_id: region
-                    // }
-                    region: {
-                        region: region
-                    }
+                    country_code: country
                 };
 
                 if (isUpdate) {
