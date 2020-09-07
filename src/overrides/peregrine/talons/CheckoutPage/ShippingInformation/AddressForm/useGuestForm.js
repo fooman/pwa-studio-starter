@@ -30,16 +30,16 @@ export const useGuestForm = props => {
     const [setBillingAddress, {
         error: setBillingAddressError,
         loading
-        }
-        ] = useMutation(
+    }
+    ] = useMutation(
         SetBillingAddressMutation
     );
 
     /*set guest email on cart*/
     const [setGuestEmailOnCart, {
-            error: guestEmailError,
-            loading: guestEmailLoading
-        }
+        error: guestEmailError,
+        loading: guestEmailLoading
+    }
     ] = useMutation(setGuestEmailMutation);
 
     const { country, region } = shippingData;
@@ -76,7 +76,7 @@ export const useGuestForm = props => {
                     street1: street[0],
                     street2: street.length > 1 ? street[1] : '',
                     city: city,
-                    state: region,
+                    region: region,
                     postalCode : postcode,
                     phoneNumber: telephone,
                     sameAsShipping: false
@@ -120,7 +120,7 @@ export const useGuestForm = props => {
             try {
                 setFormData(formValues);
 
-                 await checkEmail({
+                await checkEmail({
                     variables: {
                         email: formValues.email
                     }
