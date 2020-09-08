@@ -106,14 +106,16 @@ export const useShippingInformation = props => {
         else if (!isSignedIn && !guestBillingLoading && guestBillingAddress && guestBillingAddress.cart) {
             const { billingAddress, email } = guestBillingAddress.cart;
             if ( billingAddress ) {
-                    filteredData = billingAddress;
-                    filteredData['firstname'] = billingAddress.firstName;
-                    filteredData['lastname'] = billingAddress.lastName;
-                    filteredData['email'] = email;
-                    filteredData['postcode'] = billingAddress.postalCode;
-                    filteredData['telephone'] = billingAddress.phoneNumber;
-                    filteredData['country']['label'] = billingAddress.country.code,
-                    filteredData['region']['label'] = billingAddress.region.code
+
+                filteredData = {...billingAddress,
+                    firstname: billingAddress.firstName,
+                    lastname: billingAddress.lastName,
+                    email: email,
+                    postcode: billingAddress.postalCode,
+                    telephone: billingAddress.phoneNumber,
+                    country: {label: billingAddress.country.code},
+                    region: {label: billingAddress.region.code}
+                }
             }
         }
         return filteredData;
