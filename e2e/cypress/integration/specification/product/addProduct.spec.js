@@ -52,10 +52,13 @@ describe('ProductPage', () => {
 
         cy.get('button[class="cartTrigger-trigger-2w8 clickable-root-2gB"]').click();
 
-        cy.get('span[class="item-price-2Sf"]').then(option => {
-            const cartPrice = [...option].map(o => o.innerText );
-            expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_usd_price]);
-        })
+        cy.fixture('../fixtures/productData').then(function(data) {
+            cy.get('span[class="item-price-2Sf"]').then(option => {
+                const cartPrice = [...option].map(o => o.innerText );
+                expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_usd_price]);
+            })
+        });
+
     });
 
 })
