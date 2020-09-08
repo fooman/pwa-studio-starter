@@ -54,7 +54,7 @@ describe('ProductPage', () => {
 
         cy.get('span[class="item-price-2Sf"]').then(option => {
             const cartPrice = [...option].map(o => o.innerText );
-            expect(cartPrice).to.deep.eq(["US$65.30"]);
+            expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_usd_price]);
         })
     });
 
