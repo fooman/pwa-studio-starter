@@ -42,6 +42,7 @@
     "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-6.0.0-fooman-canary-2020-36.tgz",
     "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-4.0.2-fooman-canary-2020-36.tgz",
     "classnames": "^2.2.6",
+    "cypress-plugin-tab": "^1.0.5",
     "html-react-parser": "^0.13.0",
     "lodash": "^4.17.19",
     "react-copy-to-clipboard": "^5.0.2",

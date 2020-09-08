@@ -1,0 +1,22 @@
+{
+    "addressInfo": {
+        "firstName": "firstname",
+        "lastName": "lastname",
+        "email": "@example.com",
+        "country": {
+            "countryShouldRegion": "US",
+            "countryWithNullRegion": "NZ"
+        },
+        "streetAddress": "testAddressOne",
+        "city": "testCity",
+        "state": "CA",
+        "zipCode": "123456",
+        "phoneNumber": "1234567890"
+    },
+    "creditCardInfo": {
+        "cardHolderName": "abc",
+        "cardNumber": "4111 1111 1111 1111",
+        "expirationDate": "03 / 2022",
+        "cvv": "111"
+    }
+}
