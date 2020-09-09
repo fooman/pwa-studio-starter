@@ -208,7 +208,7 @@ const ProductFullDetail = props => {
                 <link rel="canonical" href={productUrl}/>
             </Helmet>
             {breadcrumbs}
-            <Form className={classes.root}>
+            <Form className={classes.root} data-testid="productFullDetail-addtocart-form">
                 <div className={classes.formMainDiv}>
                     <section className={classes.imageCarousel}>
                         <div className={classes.productTitle}>
@@ -286,6 +286,7 @@ const ProductFullDetail = props => {
                                 priority="high"
                                 onClick={handleAddToCart}
                                 disabled={isAddToCartDisabled}
+                                data-testid="productFullDetail-addtocart-button"
                             >
                                 Add to Cart
                             </Button>
