@@ -17,7 +17,7 @@ describe('LoginTest', function() {
             cy.get('input[name="email"]').last().type(data.user.email)
             cy.get('input[name="password"]').last().type(data.user.password)
         });
-        cy.get('[data-testid="sign-in-form"]').within(() => {
+        cy.get('[data-testid="signIn-form"]').within(() => {
             cy.get('button[type="submit"]').first().click()
         })
     })
