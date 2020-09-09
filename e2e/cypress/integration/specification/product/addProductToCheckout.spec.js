@@ -1,4 +1,3 @@
-require('cypress-plugin-tab')
 describe('Purchase product process', async () => {
 
     it('Open product, confirm price, confirm option title, select option, confirm price, add to cart, confirm price on cart', () => {
@@ -43,46 +42,73 @@ describe('Purchase product process', async () => {
     })
 
     it('guest 1> billing address with country sholud have region', () => {
-        cy.fixture('../fixtures/userBillingInfo').then(function(data) {
 
-            cy.get('input[name="firstname"]').type(data.addressInfo.firstName);
+        cy.get('svg[class="indicator-indicator-1Xb"]', { timeout: 10000 }).should('not.visible').then(() => {
+            cy.fixture('../fixtures/userBillingInfo').then(function(data) {
 
-            cy.get('input[name="lastname"]').type(data.addressInfo.lastName);
+                cy.get('input[name="firstname"]').type(data.addressInfo.firstName);
 
-            const uuid = () => Cypress._.random(0, 1e6)
-            const id = uuid()
-            const testEmail = `${id}${data.addressInfo.email}`
-            cy.get('input[name="email"]').last().type(testEmail);
+                cy.get('input[name="lastname"]').type(data.addressInfo.lastName);
 
-            cy.get('select[name="country"]').select(data.addressInfo.country.countryShouldRegion);
+                const uuid = () => Cypress._.random(0, 1e6)
+                const id = uuid()
+                const testEmail = `${id}${data.addressInfo.email}`
+                cy.get('input[name="email"]').last().type(testEmail);
 
-            cy.get('input[name="street[0]"]').type(data.addressInfo.streetAddress);
+                cy.get('select[name="country"]').select(data.addressInfo.country.countryShouldRegion);
 
-            cy.get('input[name="city"]').type(data.addressInfo.city);
+                cy.get('input[name="street[0]"]').type(data.addressInfo.streetAddress);
 
-            cy.get('select[name="region"]').select(data.addressInfo.state);
+                cy.get('input[name="city"]').type(data.addressInfo.city);
 
-            cy.get('input[name="postcode"]').type(data.addressInfo.zipCode);
+                cy.get('select[name="region"]').select(data.addressInfo.state);
 
-            cy.get('input[name="telephone"]').type(data.addressInfo.phoneNumber);
+                cy.get('input[name="postcode"]').type(data.addressInfo.zipCode);
 
-            cy.get('button[class="button-root_normalPriority-2SA button-root-3SO"]').click();
+                cy.get('input[name="telephone"]').type(data.addressInfo.phoneNumber);
+
+                cy.get('button[class="button-root_normalPriority-2SA button-root-3SO"]').click();
+            });
         });
+
     });
 
     it('guest 2> Payment Information ',   () => {
 
-        cy.fixture('../fixtures/userBillingInfo').then( function(data) {
+        cy.wait(5000);
 
-            cy.wait(5000);
+        cy.get('svg[class="paymentInformation-loading-18Q indicator-root-TxQ"]', { timeout: 10000 }).should('not.visible').then(() => {
 
-            cy.get('input[placeholder="Cardholder Name"]').type(data.creditCardInfo.cardHolderName);
-            /*work ongoing
-             Need to investigate on find "Card Number" input field to add card numbar
-             */
-            cy.get('input[placeholder="Cardholder Name"]: second').type('4111 1111 1111 1111');
+            cy.fixture('../fixtures/userBillingInfo').then(  function(data) {
+                cy.get('input[id="braintree__card-view-input__cardholder-name"]').type(data.creditCardInfo.cardHolderName);
+                /*it is use to get iframe element using iframe document*/
+                const getIframeDocument = (id) => {
+                    return cy.get(`iframe[id=${id}]`)
+                        .its('0.contentDocument').should('exist')
+                }
 
+                const getIframeBody = (id) => {
+                    // get the document
+                    return getIframeDocument(id)
+                        .its('body').should('not.be.undefined')
+                        .then(cy.wrap)
+                }
+
+                getIframeBody('braintree-hosted-field-number').find('#credit-card-number').type(data.creditCardInfo.cardNumber);
+                getIframeBody('braintree-hosted-field-expirationDate').find('#expiration').type(data.creditCardInfo.expirationDate);
+                getIframeBody('braintree-hosted-field-cvv').find('#cvv').type(data.creditCardInfo.cvv);
+
+                cy.get('button[class="checkoutPage-review_order_button-1Jf button-root_highPriority-OdL button-root-3SO"]').click();
+            });
         });
+    });
+
+    it('guest 3> Place order ',   () => {
+
+        cy.get('svg[class="paymentInformation-loading-18Q indicator-root-TxQ"]', { timeout: 10000 }).should('not.visible').then(() => {
+            cy.get('button[class="checkoutPage-place_order_button-1FI button-root_highPriority-OdL button-root-3SO"]').click();
+        });
+
     });
 
 })
