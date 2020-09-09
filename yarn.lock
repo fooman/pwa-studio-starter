@@ -1540,10 +1540,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@fooman/venia-ui-override-resolver@^1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@fooman/venia-ui-override-resolver/-/venia-ui-override-resolver-1.0.0-beta.1.tgz#e943762f7acabb868e77e1f5ce1e55a0a9d6a5af"
-  integrity sha512-ifPjbh5iosZgma/B4P4EuykKvUwn/x3i/AbBG82vVgvTaO4lYKGYynb4pjoOKmve3KWaMcBcJhzoaN8l1l9ihw==
+"@fooman/venia-ui-override-resolver@^1.0.0-rc.1":
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@fooman/venia-ui-override-resolver/-/venia-ui-override-resolver-1.0.0-rc.1.tgz#818a35cb97096f11b265cef5d1574beb9273b8cd"
+  integrity sha512-svYyoKo3vl1cLGmxh8TzUL24rr068kPnTIxoSHtY05uQc7Kv1Bu9buvShuc2OwcUudBSQtaUHUIl2qpZmfUITQ==
 
 "@formatjs/ecma402-abstract@^1.2.0":
   version "1.2.0"

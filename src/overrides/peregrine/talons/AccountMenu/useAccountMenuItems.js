@@ -52,22 +52,22 @@ export const useAccountMenuItems = props => {
         },
         {
             name: 'My Downloads',
-            id: 'accountMenu.accountInfoDownloads',
+            id: 'accountMenu.downloadsLink',
             url: '/my-downloads'
         },
         {
             name: 'My Subscriptions',
-            id: 'accountMenu.accountInfoSubscriptions',
+            id: 'accountMenu.subscriptionsLink',
             url: '/my-subscriptions'
         },
         {
             name: 'My Extensions',
-            id: 'accountMenu.accountInfoExtensions',
+            id: 'accountMenu.extensionsLink',
             url: '/my-extensions'
         },
         {
             name: 'My Serial Numbers',
-            id: 'accountMenu.accountInfoSerialNumbers',
+            id: 'accountMenu.serialNumbersLink',
             url: '/my-serial-numbers'
         }
     ];
