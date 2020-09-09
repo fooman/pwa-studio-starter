@@ -23,7 +23,8 @@
     "watch": "webpack-dev-server --progress --color --env.mode development",
     "storybook": "start-storybook -p 9001 -c src/.storybook",
     "storybook:build": "build-storybook -c src/.storybook -o storybook-dist",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "e2e": "CYPRESS_BASE_URL=https://fooman-pwa-frontend-xpicq.local.pwadev:8662/ yarn run cypress open -P e2e"
   },
   "main": "src/index.js",
   "browser": {
