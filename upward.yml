@@ -31,7 +31,7 @@ SubfolderResponse:
       pattern: '^/(releases|manuals)(/|$)'
       use: subfolderProxyResponse
     - matches: request.url.pathname
-      pattern: '^/(robots\.txt|favicon\.ico|manifest\.json|sitemap\.xml)'
+      pattern: '^/(robots\.txt|favicon\.ico|manifest\.json|sitemap\.xml|sitemap-store\.xml)'
       use: staticFromRoot
     - matches: fileExtension
       pattern: '(js|json|png|svg|ico|css|txt|jpg|gif)'
