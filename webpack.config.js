@@ -1,14 +1,16 @@
 const {
     configureWebpack,
-    graphQL: { getMediaURL, getPossibleTypes }
+    graphQL: { getMediaURL, getStoreConfigData, getPossibleTypes }
 } = require('@magento/pwa-buildpack');
 const { DefinePlugin } = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = async env => {
     const mediaUrl = await getMediaURL();
+    const storeConfigData = await getStoreConfigData();
 
     global.MAGENTO_MEDIA_BACKEND_URL = mediaUrl;
+    global.LOCALE = storeConfigData.locale.replace('_', '-');
 
     const possibleTypes = await getPossibleTypes();
 
@@ -52,7 +54,11 @@ module.exports = async env => {
              */
 
             POSSIBLE_TYPES: JSON.stringify(possibleTypes),
-            STORE_NAME: JSON.stringify('Fooman')
+            STORE_NAME: JSON.stringify('Fooman'),
+            STORE_VIEW_LOCALE: JSON.stringify(global.LOCALE),
+            STORE_VIEW_CODE: process.env.STORE_VIEW_CODE
+                ? JSON.stringify(process.env.STORE_VIEW_CODE)
+                : JSON.stringify(storeConfigData.code)
         }),
         new HTMLWebpackPlugin({
             filename: 'index.html',

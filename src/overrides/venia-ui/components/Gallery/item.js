@@ -20,9 +20,6 @@ const IMAGE_WIDTHS = new Map()
     .set(640, IMAGE_WIDTH)
     .set(UNCONSTRAINED_SIZE_KEY, 840);
 
-// TODO: get productUrlSuffix from graphql when it is ready
-const productUrlSuffix = '.html';
-
 const ItemPlaceholder = ({ classes }) => (
     <div className={classes.root_pending}>
         <div className={classes.images_pending}>
@@ -47,9 +44,9 @@ const GalleryItem = props => {
     if (!item) {
         return <ItemPlaceholder classes={classes} />;
     }
-    const { name, price, small_image, url_key, review_count, rating_summary, short_description } = item;
+    const { name, price, small_image, url_key, url_suffix, review_count, rating_summary, short_description } = item;
 
-    const productLink = resourceUrl(`/${url_key}${productUrlSuffix}`);
+    const productLink = resourceUrl(`/${url_key}${url_suffix}`);
     const reviewSummary = review_count > 0 ? (
             <div className={classes.starRating}>
                     <div className={classes.ratReview}>

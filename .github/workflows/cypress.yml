@@ -45,3 +45,5 @@ jobs:
           STAGING_SERVER_PORT: 28080
           NODE_ENV: development
           CYPRESS_BASE_URL: https://github.pwadev.test:28080
+          STORE_VIEW_CODE: web_default
+          STORE_VIEW_LOCALE: en_US

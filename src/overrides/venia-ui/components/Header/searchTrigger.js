@@ -3,6 +3,7 @@ import { shape, string } from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/pro-light-svg-icons';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import defaultClasses from '@magento/venia-ui/lib/components/Header/searchTrigger.css';
@@ -16,15 +17,18 @@ const SearchTrigger = props => {
     const { handleClick } = talonProps;
     const classes = mergeClasses(defaultClasses, props.classes);
     const searchClass = active ? classes.open : classes.root;
+    const { formatMessage } = useIntl();
 
     return (
         <button
             className={searchClass}
-            aria-label={'Search'}
+            aria-label={formatMessage({ id: 'Search' })}
             onClick={handleClick}
         >
             <FontAwesomeIcon icon={faSearch} color='black' size='lg'/>
-            <span className={classes.label}>{'Search'}</span>
+            <span className={classes.label}>
+                <FormattedMessage id={'Search'} />
+            </span>
         </button>
     );
 };

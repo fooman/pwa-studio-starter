@@ -33,7 +33,7 @@ show_overrides_changes () {
         else
             git --no-pager diff --no-index --patch $fileToCheck $file
         fi
-done
+    done
 }
 
 confirm_all_overrides_valid () {
@@ -56,14 +56,26 @@ confirm_all_overrides_valid () {
         else
             git --no-pager diff --no-index --patch $fileToCheck $file  > $file-our-orig-changes.patch
         fi
-done
+    done
 }
 
-show_overrides_changes
-exit 0
+checkin_our_changes () {
+    next_version=$2
+    git checkout -b our-orig-changes-$next_version
+    find ./src/overrides -name "*-our-orig-changes.patch" -type f -print0 | while read -d $'\0' file
+    do
+        echo $file
+        git add -f $file
+    done
+    git commit -m "Our changes prior to $next_version"
+    git checkout main
+}
 
-#confirm_all_overrides_valid
-#download_diff $1 $2
+confirm_all_overrides_valid
+
+#show_overrides_changes
+checkin_our_changes $1 $2
+download_diff $1 $2
 adjust_patch_to_override_folder
 
 find ./src/overrides -type f -print0 | while read -d $'\0' file

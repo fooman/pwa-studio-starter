@@ -24,6 +24,7 @@ query productSearch(
                 html
             }
             url_key
+            url_suffix
             price {
                 regularPrice {
                     amount {
