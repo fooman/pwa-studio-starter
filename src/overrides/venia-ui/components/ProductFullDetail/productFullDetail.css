@@ -165,18 +165,6 @@
     flex-direction: row;
 }
 
-.reactTab {
-    padding: 0 2rem;
-}
-.reactTab li {
-    padding: 0.9375rem 1.875rem;
-}
-
-.reactTab li[aria-selected=true]  {
-    border-top: 0.1875rem solid rgb(var(--fooman-global-color-darked-orange));
-    font-size: 1.25rem;
-}
-
 .reviews {
     margin: 1.875rem 0 1.25rem;
 }
