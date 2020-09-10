@@ -183,6 +183,7 @@ const CheckoutPage = props => {
         const reviewOrderButton =
             checkoutStep === CHECKOUT_STEP.PAYMENT ? (
                 <Button
+                    data-testid="checkoutPage-reviewOrderBtn"
                     onClick={handleReviewOrder}
                     priority="high"
                     className={classes.review_order_button}
@@ -202,6 +203,7 @@ const CheckoutPage = props => {
         const placeOrderButton =
             checkoutStep === CHECKOUT_STEP.REVIEW ? (
                 <Button
+                    data-testid="checkoutPage-placeOrderBtn"
                     onClick={handlePlaceOrder}
                     priority="high"
                     className={classes.place_order_button}

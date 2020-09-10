@@ -4,7 +4,8 @@ describe('ProductPage', () => {
         cy.fixture('../fixtures/productData').then(function (data){
             cy.visit(data.freeProduct.url)
         });
-        cy.get('div[class="productFullDetail-cartActions-elY productFullDetail-section-2jX productFullDetail-section-2jX"]').children().click();
+
+        cy.get('div[data-testid="productFullDetail-addToCartBtn"]').children().click();
     });
 
     it('should open paid product which has option to select with url field also with select installation option', () => {
@@ -13,7 +14,8 @@ describe('ProductPage', () => {
             cy.get(`input[name=${data.paidProductWithOption.urlInputName}]`).type(data.paidProductWithOption.urlInputValue)
             cy.get(`input[value=${data.paidProductWithOption.installationOptionValue}]`).check();
         });
-        cy.get('div[class="productFullDetail-cartActions-elY productFullDetail-section-2jX productFullDetail-section-2jX"]').children().click();
+
+        cy.get('div[data-testid="productFullDetail-addToCartBtn"]').children().click();
     });
 
     it('should open paid product which has option to select with url field also with select installation option', () => {
@@ -22,7 +24,8 @@ describe('ProductPage', () => {
             cy.get(`input[name=${data.paidProductWithOption.urlInputName}]`).type(data.paidProductWithOption.urlInputValue)
             cy.get(`input[value=${data.paidProductWithOption.installationOptionValue}]`).check();
         });
-        cy.get('div[class="productFullDetail-cartActions-elY productFullDetail-section-2jX productFullDetail-section-2jX"]').children().click();
+
+        cy.get('div[data-testid="productFullDetail-addToCartBtn"]').children().click();
     });
 
     it('should open free product with match (price , option title, option price, select option match price) detail and add to cart', () => {
@@ -30,7 +33,7 @@ describe('ProductPage', () => {
 
             cy.visit(data.freeProductWithOption.url)
 
-            cy.get(`p[class="productFullDetail-productPrice-2Tk"]`).then( option => {
+            cy.get(`p[data-testid="productFullDetail-productPrice"]`).then( option => {
                 const actualPrice = [...option].map(o => o.innerText );
                 expect(actualPrice).to.deep.eq([data.freeProductWithOption.USD_Price]);
             });
@@ -42,15 +45,15 @@ describe('ProductPage', () => {
 
             cy.get(`input[value=${data.freeProductWithOption.installationOptionValue}]`).check();
 
-            cy.get(`p[class="productFullDetail-productPrice-2Tk"]`).then( option => {
+            cy.get(`p[data-testid="productFullDetail-productPrice"]`).then( option => {
                 const actualPrice = [...option].map(o => o.innerText );
                 expect(actualPrice).to.deep.eq([data.freeProductWithOption.Option_1_usd_price]);
             });
         });
 
-        cy.get('div[class="productFullDetail-cartActions-elY productFullDetail-section-2jX productFullDetail-section-2jX"]').children().click();
+        cy.get('div[data-testid="productFullDetail-addToCartBtn"]').children().click();
 
-        cy.get('button[class="cartTrigger-trigger-2w8 clickable-root-2gB"]').click();
+        cy.get('button[aria-label="Toggle mini cart. You have 0 items in your cart."]').first().click();
 
         cy.fixture('../fixtures/productData').then(function(data) {
             cy.get('span[class="item-price-2Sf"]').then(option => {
