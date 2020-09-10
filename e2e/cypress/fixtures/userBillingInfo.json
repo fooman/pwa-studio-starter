@@ -9,7 +9,9 @@
         },
         "streetAddress": "testAddressOne",
         "city": "testCity",
-        "state": "CA",
+        "stateCodeForRegion": "CA",
+        "stateNameForRegion": "California",
+        "stateForNonRegion": "State",
         "zipCode": "123456",
         "phoneNumber": "1234567890"
     },

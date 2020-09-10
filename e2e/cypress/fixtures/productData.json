@@ -1,6 +1,7 @@
 {
     "freeProduct": {
-        "url": "/magento-extension-speedster.html"
+        "url": "/magento-extension-speedster.html",
+        "USD_Price": "US$0.00"
     },
     "freeProductWithOption": {
         "url": "/magento-extension-googleanalyticsplus-m2.html",

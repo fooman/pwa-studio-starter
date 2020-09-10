@@ -67,7 +67,7 @@ describe('Purchase product process',  () => {
 
                 cy.get('input[name="city"]').type(data.addressInfo.city);
 
-                cy.get('select[name="region"]').select(data.addressInfo.state);
+                cy.get('select[name="region"]').select(data.addressInfo.stateCodeForRegion);
 
                 cy.get('input[name="postcode"]').type(data.addressInfo.zipCode);
 
