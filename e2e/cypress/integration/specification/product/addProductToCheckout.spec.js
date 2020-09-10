@@ -41,7 +41,7 @@ describe('Purchase product process',  () => {
     });
 
     it('navigate checkout page and confirm by matching current url',() => {
-        // cy.get('button[class="miniCart-checkoutButton-2XF button-root_highPriority-OdL button-root-3SO"]').click();
+
         cy.get('div[class="miniCart-footer-rP0"]').children().first().click();
 
         cy.url().should('eq', navigateToCheckout);
