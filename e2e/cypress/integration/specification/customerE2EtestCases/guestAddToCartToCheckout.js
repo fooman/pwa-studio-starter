@@ -149,7 +149,7 @@ describe('Sign out for further test',  () => {
 
                 cy.get('button[aria-label="Toggle My Account Menu"]').click();
 
-                cy.get('button').contains('Sign Out').click();
+                cy.get('button').contains('Sign Out').click({force: true});
 
             });
         });
