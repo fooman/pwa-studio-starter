@@ -1,4 +1,4 @@
-describe('Guest user Purchase "free" product process with country US',  () => {
+describe('Guest user Purchase "free" product process with country "US"',  () => {
 
     const baseUrl = 'https://fooman-pwa-frontend-ewafz.local.pwadev:8659';
 
@@ -38,7 +38,7 @@ describe('Guest user Purchase "free" product process with country US',  () => {
         cy.url().should('eq', navigateToCheckout);
     })
 
-    it('guest 1> billing address with country US',  () => {
+    it('guest 1> billing address with country "US"',  () => {
 
         cy.get('svg[class="indicator-indicator-1Xb"]', { timeout: 10000 }).should('be.visible').then(() => {
 
@@ -157,7 +157,7 @@ describe('Sign out for further test',  () => {
 });
 
 
-describe('Guest user Purchase "free" product process with country NZ',  () => {
+describe('Guest user Purchase "free" product process with country "NZ"',  () => {
 
     const baseUrl = 'https://fooman-pwa-frontend-ewafz.local.pwadev:8659';
 
@@ -195,7 +195,7 @@ describe('Guest user Purchase "free" product process with country NZ',  () => {
         cy.url().should('eq', navigateToCheckout);
     })
 
-    it('guest 1> billing address with country NZ',  () => {
+    it('guest 1> billing address with country "NZ"',  () => {
 
         cy.get('svg[class="indicator-indicator-1Xb"]', { timeout: 10000 }).should('be.visible').then(() => {
 
