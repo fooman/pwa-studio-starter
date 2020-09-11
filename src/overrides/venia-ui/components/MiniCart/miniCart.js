@@ -106,6 +106,7 @@ const MiniCart = React.forwardRef((props, ref) => {
             </div>
             <div className={classes.footer}>
                 <Button
+                    data-testid="miniCart-checkoutBtn"
                     onClick={handleProceedToCheckout}
                     priority="high"
                     className={classes.checkoutButton}

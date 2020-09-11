@@ -18,7 +18,6 @@
     "creditCardInfo": {
         "cardHolderName": "abc",
         "cardNumber": "4111 1111 1111 1111",
-        "expirationDate": "03 / 2022",
         "cvv": "111"
     }
 }

@@ -3,6 +3,16 @@ describe('Purchase product process',  () => {
     const navigateToCheckout = 'https://fooman-pwa-frontend-ewafz.local.pwadev:8659/checkout';
     let testEmail;
 
+    let featureExpirationDate = new Date();
+
+    featureExpirationDate = featureExpirationDate.setDate(new Date().getDate() + 10);
+    featureExpirationDate = new Date(featureExpirationDate);
+
+    let mm = featureExpirationDate.getMonth() + 1;
+    let yyyy = featureExpirationDate.getFullYear();
+
+    featureExpirationDate = `${mm}/${yyyy}`;
+
     it('Open product, confirm price, confirm option title, select option, confirm price, add to cart, confirm price on cart', () => {
         cy.get('svg[class="indicator-indicator-1Xb"]', { timeout: 10000 }).should('not.visible').then(() => {
             cy.fixture('../fixtures/productData').then(function(data) {
@@ -27,9 +37,9 @@ describe('Purchase product process',  () => {
                 });
             });
 
-            cy.get('div[data-testid="productFullDetail-addToCartBtn"]').children().click();
+            cy.get('button[data-testid="productFullDetail-addToCartBtn"]').click();
 
-            cy.get('button[aria-label="Toggle mini cart. You have 0 items in your cart."]').first().click();
+            cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
 
             cy.fixture('../fixtures/productData').then(function(data) {
                 cy.get('span[class="item-price-2Sf"]').then(option => {
@@ -42,7 +52,7 @@ describe('Purchase product process',  () => {
 
     it('navigate checkout page and confirm by matching current url',() => {
 
-        cy.get('div[class="miniCart-footer-rP0"]').children().first().click();
+        cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
 
         cy.url().should('eq', navigateToCheckout);
     })
@@ -101,7 +111,7 @@ describe('Purchase product process',  () => {
                 }
 
                 getIframeBody('braintree-hosted-field-number').find('#credit-card-number').type(data.creditCardInfo.cardNumber);
-                getIframeBody('braintree-hosted-field-expirationDate').find('#expiration').type(data.creditCardInfo.expirationDate);
+                getIframeBody('braintree-hosted-field-expirationDate').find('#expiration').type(featureExpirationDate);
                 getIframeBody('braintree-hosted-field-cvv').find('#cvv').type(data.creditCardInfo.cvv);
 
                 cy.get('button[data-testid="checkoutPage-reviewOrderBtn"]').click();

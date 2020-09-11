@@ -279,12 +279,12 @@ const ProductFullDetail = props => {
                             }}
                             errors={errors.get('form') || []}
                         />
-                        <div className={classes.cartActions} data-testid = "productFullDetail-addToCartBtn">
+                        <div className={classes.cartActions}>
                             <Button
+                                data-testid = "productFullDetail-addToCartBtn"
                                 priority="high"
                                 onClick={handleAddToCart}
                                 disabled={isAddToCartDisabled}
-                                data-testid="productFullDetail-addtocart-button"
                             >
                                 Add to Cart
                             </Button>

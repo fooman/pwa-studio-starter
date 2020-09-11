@@ -12,7 +12,9 @@
     },
     "paidProductWithOption": {
         "url": "/magento-extension-payment-surcharge-m2.html",
-        "urlInputName": "options",
+        "USD_Price": "US$119.00",
+        "Option_1_title": "Installation",
+        "Option_1_usd_price": "US$49.00",
         "installationOptionValue": "51",
         "urlInputValue": "yahoo.in"
     }
