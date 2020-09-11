@@ -63,6 +63,7 @@ const SignIn = props => {
                 getApi={setFormApi}
                 className={classes.form}
                 onSubmit={handleSubmit}
+                data-testid="signIn-form"
             >
                 <Field label="Email address">
                     <TextInput

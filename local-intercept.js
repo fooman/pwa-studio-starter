@@ -64,7 +64,7 @@ function localIntercept(targets) {
         },
         {
             name: 'SerialNumbers',
-            pattern: '/serial-numbers',
+            pattern: '/my-serial-numbers',
             exact: true,
             path: '../../../../../../src/components/SerialNumbers'
         }

@@ -7,17 +7,19 @@ describe('LoginTest', function() {
     })
 
     it('should render error message if email is not put.', function() {
-        cy.get('button[class="accountTrigger-trigger-2wI clickable-root-2gB"]').click()
+        cy.get('button[aria-label="Toggle My Account Menu"]').click()
     })
 
     it('sign in with valid credentials.', function() {
-        cy.get('button[class="accountTrigger-trigger-2wI clickable-root-2gB"]').click()
+        cy.get('button[aria-label="Toggle My Account Menu"]').click()
 
         cy.fixture('../fixtures/loginData').then(function(data) {
             cy.get('input[name="email"]').last().type(data.user.email)
             cy.get('input[name="password"]').last().type(data.user.password)
         });
-        cy.get('button[class="button-root_highPriority-OdL button-root-3SO"]').first().click()
+        cy.get('[data-testid="signIn-form"]').within(() => {
+            cy.get('button[type="submit"]').first().click()
+        })
     })
 
 })

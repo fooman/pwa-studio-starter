@@ -1,5 +1,4 @@
 import React, {Fragment, Suspense, useState} from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
@@ -25,7 +24,6 @@ import AddReview from '../../../../components/ProductFullDetail/Tabs/ReviewsTab/
 import { HideAt, ShowAt } from 'react-with-breakpoints';
 
 import defaultClasses from './productFullDetail.css';
-import 'react-tabs/style/react-tabs.css';
 
 import {
     ADD_CONFIGURABLE_MUTATION,
@@ -208,7 +206,7 @@ const ProductFullDetail = props => {
                 <link rel="canonical" href={productUrl}/>
             </Helmet>
             {breadcrumbs}
-            <Form className={classes.root}>
+            <Form className={classes.root} data-testid="productFullDetail-addtocart-form">
                 <div className={classes.formMainDiv}>
                     <section className={classes.imageCarousel}>
                         <div className={classes.productTitle}>
@@ -286,6 +284,7 @@ const ProductFullDetail = props => {
                                 priority="high"
                                 onClick={handleAddToCart}
                                 disabled={isAddToCartDisabled}
+                                data-testid="productFullDetail-addtocart-button"
                             >
                                 Add to Cart
                             </Button>
@@ -293,73 +292,36 @@ const ProductFullDetail = props => {
                     </div>
                 </div>
             </Form>
-            <HideAt breakpoint="mediumAndBelow">
-                <div className={classes.reactTab}>
-                    <Tabs selectedIndex={tabIndex} onSelect={selectTabIndex => setTabIndexFun(selectTabIndex)}>
-                        <TabList>
-                            <Tab>
-                                <h2>
-                                    Product Features
-                                </h2>
-                            </Tab>
-                            <Tab>
-                                <h2>
-                                    Reviews
-                                </h2>
-                            </Tab>
-                            <Tab>
-                                <h2>
-                                    Changelog
-                                </h2>
-                            </Tab>
-                        </TabList>
-                        <div>
-                            <TabPanel>
-                                <section className={classes.description}>
-                                    <CustomRichContent html = {productDetails.description}/>
-                                </section>
-                            </TabPanel>
-                        </div>
-                        <div className={classes.reviews}>
-                            <TabPanel>
-                                <section className={classes.reviewSection}>
-                                    <div>
-                                        <ReviewsTab
-                                            reviews = {product.reviews}
-                                            review_count = {product.review_count}
-                                            url_key = {product.url_key}
-                                        />
-                                    </div>
-                                    <div>
-                                        <AddReview productSku = {productDetails.sku}/>
-                                    </div>
-                                </section>
-                            </TabPanel>
-                            <TabPanel>
-                                <section className={classes.changelog}>
-                                    <Suspense fallback={<LoadingIndicator />}>
-                                        {changeLog}
-                                    </Suspense>
-                                </section>
-                            </TabPanel>
-                        </div>
 
-                    </Tabs>
+
+                <div>
+                    <section className={classes.description}>
+                        <a id="Features"><h2>Product Features</h2></a>
+                        <CustomRichContent html={productDetails.description}/>
+                    </section>
                 </div>
-            </HideAt>
-            <ShowAt breakpoint="mediumAndBelow">
-                <section className={classes.description}>
-                    <CustomRichContent html = {productDetails.description}/>
-                </section>
-                <section className={classes.reviewSection}>
-                    <div>
-                        <ReviewsTab reviews = {product.reviews}/>
-                    </div>
-                    <div>
-                        <AddReview/>
-                    </div>
-                </section>
-            </ShowAt>
+                <div className={classes.reviews}>
+                    <section className={classes.reviewSection}>
+                        <a id="Reviews"><h2>Reviews</h2></a>
+                        <div>
+                            <ReviewsTab
+                                reviews={product.reviews}
+                                review_count={product.review_count}
+                                url_key={product.url_key}
+                            />
+                        </div>
+                        <div>
+                            <AddReview productSku={productDetails.sku}/>
+                        </div>
+                    </section>
+                    <section className={classes.changelog}>
+                        <a id="Changelog"><h2>Changelog</h2></a>
+                        <Suspense fallback={<LoadingIndicator/>}>
+                            {changeLog}
+                        </Suspense>
+                    </section>
+                </div>
+
             <ProductStaticArea/>
         </div>
             <AnyQuestion
@@ -396,7 +358,6 @@ ProductFullDetail.propTypes = {
         contentDes: string,
         hr1:string,
         formMainDiv: string,
-        licensePurchaseSidebar: string,
         reviewSection: string,
         changelog: string
     }),
