@@ -3,7 +3,7 @@ import {mergeClasses} from "@magento/venia-ui/lib/classify";
 import defaultClasses from './merchantLogo.css';
 import {shape, string} from "prop-types";
 import Image from "@magento/venia-ui/lib/components/Image";
-import bodyShop from './images/bodyshop.jpg';
+import bodyShop from './images/bodyshop.png';
 import nespresso from './images/nespresso.png';
 import ricoh from './images/ricoh.png';
 import BGC from './images/BGC.png';
