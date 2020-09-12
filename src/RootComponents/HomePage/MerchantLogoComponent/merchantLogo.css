@@ -24,9 +24,9 @@
 }
 
 .imgDiv {
-    width: 300px;
+    width: 18.75rem;
     height: auto;
-    padding: 20px;
+    padding: 1.25rem;
     display: flex;
     align-items: center;
 }
