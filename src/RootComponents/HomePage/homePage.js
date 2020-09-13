@@ -4,6 +4,7 @@ import HeroComponent from './HeroComponent/heroComponent'
 import TrustedBy from './TrustedByComponent/trustedBy';
 import Experts from './ExpertsComponent/experts';
 import AgencyLogo from './AgencyLogoComponent/agencyLogo';
+import MerchantLogo from './MerchantLogoComponent/merchantLogo';
 import Team from './TeamComponent/team';
 import BackedByEveryThing from './BackedByEveryThingComponent/backedByEveryThing';
 import ReadyToSave from './ReadyToSaveComponent/readyToSave';
@@ -40,6 +41,9 @@ const HomePage = () => {
             </div>
             <div className = {classes.agencyComponent}>
                 <AgencyLogo data = {data}/>
+            </div>
+            <div>
+                <MerchantLogo/>
             </div>
             <div className={classes.teamComponent}>
             <Team/>

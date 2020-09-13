@@ -1,7 +1,7 @@
-.root {
+.merchantRoot {
+    background-color: white;
     text-align: center;
     width:100%;
-    padding: 6.375rem 0rem;
 }
 
 .h2 {
@@ -9,6 +9,7 @@
     margin-bottom: 2.5rem;
     line-height: 1.1em;
     display: inline-block;
+    max-width: 43.75rem;
     font-family: 'Roboto', sans-serif;
     color: rgb(var(--fooman-global-color-font-gray));
     font-weight: 300;
@@ -19,18 +20,7 @@
     flex-wrap: wrap;
     max-width: 75rem;
     margin: 0 auto;
-}
 
-.btnDiv {
-    margin-top: 2.5rem;
-}
-
-.btnCls {
-    border: 1px solid rgb(var(--fooman-global-color-heading-gray));
-    color: rgb(var(--fooman-global-color-heading-gray));
-    letter-spacing: 0.313rem;
-    padding: 1rem 3rem;
-    text-transform: uppercase;
 }
 
 .imgDiv {
@@ -39,10 +29,6 @@
     padding: 1.25rem;
     display: flex;
     align-items: center;
-}
-
-.imgDiv :hover{
-    filter: grayscale(0);
 }
 
 .imgDiv .image-container-t_c {
@@ -60,19 +46,4 @@
 
 .imgWidth:hover{
     filter: grayscale(0);
-}
-
-@media only screen and (max-width: 767px) {
-
-    .btnDiv {
-        margin-top: 0rem;
-    }
-    .root {
-        padding: 3.125rem 0rem;
-    }
-}
-@media only screen and (max-width: 1150px) {
-    .imgCls {
-        width: 70%;
-    }
 }
