@@ -25,19 +25,19 @@ describe('ProductPage', () => {
 
             cy.get(`p[data-testid="productFullDetail-productPrice"]`).then( option => {
                 const actualPrice = [...option].map(o => o.innerText );
-                expect(actualPrice).to.deep.eq([data.freeProductWithOption.USD_Price]);
+                expect(actualPrice).to.deep.eq([data.freeProductWithOption.NZD_Price]);
             });
 
-            cy.get(`label[class="radioGroup-radioContainer-3x9"]`).last().then(option => {
+            cy.get(`label[class*=radioGroup-radioContainer]`).last().then(option => {
                 const actualTitle = [...option].map(o => o.innerText );
-                expect(actualTitle).to.deep.eq([`${data.freeProductWithOption.Option_1_title}+${data.freeProductWithOption.Option_1_usd_price}`])
+                expect(actualTitle).to.deep.eq([`${data.freeProductWithOption.Option_1_title}+US$99.00`])
             });
 
             cy.get(`input[value=${data.freeProductWithOption.installationOptionValue}]`).check();
 
             cy.get(`p[data-testid="productFullDetail-productPrice"]`).then( option => {
                 const actualPrice = [...option].map(o => o.innerText );
-                expect(actualPrice).to.deep.eq([data.freeProductWithOption.Option_1_usd_price]);
+                expect(actualPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
             });
         });
 
@@ -48,7 +48,7 @@ describe('ProductPage', () => {
         cy.fixture('../fixtures/productData').then(function(data) {
             cy.get('span[class="item-price-2Sf"]').then(option => {
                 const cartPrice = [...option].map(o => o.innerText );
-                expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_usd_price]);
+                expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
             })
         });
 

@@ -19,11 +19,8 @@ describe('User sign in process', () => {
 
 describe('1> Sign in user Purchase "paid" product process with country "US"',  () => {
 
-    const baseUrl = 'https://fooman-pwa-frontend-ewafz.local.pwadev:8659';
-
-    const navigateToCheckout = `${baseUrl}/checkout`;
-    const usdTag = "US$";
-    const floatValue = ".00";
+    const navigateToCheckout = `/checkout`;
+    const nzdTag = "NZ$";
 
     let testEmail;
     let priceWithInstallation;
@@ -40,9 +37,9 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
 
 
     it('Open product, confirm price, add url, select option, add to cart, confirm price on cart', () => {
-        cy.get('.accountChip-loader-ICF', {timeout: 10000}).should('be.visible').then(() => {
+        cy.get('svg[class*=accountChip-loader]', {timeout: 20000}).should('be.visible').then(() => {
 
-            cy.get('.accountChip-loader-ICF', {timeout: 10000}).should('not.visible').then(() => {
+            cy.get('svg[class*=accountChip-loader]', {timeout: 20000}).should('not.visible').then(() => {
 
                 cy.fixture('../fixtures/productData').then(function (data) {
 
@@ -50,12 +47,12 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
 
                     cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
                         const actualPrice = [...option].map(o => o.innerText);
-                        expect(actualPrice).to.deep.eq([data.paidProductWithOption.USD_Price]);
+                        expect(actualPrice).to.deep.eq([data.paidProductWithOption.NZD_Price]);
                     });
 
-                    cy.get(`label[class="radioGroup-radioContainer-3x9"]`).last().then(option => {
+                    cy.get(`label[class*=radioGroup-radioContainer]`).last().then(option => {
                         const actualTitle = [...option].map(o => o.innerText);
-                        expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+${data.paidProductWithOption.Option_1_usd_price}`])
+                        expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+US$49.00`])
                     });
 
                     cy.get(`input[name="options"]`).type(data.paidProductWithOption.urlInputValue);
@@ -66,10 +63,10 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
 
                     cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
                         const actualPrice = [...option].map(o => o.innerText);
-                        const actualPriceValue = (data.paidProductWithOption.USD_Price).split('$');
-                        const optionPriceValue = (data.paidProductWithOption.Option_1_usd_price).split('$');
+                        const actualPriceValue = (data.paidProductWithOption.NZD_Price).split('$');
+                        const optionPriceValue = (data.paidProductWithOption.Option_1_nzd_price).split('$');
                         priceWithInstallation = (parseFloat(actualPriceValue[1]) + parseFloat(optionPriceValue[1])).toString();
-                        priceWithInstallation = usdTag + priceWithInstallation + floatValue;
+                        priceWithInstallation = nzdTag + priceWithInstallation;
                         expect(actualPrice).to.deep.eq([priceWithInstallation]);
                     });
 
@@ -78,7 +75,7 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
 
                     cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
 
-                    cy.get('span[class="item-price-2Sf"]').should('be.visible').then(option => {
+                    cy.get('span[class*=item-price]').should('be.visible').then(option => {
                         const cartPrice = [...option].map(o => o.innerText);
                         expect(cartPrice).to.deep.eq([priceWithInstallation]);
                     });
@@ -90,7 +87,7 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
 
     it('navigate checkout page and confirm by matching current url',() => {
 
-        cy.get('button[data-testid="miniCart-checkoutBtn"]', {timeout: 10000}).should('be.visible').then(() => {
+        cy.get('button[data-testid="miniCart-checkoutBtn"]', {timeout: 20000}).should('be.visible').then(() => {
             cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
         });
 

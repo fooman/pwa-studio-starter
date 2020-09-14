@@ -1,6 +1,6 @@
 describe('Purchase product process',  () => {
 
-    const navigateToCheckout = 'https://fooman-pwa-frontend-ewafz.local.pwadev:8659/checkout';
+    const navigateToCheckout = '/checkout';
     let testEmail;
 
     let featureExpirationDate = new Date();
@@ -14,26 +14,26 @@ describe('Purchase product process',  () => {
     featureExpirationDate = `${mm}/${yyyy}`;
 
     it('Open product, confirm price, confirm option title, select option, confirm price, add to cart, confirm price on cart', () => {
-        cy.get('svg[class="indicator-indicator-1Xb"]', { timeout: 10000 }).should('not.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
             cy.fixture('../fixtures/productData').then(function(data) {
 
                 cy.visit(data.freeProductWithOption.url)
 
                 cy.get(`p[data-testid="productFullDetail-productPrice"]`).then( option => {
                     const actualPrice = [...option].map(o => o.innerText );
-                    expect(actualPrice).to.deep.eq([data.freeProductWithOption.USD_Price]);
+                    expect(actualPrice).to.deep.eq([data.freeProductWithOption.NZD_Price]);
                 });
 
-                cy.get(`label[class="radioGroup-radioContainer-3x9"]`).last().then(option => {
+                cy.get(`label[class*=radioGroup-radioContainer]`).last().then(option => {
                     const actualTitle = [...option].map(o => o.innerText );
-                    expect(actualTitle).to.deep.eq([`${data.freeProductWithOption.Option_1_title}+${data.freeProductWithOption.Option_1_usd_price}`])
+                    expect(actualTitle).to.deep.eq([`${data.freeProductWithOption.Option_1_title}+US$99.00`])
                 });
 
                 cy.get(`input[value=${data.freeProductWithOption.installationOptionValue}]`).check();
 
                 cy.get(`p[data-testid="productFullDetail-productPrice"]`).then( option => {
                     const actualPrice = [...option].map(o => o.innerText );
-                    expect(actualPrice).to.deep.eq([data.freeProductWithOption.Option_1_usd_price]);
+                    expect(actualPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
                 });
             });
 
@@ -42,9 +42,9 @@ describe('Purchase product process',  () => {
             cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
 
             cy.fixture('../fixtures/productData').then(function(data) {
-                cy.get('span[class="item-price-2Sf"]').then(option => {
+                cy.get('span[class*=item-price]').then(option => {
                     const cartPrice = [...option].map(o => o.innerText );
-                    expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_usd_price]);
+                    expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
                 })
             });
         });
@@ -54,12 +54,12 @@ describe('Purchase product process',  () => {
 
         cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
 
-        cy.url().should('eq', navigateToCheckout);
+        cy.url().should('eq', Cypress.config().baseUrl + navigateToCheckout);
     })
 
     it('guest 1> billing address with country sholud have region', () => {
 
-        cy.get('svg[class="indicator-indicator-1Xb"]', { timeout: 10000 }).should('not.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
             cy.fixture('../fixtures/userBillingInfo').then(function(data) {
 
                 cy.get('input[name="firstname"]').type(data.addressInfo.firstName);
@@ -93,7 +93,7 @@ describe('Purchase product process',  () => {
 
         cy.wait(5000);
 
-        cy.get('svg[class="indicator-indicator-1Xb"]', { timeout: 10000 }).should('not.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
 
             cy.fixture('../fixtures/userBillingInfo').then(  function(data) {
                 cy.get('input[id="braintree__card-view-input__cardholder-name"]').type(data.creditCardInfo.cardHolderName);
@@ -119,12 +119,14 @@ describe('Purchase product process',  () => {
         });
     });
 
-    it('guest 3> Place order ',   () => {
+    it('guest 3> Place order ',() => {
 
-        cy.get('svg[class="indicator-indicator-1Xb"]', { timeout: 10000 }).should('not.visible').then(() => {
-            cy.get('button[data-testid="checkoutPage-placeOrderBtn"]').click();
-        });
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
+                cy.get('button[data-testid="checkoutPage-placeOrderBtn"]').click();
+            });
+        })
     });
 
 })
