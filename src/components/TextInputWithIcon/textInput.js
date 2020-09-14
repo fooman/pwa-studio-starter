@@ -4,7 +4,7 @@ import { BasicText, asField } from 'informed';
 import { compose } from 'redux';
 import classify from '@magento/venia-ui/lib/classify';
 import { Message } from '@magento/venia-ui/lib/components/Field';
-import FieldIcons from '../../components/FieldIconWithButton/fieldIcon';
+import FieldIcons from '../FieldIconWithButton/fieldIcon';
 import defaultClasses from '@magento/venia-ui/lib/components/TextInput/textInput.css';
 
 export class TextInput extends Component {
