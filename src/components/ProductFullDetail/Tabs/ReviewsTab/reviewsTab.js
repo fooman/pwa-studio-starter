@@ -48,7 +48,7 @@ const ReviewsTab = props => {
                 );
             });
         }
-        return (<div>{'Reviews are important to the Magento community. Be the first to leave a review'}</div>)
+        return (<div>{'Reviews are important to the Magento community. Be the first to leave a review.'}</div>)
     }
 
     return (
