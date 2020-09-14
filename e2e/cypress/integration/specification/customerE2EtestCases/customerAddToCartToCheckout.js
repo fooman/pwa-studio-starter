@@ -52,7 +52,7 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
 
                     cy.get(`label[class*=radioGroup-radioContainer]`).last().then(option => {
                         const actualTitle = [...option].map(o => o.innerText);
-                        expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+US$49.00`])
+                        expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+${data.paidProductWithOption.Option_1_nzd_price}`])
                     });
 
                     cy.get(`input[name="options"]`).type(data.paidProductWithOption.urlInputValue);
@@ -92,4 +92,6 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
         });
 
     });
+
+    //TODO need to log out here if the next test is a guest
 });
