@@ -8,7 +8,7 @@ import { usePassword } from '@magento/peregrine/lib/talons/Password/usePassword'
 
 import Button from '@magento/venia-ui/lib/components/Button';
 import Field from '@magento/venia-ui/lib/components/Field';
-import TextInput from '../../components/TextInputWithIcon/textInput';
+import TextInput from '../../../../components/TextInputWithIcon/textInput';
 import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
 
 import defaultClasses from '@magento/venia-ui/lib/components/Password/password.css';

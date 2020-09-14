@@ -37,12 +37,13 @@ show_overrides_changes () {
 }
 
 confirm_all_overrides_valid () {
+    has_error=false
     find ./src/overrides/venia-ui -not -name "*.patch" -type f -print0 | while read -d $'\0' file
     do
         fileToCheck=$(echo "$file" | gsed "s#src/overrides/venia-ui#node_modules/@magento/venia-ui/lib#g")
         if [ ! -f $fileToCheck ]; then
             echo "$file is not an override"
-            exit 1
+            has_error=true
         else
             git --no-pager diff --no-index --patch $fileToCheck $file  > $file-our-orig-changes.patch
         fi
@@ -52,11 +53,15 @@ confirm_all_overrides_valid () {
         fileToCheck=$(echo "$file" | gsed "s#src/overrides/peregrine#node_modules/@magento/peregrine/lib#g")
         if [ ! -f $fileToCheck ]; then
             echo "$file is not an override"
-            exit 1
+            has_error=true
         else
             git --no-pager diff --no-index --patch $fileToCheck $file  > $file-our-orig-changes.patch
         fi
     done
+    if [ has_error == true ] ; then
+        echo "Found files unnecessarily residing in src/overrides"
+        exit 1
+    fi
 }
 
 checkin_our_changes () {
