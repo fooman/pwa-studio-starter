@@ -1,9 +1,9 @@
 const guestSignOutProcess = () => {
     it('Guest Sign out process', () => {
 
-        cy.get('svg[class*=accountChip-loader]', {timeout: 20000}).should('be.visible').then(() => {
+        cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('be.visible').then(() => {
 
-            cy.get('svg[class*=accountChip-loader]', {timeout: 20000}).should('not.visible').then(() => {
+            cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('not.visible').then(() => {
 
                 cy.get('button[aria-label="Toggle My Account Menu"]').click();
 
@@ -21,10 +21,9 @@ describe('1> Guest user Purchase "free" product process with country "US"',  () 
     let testEmail;
 
     it('Open product, confirm price, add to cart, confirm price on cart', () => {
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
             cy.fixture('../fixtures/productData').then(function(data) {
 
-                cy.visit(data.freeProduct.url)
+                cy.visit(data.freeProduct.url);
 
                 cy.get(`p[data-testid="productFullDetail-productPrice"]`).then( option => {
                     const actualPrice = [...option].map(o => o.innerText );
@@ -40,9 +39,8 @@ describe('1> Guest user Purchase "free" product process with country "US"',  () 
                 cy.get('span[class*=item-price]').then(option => {
                     const cartPrice = [...option].map(o => o.innerText );
                     expect(cartPrice).to.deep.eq([data.freeProduct.NZD_Price]);
-                })
+                });
             });
-        });
     });
 
     it('navigate checkout page and confirm by matching current url',() => {
@@ -50,15 +48,15 @@ describe('1> Guest user Purchase "free" product process with country "US"',  () 
         cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
 
         cy.url().should('eq', Cypress.config().baseUrl + navigateToCheckout);
-    })
+    });
 
     it('guest 1> billing address with country "US"',  () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
-                    cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+                    cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                         cy.fixture('../fixtures/userBillingInfo').then(function(data) {
 
@@ -93,9 +91,9 @@ describe('1> Guest user Purchase "free" product process with country "US"',  () 
     });
 
     it('guest 2> Payment Information ',   () => {
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                 cy.get('button[data-testid="checkoutPage-reviewOrderBtn"]').click();
             });
@@ -106,9 +104,9 @@ describe('1> Guest user Purchase "free" product process with country "US"',  () 
 
     it('guest 3> Place order ',() => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
                 cy.get('button[data-testid="checkoutPage-placeOrderBtn"]').click();
             });
         })
@@ -116,8 +114,8 @@ describe('1> Guest user Purchase "free" product process with country "US"',  () 
 
     it('success order page and add password to create account ',  () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                 const isVisibleShippingInfo = cy.get('div[data-testid="orderConfirmation-billingInfo"]').should('be.visible');
 
@@ -193,11 +191,11 @@ describe('2> Guest user Purchase "free" product process with country "NZ"',() =>
 
     it('guest 1> billing address with country "NZ"',  () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
-                cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+                cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                     cy.fixture('../fixtures/userBillingInfo').then(function (data) {
 
@@ -230,9 +228,9 @@ describe('2> Guest user Purchase "free" product process with country "NZ"',() =>
     });
 
     it('guest 2> Payment Information ',   () => {
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                 cy.get('button[data-testid="checkoutPage-reviewOrderBtn"]').click();
             });
@@ -243,9 +241,9 @@ describe('2> Guest user Purchase "free" product process with country "NZ"',() =>
 
     it('guest 3> Place order ',() => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
                 cy.get('button[data-testid="checkoutPage-placeOrderBtn"]').click();
             });
         })
@@ -253,8 +251,8 @@ describe('2> Guest user Purchase "free" product process with country "NZ"',() =>
 
     it('success order page and add password to create account ',  () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                 const isVisibleShippingInfo = cy.get('div[data-testid="orderConfirmation-billingInfo"]').should('be.visible');
 
@@ -310,8 +308,8 @@ describe('3> Guest user Purchase "paid" product process with country "US"', () =
 
     guestSignOutProcess();
 
-    it('Open product, confirm price, add url, select option, add to cart, confirm price on cart', () => {
-        cy.get('svg[class*=indicator-indicator]', {timeout: 20000}).should('not.visible').then(() => {
+    it('Open product, confirm price', () => {
+        cy.get('svg[class*=indicator-indicator]', {timeout: 40000}).should('not.visible').then(() => {
             cy.fixture('../fixtures/productData').then(function (data) {
 
                 cy.visit(data.paidProductWithOption.url)
@@ -323,32 +321,36 @@ describe('3> Guest user Purchase "paid" product process with country "US"', () =
 
                 cy.get(`label[class*=radioGroup-radioContainer]`).last().then(option => {
                     const actualTitle = [...option].map(o => o.innerText);
-                    expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+US$49.00`])
+                    expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+${data.paidProductWithOption.Option_1_nzd_price}`])
                 });
+            });
+        });
+    });
 
-                cy.get(`input[name="options"]`).type(data.paidProductWithOption.urlInputValue);
+    it('add url, select option, add to cart, confirm price on cart', () => {
+        cy.fixture('../fixtures/productData').then(function (data) {
+            cy.get(`input[name="options"]`).type(data.paidProductWithOption.urlInputValue);
 
-                cy.get(`input[name="options"]`).should('have.value', data.paidProductWithOption.urlInputValue);
+            cy.get(`input[name="options"]`).should('have.value', data.paidProductWithOption.urlInputValue);
 
-                cy.get(`input[value=${data.paidProductWithOption.installationOptionValue}]`).check();
+            cy.get(`input[value=${data.paidProductWithOption.installationOptionValue}]`).check();
 
-                cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
-                    const actualPrice = [...option].map(o => o.innerText);
-                    const actualPriceValue = (data.paidProductWithOption.NZD_Price).split('$');
-                    const optionPriceValue = (data.paidProductWithOption.Option_1_nzd_price).split('$');
-                    priceWithInstallation = (parseFloat(actualPriceValue[1]) + parseFloat(optionPriceValue[1])).toString();
-                    priceWithInstallation = nzdTag + priceWithInstallation;
-                    expect(actualPrice).to.deep.eq([priceWithInstallation]);
-                });
+            cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
+                const actualPrice = [...option].map(o => o.innerText);
+                const actualPriceValue = (data.paidProductWithOption.NZD_Price).split('$');
+                const optionPriceValue = (data.paidProductWithOption.Option_1_nzd_price).split('$');
+                priceWithInstallation = (parseFloat(actualPriceValue[1]) + parseFloat(optionPriceValue[1])).toString();
+                priceWithInstallation = nzdTag + priceWithInstallation;
+                expect(actualPrice).to.deep.eq([priceWithInstallation]);
+            });
 
-                cy.get('button[data-testid="productFullDetail-addToCartBtn"]').click();
+            cy.get('button[data-testid="productFullDetail-addToCartBtn"]').click();
 
-                cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
+            cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
 
-                cy.get('span[class*=item-price]').then(option => {
-                    const cartPrice = [...option].map(o => o.innerText);
-                    expect(cartPrice).to.deep.eq([priceWithInstallation]);
-                });
+            cy.get('span[class*=item-price]').then(option => {
+                const cartPrice = [...option].map(o => o.innerText);
+                expect(cartPrice).to.deep.eq([priceWithInstallation]);
             });
         });
     });
@@ -363,11 +365,11 @@ describe('3> Guest user Purchase "paid" product process with country "US"', () =
 
     it('guest 1> billing address with country "US"',  () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
-                cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+                cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                     cy.fixture('../fixtures/userBillingInfo').then(function(data) {
 
@@ -401,9 +403,9 @@ describe('3> Guest user Purchase "paid" product process with country "US"', () =
 
     it('guest 2> Payment Information ',   () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                 cy.fixture('../fixtures/userBillingInfo').then(  function(data) {
                     cy.get('input[id="braintree__card-view-input__cardholder-name"]').type(data.creditCardInfo.cardHolderName);
@@ -444,9 +446,9 @@ describe('3> Guest user Purchase "paid" product process with country "US"', () =
 
     it('success order page and add password to create account ',  () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                 const isVisibleShippingInfo = cy.get('div[data-testid="orderConfirmation-billingInfo"]').should('be.visible');
 
@@ -502,8 +504,8 @@ describe('4> Guest user Purchase "paid" product process with country "NZ"', () =
 
     guestSignOutProcess();
 
-    it('Open product, confirm price, add url, select option, add to cart, confirm price on cart', () => {
-        cy.get('svg[class*=indicator-indicator]', {timeout: 20000}).should('not.visible').then(() => {
+    it('Open product and confirm price', () => {
+        cy.get('svg[class*=indicator-indicator]', {timeout: 40000}).should('not.visible').then(() => {
             cy.fixture('../fixtures/productData').then(function (data) {
 
                 cy.visit(data.paidProductWithOption.url)
@@ -515,36 +517,39 @@ describe('4> Guest user Purchase "paid" product process with country "NZ"', () =
 
                 cy.get(`label[class*=radioGroup-radioContainer]`).last().then(option => {
                     const actualTitle = [...option].map(o => o.innerText);
-                    expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+US$49.00`])
-                });
-
-                cy.get(`input[name="options"]`).type(data.paidProductWithOption.urlInputValue);
-
-                cy.get(`input[name="options"]`).should('have.value', data.paidProductWithOption.urlInputValue);
-
-                cy.get(`input[value=${data.paidProductWithOption.installationOptionValue}]`).check();
-
-                cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
-                    const actualPrice = [...option].map(o => o.innerText);
-                    const actualPriceValue = (data.paidProductWithOption.NZD_Price).split('$');
-                    const optionPriceValue = (data.paidProductWithOption.Option_1_nzd_price).split('$');
-                    priceWithInstallation = (parseFloat(actualPriceValue[1]) + parseFloat(optionPriceValue[1])).toString();
-                    priceWithInstallation = nzdTag + priceWithInstallation;
-                    expect(actualPrice).to.deep.eq([priceWithInstallation]);
-                });
-
-                cy.get('button[data-testid="productFullDetail-addToCartBtn"]').click();
-
-                cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
-
-                cy.get('span[class*=item-price]').then(option => {
-                    const cartPrice = [...option].map(o => o.innerText);
-                    expect(cartPrice).to.deep.eq([priceWithInstallation]);
+                    expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+${data.paidProductWithOption.Option_1_nzd_price}`])
                 });
             });
         });
     });
 
+    it('add url, select option, add to cart, confirm price on cart and add to cart', () => {
+        cy.fixture('../fixtures/productData').then(function(data) {
+            cy.get(`input[name="options"]`).type(data.paidProductWithOption.urlInputValue);
+
+            cy.get(`input[name="options"]`).should('have.value', data.paidProductWithOption.urlInputValue);
+
+            cy.get(`input[value=${data.paidProductWithOption.installationOptionValue}]`).check();
+
+            cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
+                const actualPrice = [...option].map(o => o.innerText);
+                const actualPriceValue = (data.paidProductWithOption.NZD_Price).split('$');
+                const optionPriceValue = (data.paidProductWithOption.Option_1_nzd_price).split('$');
+                priceWithInstallation = (parseFloat(actualPriceValue[1]) + parseFloat(optionPriceValue[1])).toString();
+                priceWithInstallation = nzdTag + priceWithInstallation;
+                expect(actualPrice).to.deep.eq([priceWithInstallation]);
+            });
+
+            cy.get('button[data-testid="productFullDetail-addToCartBtn"]').click();
+
+            cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
+
+            cy.get('span[class*=item-price]').then(option => {
+                const cartPrice = [...option].map(o => o.innerText);
+                expect(cartPrice).to.deep.eq([priceWithInstallation]);
+            });
+        });
+    });
 
     it('navigate checkout page and confirm by matching current url',() => {
 
@@ -555,11 +560,11 @@ describe('4> Guest user Purchase "paid" product process with country "NZ"', () =
 
     it('guest 1> billing address with country "NZ"',  () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
-                cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+                cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                     cy.fixture('../fixtures/userBillingInfo').then(function(data) {
 
@@ -593,9 +598,9 @@ describe('4> Guest user Purchase "paid" product process with country "NZ"', () =
 
     it('guest 2> Payment Information ',   () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('be.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                 cy.fixture('../fixtures/userBillingInfo').then(  function(data) {
                     cy.get('input[id="braintree__card-view-input__cardholder-name"]').type(data.creditCardInfo.cardHolderName);
@@ -636,9 +641,9 @@ describe('4> Guest user Purchase "paid" product process with country "NZ"', () =
 
     it('success order page and add password to create account ',  () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
-            cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+            cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
                 const isVisibleShippingInfo = cy.get('div[data-testid="orderConfirmation-billingInfo"]').should('be.visible');
 
@@ -672,7 +677,5 @@ describe('4> Guest user Purchase "paid" product process with country "NZ"', () =
             });
         });
     });
-
     guestSignOutProcess();
-
 });

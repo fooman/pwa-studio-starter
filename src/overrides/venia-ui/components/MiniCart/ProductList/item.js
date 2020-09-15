@@ -70,8 +70,8 @@ const Item = props => {
             <span className={classes.quantity}>{`Qty : ${quantity}`}</span>
             <span className={classes.price}>
                 <Price
-                    currencyCode={prices.row_total_including_tax.currency}
-                    value={prices.row_total_including_tax.value}
+                    currencyCode={prices.price.currency}
+                    value={prices.price.value}
                 />
             </span>
             <span className={classes.stockStatus}>{stockStatusText}</span>

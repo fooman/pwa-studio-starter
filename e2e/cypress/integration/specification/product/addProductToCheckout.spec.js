@@ -13,8 +13,8 @@ describe('Purchase product process',  () => {
 
     featureExpirationDate = `${mm}/${yyyy}`;
 
-    it('Open product, confirm price, confirm option title, select option, confirm price, add to cart, confirm price on cart', () => {
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+    it('Open product and confirm price', () => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
             cy.fixture('../fixtures/productData').then(function(data) {
 
                 cy.visit(data.freeProductWithOption.url)
@@ -26,26 +26,29 @@ describe('Purchase product process',  () => {
 
                 cy.get(`label[class*=radioGroup-radioContainer]`).last().then(option => {
                     const actualTitle = [...option].map(o => o.innerText );
-                    expect(actualTitle).to.deep.eq([`${data.freeProductWithOption.Option_1_title}+US$99.00`])
+                    expect(actualTitle).to.deep.eq([`${data.freeProductWithOption.Option_1_title}+${data.freeProductWithOption.Option_1_nzd_price}`])
                 });
+            });
+        });
+    });
 
-                cy.get(`input[value=${data.freeProductWithOption.installationOptionValue}]`).check();
+    it('confirm option title, select option, confirm price, add to cart, confirm price on cart', () => {
+        cy.fixture('../fixtures/productData').then(function(data) {
 
-                cy.get(`p[data-testid="productFullDetail-productPrice"]`).then( option => {
-                    const actualPrice = [...option].map(o => o.innerText );
-                    expect(actualPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
-                });
+            cy.get(`input[value=${data.freeProductWithOption.installationOptionValue}]`).check();
+
+            cy.get(`p[data-testid="productFullDetail-productPrice"]`).then( option => {
+                const actualPrice = [...option].map(o => o.innerText );
+                expect(actualPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
             });
 
             cy.get('button[data-testid="productFullDetail-addToCartBtn"]').click();
 
             cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
 
-            cy.fixture('../fixtures/productData').then(function(data) {
-                cy.get('span[class*=item-price]').then(option => {
-                    const cartPrice = [...option].map(o => o.innerText );
-                    expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
-                })
+            cy.get('span[class*=item-price]').then(option => {
+                const cartPrice = [...option].map(o => o.innerText );
+                expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
             });
         });
     });
@@ -59,7 +62,7 @@ describe('Purchase product process',  () => {
 
     it('guest 1> billing address with country sholud have region', () => {
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
             cy.fixture('../fixtures/userBillingInfo').then(function(data) {
 
                 cy.get('input[name="firstname"]').type(data.addressInfo.firstName);
@@ -93,7 +96,7 @@ describe('Purchase product process',  () => {
 
         cy.wait(5000);
 
-        cy.get('svg[class*=indicator-indicator]', { timeout: 20000 }).should('not.visible').then(() => {
+        cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
             cy.fixture('../fixtures/userBillingInfo').then(  function(data) {
                 cy.get('input[id="braintree__card-view-input__cardholder-name"]').type(data.creditCardInfo.cardHolderName);
@@ -128,5 +131,4 @@ describe('Purchase product process',  () => {
             });
         })
     });
-
-})
+});
