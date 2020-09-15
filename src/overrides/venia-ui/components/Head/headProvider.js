@@ -8,6 +8,7 @@ ReactGA.initialize(process.env.GA_ACCT_ID);
 const structuredData = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
+    "name": "Fooman",
     "url": "https://fooman.com",
     "logo": "https://fooman.com/assets/icons/fooman_logo_512x512.png",
     "sameAs": "https://twitter.com/foomanNZ"

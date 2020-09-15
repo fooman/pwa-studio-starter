@@ -126,7 +126,9 @@ const ProductFullDetail = props => {
         }) : null;
 
     const productUrl = "https://fooman.com" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
-    const thumbnailBaseUrl = resourceUrl(`/${product.small_image}`);
+    //TODO solves this in the back-end
+    const backendURLObject = new URL(process.env.MAGENTO_BACKEND_URL);
+    const thumbnailBaseUrl = resourceUrl(`/${product.small_image.replace(backendURLObject.origin+'/', '')}`);
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
