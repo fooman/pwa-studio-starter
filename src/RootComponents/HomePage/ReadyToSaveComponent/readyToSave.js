@@ -14,21 +14,9 @@ const ReadyToSave = () => {
                 <h2 className = {classes.h2}>{"Ready to save time and money managing your Magento store?"}</h2>
                 <div className = {classes.line}>
                     <div className = {classes.unit}>
-                    </div>
-                    <div className = {classes.unit}>
-                        <Link className={classes.link} to={resourceUrl('/extensions')}>
-                         <Button
-                                priority="high"
-                         >
-                            <span>
-                                <span>{"View Magento 1 Extensions"}</span>
-                            </span>
-                         </Button>
-                        </Link>
-                    </div>
-                    <div className = {classes.unit}>
                         <Link className={classes.link} to={resourceUrl('/extensions/magento2')}>
                          <Button
+                                className={classes.magento2Btn}
                                 priority="high"
                          >
                             <span>
@@ -52,6 +40,7 @@ ReadyToSave.propTypes = {
         h2: string,
         line: string,
         unit: string,
+        magento2Btn: string,
         btnMagentoLocation: string
     })
 };
