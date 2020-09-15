@@ -103,4 +103,6 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
             cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
         });
     });
+
+    //TODO need to log out here if the next test is a guest
 });
