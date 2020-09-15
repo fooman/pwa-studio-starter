@@ -1,7 +1,7 @@
 .root {
     text-align: center;
     width:100%;
-    padding: 6.375rem 0rem;
+    padding: 6.375rem 0;
 }
 
 .h2 {
@@ -17,7 +17,7 @@
 .wrapper {
     display: flex;
     flex-wrap: wrap;
-    max-width: 75rem;
+    max-width: 60rem;
     margin: 0 auto;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .imgDiv {
-    width: 18.75rem;
+    max-width: 15rem;
     height: auto;
     padding: 1.25rem;
     display: flex;
@@ -65,10 +65,10 @@
 @media only screen and (max-width: 767px) {
 
     .btnDiv {
-        margin-top: 0rem;
+        margin-top: 0;
     }
     .root {
-        padding: 3.125rem 0rem;
+        padding: 3.125rem 0;
     }
 }
 @media only screen and (max-width: 1150px) {
