@@ -8,8 +8,9 @@ ReactGA.initialize(process.env.GA_ACCT_ID);
 const structuredData = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
+    "name": "Fooman",
     "url": "https://fooman.com",
-    "logo": "https://static.fooman.com/Fooman_Logo.png",
+    "logo": "https://fooman.com/assets/icons/fooman_logo_512x512.png",
     "sameAs": "https://twitter.com/foomanNZ"
 });
 
@@ -33,14 +34,14 @@ const VeniaHeadProvider = props => {
             <Helmet>
                 <meta property="og:title" content="Magento Extensions by Fooman"/>
                 <meta property="og:description" content="Trusted Magento 1 and 2 extensions to save you serious time. Quality code backed by amazing support. 170,000+ downloads | Magento Master & Certified Developers"/>
-                <meta property="og:image" content="https://static.fooman.com/Fooman_OG_Logo.png"/>
+                <meta property="og:image" content="https://fooman.com/FoomonLogo_OG.png"/>
                 <meta property="og:type" content="website"/>
                 <meta property="og:url" content="https://fooman.com/"/>
                 <meta property="twitter:card" content="summary"/>
                 <meta property="twitter:site" content="@foomanNZ"/>
                 <meta property="twitter:title" content="Magento Extensions by Fooman"/>
                 <meta property="twitter:description" content="Trusted Magento 1 and 2 extensions to save you serious time. Quality code backed by amazing support. 170,000+ downloads | Magento Master & Certified Developers"/>
-                <meta property="twitter:image" content="https://static.fooman.com/Fooman_Twitter_Card.png"/>
+                <meta property="twitter:image" content="https://fooman.com/FoomonLogo_TwitterCard.png"/>
                 <script key="og-org-data" type="application/ld+json">{structuredData}</script>
                 <script key="og-website-data" type="application/ld+json">{structuredWebsiteData}</script>
             </Helmet>
