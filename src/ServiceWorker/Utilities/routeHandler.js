@@ -11,6 +11,9 @@ export const isPage = url => {
     if (url.pathname === '/graphql') {
         return false;
     }
+    if (url.pathname.startsWith('/__')) {
+        return false;
+    }
     const urlParts = url.pathname.split('/');
     const [lastItem] = urlParts.slice(-1);
     return lastItem.indexOf('.') === -1 || new RegExp('.html$').test(url.pathname);
