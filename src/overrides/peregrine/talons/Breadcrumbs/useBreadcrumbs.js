@@ -42,7 +42,7 @@ export const useBreadcrumbs = props => {
     // When we have breadcrumb data sort and normalize it for easy rendering.
     const normalizedData = useMemo(() => {
         if (!loading && data) {
-            const breadcrumbData = data.category.breadcrumbs;
+            const breadcrumbData = [...data.category.breadcrumbs];
 
             return (
                 breadcrumbData &&
