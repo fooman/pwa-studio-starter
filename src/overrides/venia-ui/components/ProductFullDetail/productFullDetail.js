@@ -126,6 +126,7 @@ const ProductFullDetail = props => {
         }) : null;
 
     const productUrl = "https://fooman.com" + resourceUrl(`/${product.url_key}${PRODUCT_URL_SUFFIX}`);
+    const thumbnailBaseUrl = resourceUrl(`/${product.small_image}`);
     const structuredData = JSON.stringify({
         "@context": "https://schema.org",
         "@type":"Product",
@@ -147,6 +148,11 @@ const ProductFullDetail = props => {
         },
         "url": productUrl,
         "sku": productDetails.sku,
+        "image": [
+            thumbnailBaseUrl+ "?auto=webp&format=png&width=1200&height=1200&fit=cover",
+            thumbnailBaseUrl+ "?auto=webp&format=png&width=1200&height=900&fit=cover",
+            thumbnailBaseUrl+ "?auto=webp&format=png&width=1200&height=675&fit=cover",
+        ],
         "aggregateRating": {
             "@type":"AggregateRating",
             "ratingValue": product.rating_summary,
