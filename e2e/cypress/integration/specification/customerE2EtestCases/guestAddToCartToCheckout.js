@@ -321,7 +321,7 @@ describe('3> Guest user Purchase "paid" product process with country "US"', () =
 
                 cy.get(`label[class*=radioGroup-radioContainer]`).last().then(option => {
                     const actualTitle = [...option].map(o => o.innerText);
-                    expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+${data.paidProductWithOption.Option_1_nzd_price}`])
+                    expect(actualTitle).to.deep.eq([`${data.paidProductWithOption.Option_1_title}+${data.paidProductWithOption.Option_1_nzd_price.replace('NZ', '')}`])
                 });
             });
         });
