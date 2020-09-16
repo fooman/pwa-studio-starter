@@ -17,12 +17,8 @@ describe('LoginTest', function() {
         })
     }
 
-    beforeEach(function() {
-        cy.log('It should open Login Page')
-        cy.visit('/')
-    });
-
     it('should render error message if email is not put.', function() {
+        cy.visit('/');
         cy.get("body").then($body => {
             if ($body.find('svg[class*=indicator-indicator]').length > 0) {
                 cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
@@ -35,6 +31,7 @@ describe('LoginTest', function() {
     })
 
     it('sign in with valid credentials.', function() {
+        cy.visit('/')
         cy.get("body").then($body => {
             if ($body.find('svg[class*=indicator-indicator]').length > 0) {
                 cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
