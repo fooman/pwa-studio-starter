@@ -67,7 +67,7 @@ const OrderConfirmationPage = props => {
                 <div className={classes.shippingInfoHeading}>
                     Billing Information
                 </div>
-                <div className={classes.shippingInfo}>
+                <div className={classes.shippingInfo} data-testid="orderConfirmation-billingInfo">
                     <span className={classes.email}>{email}</span>
                     <span
                         className={classes.name}

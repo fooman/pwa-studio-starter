@@ -1,14 +1,20 @@
 {
     "freeProduct": {
-        "url": "/magento-extension-speedster.html"
+        "url": "/magento-extension-speedster.html",
+        "NZD_Price": "NZ$0.00"
     },
     "freeProductWithOption": {
         "url": "/magento-extension-googleanalyticsplus-m2.html",
+        "NZD_Price": "NZ$0.00",
+        "Option_1_title": "30 days support, including installation and sales funnel set-up",
+        "Option_1_nzd_price": "NZ$99.00",
         "installationOptionValue": "52"
     },
     "paidProductWithOption": {
         "url": "/magento-extension-payment-surcharge-m2.html",
-        "urlInputName": "options",
+        "NZD_Price": "NZ$180.41",
+        "Option_1_title": "Installation",
+        "Option_1_nzd_price": "NZ$49.00",
         "installationOptionValue": "51",
         "urlInputValue": "yahoo.in"
     }

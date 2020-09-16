@@ -25,7 +25,8 @@ jobs:
           CUSTOM_ORIGIN_ADD_UNIQUE_HASH: false
           CUSTOM_ORIGIN_EXACT_DOMAIN: github.pwadev.test
           STAGING_SERVER_PORT: 28080
-          NODE_ENV: development
+          STORE_VIEW_CODE: web_default
+          STORE_VIEW_LOCALE: en_US
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
@@ -34,6 +35,7 @@ jobs:
           start: yarn start
           working-directory: e2e
           env: host=https://github.pwadev.test,port=28080
+          record: true
         env:
           MAGENTO_BACKEND_URL: ${{ secrets.MAGENTO_BACKEND_URL }}
           CHECKOUT_BRAINTREE_TOKEN: ${{ secrets.CHECKOUT_BRAINTREE_TOKEN }}
@@ -43,7 +45,10 @@ jobs:
           CUSTOM_ORIGIN_ADD_UNIQUE_HASH: false
           CUSTOM_ORIGIN_EXACT_DOMAIN: github.pwadev.test
           STAGING_SERVER_PORT: 28080
-          NODE_ENV: development
           CYPRESS_BASE_URL: https://github.pwadev.test:28080
           STORE_VIEW_CODE: web_default
           STORE_VIEW_LOCALE: en_US
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

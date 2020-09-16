@@ -265,7 +265,7 @@ const ProductFullDetail = props => {
                             </div>
                         </div>
                         <section className={classes.options}>
-                            <p className={classes.productPrice}>
+                            <p className={classes.productPrice} data-testid = "productFullDetail-productPrice">
                                 <Price
                                     currencyCode={productDetails.price.currency}
                                     value={productDetails.price.value}
@@ -289,10 +289,10 @@ const ProductFullDetail = props => {
                         />
                         <div className={classes.cartActions}>
                             <Button
+                                data-testid = "productFullDetail-addToCartBtn"
                                 priority="high"
                                 onClick={handleAddToCart}
                                 disabled={isAddToCartDisabled}
-                                data-testid="productFullDetail-addtocart-button"
                             >
                                 Add to Cart
                             </Button>

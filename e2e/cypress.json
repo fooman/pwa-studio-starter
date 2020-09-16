@@ -1,6 +1,8 @@
 {
-    "pluginsFile": false,
-    "supportFile": false,
-    "baseUrl":"https://fooman-pwa-frontend-ewafz.local.pwadev:8659",
-    "integrationFolder":"cypress/integration/specification"
+  "pluginsFile": false,
+  "supportFile": false,
+  "baseUrl": "https://fooman-pwa-frontend-ewafz.local.pwadev:8659",
+  "integrationFolder": "cypress/integration/specification",
+  "chromeWebSecurity": false,
+  "projectId": "tbi6tz"
 }

@@ -50,6 +50,7 @@ const CartTrigger = props => {
         <Fragment>
             <div className={triggerClassName}>
                 <button
+                    data-testid="miniCart-shoppingBtn"
                     aria-label={buttonAriaLabel}
                     className={classes.trigger}
                     onClick={handleTriggerClick}
