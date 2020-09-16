@@ -26,7 +26,7 @@ describe('Purchase product process',  () => {
 
                 cy.get(`label[class*=radioGroup-radioContainer]`).last().then(option => {
                     const actualTitle = [...option].map(o => o.innerText );
-                    expect(actualTitle).to.deep.eq([`${data.freeProductWithOption.Option_1_title}+${data.freeProductWithOption.Option_1_nzd_price}`])
+                    expect(actualTitle).to.deep.eq([`${data.freeProductWithOption.Option_1_title}+${data.freeProductWithOption.Option_1_nzd_price.replace('NZ', '')}`])
                 });
             });
         });
