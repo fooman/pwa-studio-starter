@@ -26,11 +26,13 @@ jobs:
           CUSTOM_ORIGIN_EXACT_DOMAIN: github.pwadev.test
           STAGING_SERVER_PORT: 28080
           NODE_ENV: development
+          STORE_VIEW_CODE: web_default
+          STORE_VIEW_LOCALE: en_US
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           install: false
-          build: yarn build
+          build: yarn build:dev
           start: yarn start
           working-directory: e2e
           env: host=https://github.pwadev.test,port=28080
