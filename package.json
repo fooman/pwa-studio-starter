@@ -24,7 +24,8 @@
     "storybook": "start-storybook -p 9001 -c src/.storybook",
     "storybook:build": "build-storybook -c src/.storybook -o storybook-dist",
     "postinstall": "patch-package",
-    "e2e": "CYPRESS_BASE_URL=https://fooman-pwa-frontend-xpicq.local.pwadev:8662/ yarn run cypress open -P e2e"
+    "e2e": "CYPRESS_BASE_URL=https://fooman-pwa-frontend-xpicq.local.pwadev:9662/ yarn run cypress open -P e2e",
+    "e2e:dev": "CYPRESS_BASE_URL=https://fooman-pwa-frontend-xpicq.local.pwadev:8662/ yarn run cypress open -P e2e"
   },
   "main": "src/index.js",
   "browser": {
@@ -40,15 +41,15 @@
     "@fortawesome/pro-regular-svg-icons": "^5.13.1",
     "@fortawesome/pro-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-6.0.0-fooman-canary-2020-37.tgz",
+    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-4.0.2-fooman-canary-2020-37.tgz",
     "classnames": "^2.2.6",
     "html-react-parser": "^0.13.0",
     "lodash": "^4.17.19",
     "react-copy-to-clipboard": "^5.0.2",
     "react-ga": "^3.1.2",
     "react-image-gallery": "^1.0.7",
-    "react-with-breakpoints": "^4.0.4",
-    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-6.0.0-fooman-canary-2020-37.tgz",
-    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-4.0.2-fooman-canary-2020-37.tgz"
+    "react-with-breakpoints": "^4.0.4"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",
@@ -80,7 +81,7 @@
     "babel-plugin-module-resolver": "~3.2.0",
     "braintree-web-drop-in": "~1.16.0",
     "css-loader": "~2.1.1",
-    "cypress": "^5.0.0",
+    "cypress": "5.2.0",
     "dotenv": "~6.2.0",
     "enzyme": "~3.9.0",
     "enzyme-adapter-react-16": "~1.9.1",
