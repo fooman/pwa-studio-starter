@@ -8,10 +8,7 @@
 export const isHomeRoute = url => url.pathname === '/';
 
 export const isPage = url => {
-    if (url.pathname === '/graphql') {
-        return false;
-    }
-    if (url.pathname.startsWith('/__')) {
+    if (url.pathname.startsWith('/__') || url.pathname.startsWith('/graphql')) {
         return false;
     }
     const urlParts = url.pathname.split('/');
