@@ -25,6 +25,7 @@ export const isPage = url => {
  * @returns {boolean}
  */
 export const isHTMLRoute = url => {
+    return false;
     const result = isHomeRoute(url) || isPage(url);
     return result;
 }
