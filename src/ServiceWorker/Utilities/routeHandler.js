@@ -16,4 +16,4 @@ export const isHomeRoute = url => url.pathname === '/';
  * @returns {boolean}
  */
 export const isHTMLRoute = url =>
-    isHomeRoute(url) || new RegExp('.html$').test(url.pathname);
+    false; /*isHomeRoute(url) || new RegExp('.html$').test(url.pathname);*/
