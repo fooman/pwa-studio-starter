@@ -41,11 +41,11 @@ describe('1> Guest user Purchase "free" product process with country "US"',  () 
                     expect(cartPrice).to.deep.eq([data.freeProduct.NZD_Price]);
                 });
             });
+
+            cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
     });
 
     it('navigate checkout page and confirm by matching current url',() => {
-
-        cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
 
         cy.url().should('eq', Cypress.config().baseUrl + navigateToCheckout);
     });
@@ -117,7 +117,7 @@ describe('1> Guest user Purchase "free" product process with country "US"',  () 
         cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
             cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
 
-                const isVisibleShippingInfo = cy.get('div[data-testid="orderConfirmation-billingInfo"]').should('be.visible');
+                const isVisibleShippingInfo = cy.get('div[data-testid="orderConfirmation-billingInfo"]', { timeout: 40000}).should('be.visible');
 
                 if (isVisibleShippingInfo) {
 
@@ -553,7 +553,7 @@ describe('4> Guest user Purchase "paid" product process with country "NZ"', () =
 
     it('navigate checkout page and confirm by matching current url',() => {
 
-        cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
+        cy.get('button[data-testid="miniCart-checkoutBtn"]').click({ force: true });
 
         cy.url().should('eq', Cypress.config().baseUrl + navigateToCheckout);
     })

@@ -1,23 +1,3 @@
-describe('User sign in process', () => {
-    beforeEach(function() {
-        cy.log('It should open Login Page')
-        cy.visit('/')
-    })
-
-    it('sign in with valid credentials.', function() {
-        cy.get('button[aria-label="Toggle My Account Menu"]').click()
-
-        cy.fixture('../fixtures/loginData').then(function(data) {
-            cy.get('input[name="email"]').last().type(data.user.email)
-            cy.get('input[name="password"]').last().type(data.user.password)
-        });
-
-        cy.get('[data-testid="signIn-form"]').within(() => {
-            cy.get('button[type="submit"]').first().click()
-        });
-    });
-});
-
 describe('1> Sign in user Purchase "paid" product process with country "US"',  () => {
 
     const navigateToCheckout = `/checkout`;
@@ -36,10 +16,28 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
 
     featureExpirationDate = `${mm}/${yyyy}`;
 
-    it('Open product and confirm price', () => {
+    it('sign in with valid credentials.', function() {
+
+        cy.visit('/')
+
+        cy.get('button[aria-label="Toggle My Account Menu"]').click()
+
+        cy.fixture('../fixtures/loginData').then(function(data) {
+            cy.get('input[name="email"]').last().type(data.user.email)
+            cy.get('input[name="password"]').last().type(data.user.password)
+        });
+
+        cy.get('[data-testid="signIn-form"]').within(() => {
+            cy.get('button[type="submit"]').first().click()
+        });
+    });
+
+    it('Delete previous item from cart', () => {
         cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('be.visible').then(() => {
 
             cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('not.visible').then(() => {
+
+                cy.get('button[aria-label="Toggle My Account Menu"]').click();
 
                 cy.get('button[data-testid="miniCart-shoppingBtn"]').click().then(() => {
                     cy.get("body").then($body => {
@@ -50,10 +48,42 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
                     });
                 });
 
-                cy.fixture('../fixtures/productData').then(function (data) {
+            });
+        });
 
-                    cy.visit(data.paidProductWithOption.url)
+    });
 
+    it('Sign out after delete item', () => {
+
+        cy.get('button[data-testid="miniCart-shoppingBtn"]').click({force: true});
+
+        cy.get('button[aria-label="Toggle My Account Menu"]').click({force: true});
+
+        cy.get('button').contains('Sign Out').click({force: true});
+
+        cy.wait(3000);
+
+    });
+
+    it('Sign in again, open product, confirm price, add url, select option, add to cart, confirm price on cart', () => {
+        cy.fixture('../fixtures/productData').then(function (data) {
+
+            cy.visit(data.paidProductWithOption.url);
+
+            cy.get('button[aria-label="Toggle My Account Menu"]').click()
+
+            cy.fixture('../fixtures/loginData').then(function(data) {
+                cy.get('input[name="email"]').last().type(data.user.email)
+                cy.get('input[name="password"]').last().type(data.user.password)
+            });
+
+            cy.get('[data-testid="signIn-form"]').within(() => {
+                cy.get('button[type="submit"]').first().click()
+            });
+
+            cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('be.visible').then(() => {
+
+                cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('not.visible').then(() => {
                     cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
                         const actualPrice = [...option].map(o => o.innerText);
                         expect(actualPrice).to.deep.eq([data.paidProductWithOption.NZD_Price]);
@@ -65,46 +95,39 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
                         expect(actualTitle).to.deep.eq(
                             [`${data.paidProductWithOption.Option_1_title}+${data.paidProductWithOption.Option_1_nzd_price.replace('NZ', '')}`])
                     });
+
+                    cy.get(`input[name="options"]`).type(data.paidProductWithOption.urlInputValue);
+
+                    cy.get(`input[name="options"]`).should('have.value', data.paidProductWithOption.urlInputValue);
+
+                    cy.get(`input[value=${data.paidProductWithOption.installationOptionValue}]`).check();
+
+                    cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
+                        const actualPrice = [...option].map(o => o.innerText);
+                        const actualPriceValue = (data.paidProductWithOption.NZD_Price).split('$');
+                        const optionPriceValue = (data.paidProductWithOption.Option_1_nzd_price).split('$');
+                        priceWithInstallation = (parseFloat(actualPriceValue[1]) + parseFloat(optionPriceValue[1])).toString();
+                        priceWithInstallation = nzdTag + priceWithInstallation;
+                        expect(actualPrice).to.deep.eq([priceWithInstallation]);
+                    });
+
+                    cy.get('button[data-testid="productFullDetail-addToCartBtn"]').click();
+
+
+                    cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
+
+                    cy.get('span[class*=item-price]').should('be.visible').then(option => {
+                        const cartPrice = [...option].map(o => o.innerText);
+                        expect(cartPrice).to.deep.eq([priceWithInstallation]);
+                    });
                 });
             });
-        });
-    });
 
-    it('add url, select option, add to cart, confirm price on cart', () => {
-        cy.fixture('../fixtures/productData').then(function (data) {
-
-            cy.get(`input[name="options"]`).type(data.paidProductWithOption.urlInputValue);
-
-            cy.get(`input[name="options"]`).should('have.value', data.paidProductWithOption.urlInputValue);
-
-            cy.get(`input[value=${data.paidProductWithOption.installationOptionValue}]`).check();
-
-            cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
-                const actualPrice = [...option].map(o => o.innerText);
-                const actualPriceValue = (data.paidProductWithOption.NZD_Price).split('$');
-                const optionPriceValue = (data.paidProductWithOption.Option_1_nzd_price).split('$');
-                priceWithInstallation = (parseFloat(actualPriceValue[1]) + parseFloat(optionPriceValue[1])).toString();
-                priceWithInstallation = nzdTag + priceWithInstallation;
-                expect(actualPrice).to.deep.eq([priceWithInstallation]);
+            cy.get('button[data-testid="miniCart-checkoutBtn"]').should('be.visible').then(() => {
+                cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
             });
 
-            cy.get('button[data-testid="productFullDetail-addToCartBtn"]').click();
-
-
-            cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
-
-            cy.get('span[class*=item-price]').should('be.visible').then(option => {
-                const cartPrice = [...option].map(o => o.innerText);
-                expect(cartPrice).to.deep.eq([priceWithInstallation]);
-            });
         });
     });
 
-    it('navigate checkout page and confirm by matching current url',() => {
-        cy.get('button[data-testid="miniCart-checkoutBtn"]', {timeout: 40000}).should('be.visible').then(() => {
-            cy.get('button[data-testid="miniCart-checkoutBtn"]').click();
-        });
-    });
-
-    //TODO need to log out here if the next test is a guest
 });
