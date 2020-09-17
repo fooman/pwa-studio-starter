@@ -2,6 +2,118 @@
     max-width: var(--venia-global-maxWidth);
     margin: auto;
 }
+/*nav css*/
+.nav {
+    background-color: #a5a5a5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 80px;
+    z-index: 1200;
+}
+
+.navProductSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-start;
+}
+
+.navProductImg {
+
+}
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+}
+
+.navImage {
+    position: unset;
+    width: 3.75rem;
+}
+
+.navHeadingAndRating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0.625rem;
+}
+
+.navReviewDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0.3125rem 0rem;
+}
+
+.navProductHeading {
+
+}
+
+.navProductReview {
+
+}
+
+.navPriceAndAddToCart {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.navProductPrice {
+    margin-right: 0.9375rem;
+    display: flex;
+    align-items: center;
+}
+
+.navAddToCart {
+
+}
+
+.nav ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+.nav li {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2em;
+    line-height: 2.5rem;
+    height: 2.5rem;
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0rem 0.3125rem;
+}
+
+.link {
+    display: none;
+}
+
+.nav a {
+    font-size:var(--venia-global-fontSize-700);
+    display: block;
+    transition: .3s background-color;
+}
+
+.nav button:hover {
+    border-bottom: 0.125rem solid rgb(var(--fooman-global-color-darked-orange));
+}
+
+.nav button.active {
+    background-color: rgb(var(--venia-global-color-gray-50));
+    cursor: default;
+}
+
+/*nav css over*/
 
 .root {
     display: flex;
@@ -48,9 +160,9 @@
 
 .productPrice {
     display: block;
-    margin-top: 1.5rem;
     position: relative;
     font-size:var(--venia-global-fontSize-700);
+    margin: 0;
 }
 
 .imageCarousel {
@@ -88,6 +200,7 @@
     grid-area: cart;
     justify-content: center;
     font-size: var(--venia-global-fontSize-200);
+    margin: 0;
 }
 
 .description {
@@ -171,6 +284,17 @@
 
 .changelog {
 
+}
+
+.navAddToCartBtn {
+    margin: 0 20px 0 0!important;
+    padding: 0.9rem 0.6rem;
+    line-height: 1.1em;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    border-radius: 0.375rem;
+    background-color: rgb(var(--fooman-global-color-darked-orange));
+    color: white;
 }
 
 .reviewSection {
