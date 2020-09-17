@@ -37,11 +37,13 @@ export const GET_BILLING_ADDRESS = gql`
                 lastName: lastname
                 country {
                     code
+                    label
                 }
                 street
                 city
                 region {
                     code
+                    label
                 }
                 postalCode: postcode
                 phoneNumber: telephone
@@ -59,11 +61,13 @@ export const GET_SHIPPING_ADDRESS = gql`
                 lastName: lastname
                 country {
                     code
+                    label
                 }
                 street
                 city
                 region {
                     code
+                    label
                 }
                 postalCode: postcode
                 phoneNumber: telephone
@@ -110,11 +114,13 @@ export const SET_BILLING_ADDRESS = gql`
                     lastname
                     country {
                         code
+                        label
                     }
                     street
                     city
                     region {
                         code
+                        label
                     }
                     postcode
                     telephone
@@ -148,11 +154,13 @@ export const SET_BILLING_ADDRESS_WITH_ADDRESS_ID = gql`
                     lastname
                     country {
                         code
+                        label
                     }
                     street
                     city
                     region {
                         code
+                        label
                     }
                     postcode
                     telephone
