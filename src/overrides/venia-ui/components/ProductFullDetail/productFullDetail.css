@@ -5,13 +5,13 @@
 /*nav css*/
 .nav {
     background-color: #a5a5a5;
-    display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
     position: fixed;
     top: 80px;
-    z-index: 1200;
+    z-index: 1;
+    display: none;
 }
 
 .navProductSection {
@@ -84,9 +84,10 @@
     flex-grow: 1;
     justify-content: center;
 }
+
 .nav li {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.2em;
+    font-size: var(--venia-global-fontSize-400);
+    font-weight: var(--venia-global-fontWeight-bold);
     line-height: 2.5rem;
     height: 2.5rem;
     display: inline-block;
@@ -111,6 +112,7 @@
 .nav button.active {
     background-color: rgb(var(--venia-global-color-gray-50));
     cursor: default;
+
 }
 
 /*nav css over*/
@@ -158,11 +160,18 @@
     font-weight: 600;
 }
 
-.productPrice {
+.navPrice {
     display: block;
     position: relative;
-    font-size:var(--venia-global-fontSize-700);
+    font-size:var(--venia-global-fontSize-400);
     margin: 0;
+}
+
+.productPrice {
+    display: block;
+    margin-top: 1.5rem;
+    position: relative;
+    font-size:var(--venia-global-fontSize-700);
 }
 
 .imageCarousel {

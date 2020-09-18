@@ -1,4 +1,4 @@
-import React, {Fragment, Suspense, useRef} from 'react';
+import React, {Fragment, Suspense, useRef, useCallback, useEffect, useMemo} from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
@@ -55,7 +55,13 @@ const ERROR_FIELD_TO_MESSAGE_MAPPING = {
 /*Lasy Loading Component*/
 const ChangeLog = React.lazy(() => import('../../../../components/ProductFullDetail/Tabs/ChangeLog/changeLog'));
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 160)
+const scrollToRef = (ref) => {
+    window.scroll({
+        top: ref.current.offsetTop - 160,
+        left: 0,
+        behavior: 'smooth'
+    });
+}
 
 const ProductFullDetail = props => {
 
@@ -64,6 +70,11 @@ const ProductFullDetail = props => {
     const reviewRef = useRef(null);
 
     const changeLogRef = useRef(null);
+
+    const optionRef = useRef(null);
+
+    const addToCartId = useRef(null);
+    const navRef = useRef(null);
 
     const { product } = props;
 
@@ -217,6 +228,11 @@ const ProductFullDetail = props => {
         }
     }
 
+    const handleAddToCartWithNave = useCallback(
+        async () => {
+            await handleAddToCart()
+        }, []);
+
     const scrollFeatureComponent = (tabClassName) => {
         if (tabClassName === 'features') {
             scrollToRef(featuareRef)
@@ -229,9 +245,33 @@ const ProductFullDetail = props => {
         }
     }
 
+    const addToCartBtnScrolled = async () => {
+        const element = navRef.current
+        const addtoCartId = await addToCartId.current;
+        if (addtoCartId) {
+            const rect = addtoCartId.getBoundingClientRect();
+
+            const isInViewport = rect.top >= 100 &&
+                rect.left >= 0 &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+
+            !isInViewport ? element.style.display = 'flex' : element.style.display = 'none';
+        }
+    };
+
+    useEffect( () => {
+        if (fieldErrorObj && Object.keys(fieldErrorObj).length > 0) scrollToRef(optionRef)
+    },[fieldErrorObj]);
+
+    useEffect( () => {
+       window.addEventListener('scroll', addToCartBtnScrolled);
+    },[]);
+
+
     return (
+
         <Fragment>
-            <div className={classes.nav}>
+            <div id = {'navDiv'}ref={navRef} className={classes.nav} >
                 <div className={classes.navProductSection}>
                     <div className={classes.navProductImg}>
                         <Image
@@ -268,7 +308,7 @@ const ProductFullDetail = props => {
                 </ul>
                 <div className={classes.navPriceAndAddToCart}>
                 <div className={classes.navProductPrice}>
-                    <span className={classes.productPrice}>
+                    <span className={classes.navPrice}>
                         <Price
                             currencyCode={productDetails.price.currency}
                             value={productDetails.price.value}
@@ -276,11 +316,11 @@ const ProductFullDetail = props => {
                     </span>
                 </div>
                 <div className={classes.navAddToCart}>
-                    <div className={classes.cartActions} >
+                    <div id={"addToCartOnNav"} className={classes.cartActions}>
                         <Button
                             priority="high"
                             className={classes.navAddToCartBtn}
-                            onClick={handleAddToCart}
+                            onClick={handleAddToCartWithNave}
                             disabled={isAddToCartDisabled}
                             data-testid="productFullDetail-addtocart-button"
                         >
@@ -346,7 +386,7 @@ const ProductFullDetail = props => {
                                 </Button>
                             </div>
                         </div>
-                        <section className={classes.options}>
+                        <section ref={optionRef} className={classes.options}>
                             <p className={classes.productPrice}>
                                 <Price
                                     currencyCode={productDetails.price.currency}
@@ -369,7 +409,7 @@ const ProductFullDetail = props => {
                             }}
                             errors={errors.get('form') || []}
                         />
-                        <div className={classes.cartActions}>
+                        <div ref={addToCartId} id={'addToCartId'} className={classes.cartActions}>
                             <Button
                                 priority="high"
                                 onClick={handleAddToCart}
@@ -433,6 +473,7 @@ ProductFullDetail.propTypes = {
         navProductReview: string,
         navPriceAndAddToCart: string,
         navProductPrice: string,
+        navPrice: string,
         navAddToCart: string,
         cartActions: string,
         navAddToCartBtn: string,
