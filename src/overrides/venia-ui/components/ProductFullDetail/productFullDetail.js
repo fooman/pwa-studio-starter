@@ -1,4 +1,4 @@
-import React, {Fragment, Suspense, useState} from 'react';
+import React, {Fragment, Suspense, useRef, useCallback, useEffect } from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
@@ -14,6 +14,7 @@ import Button from '@magento/venia-ui/lib/components/Button';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
+import Image from '@magento/venia-ui/lib/components/Image';
 import Quantity from '@magento/venia-ui/lib/components/ProductQuantity';
 import ProductStaticArea from '../../../../components/ProductFullDetail/Static/productDetailStaticArea';
 import AnyQuestion from '../../../../components/ProductFullDetail/Static/anyQuestion';
@@ -53,7 +54,27 @@ const ERROR_FIELD_TO_MESSAGE_MAPPING = {
 /*Lasy Loading Component*/
 const ChangeLog = React.lazy(() => import('../../../../components/ProductFullDetail/Tabs/ChangeLog/changeLog'));
 
+const scrollToRef = (ref) => {
+    window.scroll({
+        top: ref.current.offsetTop - 185,
+        left: 0,
+        behavior: 'smooth'
+    });
+}
+
 const ProductFullDetail = props => {
+
+    const featuareRef = useRef(null);
+
+    const reviewRef = useRef(null);
+
+    const changeLogRef = useRef(null);
+
+    const optionRef = useRef(null);
+
+    const addToCartId = useRef(null);
+    const navRef = useRef(null);
+
     const { product } = props;
 
     const demoUrl = "http://speedster.demo.fooman.co.nz/admin";
@@ -65,7 +86,7 @@ const ProductFullDetail = props => {
         addSimpleProductToCartMutation: ADD_SIMPLE_MUTATION,
         product
     });
-
+    debugger
     const {
         breadcrumbCategoryId,
         errorMessage,
@@ -206,8 +227,107 @@ const ProductFullDetail = props => {
         }
     }
 
+    const handleAddToCartWithNave = useCallback(
+        async () => {
+            await handleAddToCart()
+        }, []);
+
+    const scrollFeatureComponent = (tabClassName) => {
+        if (tabClassName === 'features') {
+            scrollToRef(featuareRef)
+        }
+        else if (tabClassName === 'reviews') {
+            scrollToRef(reviewRef)
+        }
+        else {
+            scrollToRef(changeLogRef)
+        }
+    }
+
+    const addToCartBtnScrolled = async () => {
+        const element = navRef.current
+        const addtoCartId = await addToCartId.current;
+        if (addtoCartId) {
+            const rect = addtoCartId.getBoundingClientRect();
+
+            const isInViewport = rect.top >= 100 &&
+                rect.left >= 0 &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+
+            !isInViewport ? element.style.display = 'flex' : element.style.display = 'none';
+        }
+    };
+
+    useEffect( () => {
+        if (fieldErrorObj && Object.keys(fieldErrorObj).length > 0) scrollToRef(optionRef)
+    },[fieldErrorObj]);
+
+    useEffect( () => {
+       window.addEventListener('scroll', addToCartBtnScrolled);
+    },[]);
+
+
     return (
         <Fragment>
+            <div id = {'navDiv'}ref={navRef} className={classes.nav} >
+                <div className={classes.navProductSection}>
+                    <div className={classes.navProductImg}>
+                        <Image
+                            alt={productDetails.name}
+                            classes={{
+                                image: classes.navImage,
+                                root: classes.imageContainer
+                            }}
+                            src={product.small_image}
+                        />
+                    </div>
+                    <div className={classes.navHeadingAndRating}>
+                    <div className={classes.navProductHeading}>
+                        {productDetails.name}
+                    </div>
+                    <div className={classes.navProductReview}>
+                        {product.review_count? (
+                                <div className={classes.navReviewDiv}>
+                                    <StarRatingComponent
+                                        size = {'1x'}
+                                        value={Math.round(product.rating_summary/20)}
+                                    />
+                                </div>
+                            ) :
+                            null
+                        }
+                    </div>
+                    </div>
+                </div>
+                <ul>
+                    <li className={classes.link}><button onClick={() => scrollFeatureComponent('features')}>Features</button></li>
+                    <li className={classes.link}><button onClick={() => scrollFeatureComponent('reviews')}>Reviews</button></li>
+                    <li className={classes.link}><button onClick={() => scrollFeatureComponent('changeLog')}>ChangeLog</button></li>
+                </ul>
+                <div className={classes.navPriceAndAddToCart}>
+                <div className={classes.navProductPrice}>
+                    <span className={classes.navPrice}>
+                        <Price
+                            currencyCode={productDetails.price.currency}
+                            value={productDetails.price.value}
+                        />
+                    </span>
+                </div>
+                <div className={classes.navAddToCart}>
+                    <div id={"addToCartOnNav"} className={classes.cartActions}>
+                        <Button
+                            priority="high"
+                            className={classes.navAddToCartBtn}
+                            onClick={handleAddToCartWithNave}
+                            disabled={isAddToCartDisabled}
+                            data-testid="productFullDetail-addtocart-button"
+                        >
+                            Add to Cart
+                        </Button>
+                    </div>
+                </div>
+                </div>
+            </div>
         <div className={classes.productContainer}>
             <Helmet>
                 <script key="structured-data" type="application/ld+json">{structuredData}</script>
@@ -264,7 +384,7 @@ const ProductFullDetail = props => {
                                 </Button>
                             </div>
                         </div>
-                        <section className={classes.options}>
+                        <section ref={optionRef} className={classes.options}>
                             <p className={classes.productPrice} data-testid = "productFullDetail-productPrice">
                                 <Price
                                     currencyCode={productDetails.price.currency}
@@ -287,12 +407,12 @@ const ProductFullDetail = props => {
                             }}
                             errors={errors.get('form') || []}
                         />
-                        <div className={classes.cartActions}>
+                        <div ref={addToCartId} id={'addToCartId'} className={classes.cartActions}>
                             <Button
-                                data-testid = "productFullDetail-addToCartBtn"
                                 priority="high"
                                 onClick={handleAddToCart}
                                 disabled={isAddToCartDisabled}
+                                data-testid="productFullDetail-addtocart-button"
                             >
                                 Add to Cart
                             </Button>
@@ -303,13 +423,13 @@ const ProductFullDetail = props => {
 
 
                 <div>
-                    <section className={classes.description}>
+                    <section ref={featuareRef} id="featuresSection" className={classes.description}>
                         <a id="Features"><h2>Product Features</h2></a>
                         <CustomRichContent html={productDetails.description}/>
                     </section>
                 </div>
                 <div className={classes.reviews}>
-                    <section className={classes.reviewSection}>
+                    <section ref={reviewRef} className={classes.reviewSection}>
                         <a id="Reviews"><h2>Reviews</h2></a>
                         <div>
                             <ReviewsTab
@@ -322,7 +442,7 @@ const ProductFullDetail = props => {
                             <AddReview productSku={productDetails.sku}/>
                         </div>
                     </section>
-                    <section className={classes.changelog}>
+                    <section ref={changeLogRef} className={classes.changelog}>
                         <a id="Changelog"><h2>Changelog</h2></a>
                         <Suspense fallback={<LoadingIndicator/>}>
                             {changeLog}
@@ -342,7 +462,20 @@ const ProductFullDetail = props => {
 ProductFullDetail.propTypes = {
     classes: shape({
         productContainer: string,
+        nav: string,
+        navProductSection: string,
+        navProductImg: string,
+        navImage: string,
+        imageContainer: string,
+        navHeadingAndRating: string,
+        navProductHeading: string,
+        navProductReview: string,
+        navPriceAndAddToCart: string,
+        navProductPrice: string,
+        navPrice: string,
+        navAddToCart: string,
         cartActions: string,
+        navAddToCartBtn: string,
         description: string,
         reactTab: string,
         reviews: string,
