@@ -10,9 +10,9 @@
     line-height: 1.1em;
     display: inline-block;
     max-width: 43.75rem;
-    font-family: 'Roboto', sans-serif;
+    font-weight: var( --venia-global-fontWeight-thin);
+    font-family: var(--venia-global-fontFamily-sansSerif);
     color: rgb(var(--fooman-global-color-font-gray));
-    font-weight: 300;
 }
 
 .wrapper {

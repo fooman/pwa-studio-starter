@@ -1,7 +1,8 @@
 .root {
     background: url('./images/readybg.png') #c2cbd0 bottom center no-repeat;
     padding: 7.5rem 0;
-    font-family: "robotothin";
+    font-weight: var( --venia-global-fontWeight-thin);
+    font-family: var(--venia-global-fontFamily-sansSerif);
     text-align: center;
 }
 
@@ -11,8 +12,8 @@
     line-height: 1.1em;
     display: inline-block;
     max-width: 48.125rem;
-    font-weight: 300;
-    font-family: 'Roboto', sans-serif;
+    font-weight: var( --venia-global-fontWeight-thin);
+    font-family: var(--venia-global-fontFamily-sansSerif);
     color: rgb(var(--fooman-global-color-heading-gray));
 }
 

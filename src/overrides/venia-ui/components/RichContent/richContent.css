@@ -13,7 +13,7 @@
 .root h1 {
     font-size: var(--venia-global-fontSize-1100);
     margin-top: 0.9em;
-    font-weight: var(--venia-global-fontWeight-thin);
+    font-weight: var(--venia-global-fontWeight-extrabold);
 }
 .root h2 {
     font-size: var(--venia-global-fontSize-800);

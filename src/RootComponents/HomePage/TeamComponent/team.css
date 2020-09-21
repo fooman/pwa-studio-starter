@@ -75,7 +75,7 @@
 
 .memberName {
     line-height: 1.3em;
-    font-family: 'robotoregular',sans-serif;
+    font-family: var(--venia-global-fontFamily-sansSerif);
     font-size: var(--venia-global-fontSize-1000);
     margin: 0 auto;
     color: rgb(var(--venia-global-color-gray-50));

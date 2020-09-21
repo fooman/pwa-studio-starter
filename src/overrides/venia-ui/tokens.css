@@ -73,10 +73,8 @@
     --venia-global-color-warning-light: var(--venia-global-color-gray-100);
 
     /* font family */
-    --venia-global-fontFamily-sansSerif: 'Roboto', sans-serif;
-    --venia-global-fontFamily-serif: 'Source Serif Pro', serif;
-    --venia-global-fontFamily-roboto-light: 'robotolight';
-    --venia-global-fontFamily-roboto-light-sansSerif: 'robotolight', sans-serif;
+    --venia-global-fontFamily-sansSerif: 'Montserrat', sans-serif;
+    --venia-global-fontFamily-serif: 'Montserrat', sans-serif;
 
     /* font size */
     --venia-global-fontSize-25: 0.5rem;
@@ -108,6 +106,7 @@
     --venia-global-fontWeight-normal: 400;
     --venia-global-fontWeight-semibold: 600;
     --venia-global-fontWeight-bold: 700;
+    --venia-global-fontWeight-extrabold: 800;
 
     /* line height */
     --venia-global-lineHeight-100: 1;

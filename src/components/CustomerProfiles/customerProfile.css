@@ -5,10 +5,9 @@
 }
 .heading {
     font-size: 250%;
-    font-weight: normal;
-    font-style: normal;
     color: rgb(var(--fooman-global-color-font-gray));
-    font-family: robotolight,sans-serif;
+    font-weight: var( --venia-global-fontWeight-thin);
+    font-family: var(--venia-global-fontFamily-sansSerif);
     margin-bottom: 3.875rem;
     margin-top: 2.5rem;
 }
