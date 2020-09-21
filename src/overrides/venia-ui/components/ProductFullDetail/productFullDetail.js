@@ -65,10 +65,13 @@ const scrollToRef = (ref) => {
 const ProductFullDetail = props => {
 
     const featuareRef = useRef(null);
+    const featuareBtnRef = useRef(null);
 
     const reviewRef = useRef(null);
+    const reviewBtnRef = useRef(null);
 
     const changeLogRef = useRef(null);
+    const changeLogBtnRef = useRef(null);
 
     const optionRef = useRef(null);
 
@@ -86,7 +89,7 @@ const ProductFullDetail = props => {
         addSimpleProductToCartMutation: ADD_SIMPLE_MUTATION,
         product
     });
-    debugger
+
     const {
         breadcrumbCategoryId,
         errorMessage,
@@ -246,7 +249,27 @@ const ProductFullDetail = props => {
 
     const addToCartBtnScrolled = async () => {
         const element = navRef.current
+        const featuareRefElement = featuareRef.current
+        const reviewRefElement = reviewRef.current
+        const changeLogRefElement = changeLogRef.current
         const addtoCartId = await addToCartId.current;
+        /*get all tab link reference*/
+        const featureBtnReference = await featuareBtnRef.current;
+        const reviewBtnReference = await reviewBtnRef.current;
+        const changeLogBtnReference = await changeLogBtnRef.current;
+
+        const contentReferenceElement = [featuareRefElement, reviewRefElement, changeLogRefElement];
+        const btnReference = [featureBtnReference, reviewBtnReference, changeLogBtnReference];
+
+        for(let i = 0; i < 3; i++) {
+            if (contentReferenceElement && contentReferenceElement[i]) {
+                const rect = contentReferenceElement[i].getBoundingClientRect();
+                const isInViewPort = rect.top <= 200 && rect.bottom >= 200;
+                isInViewPort ? btnReference[i].style.borderBottom = "3px solid rgb(255, 104, 41)"
+                    : btnReference[i].style.borderBottom = 'none';
+            }
+        }
+
         if (addtoCartId) {
             const rect = addtoCartId.getBoundingClientRect();
 
@@ -266,18 +289,14 @@ const ProductFullDetail = props => {
        window.addEventListener('scroll', addToCartBtnScrolled);
     },[]);
 
-
     return (
         <Fragment>
             <div id = {'navDiv'}ref={navRef} className={classes.nav} >
+                <div className={classes.wrapNavigation}>
                 <div className={classes.navProductSection}>
                     <div className={classes.navProductImg}>
-                        <Image
-                            alt={productDetails.name}
-                            classes={{
-                                image: classes.navImage,
-                                root: classes.imageContainer
-                            }}
+                        <img
+                            className={classes.navImage}
                             src={product.small_image}
                         />
                     </div>
@@ -300,9 +319,9 @@ const ProductFullDetail = props => {
                     </div>
                 </div>
                 <ul>
-                    <li className={classes.link}><button onClick={() => scrollFeatureComponent('features')}>Features</button></li>
-                    <li className={classes.link}><button onClick={() => scrollFeatureComponent('reviews')}>Reviews</button></li>
-                    <li className={classes.link}><button onClick={() => scrollFeatureComponent('changeLog')}>ChangeLog</button></li>
+                    <li className={classes.link}><button ref={featuareBtnRef} className={classes.btnFeatures} onClick={() => scrollFeatureComponent('features')}>Features</button></li>
+                    <li className={classes.link}><button ref={reviewBtnRef} className={classes.btnReviews} onClick={() => scrollFeatureComponent('reviews')}>Reviews</button></li>
+                    <li className={classes.link}><button ref={changeLogBtnRef} className={classes.btnChangeLog} onClick={() => scrollFeatureComponent('changeLog')}>ChangeLog</button></li>
                 </ul>
                 <div className={classes.navPriceAndAddToCart}>
                 <div className={classes.navProductPrice}>
@@ -325,6 +344,7 @@ const ProductFullDetail = props => {
                             Add to Cart
                         </Button>
                     </div>
+                </div>
                 </div>
                 </div>
             </div>
@@ -463,6 +483,7 @@ ProductFullDetail.propTypes = {
     classes: shape({
         productContainer: string,
         nav: string,
+        wrapNavigation: string,
         navProductSection: string,
         navProductImg: string,
         navImage: string,
@@ -476,6 +497,9 @@ ProductFullDetail.propTypes = {
         navAddToCart: string,
         cartActions: string,
         navAddToCartBtn: string,
+        btnFeatures: string,
+        btnReviews: string,
+        btnChangeLog: string,
         description: string,
         reactTab: string,
         reviews: string,

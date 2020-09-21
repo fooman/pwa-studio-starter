@@ -6,12 +6,21 @@
 .nav {
     background-color: #a5a5a5;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     width: 100%;
     position: fixed;
-    top: 80px;
-    z-index: 1;
+    top: 5rem;
+    z-index: 5;
     display: none;
+    padding: 0.625rem 0rem;
+}
+
+.wrapNavigation {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 100rem;
 }
 
 .navProductSection {
@@ -20,6 +29,8 @@
     align-items: center;
     flex-grow: 1;
     justify-content: flex-start;
+    margin-left: 1.6875rem;
+    align-items: center;
 }
 
 .navProductImg {
@@ -34,7 +45,6 @@
 .navImage {
     position: unset;
     width: 3.75rem;
-    margin-left: 27px;
 }
 
 .navHeadingAndRating {
@@ -60,6 +70,7 @@
 }
 
 .navPriceAndAddToCart {
+    align-items: center;
     display: flex;
     flex-direction: row;
     flex-grow: 1;
@@ -84,6 +95,7 @@
     display: flex;
     flex-grow: 1;
     justify-content: center;
+    align-items: center;
 }
 
 .nav li {
@@ -100,20 +112,8 @@
     display: none;
 }
 
-.nav a {
-    font-size:var(--venia-global-fontSize-700);
-    display: block;
-    transition: .3s background-color;
-}
-
-.nav button:hover {
-    border-bottom: 0.125rem solid rgb(var(--fooman-global-color-darked-orange));
-}
-
-.nav button.active {
-    background-color: rgb(var(--venia-global-color-gray-50));
-    cursor: default;
-
+.btnFeatures, .btnReviews, .btnChangeLog {
+    outline: unset;
 }
 
 /*nav css over*/
@@ -132,7 +132,7 @@
 .hr1 {
     width: 50%;
     margin-left: 29.3rem;
-    border: 1px solid rgb(var(--venia-global-color-gray-200));
+    border: 0.0625rem solid rgb(var(--venia-global-color-gray-200));
 }
 
 .sectionTitle {
@@ -292,12 +292,8 @@
     margin: 1.875rem 0 1.25rem;
 }
 
-.changelog {
-
-}
-
 .navAddToCartBtn {
-    margin: 0 20px 0 0!important;
+    margin: 0 1.25rem 0 0!important;
     padding: 0.9rem 0.6rem;
     line-height: 1.1em;
     letter-spacing: 0.2rem;
@@ -390,6 +386,7 @@
         margin: 1.9rem 0;
         padding: 0 1rem;
     }
+
 }
 
 @media only screen and (max-width: 1124px) {
@@ -424,6 +421,12 @@
         width: 100%;
     }
 
+}
+
+@media only screen and (max-width: 1024px){
+    .nav {
+        display: none !important;
+    }
 }
 
 @media only screen and (max-width: 600px) {
