@@ -544,6 +544,8 @@ describe('4> Guest user Purchase "paid" product process with country "NZ"', () =
 
             cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
 
+            cy.wait(5000);
+
             cy.get('span[class*=item-price]').then(option => {
                 const cartPrice = [...option].map(o => o.innerText);
                 expect(cartPrice).to.deep.eq([priceWithInstallation]);

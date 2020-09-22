@@ -110,6 +110,8 @@ describe('Purchase product process',  () => {
 
             cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
 
+            cy.wait(5000);
+
             cy.get('span[class*=item-price]').then(option => {
                 const cartPrice = [...option].map(o => o.innerText );
                 expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
@@ -145,14 +147,10 @@ describe('Purchase product process',  () => {
 
         cy.get("body").then($body => {
             if ($body.find('svg[class*=indicator-indicator]').length > 0) {
-                cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
-                    addPaymentInfo();
-
-                });
-            }
-            else {
-                cy.fixture('../fixtures/userBillingInfo').then(  function(data) {
-                    addPaymentInfo();
+                cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('be.visible').then(() => {
+                    cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('not.visible').then(() => {
+                        addPaymentInfo();
+                    });
                 });
             }
         });
