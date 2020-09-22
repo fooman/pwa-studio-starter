@@ -2,16 +2,12 @@
     font-size: 2.3em;
     text-align: left;
     padding-bottom: 1rem;
-    font-weight: var(--venia-global-fontWeight-thin);
-    color: #7d7d7d;
 }
 
 .title {
     font-size: var(--venia-global-fontSize-500);
     text-align: left;
     padding-bottom: 1.5rem;
-    font-weight: 400;
-    color: #7d7d7d;
 }
 
 .commandSection {

@@ -17,9 +17,6 @@
 }
 
 .root h4 {
-    font-weight: var( --venia-global-fontWeight-thin);
-    font-family: var(--venia-global-fontFamily-sansSerif);
-    color: #2b2b2b;
     line-height: var(--venia-global-lineHeight-200);
     padding: 0;
     font-size: var(--venia-global-fontSize-500);

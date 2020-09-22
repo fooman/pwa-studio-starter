@@ -1,8 +1,6 @@
 .root {
     background: url('./images/readybg.png') #c2cbd0 bottom center no-repeat;
     padding: 7.5rem 0;
-    font-weight: var( --venia-global-fontWeight-thin);
-    font-family: var(--venia-global-fontFamily-sansSerif);
     text-align: center;
 }
 
@@ -12,8 +10,6 @@
     line-height: 1.1em;
     display: inline-block;
     max-width: 48.125rem;
-    font-weight: var( --venia-global-fontWeight-thin);
-    font-family: var(--venia-global-fontFamily-sansSerif);
 }
 
 .line {

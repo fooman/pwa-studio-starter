@@ -51,7 +51,7 @@
 }
 
 :global(h1) {
-    font-size: var(--venia-global-fontSize-1100);
+    font-size: var(--venia-global-fontSize-1800);
 }
 
 :global(h2) {
