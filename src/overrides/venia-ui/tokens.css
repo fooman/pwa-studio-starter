@@ -7,14 +7,16 @@
     --venia-global-anim-standard: cubic-bezier(0.4, 0, 0.2, 1);
 
     /* color */
-    --fooman-global-color-dark-gray: 112, 112, 112;
     --fooman-global-color-darked-gray: 28, 28, 28;
+    --fooman-global-color-gray: 128, 128, 128;
     --fooman-global-color-light-gray: 206, 206, 206;
     --fooman-global-color-teal: 55, 100, 111;
     --fooman-global-color-darked-orange: 255, 104, 41;
     --fooman-global-color-shado-gray: 0 0 0;
     --fooman-global-color-shado-light-orange: 214 154 129;
     --fooman-text-on-dark: 207 207 207;
+    --fooman-global-color-black: 17 7 41;
+    --fooman-global-color-yellow: 250 196 0;
     --fooman-global-color-font-gray:88 88 88;
     --fooman-global-color-heading-gray: 101 101 101;
     --fooman-global-color-exclamation-red:178 46 47;
@@ -41,12 +43,12 @@
     --venia-global-color-gray-300: 223 225 226;
     --venia-global-color-gray-400: 181 184 186;
     --venia-global-color-gray-500: 149 154 157;
-    --venia-global-color-gray-600: 118 123 127;
+    --venia-global-color-gray-600: var(--fooman-global-color-gray);
     --venia-global-color-gray-700: 84 93 99;
     --venia-global-color-gray-800: 51 63 71;
     --venia-global-color-gray-900: 23 32 38;
     --venia-global-color-gray: var(--venia-global-color-gray-100);
-    --venia-global-color-gray-dark: var(--fooman-global-color-dark-gray);
+    --venia-global-color-gray-dark: var(--fooman-global-color-gray);
     --venia-global-color-gray-darker: var(--fooman-global-color-darked-gray);
     --venia-global-color-green-400: 51 171 132;
     --venia-global-color-green-500: 45 157 120;
@@ -66,7 +68,7 @@
     --venia-global-color-background: var(--venia-global-color-gray-50);
     --venia-global-color-border: var(--venia-global-color-gray-300);
     --venia-global-color-error: var(--venia-global-color-red-700);
-    --venia-global-color-text: var(--venia-global-color-gray-900);
+    --venia-global-color-text: var(--fooman-global-color-gray);
     --venia-global-color-text-alt: var(--fooman-text-on-dark);
     --venia-global-color-text-hint: var(--venia-global-color-gray-500);
     --venia-global-color-warning-dark: var(--venia-global-color-red-700);

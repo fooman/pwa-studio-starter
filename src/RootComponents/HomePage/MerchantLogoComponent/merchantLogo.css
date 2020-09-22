@@ -12,7 +12,6 @@
     max-width: 43.75rem;
     font-weight: var( --venia-global-fontWeight-thin);
     font-family: var(--venia-global-fontFamily-sansSerif);
-    color: rgb(var(--fooman-global-color-font-gray));
 }
 
 .wrapper {

@@ -1,5 +1,5 @@
 .root {
-    background-color: rgb(var(--venia-global-color-gray-darker));
+    background-color: rgb(var(--fooman-global-color-black));
     border-top: 1px solid rgb(var(--venia-global-color-border));
     color: black;
     margin-top: 0;
@@ -32,13 +32,14 @@
     content:"";
     display: block;
     width: 3.1rem;
-    border-bottom: 1px solid rgb(var(--fooman-global-color-darked-orange));
+    border-bottom: 2px solid rgb(var(--fooman-global-color-yellow));
     margin: 1.5em 0 1.5em;
 }
 
 .tileTitle {
     margin: 1rem 0;
     text-transform: uppercase;
+    color: rgb(var(--venia-global-color-text-alt));
     font-family: var(--venia-global-fontFamily-sansSerif);
 }
 

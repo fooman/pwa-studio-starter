@@ -44,13 +44,14 @@
 :global(h4),
 :global(h5),
 :global(h6) {
+    color: rgb(var(--fooman-global-color-black));
     font-size: var(--venia-global-fontSize-200);
     font-weight: var(--venia-global-fontWeight-extrabold);
     margin: 0;
 }
 
 :global(h1) {
-    font-size: var(--venia-global-fontSize-600);
+    font-size: var(--venia-global-fontSize-1100);
 }
 
 :global(h2) {

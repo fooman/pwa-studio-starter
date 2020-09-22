@@ -14,7 +14,6 @@
     max-width: 48.125rem;
     font-weight: var( --venia-global-fontWeight-thin);
     font-family: var(--venia-global-fontFamily-sansSerif);
-    color: rgb(var(--fooman-global-color-heading-gray));
 }
 
 .line {
