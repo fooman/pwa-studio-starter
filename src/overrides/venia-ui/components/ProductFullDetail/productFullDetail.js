@@ -230,10 +230,9 @@ const ProductFullDetail = props => {
         }
     }
 
-    const handleAddToCartWithNave = useCallback(
-        async () => {
-            await handleAddToCart()
-        }, []);
+    const handleAddToCartWithNave = async () => {
+            await handleAddToCart();
+        };
 
     const scrollFeatureComponent = (tabClassName) => {
         if (tabClassName === 'features') {
