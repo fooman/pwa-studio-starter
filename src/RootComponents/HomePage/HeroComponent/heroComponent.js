@@ -30,7 +30,7 @@ const HeroComponent = () => {
                 </div>
                 <div className={classes.Heading}>
                     <p className={classes.separateHeading}>
-                        Hi! I'm Kristof
+                        Hi! I'm Kristof - TEST UPDATE
                    <br/>
                    Here at Fooman we create awesome Magento extensions ... </p>
                 </div>
