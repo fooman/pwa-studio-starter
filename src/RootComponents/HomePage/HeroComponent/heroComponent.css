@@ -15,7 +15,6 @@
 .separateHeading {
     font-size: var(--venia-global-fontSize-1700);
     line-height: 3.4375rem;
-    font-weight: var(--venia-global-fontWeight-thin);
 }
 
 .MagentoImages {

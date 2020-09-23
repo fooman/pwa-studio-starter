@@ -26,7 +26,8 @@
 }
 
 .name {
-    font-weight: 600;
+    color: rgb(var(--fooman-global-color-black));
+    font-weight: var(--venia-global-fontWeight-semibold);
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
     margin-bottom: 0.5rem;

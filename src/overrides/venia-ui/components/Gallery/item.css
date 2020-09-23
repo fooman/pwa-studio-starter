@@ -39,7 +39,8 @@
 }
 
 .name {
-    font-family: var(--venia-global-fontFamily-roboto-light);
+    font-family: var(--venia-global-fontFamily-sansSerif);
+    font-weight: var( --venia-global-fontWeight-thin);
     font-size: var(--venia-global-fontSize-300);
     line-height: 1.3em;
     margin-bottom: 0.6rem;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
-import Image from '@magento/venia-ui/lib/components/Image';
+import SimpleImage from '@magento/venia-ui/lib/components/Image/simpleImage';
 import logo from '../../../../components/Logo/FoomonLogo_Landscape.svg';
 
 /**
@@ -21,7 +21,7 @@ const Logo = props => {
     const { formatMessage } = useIntl();
 
     return (
-        <Image
+        <SimpleImage
             alt={formatMessage({ id: 'Fooman' })}
             classes={{ image: classes.logo }}
             style={{top: '2px'}}

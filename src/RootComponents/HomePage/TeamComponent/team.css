@@ -19,7 +19,6 @@
     color: white;
     line-height: 1.1em;
     text-align: center;
-    font-weight: 300;
     padding: 0.625rem;
 }
 
@@ -75,7 +74,7 @@
 
 .memberName {
     line-height: 1.3em;
-    font-family: 'robotoregular',sans-serif;
+    font-family: var(--venia-global-fontFamily-sansSerif);
     font-size: var(--venia-global-fontSize-1000);
     margin: 0 auto;
     color: rgb(var(--venia-global-color-gray-50));

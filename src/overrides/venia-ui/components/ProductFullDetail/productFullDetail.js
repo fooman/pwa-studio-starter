@@ -2,6 +2,7 @@ import React, {Fragment, Suspense, useRef, useCallback, useEffect } from 'react'
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
+import debounce from 'lodash/debounce';
 import  { StarRatingComponent } from '../../../../components/StarRatingComponent/starRatingComponent';
 import { resourceUrl } from '@magento/venia-drivers';
 
@@ -276,7 +277,7 @@ const ProductFullDetail = props => {
                 rect.left >= 0 &&
                 rect.right <= (window.innerWidth || document.documentElement.clientWidth);
 
-            !isInViewport ? element.style.display = 'flex' : element.style.display = 'none';
+            !isInViewport ? element.className = classes.nav : element.className = classes.noStickyNav;
         }
     };
 
@@ -284,25 +285,23 @@ const ProductFullDetail = props => {
         if (fieldErrorObj && Object.keys(fieldErrorObj).length > 0) scrollToRef(optionRef)
     },[fieldErrorObj]);
 
-    useEffect( () => {
-       window.addEventListener('scroll', addToCartBtnScrolled);
-    },[]);
+    useEffect(() => {
+        const debounceWrapper = debounce(addToCartBtnScrolled, 200)
+        window.addEventListener('scroll', debounceWrapper)
+        return () => {
+            window.removeEventListener('scroll', debounceWrapper)
+        }
+    }, [])
 
     return (
         <Fragment>
-            <div id = {'navDiv'}ref={navRef} className={classes.nav} >
+            <div id = {'navDiv'} ref={navRef} className={classes.noStickyNav} >
                 <div className={classes.wrapNavigation}>
                 <div className={classes.navProductSection}>
-                    <div className={classes.navProductImg}>
-                        <img
-                            className={classes.navImage}
-                            src={product.small_image}
-                        />
-                    </div>
                     <div className={classes.navHeadingAndRating}>
-                    <div className={classes.navProductHeading}>
+                    <h2 className={classes.navProductHeading}>
                         {productDetails.name}
-                    </div>
+                    </h2>
                     <div className={classes.navProductReview}>
                         {product.review_count? (
                                 <div className={classes.navReviewDiv}>
@@ -439,8 +438,6 @@ const ProductFullDetail = props => {
                     </div>
                 </div>
             </Form>
-
-
                 <div>
                     <section ref={featuareRef} id="featuresSection" className={classes.description}>
                         <a id="Features"><h2>Product Features</h2></a>
@@ -482,10 +479,9 @@ ProductFullDetail.propTypes = {
     classes: shape({
         productContainer: string,
         nav: string,
+        noStickyNav: string,
         wrapNavigation: string,
         navProductSection: string,
-        navProductImg: string,
-        navImage: string,
         imageContainer: string,
         navHeadingAndRating: string,
         navProductHeading: string,

@@ -2,7 +2,8 @@
     border-bottom: 0.063rem solid #e2e1e1;
     padding: 6.25rem 0 7.5rem;
     font-size: var(--venia-global-fontSize-300);
-    font-family: "robotothin";
+    font-weight: var( --venia-global-fontWeight-thin);
+    font-family: var(--venia-global-fontFamily-sansSerif);
     line-height: 1.5em;
     text-align: center;
     background-color: white;
@@ -21,9 +22,6 @@
     line-height: 1.1em;
     display: inline-block;
     max-width: 43.75rem;
-    font-family: 'Roboto', sans-serif;
-    color: rgb(var(--fooman-global-color-font-gray));
-    font-weight: 300;
 }
 
 .line {
@@ -44,7 +42,7 @@
 }
 
 .text {
-    font-family: "robotoregular",Arial;
+    font-family: var(--venia-global-fontFamily-sansSerif);
     font-size: var(--venia-global-fontSize-500);
     line-height: 1.3em;
     text-align: center;

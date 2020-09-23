@@ -95,7 +95,9 @@ export const StarRatingComponent = props => {
                 </label>
             );
 
-            starNodes.push(starNodeInput);
+            if (editing) {
+                starNodes.push(starNodeInput);
+            }
             starNodes.push(starNodeLabel);
         }
 
