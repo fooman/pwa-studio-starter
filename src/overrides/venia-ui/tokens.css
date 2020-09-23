@@ -68,7 +68,7 @@
     --venia-global-color-background: var(--venia-global-color-gray-50);
     --venia-global-color-border: var(--venia-global-color-gray-300);
     --venia-global-color-error: var(--venia-global-color-red-700);
-    --venia-global-color-text: var(--fooman-global-color-gray);
+    --venia-global-color-text: var(--fooman-global-color-font-gray);
     --venia-global-color-text-alt: var(--fooman-text-on-dark);
     --venia-global-color-text-hint: var(--venia-global-color-gray-500);
     --venia-global-color-warning-dark: var(--venia-global-color-red-700);
