@@ -12,8 +12,24 @@
     position: fixed;
     top: 5rem;
     z-index: 5;
-    display: none;
+    display: flex;
     padding: 0.625rem 0rem;
+    opacity: 1;
+    visibility: visible;
+    transition-property: opacity, visibility, transform;
+    transform: translate3d(0, 0, 0);
+    transition-duration: 192ms;
+    transition-timing-function: var(--venia-global-anim-out);
+}
+
+.noStickyNav {
+    composes: nav;
+    opacity: 0;
+    visibility: hidden;
+    transition-property: opacity, visibility, transform;
+    transform: translate3d(0, -1rem, 0);
+    transition-duration: 192ms;
+    transition-timing-function: var(--venia-global-anim-out);
 }
 
 .wrapNavigation {
@@ -33,18 +49,9 @@
     align-items: center;
 }
 
-.navProductImg {
-
-}
-
 .imageContainer {
     display: flex;
     align-items: center;
-}
-
-.navImage {
-    position: unset;
-    width: 3.75rem;
 }
 
 .navHeadingAndRating {

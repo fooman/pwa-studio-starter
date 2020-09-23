@@ -276,7 +276,7 @@ const ProductFullDetail = props => {
                 rect.left >= 0 &&
                 rect.right <= (window.innerWidth || document.documentElement.clientWidth);
 
-            !isInViewport ? element.style.display = 'flex' : element.style.display = 'none';
+            !isInViewport ? element.className = classes.nav : element.className = classes.noStickyNav;
         }
     };
 
@@ -290,19 +290,13 @@ const ProductFullDetail = props => {
 
     return (
         <Fragment>
-            <div id = {'navDiv'}ref={navRef} className={classes.nav} >
+            <div id = {'navDiv'} ref={navRef} className={classes.noStickyNav} >
                 <div className={classes.wrapNavigation}>
                 <div className={classes.navProductSection}>
-                    <div className={classes.navProductImg}>
-                        <img
-                            className={classes.navImage}
-                            src={product.small_image}
-                        />
-                    </div>
                     <div className={classes.navHeadingAndRating}>
-                    <div className={classes.navProductHeading}>
+                    <h2 className={classes.navProductHeading}>
                         {productDetails.name}
-                    </div>
+                    </h2>
                     <div className={classes.navProductReview}>
                         {product.review_count? (
                                 <div className={classes.navReviewDiv}>
@@ -482,10 +476,9 @@ ProductFullDetail.propTypes = {
     classes: shape({
         productContainer: string,
         nav: string,
+        noStickyNav: string,
         wrapNavigation: string,
         navProductSection: string,
-        navProductImg: string,
-        navImage: string,
         imageContainer: string,
         navHeadingAndRating: string,
         navProductHeading: string,
