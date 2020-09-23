@@ -2,6 +2,7 @@ import React, {Fragment, Suspense, useRef, useCallback, useEffect } from 'react'
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Helmet } from 'react-helmet-async';
+import debounce from 'lodash/debounce';
 import  { StarRatingComponent } from '../../../../components/StarRatingComponent/starRatingComponent';
 import { resourceUrl } from '@magento/venia-drivers';
 
@@ -284,9 +285,13 @@ const ProductFullDetail = props => {
         if (fieldErrorObj && Object.keys(fieldErrorObj).length > 0) scrollToRef(optionRef)
     },[fieldErrorObj]);
 
-    useEffect( () => {
-       window.addEventListener('scroll', addToCartBtnScrolled);
-    },[]);
+    useEffect(() => {
+        const debounceWrapper = debounce(addToCartBtnScrolled, 200)
+        window.addEventListener('scroll', debounceWrapper)
+        return () => {
+            window.removeEventListener('scroll', debounceWrapper)
+        }
+    }, [])
 
     return (
         <Fragment>

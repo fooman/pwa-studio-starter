@@ -18,8 +18,8 @@
     visibility: visible;
     transition-property: opacity, visibility, transform;
     transform: translate3d(0, 0, 0);
-    transition-duration: 192ms;
-    transition-timing-function: var(--venia-global-anim-out);
+    transition-duration: 150ms;
+    transition-timing-function: var(--venia-global-anim-in);
 }
 
 .noStickyNav {
@@ -28,7 +28,7 @@
     visibility: hidden;
     transition-property: opacity, visibility, transform;
     transform: translate3d(0, -1rem, 0);
-    transition-duration: 192ms;
+    transition-duration: 150ms;
     transition-timing-function: var(--venia-global-anim-out);
 }
 
