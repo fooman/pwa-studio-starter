@@ -31,15 +31,15 @@
 .tileTitle:after {
     content:"";
     display: block;
-    width: 3.1rem;
-    border-bottom: 2px solid rgb(var(--fooman-global-color-yellow));
+    width: 2.5rem;
+    border-bottom: 0.125rem solid rgb(var(--fooman-global-color-yellow));
     margin: 1.5em 0 1.5em;
 }
 
 .tileTitle {
     margin: 1rem 0;
     text-transform: uppercase;
-    color: rgb(var(--venia-global-color-text-alt));
+    color: white;
     font-family: var(--venia-global-fontFamily-sansSerif);
 }
 
