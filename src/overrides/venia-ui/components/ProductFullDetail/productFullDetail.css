@@ -233,7 +233,7 @@
     font-size: var(--venia-global-fontSize-1100);
 }
 
-section {
+.root section {
     margin-bottom: 5rem;
 }
 
