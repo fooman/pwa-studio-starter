@@ -438,8 +438,6 @@ const ProductFullDetail = props => {
                     </div>
                 </div>
             </Form>
-
-
                 <div>
                     <section ref={featuareRef} id="featuresSection" className={classes.description}>
                         <a id="Features"><h2>Product Features</h2></a>

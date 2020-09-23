@@ -22,6 +22,10 @@
     transition-timing-function: var(--venia-global-anim-in);
 }
 
+.nav h2 {
+    font-size: var(--venia-global-fontSize-400);
+}
+
 .noStickyNav {
     composes: nav;
     opacity: 0;
@@ -225,6 +229,13 @@
     grid-column: 1 / span 1;
     grid-row: fold / span 1;
 }
+h2 {
+    font-size: var(--venia-global-fontSize-1100);
+}
+
+section {
+    margin-bottom: 5rem;
+}
 
 .descriptionTitle {
     composes: sectionTitle;
@@ -308,13 +319,6 @@
     border-radius: 0.375rem;
     background-color: rgb(var(--fooman-global-color-darked-orange));
     color: white;
-}
-
-.reviewSection {
-    height: auto !important;
-    line-height: normal;
-    margin: 0.625rem;
-    min-height: 1.125rem;
 }
 
 @media (min-width: 1024px) {
