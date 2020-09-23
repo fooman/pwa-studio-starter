@@ -333,11 +333,11 @@ const ProductFullDetail = props => {
                 <div className={classes.navAddToCart}>
                     <div id={"addToCartOnNav"} className={classes.cartActions}>
                         <Button
+                            data-testid="productFullDetail-addtocart-button"
                             priority="high"
                             className={classes.navAddToCartBtn}
                             onClick={handleAddToCartWithNave}
                             disabled={isAddToCartDisabled}
-                            data-testid="productFullDetail-addtocart-button"
                         >
                             Add to Cart
                         </Button>
@@ -427,10 +427,10 @@ const ProductFullDetail = props => {
                         />
                         <div ref={addToCartId} id={'addToCartId'} className={classes.cartActions}>
                             <Button
+                                data-testid="productFullDetail-addToCartBtn"
                                 priority="high"
                                 onClick={handleAddToCart}
                                 disabled={isAddToCartDisabled}
-                                data-testid="productFullDetail-addtocart-button"
                             >
                                 Add to Cart
                             </Button>

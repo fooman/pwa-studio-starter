@@ -60,33 +60,37 @@ describe('Purchase product process',  () => {
 
     const addPaymentInfo = () => {
         cy.fixture('../fixtures/userBillingInfo').then(  function(data) {
-            cy.get('input[id="braintree__card-view-input__cardholder-name"]').type(data.creditCardInfo.cardHolderName);
-            /*it is use to get iframe element using iframe document*/
-            const getIframeDocument = (id) => {
-                return cy.get(`iframe[id=${id}]`)
-                    .its('0.contentDocument').should('exist')
-            }
+            cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('be.visible').then(() => {
+                cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('not.visible').then(() => {
+                    cy.get('input[id="braintree__card-view-input__cardholder-name"]').type(data.creditCardInfo.cardHolderName);
+                    /*it is use to get iframe element using iframe document*/
+                    const getIframeDocument = (id) => {
+                        return cy.get(`iframe[id=${id}]`)
+                            .its('0.contentDocument').should('exist')
+                    }
 
-            const getIframeBody = (id) => {
-                // get the document
-                return getIframeDocument(id)
-                    .its('body').should('not.be.undefined')
-                    .then(cy.wrap)
-            }
+                    const getIframeBody = (id) => {
+                        // get the document
+                        return getIframeDocument(id)
+                            .its('body').should('not.be.undefined')
+                            .then(cy.wrap)
+                    }
 
-            getIframeBody('braintree-hosted-field-number').find('#credit-card-number').type(data.creditCardInfo.cardNumber);
-            getIframeBody('braintree-hosted-field-expirationDate').find('#expiration').type(featureExpirationDate);
-            getIframeBody('braintree-hosted-field-cvv').find('#cvv').type(data.creditCardInfo.cvv);
+                    getIframeBody('braintree-hosted-field-number').find('#credit-card-number').type(data.creditCardInfo.cardNumber);
+                    getIframeBody('braintree-hosted-field-expirationDate').find('#expiration').type(featureExpirationDate);
+                    getIframeBody('braintree-hosted-field-cvv').find('#cvv').type(data.creditCardInfo.cvv);
 
-            cy.get('button[data-testid="checkoutPage-reviewOrderBtn"]').click();
+                    cy.get('button[data-testid="checkoutPage-reviewOrderBtn"]').click();
+                });
+            });
         });
     }
 
     it('Open product and confirm price', () => {
 
         cy.get("body").then($body => {
-            if ($body.find('svg[class*=indicator-indicator]').length > 0) {
-                cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
+            if ($body.find('svg[class*=indicator-indicator]', { timeout: 50000 }).length > 0) {
+                cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('not.visible').then(() => {
                     openProductAndConfirmPrice();
                 });
             }
@@ -110,7 +114,7 @@ describe('Purchase product process',  () => {
 
             cy.get('button[data-testid="miniCart-shoppingBtn"]').click();
 
-            cy.get('span[class*=item-price]').then(option => {
+            cy.get('span[class*=item-price]', { timeout: 50000}).should('be.visible').then(option => {
                 const cartPrice = [...option].map(o => o.innerText );
                 expect(cartPrice).to.deep.eq([data.freeProductWithOption.Option_1_nzd_price]);
             });
@@ -127,8 +131,8 @@ describe('Purchase product process',  () => {
     it('guest 1> billing address with country sholud have region', () => {
 
         cy.get("body").then($body => {
-            if ($body.find('svg[class*=indicator-indicator]').length > 0) {
-                cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
+            if ($body.find('svg[class*=indicator-indicator]', { timeout: 50000}).length > 0) {
+                cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('not.visible').then(() => {
                     addBillingAddress();
                 });
             }
@@ -140,37 +144,30 @@ describe('Purchase product process',  () => {
     });
 
     it('guest 2> Payment Information ',   () => {
-
-        cy.wait(5000);
-
         cy.get("body").then($body => {
-            if ($body.find('svg[class*=indicator-indicator]').length > 0) {
-                cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
-                    addPaymentInfo();
-
+            if ($body.find('svg[class*=indicator-indicator]', { timeout: 50000 }).length > 0) {
+                cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('be.visible').then(() => {
+                    cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('not.visible').then(() => {
+                        addPaymentInfo();
+                    });
                 });
             }
-            else {
-                cy.fixture('../fixtures/userBillingInfo').then(  function(data) {
-                    addPaymentInfo();
-                });
-            }
+            else addPaymentInfo();
         });
     });
 
     it('guest 3> Place order ',() => {
-
         cy.get("body").then($body => {
-            if ($body.find('svg[class*=indicator-indicator]').length > 0) {
-                cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('be.visible').then(() => {
-
-                    cy.get('svg[class*=indicator-indicator]', { timeout: 40000 }).should('not.visible').then(() => {
+            if ($body.find('svg[class*=indicator-indicator]', { timeout: 50000 }).length > 0) {
+                cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('be.visible').then(() => {
+                    cy.get('svg[class*=indicator-indicator]', { timeout: 50000 }).should('not.visible').then(() => {
                         cy.get('button[data-testid="checkoutPage-placeOrderBtn"]').click();
                     });
                 })
             }
-            else cy.get('button[data-testid="checkoutPage-placeOrderBtn"]').click();
+            else {
+                cy.get('button[data-testid="checkoutPage-placeOrderBtn"]').click();
+            }
         });
-        cy.wait(5000);
     });
 });

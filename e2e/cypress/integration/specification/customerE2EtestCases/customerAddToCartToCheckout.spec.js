@@ -33,9 +33,9 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
     });
 
     it('Delete previous item from cart', () => {
-        cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('be.visible').then(() => {
+        cy.get('svg[class*=accountChip-loader]', {timeout: 50000}).should('be.visible').then(() => {
 
-            cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('not.visible').then(() => {
+            cy.get('svg[class*=accountChip-loader]', {timeout: 50000}).should('not.visible').then(() => {
 
                 cy.get('button[aria-label="Toggle My Account Menu"]').click();
 
@@ -81,9 +81,9 @@ describe('1> Sign in user Purchase "paid" product process with country "US"',  (
                 cy.get('button[type="submit"]').first().click()
             });
 
-            cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('be.visible').then(() => {
+            cy.get('svg[class*=accountChip-loader]', {timeout: 50000}).should('be.visible').then(() => {
 
-                cy.get('svg[class*=accountChip-loader]', {timeout: 40000}).should('not.visible').then(() => {
+                cy.get('svg[class*=accountChip-loader]', {timeout: 50000}).should('not.visible').then(() => {
                     cy.get(`p[data-testid="productFullDetail-productPrice"]`).then(option => {
                         const actualPrice = [...option].map(o => o.innerText);
                         expect(actualPrice).to.deep.eq([data.paidProductWithOption.NZD_Price]);
