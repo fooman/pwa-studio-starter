@@ -21,9 +21,9 @@ body: SubfolderResponse.body
 SubfolderResponse:
   resolver: conditional
   when:
-    - matches: request.url.pathname
-      pattern: '^/(graphql|rest|media|downloadable)(/|$)'
-      use: veniaProxy
+    #    - matches: request.url.pathname
+    #      pattern: '^/(graphql|rest|media)(/|$)'
+    #      use: veniaProxy
     - matches: request.url.pathname
       pattern: '^/404.html$'
       use: notFoundResponse
@@ -36,7 +36,7 @@ SubfolderResponse:
     - matches: fileExtension
       pattern: '(js|json|png|svg|ico|css|txt|jpg|gif)'
       use: veniaStatic
-  default: veniaResponse
+  default: comingSoonResponse
 
 notFoundResponse:
   resolver: inline
