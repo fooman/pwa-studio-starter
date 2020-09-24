@@ -47,6 +47,7 @@ p {
     .backgroundImage {
         background-image: url("anyQuestion_bg_v2.jpg");
         background-size: inherit;
+        background-repeat: no-repeat;
     }
 }
 
