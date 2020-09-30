@@ -64,6 +64,8 @@ comingSoonResponse:
     headers:
       resolver: inline
       inline:
+        cache-control:
+          inline: max-age=86400
         content-type:
           inline: text/html
     body:
