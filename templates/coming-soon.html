@@ -44,9 +44,16 @@
             background-size: cover;
         }
     </style>
+    <script>
+        var tag = document.createElement("p");
+        var text = document.createTextNode("Coming soon.");
+        tag.appendChild(text);
+        var element = document.getElementById("main");
+        element.appendChild(tag);
+    </script>
 </head>
 <body>
-<div class="main">
+<div class="main" id="main">
     <h1>We are working on it ...</h1>
     <img src="/assets/icons/fooman_logo_144x144.png" alt="Fooman Logo"/>
 </div>
