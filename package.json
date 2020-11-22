@@ -29,9 +29,9 @@
     "@magento/venia-drivers": "src/drivers"
   },
   "dependencies": {
-    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-7.0.0-fooman-canary-2020-46.tgz",
-    "@magento/venia-sample-language-packs": "https://canary-packages.fooman.com/extensions/venia-sample-language-packs/magento-venia-sample-language-packs-0.0.1-fooman-canary-2020-46.tgz",
-    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.0.0-fooman-canary-2020-46.tgz"
+    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-7.0.0-fooman-canary-2020-47.tgz",
+    "@magento/venia-sample-language-packs": "https://canary-packages.fooman.com/extensions/venia-sample-language-packs/magento-venia-sample-language-packs-0.0.1-fooman-canary-2020-47.tgz",
+    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.0.0-fooman-canary-2020-47.tgz"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",
@@ -45,12 +45,12 @@
     "@babel/plugin-transform-runtime": "~7.4.4",
     "@babel/preset-env": "~7.3.4",
     "@babel/runtime": "~7.4.2",
-    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.1.0-fooman-canary-2020-46.tgz",
+    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.1.0-fooman-canary-2020-47.tgz",
     "@magento/eslint-config": "~1.5.0",
-    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-3.0.0-fooman-canary-2020-46.tgz",
-    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-8.0.0-fooman-canary-2020-46.tgz",
-    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.0.0-fooman-canary-2020-46.tgz",
-    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-5.0.0-fooman-canary-2020-46.tgz",
+    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-3.0.0-fooman-canary-2020-47.tgz",
+    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-8.0.0-fooman-canary-2020-47.tgz",
+    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.0.0-fooman-canary-2020-47.tgz",
+    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-5.0.0-fooman-canary-2020-47.tgz",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.1",
     "@storybook/react": "~5.2.6",
     "apollo-cache-persist": "~0.1.1",
@@ -78,7 +78,7 @@
     "file-loader": "~4.0.0",
     "graphql": "~15.3.0",
     "graphql-cli": "~3.0.11",
-    "graphql-cli-validate-magento-pwa-queries": "https://canary-packages.fooman.com/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.1-fooman-canary-2020-46.tgz",
+    "graphql-cli-validate-magento-pwa-queries": "https://canary-packages.fooman.com/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.1-fooman-canary-2020-47.tgz",
     "html-webpack-plugin": "~3.2.0",
     "informed": "~2.11.17",
     "jarallax": "~1.11.1",
@@ -132,14 +132,14 @@
     }
   },
   "resolutions": {
-    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.1.0-fooman-canary-2020-46.tgz",
-    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.0.0-fooman-canary-2020-46.tgz",
-    "@magento/venia-sample-language-packs": "https://canary-packages.fooman.com/extensions/venia-sample-language-packs/magento-venia-sample-language-packs-0.0.1-fooman-canary-2020-46.tgz",
-    "graphql-cli-validate-magento-pwa-queries": "https://canary-packages.fooman.com/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.1-fooman-canary-2020-46.tgz",
-    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-3.0.0-fooman-canary-2020-46.tgz",
-    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-8.0.0-fooman-canary-2020-46.tgz",
-    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-7.0.0-fooman-canary-2020-46.tgz",
-    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.0.0-fooman-canary-2020-46.tgz",
-    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-5.0.0-fooman-canary-2020-46.tgz"
+    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.1.0-fooman-canary-2020-47.tgz",
+    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.0.0-fooman-canary-2020-47.tgz",
+    "@magento/venia-sample-language-packs": "https://canary-packages.fooman.com/extensions/venia-sample-language-packs/magento-venia-sample-language-packs-0.0.1-fooman-canary-2020-47.tgz",
+    "graphql-cli-validate-magento-pwa-queries": "https://canary-packages.fooman.com/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.1-fooman-canary-2020-47.tgz",
+    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-3.0.0-fooman-canary-2020-47.tgz",
+    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-8.0.0-fooman-canary-2020-47.tgz",
+    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-7.0.0-fooman-canary-2020-47.tgz",
+    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.0.0-fooman-canary-2020-47.tgz",
+    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-5.0.0-fooman-canary-2020-47.tgz"
   }
 }
