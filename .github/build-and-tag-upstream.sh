@@ -1,5 +1,6 @@
 #!/bin/bash
 pwd
+ls -al
 echo "$1"
 SHA_LOOKUP=${1//[.]/_}
 echo "$SHA_LOOKUP"
@@ -11,6 +12,7 @@ else
 	echo "COMMIT to USE" ${!SHA_LOOKUP}
     cd $GITHUB_WORKSPACE
     git checkout $COMMIT_SHA
+    ls -al
     cd $GITHUB_WORKSPACE/packages/pwa-buildpack && npm install
     DEBUG_PROJECT_CREATION=true $GITHUB_WORKSPACE/packages/pwa-buildpack/bin/buildpack create-project $GITHUB_WORKSPACE/../$1-to-delete --template "venia-concept" --name "pwa-studio" --author "Test Author<user@example.com>" --backend-url "https://master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud/" --braintree-token "sandbox_8yrzsvtm_s2bg8fs563crhqzk" --npm-client "yarn" --install 0
     cp $GITHUB_WORKSPACE/../$TAG-to-delete/package.json > $GITHUB_WORKSPACE/output/packages/pwa-create/package-$1.json
