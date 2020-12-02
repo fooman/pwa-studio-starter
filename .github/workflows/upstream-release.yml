@@ -1,4 +1,4 @@
-name: Package Upstrem
+name: Package Upstream
 on: push
 
 jobs:
@@ -13,8 +13,5 @@ jobs:
       with:
         fetch-depth: 0
       name: Checkout files
-    - run: .github/build-and-tag-upstream ${{ matrix.release }}
-
-    - run: cd $GITHUB_WORKSPACE/packages/pwa-buildpack && npm install
     - run: mkdir -p $GITHUB_WORKSPACE/output/packages/pwa-create
-    - run: .github/build-and-tag-upstream.sh
+    - run: .github/build-and-tag-upstream.sh ${{ matrix.release }}
