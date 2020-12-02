@@ -1,12 +1,14 @@
 #!/bin/bash
-echo "$1"
 pwd
+echo "$1"
+SHA_LOOKUP=${1//[.]/_}
+echo "$SHA_LOOKUP"
 source $GITHUB_WORKSPACE/.github/tags-to-build
 if git rev-parse $1 >/dev/null 2>&1
 then
     echo "Found tag"
 else
-	echo "COMMIT to USE" ${!1}
+	echo "COMMIT to USE" ${!SHA_LOOKUP}
     cd $GITHUB_WORKSPACE
     git checkout $COMMIT_SHA
     cd $GITHUB_WORKSPACE/packages/pwa-buildpack && npm install
