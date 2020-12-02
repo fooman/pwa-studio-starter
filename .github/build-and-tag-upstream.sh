@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "$1"
-source tags-to-build
+pwd
+source $GITHUB_WORKSPACE/.github/tags-to-build
 if git rev-parse $1 >/dev/null 2>&1
 then
     echo "Found tag"
