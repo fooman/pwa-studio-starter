@@ -1,0 +1,20 @@
+name: Package Upstrem
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        release: ["v8.0.0"]
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+      name: Checkout files
+    - run: .github/build-and-tag-upstream ${{ matrix.release }}
+
+    - run: cd $GITHUB_WORKSPACE/packages/pwa-buildpack && npm install
+    - run: mkdir -p $GITHUB_WORKSPACE/output/packages/pwa-create
+    - run: .github/build-and-tag-upstream.sh
