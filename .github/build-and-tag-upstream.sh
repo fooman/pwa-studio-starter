@@ -21,6 +21,7 @@ else
     cd $GITHUB_WORKSPACE/../pwa-studio-$TAG && DEBUG_PROJECT_CREATION=true ./packages/pwa-buildpack/bin/buildpack create-project ../$TAG-to-delete --template "venia-concept" --name "pwa-studio-canary" --author "Test Author<user@example.com>" --backend-url "https://master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud/" --braintree-token "sandbox_8yrzsvtm_s2bg8fs563crhqzk" --npm-client "yarn" --install 0
     echo "Debug output"
     ls -al $GITHUB_WORKSPACE/../
+    echo $GITHUB_WORKSPACE/../$TAG-to-delete/package.json | jq 'del(.resolutions)' $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
     cat $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
 
     echo "Update code"
