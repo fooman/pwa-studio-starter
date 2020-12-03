@@ -1,4 +1,5 @@
 name: Package Upstream
+on:
   push:
     branches:
       - releases
