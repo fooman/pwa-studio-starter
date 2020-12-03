@@ -20,9 +20,10 @@ else
     echo "create packages"
     cd $GITHUB_WORKSPACE/../pwa-studio-$TAG && DEBUG_PROJECT_CREATION=true ./packages/pwa-buildpack/bin/buildpack create-project ../$TAG-to-delete --template "venia-concept" --name "pwa-studio-canary" --author "Test Author<user@example.com>" --backend-url "https://master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud/" --braintree-token "sandbox_8yrzsvtm_s2bg8fs563crhqzk" --npm-client "yarn" --install 0
     echo "Debug output"
-    ls -al $GITHUB_WORKSPACE/../
+    echo $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
+    echo $GITHUB_WORKSPACE/../$TAG-to-delete/package.json | jq 'del(.resolutions)'
     echo $GITHUB_WORKSPACE/../$TAG-to-delete/package.json | jq 'del(.resolutions)' > $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
-    export MY_PATH=$(readlink -f $GITHUB_WORKSPACE/../pwa-studio-$TAG/packages) && sed -i -e "s#file://$MY_PATH/[^0-9]*##g" -e 's#\.tgz##g' $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
+    export MY_PATH=$(readlink -f $GITHUB_WORKSPACE/../pwa-studio-$TAG/packages) && sed -i -e "s#file://$MY_PATH/[^0-9]*##g" -e "s#\.tgz##g" $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
 
     cat $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
 
