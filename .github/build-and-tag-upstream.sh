@@ -22,9 +22,8 @@ else
     
     echo "remove local resolutions"
 
-    cat $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
-    cat $GITHUB_WORKSPACE/../$TAG-to-delete/package.json | jq 'del(.resolutions)'
-	cat $GITHUB_WORKSPACE/../$TAG-to-delete/package.json | jq 'del(.resolutions)' > $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
+    mv $GITHUB_WORKSPACE/../$TAG-to-delete/package.json $GITHUB_WORKSPACE/../$TAG-to-delete/package-tmp.json
+	cat $GITHUB_WORKSPACE/../$TAG-to-delete/package-tmp.json | jq 'del(.resolutions)' > $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
 	cat $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
     export MY_PATH=$(readlink -f $GITHUB_WORKSPACE/../pwa-studio-$TAG/packages) && sed -i -e "s#file://$MY_PATH/[^0-9]*##g" $GITHUB_WORKSPACE/../$TAG-to-delete/package.json && sed -i -e "s#\.tgz##g" $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
     echo "Update code"
