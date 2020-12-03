@@ -1,7 +1,3 @@
-import { cacheNames } from 'workbox-core';
-import { ExpirationPlugin } from 'workbox-expiration';
-import { registerRoute } from 'workbox-routing';
-import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
 import {
     isResizedCatalogImage,
     findSameOrLargerImage,
@@ -19,34 +15,40 @@ import { THIRTY_DAYS, MAX_NUM_OF_IMAGES_TO_CACHE } from './defaults';
 export default function() {
     const catalogCacheHandler = createCatalogCacheHandler();
 
-    registerRoute(
+    workbox.routing.registerRoute(
         new RegExp('(robots.txt|favicon.ico|manifest.json)'),
-        new StaleWhileRevalidate()
+        new workbox.strategies.StaleWhileRevalidate()
     );
 
     /**
      * Route that checks for resized catalog images in cache.
      */
-    registerRoute(isResizedCatalogImage, ({ url, request, event }) => {
-        const sameOrLargerImagePromise = findSameOrLargerImage(url, request);
-        event.waitUntil(sameOrLargerImagePromise);
-        return sameOrLargerImagePromise.then(
-            response =>
-                response || catalogCacheHandler.handle({ request, event })
-        );
-    });
+    workbox.routing.registerRoute(
+        isResizedCatalogImage,
+        ({ url, request, event }) => {
+            const sameOrLargerImagePromise = findSameOrLargerImage(
+                url,
+                request
+            );
+            event.waitUntil(sameOrLargerImagePromise);
+            return sameOrLargerImagePromise.then(
+                response =>
+                    response || catalogCacheHandler.handle({ request, event })
+            );
+        }
+    );
 
     /**
      * Route to handle all types of images. Stores them in cache with a
      * cache name "images". They auto expire after 30 days and only 60
      * can be stored at a time.
      */
-    registerRoute(
+    workbox.routing.registerRoute(
         /\.(?:png|gif|jpg|jpeg|svg)$/,
-        new CacheFirst({
+        new workbox.strategies.CacheFirst({
             cacheName: 'images',
             plugins: [
-                new ExpirationPlugin({
+                new workbox.expiration.Plugin({
                     maxEntries: MAX_NUM_OF_IMAGES_TO_CACHE, // 60 Images
                     maxAgeSeconds: THIRTY_DAYS // 30 Days
                 })
@@ -59,7 +61,10 @@ export default function() {
      * strategy because if the file contents change, the file name will
      * change. There is no point in using StaleWhileRevalidate for JS files.
      */
-    registerRoute(new RegExp(/\.js$/), new CacheFirst());
+    workbox.routing.registerRoute(
+        new RegExp(/\.js$/),
+        new workbox.strategies.CacheFirst()
+    );
 
     /**
      * Route for HTML files. This route uses a custom plugin
@@ -76,15 +81,15 @@ export default function() {
      * file from cache will be served till a new version of the app deployed
      * and the cycle repeats.
      */
-    registerRoute(
+    workbox.routing.registerRoute(
         ({ url }) => isHTMLRoute(url),
-        new StaleWhileRevalidate({
+        new workbox.strategies.StaleWhileRevalidate({
             plugins: [
                 {
                     cacheKeyWillBeUsed: () => 'index.html'
                 }
             ],
-            cacheName: cacheNames.precache
+            cacheName: workbox.core.cacheNames.precache
         })
     );
 }

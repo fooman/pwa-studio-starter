@@ -39,13 +39,13 @@
     "@babel/plugin-transform-runtime": "~7.4.4",
     "@babel/preset-env": "~7.3.4",
     "@babel/runtime": "~7.4.2",
-    "@magento/babel-preset-peregrine": "1.0.1",
+    "@magento/babel-preset-peregrine": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1.tgz",
     "@magento/eslint-config": "~1.5.0",
-    "@magento/pagebuilder": "2.0.0",
-    "@magento/peregrine": "7.0.0",
-    "@magento/pwa-buildpack": "6.0.0",
-    "@magento/upward-js": "4.0.2",
-    "@magento/venia-ui": "4.0.0",
+    "@magento/pagebuilder": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/pagebuilder/magento-pagebuilder-2.0.0.tgz",
+    "@magento/peregrine": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/peregrine/magento-peregrine-7.0.0.tgz",
+    "@magento/pwa-buildpack": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/pwa-buildpack/magento-pwa-buildpack-6.0.0.tgz",
+    "@magento/upward-js": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/upward-js/magento-upward-js-4.0.2.tgz",
+    "@magento/venia-ui": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/venia-ui/magento-venia-ui-4.0.0.tgz",
     "@storybook/react": "~5.2.6",
     "apollo-cache-inmemory": "~1.6.3",
     "apollo-cache-persist": "~0.1.1",
@@ -77,7 +77,7 @@
     "file-loader": "~4.0.0",
     "graphql": "14.3.1",
     "graphql-cli": "~3.0.11",
-    "graphql-cli-validate-magento-pwa-queries": "1.3.1",
+    "graphql-cli-validate-magento-pwa-queries": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.1.tgz",
     "graphql-tag": "~2.10.1",
     "html-webpack-plugin": "~3.2.0",
     "informed": "~2.11.17",
@@ -118,5 +118,14 @@
   "engines": {
     "node": ">=10.x",
     "yarn": ">=1.12.0"
+  },
+  "resolutions": {
+    "@magento/babel-preset-peregrine": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/babel-preset-peregrine/magento-babel-preset-peregrine-1.0.1.tgz",
+    "graphql-cli-validate-magento-pwa-queries": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/graphql-cli-validate-magento-pwa-queries/graphql-cli-validate-magento-pwa-queries-1.3.1.tgz",
+    "@magento/pagebuilder": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/pagebuilder/magento-pagebuilder-2.0.0.tgz",
+    "@magento/peregrine": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/peregrine/magento-peregrine-7.0.0.tgz",
+    "@magento/pwa-buildpack": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/pwa-buildpack/magento-pwa-buildpack-6.0.0.tgz",
+    "@magento/upward-js": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/upward-js/magento-upward-js-4.0.2.tgz",
+    "@magento/venia-ui": "file:///home/runner/work/pwa-studio-starter/pwa-studio-v7.0.0/packages/venia-ui/magento-venia-ui-4.0.0.tgz"
   }
 }
