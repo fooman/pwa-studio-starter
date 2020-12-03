@@ -27,6 +27,7 @@ jobs:
               if [ -n "$(git status --porcelain)" ]; then
                 git add .
                 git commit --message "Created release ${{ matrix.release }}"
+                git tag ${{ matrix.release }}
                 git push origin releases 
                 git push origin releases --tags
               fi
