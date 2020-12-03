@@ -22,7 +22,7 @@ else
     echo "Debug output"
     ls -al $GITHUB_WORKSPACE/../
     echo $GITHUB_WORKSPACE/../$TAG-to-delete/package.json | jq 'del(.resolutions)' > $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
-    export MY_PATH=$(readlink -f $GITHUB_WORKSPACE/../pwa-studio-$TAG/packages) && sed -i -e "s#file://$MY_PATH/[^0-9]*##g" -e 's#\.tgz##g' $GITHUB_WORKSPACE/../tmp-to-delete/package.json
+    export MY_PATH=$(readlink -f $GITHUB_WORKSPACE/../pwa-studio-$TAG/packages) && sed -i -e "s#file://$MY_PATH/[^0-9]*##g" -e 's#\.tgz##g' $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
 
     cat $GITHUB_WORKSPACE/../$TAG-to-delete/package.json
 
