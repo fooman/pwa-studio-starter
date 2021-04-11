@@ -4,6 +4,11 @@ echo "$TAG"
 SHA_LOOKUP=${1//[.]/_}
 echo "$SHA_LOOKUP"
 source $GITHUB_WORKSPACE/.github/tags-to-build
+if [ -z "${!SHA_LOOKUP}" ]
+then
+      echo "\${!SHA_LOOKUP} is empty"
+      exit 1
+fi
 if git rev-parse $1 >/dev/null 2>&1
 then
     echo "Tag $TAG already exists"
