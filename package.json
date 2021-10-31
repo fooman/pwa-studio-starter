@@ -28,12 +28,12 @@
     "@magento/venia-drivers": "src/drivers"
   },
   "dependencies": {
-    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-11.0.0-fooman-canary-2021-43.tgz",
-    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.2.0-fooman-canary-2021-43.tgz"
+    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-11.0.0-fooman-canary-2021-44.tgz",
+    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.2.0-fooman-canary-2021-44.tgz"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",
-    "@apollo/client": "~3.1.2",
+    "@apollo/client": "~3.4.0",
     "@babel/core": "~7.3.4",
     "@babel/plugin-proposal-class-properties": "~7.3.4",
     "@babel/plugin-proposal-object-rest-spread": "~7.3.4",
@@ -43,13 +43,13 @@
     "@babel/plugin-transform-runtime": "~7.4.4",
     "@babel/preset-env": "~7.3.4",
     "@babel/runtime": "~7.4.2",
-    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.1.0-fooman-canary-2021-43.tgz",
-    "@magento/eslint-config": "~1.5.0-fooman-canary-2021-43",
-    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-7.0.0-fooman-canary-2021-43.tgz",
-    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-12.0.0-fooman-canary-2021-43.tgz",
-    "@magento/pwa-theme-venia": "https://canary-packages.fooman.com/pwa-theme-venia/magento-pwa-theme-venia-1.0.0-fooman-canary-2021-43.tgz",
-    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.0.4-fooman-canary-2021-43.tgz",
-    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-9.0.0-fooman-canary-2021-43.tgz",
+    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.2.0-fooman-canary-2021-44.tgz",
+    "@magento/eslint-config": "~1.5.0-fooman-canary-2021-44",
+    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-7.0.0-fooman-canary-2021-44.tgz",
+    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-12.0.0-fooman-canary-2021-44.tgz",
+    "@magento/pwa-theme-venia": "https://canary-packages.fooman.com/pwa-theme-venia/magento-pwa-theme-venia-1.0.0-fooman-canary-2021-44.tgz",
+    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.0.4-fooman-canary-2021-44.tgz",
+    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-9.0.0-fooman-canary-2021-44.tgz",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.1",
     "@storybook/react": "~6.3.7",
     "@types/node": "16",
@@ -122,21 +122,21 @@
     "workbox-routing": "~6.2.4",
     "workbox-strategies": "~6.2.4",
     "workbox-webpack-plugin": "~6.2.4",
-    "@magento/venia-sample-backends": "https://canary-packages.fooman.com/extensions/venia-sample-backends/magento-venia-sample-backends-0.0.4-fooman-canary-2021-43.tgz"
+    "@magento/venia-sample-backends": "https://canary-packages.fooman.com/extensions/venia-sample-backends/magento-venia-sample-backends-0.0.4-fooman-canary-2021-44.tgz"
   },
   "optionalDependencies": {
     "sharp": "~0.29.0"
   },
   "resolutions": {
-    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.1.0-fooman-canary-2021-43.tgz",
-    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.0.4-fooman-canary-2021-43.tgz",
-    "@magento/venia-sample-backends": "https://canary-packages.fooman.com/extensions/venia-sample-backends/magento-venia-sample-backends-0.0.4-fooman-canary-2021-43.tgz",
-    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-7.0.0-fooman-canary-2021-43.tgz",
-    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-12.0.0-fooman-canary-2021-43.tgz",
-    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-11.0.0-fooman-canary-2021-43.tgz",
-    "@magento/pwa-theme-venia": "https://canary-packages.fooman.com/pwa-theme-venia/magento-pwa-theme-venia-1.0.0-fooman-canary-2021-43.tgz",
-    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.2.0-fooman-canary-2021-43.tgz",
-    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-9.0.0-fooman-canary-2021-43.tgz"
+    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.2.0-fooman-canary-2021-44.tgz",
+    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.0.4-fooman-canary-2021-44.tgz",
+    "@magento/venia-sample-backends": "https://canary-packages.fooman.com/extensions/venia-sample-backends/magento-venia-sample-backends-0.0.4-fooman-canary-2021-44.tgz",
+    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-7.0.0-fooman-canary-2021-44.tgz",
+    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-12.0.0-fooman-canary-2021-44.tgz",
+    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-11.0.0-fooman-canary-2021-44.tgz",
+    "@magento/pwa-theme-venia": "https://canary-packages.fooman.com/pwa-theme-venia/magento-pwa-theme-venia-1.0.0-fooman-canary-2021-44.tgz",
+    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.2.0-fooman-canary-2021-44.tgz",
+    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-9.0.0-fooman-canary-2021-44.tgz"
   },
   "engines": {
     "node": ">=10.x",
