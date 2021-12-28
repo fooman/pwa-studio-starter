@@ -9,18 +9,16 @@
     "buildpack": "buildpack",
     "build": "yarn run build:prod",
     "build:analyze": "yarn run clean && mkdir dist && webpack -p --profile --no-progress --env.mode production --json > dist/build-stats.json && webpack-bundle-analyzer dist/build-stats.json",
-    "build:dev": "yarn run clean && yarn run validate-queries && webpack --no-progress --env.mode development",
+    "build:dev": "yarn run clean && webpack --no-progress --env.mode development",
     "build:prod": "yarn run clean && webpack --no-progress --env.mode production",
     "build:report": "buildpack generate-build-report",
     "clean": "rimraf dist",
-    "download-schema": "graphql get-schema --project pwa-studio-canary --insecure",
     "lint": "eslint --ignore-path .gitignore 'src/**/{*.js,package.json}'",
     "prettier": "prettier --loglevel warn --ignore-path .gitignore 'src/**/*.@(css|graphql|js)' '*.js'",
     "prettier:check": "yarn run -s prettier -- --check",
     "prettier:fix": "yarn run -s prettier -- --write",
     "start": "buildpack serve .",
     "start:debug": "node --inspect-brk ./node_modules/.bin/webpack-dev-server --progress --color --env.mode development",
-    "validate-queries": "yarn run download-schema && graphql validate-magento-pwa-queries --project pwa-studio-canary",
     "watch": "webpack-dev-server --progress --color --env.mode development",
     "storybook": "start-storybook -p 9001 -c src/.storybook",
     "storybook:build": "build-storybook -c src/.storybook -o storybook-dist"
@@ -30,9 +28,7 @@
     "@magento/venia-drivers": "src/drivers"
   },
   "dependencies": {
-    "@magento/pwa-buildpack": "~9.0.0",
-    "@magento/venia-sample-language-packs": "~0.0.3",
-    "@magento/venia-sample-payments-checkmo": "~0.0.1",
+    "@magento/pwa-buildpack": "~10.0.0",
     "@magento/upward-js": "~5.1.0"
   },
   "devDependencies": {
@@ -49,11 +45,10 @@
     "@babel/runtime": "~7.4.2",
     "@magento/babel-preset-peregrine": "~1.1.0",
     "@magento/eslint-config": "~1.5.0",
-    "@magento/pagebuilder": "~5.0.0",
-    "@magento/peregrine": "~10.0.0",
-    "@magento/upward-security-headers": "~1.0.3",
-    "@magento/venia-adobe-data-layer": "~1.0.0",
-    "@magento/venia-ui": "~7.0.0",
+    "@magento/pagebuilder": "~6.0.0",
+    "@magento/peregrine": "~11.0.0",
+    "@magento/upward-security-headers": "~1.0.4",
+    "@magento/venia-ui": "~8.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.1",
     "@storybook/react": "~6.1.14",
     "@wojtekmaj/enzyme-adapter-react-17": "~0.4.1",
@@ -81,8 +76,6 @@
     "express": "~4.16.4",
     "file-loader": "~4.0.0",
     "graphql": "~15.3.0",
-    "graphql-cli": "~3.0.11",
-    "graphql-cli-validate-magento-pwa-queries": "~1.4.0",
     "html-webpack-plugin": "~3.2.0",
     "informed": "~3.27.0",
     "jarallax": "~1.11.1",
@@ -123,7 +116,7 @@
     "workbox-routing": "~6.0.2",
     "workbox-strategies": "~6.0.2",
     "workbox-webpack-plugin": "~6.0.2",
-    "@magento/venia-sample-backends": "~0.0.3"
+    "@magento/venia-sample-backends": "~0.0.4"
   },
   "optionalDependencies": {
     "sharp": "~0.23.3"

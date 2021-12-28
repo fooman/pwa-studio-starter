@@ -1,14 +1,16 @@
-const {
-    configureWebpack,
-    graphQL: {
-        getMediaURL,
-        getStoreConfigData,
-        getAvailableStoresConfigData,
-        getPossibleTypes
-    }
-} = require('@magento/pwa-buildpack');
-const { DefinePlugin } = require('webpack');
+const { configureWebpack, graphQL } = require('@magento/pwa-buildpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
+const {
+    getMediaURL,
+    getStoreConfigData,
+    getAvailableStoresConfigData,
+    getPossibleTypes
+} = graphQL;
+
+const { DefinePlugin } = webpack;
+const { LimitChunkCountPlugin } = webpack.optimize;
 
 module.exports = async env => {
     /**
@@ -79,7 +81,10 @@ module.exports = async env => {
                 ? JSON.stringify(process.env.STORE_VIEW_CODE)
                 : JSON.stringify(storeConfigData.code),
             AVAILABLE_STORE_VIEWS: JSON.stringify(availableStores),
-            DEFAULT_LOCALE: JSON.stringify(global.LOCALE)
+            DEFAULT_LOCALE: JSON.stringify(global.LOCALE),
+            DEFAULT_COUNTRY_CODE: JSON.stringify(
+                process.env.DEFAULT_COUNTRY_CODE || 'US'
+            )
         }),
         new HTMLWebpackPlugin({
             filename: 'index.html',
@@ -91,5 +96,58 @@ module.exports = async env => {
         })
     ];
 
-    return config;
+    const serverConfig = Object.assign({}, config, {
+        target: 'node',
+        devtool: false,
+        module: { ...config.module },
+        name: 'server-config',
+        output: {
+            ...config.output,
+            filename: '[name].[hash].SERVER.js',
+            strictModuleExceptionHandling: true
+        },
+        optimization: {
+            minimize: false
+        },
+        plugins: [...config.plugins]
+    });
+
+    // TODO: get LocalizationPlugin working in Node
+    const browserPlugins = new Set()
+        .add('HtmlWebpackPlugin')
+        .add('LocalizationPlugin')
+        .add('ServiceWorkerPlugin')
+        .add('VirtualModulesPlugin')
+        .add('WebpackAssetsManifest');
+
+    // remove browser-only plugins
+    serverConfig.plugins = serverConfig.plugins.filter(
+        plugin => !browserPlugins.has(plugin.constructor.name)
+    );
+
+    // remove browser-only module rules
+    serverConfig.module.rules = serverConfig.module.rules.map(rule => {
+        if (`${rule.test}` === '/\\.css$/') {
+            return {
+                ...rule,
+                oneOf: rule.oneOf.map(ruleConfig => ({
+                    ...ruleConfig,
+                    use: ruleConfig.use.filter(
+                        loaderConfig => loaderConfig.loader !== 'style-loader'
+                    )
+                }))
+            };
+        }
+
+        return rule;
+    });
+
+    // add LimitChunkCountPlugin to avoid code splitting
+    serverConfig.plugins.push(
+        new LimitChunkCountPlugin({
+            maxChunks: 1
+        })
+    );
+
+    return [config, serverConfig];
 };
