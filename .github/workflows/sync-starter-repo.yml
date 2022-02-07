@@ -1,8 +1,8 @@
 name: Sync Starter
-#on: [push]
-on:
-  schedule:
-    - cron: "24 20 * * 0"
+on: [push]
+#on:
+#  schedule:
+#    - cron: "24 20 * * 0"
 jobs:
   build:
 
