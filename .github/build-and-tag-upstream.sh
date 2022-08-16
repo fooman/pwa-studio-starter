@@ -20,7 +20,7 @@ else
     cd $GITHUB_WORKSPACE/../pwa-studio-$TAG && git checkout ${!SHA_LOOKUP}
 
     echo "NPM Install"
-    cd $GITHUB_WORKSPACE/../pwa-studio-$TAG/packages/pwa-buildpack && npm install
+    cd $GITHUB_WORKSPACE/../pwa-studio-$TAG/packages/pwa-buildpack && npm install && npm add chalk
     
     echo "create packages"
     cd $GITHUB_WORKSPACE/../pwa-studio-$TAG && DEBUG_PROJECT_CREATION=true ./packages/pwa-buildpack/bin/buildpack create-project ../$TAG-to-delete --template "./packages/venia-concept" --name "pwa-studio-canary" --author "Test Author<user@example.com>" --backend-url "https://master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud/" --braintree-token "sandbox_8yrzsvtm_s2bg8fs563crhqzk" --npm-client "yarn" --install 0

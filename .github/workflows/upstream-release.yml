@@ -19,9 +19,9 @@ jobs:
           #- "v12.0.0"
           #- "v12.1.0"
           - "v12.3.0"
-          - "v12.4.0"
-          - "v12.5.0"
-          - "v12.6.0"
+          #- "v12.4.0"
+          #- "v12.5.0"
+          #- "v12.6.0"
 
     steps:
     - uses: actions/checkout@v2
@@ -33,7 +33,7 @@ jobs:
       run: |
               git config --global user.name ${{ github.repository_owner }}
               git config --global user.email ${{ github.repository_owner }}'@users.noreply.github.com'
-              if [ -n "$(git status --porcelain)" ]; then
+              if [ -n "$(git status --porcelain)" ] && [ -f package.json ]; then
                 git add .
                 git commit --message "Created release ${{ matrix.release }}"
                 git tag ${{ matrix.release }}
