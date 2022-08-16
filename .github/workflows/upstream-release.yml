@@ -28,6 +28,9 @@ jobs:
       with:
         fetch-depth: 0
       name: Checkout files
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 14
     - run: .github/build-and-tag-upstream.sh ${{ matrix.release }}
     - name: Push Changes
       run: |
