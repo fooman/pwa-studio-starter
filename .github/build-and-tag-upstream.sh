@@ -23,7 +23,7 @@ else
     cd $GITHUB_WORKSPACE/../pwa-studio-$TAG/packages/pwa-buildpack && npm add chalk && npm install
     
     echo "create packages"
-    cd $GITHUB_WORKSPACE/../pwa-studio-$TAG && DEBUG_PROJECT_CREATION=true ./packages/pwa-buildpack/bin/buildpack create-project ../$TAG-to-delete --template "./packages/venia-concept" --name "pwa-studio-canary" --author "Test Author<user@example.com>" --backend-url "https://master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud/" --braintree-token "sandbox_8yrzsvtm_s2bg8fs563crhqzk" --npmClient "yarn" --install 0
+    cd $GITHUB_WORKSPACE/../pwa-studio-$TAG && DEBUG_PROJECT_CREATION=true ./packages/pwa-buildpack/bin/buildpack create-project ../$TAG-to-delete --template "./packages/venia-concept" --name "pwa-studio-canary" --author "Test Author<user@example.com>" --backend-url "https://master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud/" --braintree-token "sandbox_8yrzsvtm_s2bg8fs563crhqzk" --npm-client "yarn" --no-install
     
     echo "remove local resolutions"
 
