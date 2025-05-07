@@ -10,10 +10,8 @@ const config = {
     presets: [venia],
     // Configure how Tailwind statically analyzes your code here.
     // Note that the Tailwind's `jit` mode doesn't actually use PurgeCSS.
-    purge: {
-        // Include paths to every file that may refer to Tailwind classnames.
-        // Classnames not found in these files will be excluded at build time.
-        content: [
+    content: {
+        files: [
             './node_modules/@magento/venia-ui/lib/**/*.module.css',
             '../venia-ui/lib/**/*.module.css',
             './src/**/*.module.css',
@@ -22,17 +20,70 @@ const config = {
         // Extract Tailwind classnames from source files.
         // Our default matcher only matches targets of CSS Modules' `composes`,
         // not classnames included directly in HTML or JS!
-        extractors: [
-            {
-                extensions: ['css'],
-                extractor: content => content.match(matcher) || []
-            }
-        ]
+        extract: {
+            css: content => content.match(matcher) || []
+        }
     },
     // Set the character Tailwind uses when prefixing classnames with variants.
     // CSS Modules doesn't like Tailwind's default `:`, so we use `_`.
     separator: '_',
     theme: {
+        screens: {
+            xs: '480px',
+            '-xs': {
+                max: '479px'
+            },
+            sm: '640px',
+            '-sm': {
+                max: '639px'
+            },
+            hsm: {
+                raw: '(min-height: 640px)'
+            },
+            '-hsm': {
+                raw: '(max-height: 639px)'
+            },
+            md: '800px',
+            '-md': {
+                max: '799px'
+            },
+            hmd: {
+                raw: '(min-height: 800px)'
+            },
+            '-hmd': {
+                raw: '(max-height: 799px)'
+            },
+            lg: '960px',
+            '-lg': {
+                max: '959px'
+            },
+            hlg: {
+                raw: '(min-height: 960px)'
+            },
+            '-hlg': {
+                raw: '(max-height: 959px)'
+            },
+            xl: '1024px',
+            '-xl': {
+                max: '1023px'
+            },
+            '2xl': '1280px',
+            '-2xl': {
+                max: '-1279px'
+            },
+            '3xl': '1440px',
+            '-3xl': {
+                max: '-1439px'
+            },
+            '4xl': '1600px',
+            '-4xl': {
+                max: '1599px'
+            },
+            max: '1920px',
+            '-max': {
+                max: '1920px'
+            }
+        },
         extend: {}
     }
 };
@@ -48,4 +99,4 @@ module.exports = config;
  *   composes: mx-auto from global;
  * }
  */
-const matcher = /(?<=composes:.*)(\b\S+\b)(?=.*from global;)/g;
+const matcher = /(?<=composes:.*)(\S+)(?=.*from global;)/g;
