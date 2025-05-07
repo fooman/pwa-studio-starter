@@ -1,6 +1,7 @@
 name: Sync Starter
 #on: [push]
 on:
+  workflow_dispatch:
   schedule:
     - cron: "24 20 * * 0"
 jobs:
