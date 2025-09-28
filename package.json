@@ -28,10 +28,10 @@
     "@magento/venia-drivers": "src/drivers"
   },
   "dependencies": {
-    "@magento/experience-platform-connector": "https://canary-packages.fooman.com/extensions/experience-platform-connector/magento-experience-platform-connector-1.0.10-fooman-canary-2025-38.tgz",
-    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-11.5.4-fooman-canary-2025-38.tgz",
+    "@magento/experience-platform-connector": "https://canary-packages.fooman.com/extensions/experience-platform-connector/magento-experience-platform-connector-1.0.10-fooman-canary-2025-39.tgz",
+    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-11.5.4-fooman-canary-2025-39.tgz",
     "dompurify": "~3.2.4",
-    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.4.2-fooman-canary-2025-38.tgz"
+    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.4.2-fooman-canary-2025-39.tgz"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",
@@ -47,13 +47,13 @@
     "@babel/plugin-transform-runtime": "~7.4.4",
     "@babel/preset-env": "~7.16.0",
     "@babel/runtime": "~7.15.3",
-    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.3.3-fooman-canary-2025-38.tgz",
-    "@magento/eslint-config": "~1.5.0-fooman-canary-2025-38",
-    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-9.3.5-fooman-canary-2025-38.tgz",
-    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-15.5.2-fooman-canary-2025-38.tgz",
-    "@magento/pwa-theme-venia": "https://canary-packages.fooman.com/pwa-theme-venia/magento-pwa-theme-venia-2.4.0-fooman-canary-2025-38.tgz",
-    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.1.18-fooman-canary-2025-38.tgz",
-    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-11.7.0-fooman-canary-2025-38.tgz",
+    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.3.3-fooman-canary-2025-39.tgz",
+    "@magento/eslint-config": "~1.5.0-fooman-canary-2025-39",
+    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-9.3.5-fooman-canary-2025-39.tgz",
+    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-15.5.2-fooman-canary-2025-39.tgz",
+    "@magento/pwa-theme-venia": "https://canary-packages.fooman.com/pwa-theme-venia/magento-pwa-theme-venia-2.4.0-fooman-canary-2025-39.tgz",
+    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.1.18-fooman-canary-2025-39.tgz",
+    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-11.7.0-fooman-canary-2025-39.tgz",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.1",
     "@storybook/react": "~6.3.7",
     "@types/node": "16",
@@ -132,15 +132,15 @@
     "sharp": "~0.29.3"
   },
   "resolutions": {
-    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.3.3-fooman-canary-2025-38.tgz",
-    "@magento/experience-platform-connector": "https://canary-packages.fooman.com/extensions/experience-platform-connector/magento-experience-platform-connector-1.0.10-fooman-canary-2025-38.tgz",
-    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.1.18-fooman-canary-2025-38.tgz",
-    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-9.3.5-fooman-canary-2025-38.tgz",
-    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-15.5.2-fooman-canary-2025-38.tgz",
-    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-11.5.4-fooman-canary-2025-38.tgz",
-    "@magento/pwa-theme-venia": "https://canary-packages.fooman.com/pwa-theme-venia/magento-pwa-theme-venia-2.4.0-fooman-canary-2025-38.tgz",
-    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.4.2-fooman-canary-2025-38.tgz",
-    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-11.7.0-fooman-canary-2025-38.tgz"
+    "@magento/babel-preset-peregrine": "https://canary-packages.fooman.com/babel-preset-peregrine/magento-babel-preset-peregrine-1.3.3-fooman-canary-2025-39.tgz",
+    "@magento/experience-platform-connector": "https://canary-packages.fooman.com/extensions/experience-platform-connector/magento-experience-platform-connector-1.0.10-fooman-canary-2025-39.tgz",
+    "@magento/upward-security-headers": "https://canary-packages.fooman.com/extensions/upward-security-headers/magento-upward-security-headers-1.1.18-fooman-canary-2025-39.tgz",
+    "@magento/pagebuilder": "https://canary-packages.fooman.com/pagebuilder/magento-pagebuilder-9.3.5-fooman-canary-2025-39.tgz",
+    "@magento/peregrine": "https://canary-packages.fooman.com/peregrine/magento-peregrine-15.5.2-fooman-canary-2025-39.tgz",
+    "@magento/pwa-buildpack": "https://canary-packages.fooman.com/pwa-buildpack/magento-pwa-buildpack-11.5.4-fooman-canary-2025-39.tgz",
+    "@magento/pwa-theme-venia": "https://canary-packages.fooman.com/pwa-theme-venia/magento-pwa-theme-venia-2.4.0-fooman-canary-2025-39.tgz",
+    "@magento/upward-js": "https://canary-packages.fooman.com/upward-js/magento-upward-js-5.4.2-fooman-canary-2025-39.tgz",
+    "@magento/venia-ui": "https://canary-packages.fooman.com/venia-ui/magento-venia-ui-11.7.0-fooman-canary-2025-39.tgz"
   },
   "engines": {
     "node": ">=18.x",
